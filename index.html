@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Zebu Freela | Conexões que viram conquistas</title>
+  <title>Zebu Freela | Uberaba</title>
   <link rel="manifest" href="/manifest.json">
-  <meta name="theme-color" content="#06341F">
+  <meta name="theme-color" content="#000000">
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -16,10 +16,10 @@
         extend: {
           colors: {
             zebu: {
-              green: '#06341F',
-              cream: '#F9EAD7',
-              brown: '#673A1B',
-              mustard: '#D8A456'
+              green: '#000000',   // Preto total da Logo
+              cream: '#FFFFFF',   // Branco puro
+              brown: '#18181B',   // Carvão fosco
+              mustard: '#000000'  // Botões Pretos com texto Branco
             }
           }
         }
@@ -30,46 +30,37 @@
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-<body class="bg-zebu-cream text-stone-900 dark:bg-stone-950 dark:text-stone-100 min-h-screen flex flex-col font-sans transition-colors duration-200">
+<body class="bg-white text-black dark:bg-black dark:text-white min-h-screen flex flex-col font-sans transition-colors duration-200">
 
   <!-- ================= NAVBAR ================= -->
-  <header class="sticky top-0 z-40 bg-zebu-green text-zebu-cream shadow-md">
+  <header class="sticky top-0 z-40 bg-black text-white shadow-md border-b border-neutral-800">
     <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+      <!-- SUA LOGO OFICIAL PRETO E BRANCO -->
       <a href="#" onclick="showSection('home')" class="flex items-center gap-2">
-        <svg class="w-10 h-10 shrink-0" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M50 85C50 85 15 58 15 35C15 20 26 12 38 17C45 20 50 28 50 28C50 28 55 20 62 17C74 12 85 20 85 35C85 58 50 85 50 85Z" fill="#F9EAD7"/>
-          <path d="M32 30C28 26 22 34 25 40C29 43 36 34 32 30Z" fill="#673A1B"/>
-          <path d="M68 42C62 39 60 48 64 53C69 54 71 45 68 42Z" fill="#673A1B"/>
-          <circle cx="48" cy="52" r="5" fill="#673A1B"/>
-          <path d="M38 17C35 12 28 8 22 10" stroke="#D8A456" stroke-width="3" stroke-linecap="round"/>
-          <path d="M62 17C65 12 72 8 78 10" stroke="#D8A456" stroke-width="3" stroke-linecap="round"/>
-        </svg>
-        <div>
-          <span class="font-extrabold text-xl tracking-tight leading-none block">Zebu Freela</span>
-          <span class="text-[10px] text-zebu-mustard font-medium hidden sm:inline">Conexões que viram conquistas</span>
-        </div>
+        <img src="logo.png" onerror="this.onerror=null; this.src='logo.jpg';" alt="Zebu Freela Uberaba" class="h-10 md:h-12 w-auto object-contain bg-white px-2 py-1 rounded">
       </a>
 
+      <!-- Ações do Cabeçalho -->
       <div class="flex items-center gap-2">
-        <button id="themeToggle" class="p-2 rounded-full hover:bg-white/10 transition" title="Alternar tema">
-          <i data-lucide="moon" class="w-5 h-5 hidden dark:block text-zebu-mustard"></i>
-          <i data-lucide="sun" class="w-5 h-5 block dark:hidden text-zebu-mustard"></i>
+        <button id="themeToggle" class="p-2 rounded-full hover:bg-neutral-800 transition" title="Alternar tema">
+          <i data-lucide="moon" class="w-5 h-5 hidden dark:block text-white"></i>
+          <i data-lucide="sun" class="w-5 h-5 block dark:hidden text-white"></i>
         </button>
 
         <div id="authNavButtons" class="flex items-center gap-2">
-          <button onclick="openModal('authModal', 'login')" class="px-3 py-1.5 rounded-lg text-sm font-medium hover:bg-white/10 transition">
+          <button onclick="openModal('authModal', 'login')" class="px-3 py-1.5 rounded-lg text-sm font-semibold hover:bg-neutral-800 transition text-white">
             Entrar
           </button>
-          <button onclick="openModal('authModal', 'register')" class="px-3 py-1.5 bg-zebu-mustard text-zebu-green hover:brightness-105 font-semibold text-sm rounded-lg transition shadow-sm">
+          <button onclick="openModal('authModal', 'register')" class="px-4 py-1.5 bg-white text-black hover:bg-neutral-200 font-extrabold text-sm rounded-lg transition shadow">
             Cadastrar
           </button>
         </div>
 
         <div id="userNavMenu" class="hidden relative flex items-center gap-2">
-          <button id="proDashboardBtn" onclick="showSection('dashboard')" class="hidden sm:inline-flex items-center gap-1 text-xs bg-emerald-800 text-zebu-cream px-2.5 py-1.5 rounded-md font-medium hover:bg-emerald-700">
+          <button id="proDashboardBtn" onclick="showSection('dashboard')" class="hidden sm:inline-flex items-center gap-1 text-xs bg-neutral-800 text-white border border-neutral-600 px-3 py-1.5 rounded-md font-bold hover:bg-neutral-700">
             <i data-lucide="briefcase" class="w-3.5 h-3.5"></i> Meu Painel
           </button>
-          <button onclick="logoutUser()" class="p-2 rounded-full hover:bg-white/10 transition text-red-300" title="Sair da conta">
+          <button onclick="logoutUser()" class="p-2 rounded-full hover:bg-neutral-800 transition text-neutral-400 hover:text-white" title="Sair da conta">
             <i data-lucide="log-out" class="w-5 h-5"></i>
           </button>
         </div>
@@ -78,42 +69,42 @@
   </header>
 
   <!-- NOTIFICAÇÃO TOAST -->
-  <div id="toast" class="fixed bottom-4 right-4 z-50 transform translate-y-24 opacity-0 transition-all duration-300 max-w-sm w-full bg-zebu-green text-zebu-cream p-4 rounded-xl shadow-xl flex items-start gap-3 border border-zebu-mustard">
-    <i id="toastIcon" data-lucide="info" class="w-5 h-5 shrink-0 text-zebu-mustard mt-0.5"></i>
+  <div id="toast" class="fixed bottom-4 right-4 z-50 transform translate-y-24 opacity-0 transition-all duration-300 max-w-sm w-full bg-black text-white p-4 rounded-xl shadow-2xl flex items-start gap-3 border border-neutral-700">
+    <i id="toastIcon" data-lucide="info" class="w-5 h-5 shrink-0 text-white mt-0.5"></i>
     <p id="toastMessage" class="text-sm font-medium leading-snug"></p>
   </div>
 
   <!-- CORPO PRINCIPAL -->
   <main class="flex-1 max-w-7xl w-full mx-auto p-4 md:p-6 space-y-8">
 
-    <!-- HOME -->
+    <!-- SEÇÃO HOME -->
     <section id="homeSection" class="space-y-10">
-      <div class="relative bg-gradient-to-br from-zebu-green to-emerald-950 text-zebu-cream rounded-3xl p-6 md:p-12 overflow-hidden shadow-lg border border-zebu-mustard/20">
+      <div class="relative bg-black text-white rounded-3xl p-6 md:p-12 overflow-hidden shadow-2xl border border-neutral-800">
         <div class="max-w-2xl space-y-4">
-          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-zebu-mustard/20 text-zebu-mustard border border-zebu-mustard/30">
-            <i data-lucide="map-pin" class="w-3 h-3"></i> Exclusivo para Uberaba - MG
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-extrabold bg-neutral-900 text-white border border-neutral-700 uppercase tracking-wider">
+            <i data-lucide="map-pin" class="w-3 h-3"></i> Uberaba - MG
           </span>
-          <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight">Qual serviço você precisa hoje?</h1>
-          <p class="text-stone-300 text-sm md:text-base">Contrate profissionais autônomos de confiança perto de você ou anuncie seus serviços gratuitamente.</p>
+          <h1 class="text-3xl md:text-5xl font-black tracking-tight">Qual serviço você precisa hoje?</h1>
+          <p class="text-neutral-400 text-sm md:text-base">Contrate autônomos de confiança perto de você ou anuncie seu trabalho para toda a cidade de Uberaba.</p>
 
           <div class="pt-2 flex flex-col sm:flex-row gap-2">
             <div class="relative flex-1">
-              <i data-lucide="search" class="w-5 h-5 absolute left-3.5 top-3.5 text-stone-400"></i>
+              <i data-lucide="search" class="w-5 h-5 absolute left-3.5 top-3.5 text-neutral-400"></i>
               <input type="text" id="homeSearchInput" placeholder="Ex: Diarista, Eletricista, Cabeleireira..." 
-                class="w-full pl-11 pr-4 py-3 rounded-xl bg-white text-stone-900 focus:outline-none focus:ring-2 focus:ring-zebu-mustard shadow-sm text-sm"
+                class="w-full pl-11 pr-4 py-3 rounded-xl bg-neutral-900 border border-neutral-700 text-white placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-white text-sm"
                 onkeydown="if(event.key === 'Enter') handleQuickSearch()">
             </div>
-            <button onclick="handleQuickSearch()" class="px-6 py-3 bg-zebu-mustard text-zebu-green font-bold text-sm rounded-xl hover:brightness-105 transition shadow">
+            <button onclick="handleQuickSearch()" class="px-6 py-3 bg-white text-black font-extrabold text-sm rounded-xl hover:bg-neutral-200 transition shadow">
               Buscar
             </button>
           </div>
 
           <div class="pt-4 flex flex-wrap gap-3">
-            <button onclick="goToExplore()" class="px-4 py-2.5 bg-zebu-cream text-zebu-green font-semibold rounded-xl text-sm hover:bg-white transition flex items-center gap-2">
+            <button onclick="goToExplore()" class="px-4 py-2.5 bg-white text-black font-bold rounded-xl text-sm hover:bg-neutral-200 transition flex items-center gap-2 shadow">
               <i data-lucide="users" class="w-4 h-4"></i> Encontrar profissionais
             </button>
-            <button onclick="handleAdvertiseClick()" class="px-4 py-2.5 bg-white/10 text-zebu-cream border border-white/20 font-semibold rounded-xl text-sm hover:bg-white/20 transition flex items-center gap-2">
-              <i data-lucide="plus-circle" class="w-4 h-4 text-zebu-mustard"></i> Anunciar meus serviços
+            <button onclick="handleAdvertiseClick()" class="px-4 py-2.5 bg-neutral-900 text-white border border-neutral-700 font-bold rounded-xl text-sm hover:bg-neutral-800 transition flex items-center gap-2">
+              <i data-lucide="plus-circle" class="w-4 h-4"></i> Anunciar meus serviços
             </button>
           </div>
         </div>
@@ -122,26 +113,26 @@
       <!-- Categorias -->
       <div class="space-y-4">
         <div class="flex items-center justify-between">
-          <h2 class="text-xl font-bold flex items-center gap-2">
-            <i data-lucide="grid" class="w-5 h-5 text-zebu-mustard"></i> Principais Categorias
+          <h2 class="text-xl font-black flex items-center gap-2">
+            <i data-lucide="grid" class="w-5 h-5"></i> Principais Categorias
           </h2>
-          <button onclick="goToExplore()" class="text-xs text-zebu-brown dark:text-zebu-mustard font-semibold hover:underline">Ver todas</button>
+          <button onclick="goToExplore()" class="text-xs font-bold underline hover:opacity-75">Ver todas</button>
         </div>
         <div id="categoriesGrid" class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-3"></div>
       </div>
 
       <!-- Destaques -->
       <div class="space-y-4">
-        <h2 class="text-xl font-bold flex items-center gap-2">
-          <i data-lucide="star" class="w-5 h-5 text-zebu-mustard fill-zebu-mustard"></i> Profissionais em Destaque
+        <h2 class="text-xl font-black flex items-center gap-2">
+          <i data-lucide="star" class="w-5 h-5 fill-black dark:fill-white"></i> Profissionais em Destaque
         </h2>
         <div id="sponsoredList" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
       </div>
 
       <!-- Recentes -->
       <div class="space-y-4">
-        <h2 class="text-xl font-bold flex items-center gap-2">
-          <i data-lucide="clock" class="w-5 h-5 text-zebu-mustard"></i> Mais Recentes em Uberaba
+        <h2 class="text-xl font-black flex items-center gap-2">
+          <i data-lucide="clock" class="w-5 h-5"></i> Mais Recentes em Uberaba
         </h2>
         <div id="recentList" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
       </div>
@@ -149,23 +140,23 @@
 
     <!-- EXPLORAR -->
     <section id="exploreSection" class="hidden space-y-6">
-      <div class="bg-white dark:bg-stone-900 p-5 rounded-2xl shadow-sm border border-stone-200 dark:border-stone-800 space-y-4">
+      <div class="bg-neutral-50 dark:bg-neutral-900 p-5 rounded-2xl shadow-sm border border-neutral-200 dark:border-neutral-800 space-y-4">
         <div class="flex flex-col md:flex-row gap-3">
           <div class="relative flex-1">
-            <i data-lucide="search" class="w-4 h-4 absolute left-3 top-3.5 text-stone-400"></i>
+            <i data-lucide="search" class="w-4 h-4 absolute left-3 top-3.5 text-neutral-400"></i>
             <input type="text" id="searchInput" placeholder="Buscar por nome, profissão ou serviço..." 
-              class="w-full pl-9 pr-3 py-2.5 rounded-lg border border-stone-300 dark:border-stone-700 bg-stone-50 dark:bg-stone-800 text-sm focus:ring-2 focus:ring-zebu-green outline-none"
+              class="w-full pl-9 pr-3 py-2.5 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-sm focus:ring-2 focus:ring-black outline-none"
               oninput="applyFilters()">
           </div>
 
           <div class="flex flex-wrap gap-2">
-            <select id="filterCategory" onchange="applyFilters()" class="text-sm px-3 py-2.5 rounded-lg border border-stone-300 dark:border-stone-700 bg-stone-50 dark:bg-stone-800">
+            <select id="filterCategory" onchange="applyFilters()" class="text-sm px-3 py-2.5 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800">
               <option value="">Todas as categorias</option>
             </select>
-            <select id="filterNeighborhood" onchange="applyFilters()" class="text-sm px-3 py-2.5 rounded-lg border border-stone-300 dark:border-stone-700 bg-stone-50 dark:bg-stone-800">
+            <select id="filterNeighborhood" onchange="applyFilters()" class="text-sm px-3 py-2.5 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800">
               <option value="">Todos os bairros</option>
             </select>
-            <select id="filterPrice" onchange="applyFilters()" class="text-sm px-3 py-2.5 rounded-lg border border-stone-300 dark:border-stone-700 bg-stone-50 dark:bg-stone-800">
+            <select id="filterPrice" onchange="applyFilters()" class="text-sm px-3 py-2.5 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800">
               <option value="">Qualquer modelo de preço</option>
               <option value="quote">Apenas Sob Orçamento</option>
               <option value="fixed">Com valor tabelado</option>
@@ -175,20 +166,20 @@
       </div>
 
       <div class="space-y-3">
-        <span id="resultsCount" class="text-sm text-stone-500">Carregando profissionais...</span>
+        <span id="resultsCount" class="text-sm text-neutral-500 font-bold">Carregando profissionais...</span>
         <div id="resultsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
       </div>
     </section>
 
     <!-- PAINEL PROFISSIONAL -->
     <section id="dashboardSection" class="hidden space-y-6">
-      <div class="bg-white dark:bg-stone-900 p-6 rounded-2xl shadow-sm border border-stone-200 dark:border-stone-800">
-        <div class="flex items-center justify-between border-b border-stone-200 dark:border-stone-800 pb-4 mb-6">
+      <div class="bg-white dark:bg-neutral-900 p-6 rounded-2xl shadow-sm border border-neutral-200 dark:border-neutral-800">
+        <div class="flex items-center justify-between border-b border-neutral-200 dark:border-neutral-800 pb-4 mb-6">
           <div>
-            <h2 class="text-xl font-bold">Meu Anúncio Profissional</h2>
-            <p class="text-xs text-stone-500">Mantenha suas informações atualizadas para clientes em Uberaba.</p>
+            <h2 class="text-xl font-black">Meu Anúncio Profissional</h2>
+            <p class="text-xs text-neutral-500">Mantenha seus dados atualizados para clientes de Uberaba.</p>
           </div>
-          <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300">
+          <span class="text-xs font-black px-3 py-1 rounded-full bg-black text-white dark:bg-white dark:text-black">
             Profissional
           </span>
         </div>
@@ -196,90 +187,90 @@
         <form id="proProfileForm" onsubmit="saveProProfile(event)" class="space-y-5">
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label class="block text-xs font-semibold uppercase text-stone-500 mb-1">Nome de Exibição *</label>
-              <input type="text" id="proName" required class="w-full text-sm p-2.5 rounded-lg border border-stone-300 dark:border-stone-700 bg-stone-50 dark:bg-stone-800">
+              <label class="block text-xs font-bold uppercase text-neutral-500 mb-1">Nome de Exibição *</label>
+              <input type="text" id="proName" required class="w-full text-sm p-2.5 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800">
             </div>
             <div>
-              <label class="block text-xs font-semibold uppercase text-stone-500 mb-1">Categoria Principal *</label>
-              <select id="proCategory" required class="w-full text-sm p-2.5 rounded-lg border border-stone-300 dark:border-stone-700 bg-stone-50 dark:bg-stone-800"></select>
+              <label class="block text-xs font-bold uppercase text-neutral-500 mb-1">Categoria Principal *</label>
+              <select id="proCategory" required class="w-full text-sm p-2.5 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800"></select>
             </div>
           </div>
 
           <div>
-            <label class="block text-xs font-semibold uppercase text-stone-500 mb-1">Serviços Oferecidos (separados por vírgula) *</label>
-            <input type="text" id="proServices" required placeholder="Ex: Faxina pesada, Limpeza pós-obra" class="w-full text-sm p-2.5 rounded-lg border border-stone-300 dark:border-stone-700 bg-stone-50 dark:bg-stone-800">
+            <label class="block text-xs font-bold uppercase text-neutral-500 mb-1">Serviços Oferecidos (separados por vírgula) *</label>
+            <input type="text" id="proServices" required placeholder="Ex: Faxina pesada, Limpeza pós-obra" class="w-full text-sm p-2.5 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800">
           </div>
 
           <div>
-            <label class="block text-xs font-semibold uppercase text-stone-500 mb-1">Descrição e Experiência *</label>
-            <textarea id="proBio" rows="4" required placeholder="Conte sobre seu trabalho..." class="w-full text-sm p-2.5 rounded-lg border border-stone-300 dark:border-stone-700 bg-stone-50 dark:bg-stone-800"></textarea>
+            <label class="block text-xs font-bold uppercase text-neutral-500 mb-1">Descrição e Experiência *</label>
+            <textarea id="proBio" rows="4" required placeholder="Conte sobre seu trabalho..." class="w-full text-sm p-2.5 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800"></textarea>
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div>
-              <label class="block text-xs font-semibold uppercase text-stone-500 mb-1">Modelo de Preço</label>
-              <select id="proPriceType" onchange="togglePriceValueField()" class="w-full text-sm p-2.5 rounded-lg border border-stone-300 dark:border-stone-700 bg-stone-50 dark:bg-stone-800">
+              <label class="block text-xs font-bold uppercase text-neutral-500 mb-1">Modelo de Preço</label>
+              <select id="proPriceType" onchange="togglePriceValueField()" class="w-full text-sm p-2.5 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800">
                 <option value="quote">Sob Orçamento</option>
                 <option value="fixed">A partir de (R$)</option>
               </select>
             </div>
             <div id="priceValueContainer" class="hidden">
-              <label class="block text-xs font-semibold uppercase text-stone-500 mb-1">Valor (R$)</label>
-              <input type="number" step="0.5" id="proPriceValue" placeholder="150,00" class="w-full text-sm p-2.5 rounded-lg border border-stone-300 dark:border-stone-700 bg-stone-50 dark:bg-stone-800">
+              <label class="block text-xs font-bold uppercase text-neutral-500 mb-1">Valor (R$)</label>
+              <input type="number" step="0.5" id="proPriceValue" placeholder="150,00" class="w-full text-sm p-2.5 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800">
             </div>
             <div>
-              <label class="block text-xs font-semibold uppercase text-stone-500 mb-1">Seu Bairro Base (Uberaba) *</label>
-              <select id="proNeighborhood" required class="w-full text-sm p-2.5 rounded-lg border border-stone-300 dark:border-stone-700 bg-stone-50 dark:bg-stone-800"></select>
+              <label class="block text-xs font-bold uppercase text-neutral-500 mb-1">Seu Bairro Base (Uberaba) *</label>
+              <select id="proNeighborhood" required class="w-full text-sm p-2.5 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800"></select>
             </div>
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label class="block text-xs font-semibold uppercase text-stone-500 mb-1">Regiões Atendidas</label>
-              <input type="text" id="proRegions" placeholder="Ex: Todos os bairros e chácaras" class="w-full text-sm p-2.5 rounded-lg border border-stone-300 dark:border-stone-700 bg-stone-50 dark:bg-stone-800">
+              <label class="block text-xs font-bold uppercase text-neutral-500 mb-1">Regiões Atendidas</label>
+              <input type="text" id="proRegions" placeholder="Ex: Todos os bairros e chácaras" class="w-full text-sm p-2.5 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800">
             </div>
             <div>
-              <label class="block text-xs font-semibold uppercase text-stone-500 mb-1">Horário de Atendimento</label>
-              <input type="text" id="proHours" placeholder="Ex: Seg a Sáb das 08h às 18h" class="w-full text-sm p-2.5 rounded-lg border border-stone-300 dark:border-stone-700 bg-stone-50 dark:bg-stone-800">
+              <label class="block text-xs font-bold uppercase text-neutral-500 mb-1">Horário de Atendimento</label>
+              <input type="text" id="proHours" placeholder="Ex: Seg a Sáb das 08h às 18h" class="w-full text-sm p-2.5 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800">
             </div>
           </div>
 
-          <!-- Fotos de Portfólio (100% Gratuito no Firestore) -->
-          <div class="space-y-2 border-t border-stone-200 dark:border-stone-800 pt-4">
+          <!-- Fotos de Portfólio (100% Grátis no Firestore) -->
+          <div class="space-y-2 border-t border-neutral-200 dark:border-neutral-800 pt-4">
             <div class="flex items-center justify-between">
               <div>
-                <label class="block text-xs font-semibold uppercase text-stone-500">Fotos de Trabalhos (Até 10 fotos)</label>
-                <span class="text-xs text-stone-400">Otimização automática ativada (100% gratuito).</span>
+                <label class="block text-xs font-bold uppercase text-neutral-500">Fotos de Trabalhos (Até 10 fotos)</label>
+                <span class="text-xs text-neutral-400">Otimização automática ativada (100% gratuito).</span>
               </div>
-              <span id="photoCount" class="text-xs font-bold text-zebu-mustard">0 / 10 fotos</span>
+              <span id="photoCount" class="text-xs font-black">0 / 10 fotos</span>
             </div>
             
             <input type="file" id="portfolioInput" accept="image/*" multiple onchange="handlePortfolioUpload(event)"
-              class="block w-full text-xs text-stone-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-zebu-green file:text-zebu-cream hover:file:brightness-110">
+              class="block w-full text-xs text-neutral-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-bold file:bg-black file:text-white hover:file:bg-neutral-800">
             
             <div id="portfolioPreviewGrid" class="grid grid-cols-2 sm:grid-cols-5 gap-3 pt-2"></div>
           </div>
 
           <!-- Privacidade & WhatsApp -->
-          <div class="bg-amber-50 dark:bg-amber-950/30 p-4 rounded-xl border border-amber-200 dark:border-amber-900/50 space-y-3">
-            <h4 class="text-xs font-bold uppercase tracking-wider text-amber-800 dark:text-amber-400 flex items-center gap-1.5">
+          <div class="bg-neutral-100 dark:bg-neutral-800 p-4 rounded-xl border border-neutral-300 dark:border-neutral-700 space-y-3">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-black dark:text-white flex items-center gap-1.5">
               <i data-lucide="shield-check" class="w-4 h-4"></i> Privacidade e Contato
             </h4>
-            <p class="text-xs text-stone-600 dark:text-stone-300">
-              Seu telefone **nunca** é exibido em texto na tela.
+            <p class="text-xs text-neutral-600 dark:text-neutral-300">
+              Seu telefone **nunca** é exibido em texto na tela. O cliente fala direto com você no WhatsApp.
             </p>
             <div class="flex items-center gap-2">
-              <input type="checkbox" id="proAllowWhatsapp" class="rounded text-zebu-green focus:ring-zebu-green w-4 h-4">
-              <label for="proAllowWhatsapp" class="text-xs font-medium">Autorizo contato de clientes via WhatsApp</label>
+              <input type="checkbox" id="proAllowWhatsapp" class="rounded text-black focus:ring-black w-4 h-4">
+              <label for="proAllowWhatsapp" class="text-xs font-bold">Autorizo contato de clientes via WhatsApp</label>
             </div>
             <div>
-              <label class="block text-xs font-semibold text-stone-600 dark:text-stone-300 mb-1">WhatsApp (com DDD)</label>
-              <input type="tel" id="proWhatsappNumber" placeholder="34999999999" class="w-full sm:w-64 text-sm p-2 rounded border border-stone-300 dark:border-stone-700 bg-white dark:bg-stone-900">
+              <label class="block text-xs font-bold text-neutral-600 dark:text-neutral-300 mb-1">WhatsApp (com DDD)</label>
+              <input type="tel" id="proWhatsappNumber" placeholder="34999999999" class="w-full sm:w-64 text-sm p-2 rounded border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-900">
             </div>
           </div>
 
           <div class="flex justify-end pt-4">
-            <button type="submit" id="saveProfileBtn" class="px-6 py-2.5 bg-zebu-green text-zebu-cream hover:brightness-110 font-bold text-sm rounded-xl transition shadow flex items-center gap-2">
+            <button type="submit" id="saveProfileBtn" class="px-6 py-2.5 bg-black text-white hover:bg-neutral-800 font-black text-sm rounded-xl transition shadow flex items-center gap-2">
               <i data-lucide="save" class="w-4 h-4"></i> Salvar Anúncio
             </button>
           </div>
@@ -289,100 +280,100 @@
   </main>
 
   <!-- MODAL AUTH -->
-  <div id="authModal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4">
-    <div class="bg-white dark:bg-stone-900 w-full max-w-md rounded-2xl p-6 shadow-2xl border border-stone-200 dark:border-stone-800 relative max-h-[90vh] overflow-y-auto">
-      <button onclick="closeModal('authModal')" class="absolute right-4 top-4 text-stone-400 hover:text-stone-700 dark:hover:text-stone-200">
+  <div id="authModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-white dark:bg-neutral-900 w-full max-w-md rounded-2xl p-6 shadow-2xl border border-neutral-200 dark:border-neutral-800 relative max-h-[90vh] overflow-y-auto">
+      <button onclick="closeModal('authModal')" class="absolute right-4 top-4 text-neutral-400 hover:text-black dark:hover:text-white">
         <i data-lucide="x" class="w-5 h-5"></i>
       </button>
 
-      <div class="flex border-b border-stone-200 dark:border-stone-700 mb-5">
-        <button id="tabLogin" onclick="switchAuthTab('login')" class="flex-1 pb-2 font-bold text-sm border-b-2 border-zebu-green text-zebu-green dark:border-zebu-mustard dark:text-zebu-mustard">Entrar</button>
-        <button id="tabRegister" onclick="switchAuthTab('register')" class="flex-1 pb-2 font-bold text-sm border-b-2 border-transparent text-stone-400">Criar Conta</button>
+      <div class="flex border-b border-neutral-200 dark:border-neutral-700 mb-5">
+        <button id="tabLogin" onclick="switchAuthTab('login')" class="flex-1 pb-2 font-black text-sm border-b-2 border-black text-black dark:border-white dark:text-white">Entrar</button>
+        <button id="tabRegister" onclick="switchAuthTab('register')" class="flex-1 pb-2 font-bold text-sm border-b-2 border-transparent text-neutral-400">Criar Conta</button>
       </div>
 
       <form id="loginForm" onsubmit="handleLogin(event)" class="space-y-4">
         <div>
-          <label class="block text-xs font-semibold uppercase text-stone-500 mb-1">E-mail</label>
-          <input type="email" id="loginEmail" required class="w-full text-sm p-2.5 rounded-lg border border-stone-300 dark:border-stone-700 bg-stone-50 dark:bg-stone-800">
+          <label class="block text-xs font-bold uppercase text-neutral-500 mb-1">E-mail</label>
+          <input type="email" id="loginEmail" required class="w-full text-sm p-2.5 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800">
         </div>
         <div>
-          <label class="block text-xs font-semibold uppercase text-stone-500 mb-1">Senha</label>
-          <input type="password" id="loginPassword" required class="w-full text-sm p-2.5 rounded-lg border border-stone-300 dark:border-stone-700 bg-stone-50 dark:bg-stone-800">
+          <label class="block text-xs font-bold uppercase text-neutral-500 mb-1">Senha</label>
+          <input type="password" id="loginPassword" required class="w-full text-sm p-2.5 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800">
         </div>
-        <button type="submit" id="btnLoginSubmit" class="w-full py-3 bg-zebu-green text-zebu-cream font-bold text-sm rounded-xl hover:brightness-110 transition shadow">Acessar</button>
+        <button type="submit" id="btnLoginSubmit" class="w-full py-3 bg-black text-white hover:bg-neutral-800 font-black text-sm rounded-xl transition shadow">Acessar</button>
       </form>
 
       <form id="registerForm" onsubmit="handleRegister(event)" class="space-y-4 hidden">
         <div>
-          <label class="block text-xs font-semibold uppercase text-stone-500 mb-1">Nome Completo</label>
-          <input type="text" id="regName" required class="w-full text-sm p-2.5 rounded-lg border border-stone-300 dark:border-stone-700 bg-stone-50 dark:bg-stone-800">
+          <label class="block text-xs font-bold uppercase text-neutral-500 mb-1">Nome Completo</label>
+          <input type="text" id="regName" required class="w-full text-sm p-2.5 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800">
         </div>
         <div>
-          <label class="block text-xs font-semibold uppercase text-stone-500 mb-1">E-mail</label>
-          <input type="email" id="regEmail" required class="w-full text-sm p-2.5 rounded-lg border border-stone-300 dark:border-stone-700 bg-stone-50 dark:bg-stone-800">
+          <label class="block text-xs font-bold uppercase text-neutral-500 mb-1">E-mail</label>
+          <input type="email" id="regEmail" required class="w-full text-sm p-2.5 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800">
         </div>
         <div>
-          <label class="block text-xs font-semibold uppercase text-stone-500 mb-1">Senha (mínimo 6 dígitos)</label>
-          <input type="password" id="regPassword" minlength="6" required class="w-full text-sm p-2.5 rounded-lg border border-stone-300 dark:border-stone-700 bg-stone-50 dark:bg-stone-800">
+          <label class="block text-xs font-bold uppercase text-neutral-500 mb-1">Senha (mínimo 6 dígitos)</label>
+          <input type="password" id="regPassword" minlength="6" required class="w-full text-sm p-2.5 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800">
         </div>
         <div>
-          <label class="block text-xs font-semibold uppercase text-stone-500 mb-1">Tipo de Perfil</label>
+          <label class="block text-xs font-bold uppercase text-neutral-500 mb-1">Tipo de Perfil</label>
           <div class="grid grid-cols-2 gap-2">
-            <label class="flex items-center gap-2 p-2.5 border rounded-lg cursor-pointer text-xs font-medium border-stone-300 dark:border-stone-700">
+            <label class="flex items-center gap-2 p-2.5 border rounded-lg cursor-pointer text-xs font-bold border-neutral-300 dark:border-neutral-700">
               <input type="radio" name="regRole" value="client" checked> Quero Contratar
             </label>
-            <label class="flex items-center gap-2 p-2.5 border rounded-lg cursor-pointer text-xs font-medium border-stone-300 dark:border-stone-700">
+            <label class="flex items-center gap-2 p-2.5 border rounded-lg cursor-pointer text-xs font-bold border-neutral-300 dark:border-neutral-700">
               <input type="radio" name="regRole" value="pro"> Quero Trabalhar
             </label>
           </div>
         </div>
         <div class="flex items-start gap-2 pt-2">
-          <input type="checkbox" id="regTerms" required class="mt-1 rounded text-zebu-green w-4 h-4">
-          <label for="regTerms" class="text-xs text-stone-500">Concordo com os Termos e Privacidade (LGPD).</label>
+          <input type="checkbox" id="regTerms" required class="mt-1 rounded text-black w-4 h-4">
+          <label for="regTerms" class="text-xs text-neutral-500">Concordo com os Termos e Privacidade (LGPD).</label>
         </div>
-        <button type="submit" id="btnRegisterSubmit" class="w-full py-3 bg-zebu-green text-zebu-cream font-bold text-sm rounded-xl hover:brightness-110 transition shadow">Criar Conta</button>
+        <button type="submit" id="btnRegisterSubmit" class="w-full py-3 bg-black text-white hover:bg-neutral-800 font-black text-sm rounded-xl transition shadow">Criar Conta</button>
       </form>
     </div>
   </div>
 
   <!-- MODAL DETALHES -->
-  <div id="profileModal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-3">
-    <div class="bg-white dark:bg-stone-900 w-full max-w-2xl rounded-2xl shadow-2xl border border-stone-200 dark:border-stone-800 relative max-h-[92vh] flex flex-col overflow-hidden">
-      <div class="p-5 border-b border-stone-200 dark:border-stone-800 flex justify-between items-start">
+  <div id="profileModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-3">
+    <div class="bg-white dark:bg-neutral-900 w-full max-w-2xl rounded-2xl shadow-2xl border border-neutral-200 dark:border-neutral-800 relative max-h-[92vh] flex flex-col overflow-hidden">
+      <div class="p-5 border-b border-neutral-200 dark:border-neutral-800 flex justify-between items-start">
         <div class="flex items-center gap-3">
-          <div id="modalProAvatar" class="w-14 h-14 rounded-full bg-zebu-green text-zebu-cream flex items-center justify-center font-bold text-xl uppercase shrink-0">Z</div>
+          <div id="modalProAvatar" class="w-14 h-14 rounded-full bg-black text-white border border-neutral-700 flex items-center justify-center font-black text-xl uppercase shrink-0">Z</div>
           <div>
             <div class="flex items-center gap-2">
-              <h3 id="modalProName" class="font-bold text-lg leading-snug">Profissional</h3>
-              <span id="modalProBadge" class="hidden text-[10px] font-bold px-2 py-0.5 rounded bg-zebu-mustard text-zebu-green">PATROCINADO</span>
+              <h3 id="modalProName" class="font-black text-lg leading-snug">Profissional</h3>
+              <span id="modalProBadge" class="hidden text-[10px] font-black px-2 py-0.5 rounded bg-black text-white dark:bg-white dark:text-black">PATROCINADO</span>
             </div>
-            <p id="modalProCategory" class="text-xs text-zebu-brown dark:text-zebu-mustard font-semibold">Categoria</p>
-            <p id="modalProNeighborhood" class="text-xs text-stone-500 flex items-center gap-1 mt-0.5"></p>
+            <p id="modalProCategory" class="text-xs font-bold text-neutral-500">Categoria</p>
+            <p id="modalProNeighborhood" class="text-xs text-neutral-400 flex items-center gap-1 mt-0.5"></p>
           </div>
         </div>
-        <button onclick="closeModal('profileModal')" class="text-stone-400 p-1"><i data-lucide="x" class="w-5 h-5"></i></button>
+        <button onclick="closeModal('profileModal')" class="text-neutral-400 p-1"><i data-lucide="x" class="w-5 h-5"></i></button>
       </div>
 
       <div class="p-5 overflow-y-auto space-y-5 text-sm">
         <div>
-          <h4 class="text-xs font-bold uppercase text-stone-400 mb-1">Sobre</h4>
-          <p id="modalProBio" class="text-stone-700 dark:text-stone-300 whitespace-pre-line"></p>
+          <h4 class="text-xs font-black uppercase text-neutral-400 mb-1">Sobre</h4>
+          <p id="modalProBio" class="text-neutral-700 dark:text-neutral-300 whitespace-pre-line"></p>
         </div>
         <div>
-          <h4 class="text-xs font-bold uppercase text-stone-400 mb-2">Serviços</h4>
+          <h4 class="text-xs font-black uppercase text-neutral-400 mb-2">Serviços</h4>
           <div id="modalProServices" class="flex flex-wrap gap-1.5"></div>
         </div>
-        <div class="grid grid-cols-2 gap-3 p-3 rounded-xl bg-stone-50 dark:bg-stone-800/50">
-          <div><span class="text-xs text-stone-400 block">Preço</span><span id="modalProPrice" class="font-bold text-zebu-green dark:text-zebu-mustard"></span></div>
-          <div><span class="text-xs text-stone-400 block">Horários</span><span id="modalProHours" class="font-medium text-stone-700 dark:text-stone-300"></span></div>
+        <div class="grid grid-cols-2 gap-3 p-3 rounded-xl bg-neutral-100 dark:bg-neutral-800/50">
+          <div><span class="text-xs text-neutral-400 block">Preço</span><span id="modalProPrice" class="font-black text-black dark:text-white"></span></div>
+          <div><span class="text-xs text-neutral-400 block">Horários</span><span id="modalProHours" class="font-bold text-neutral-700 dark:text-neutral-300"></span></div>
         </div>
         <div>
-          <h4 class="text-xs font-bold uppercase text-stone-400 mb-2">Portfólio de Trabalhos</h4>
+          <h4 class="text-xs font-black uppercase text-neutral-400 mb-2">Portfólio de Trabalhos</h4>
           <div id="modalProGallery" class="grid grid-cols-2 sm:grid-cols-4 gap-2"></div>
         </div>
       </div>
 
-      <div class="p-4 border-t border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-stone-900/50 flex items-center justify-between">
+      <div class="p-4 border-t border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900/50 flex items-center justify-between">
         <button onclick="openReportModal()" class="text-xs text-rose-600 hover:underline flex items-center gap-1">
           <i data-lucide="flag" class="w-3.5 h-3.5"></i> Denunciar
         </button>
@@ -392,14 +383,14 @@
   </div>
 
   <!-- MODAL DENÚNCIA -->
-  <div id="reportModal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4">
-    <div class="bg-white dark:bg-stone-900 w-full max-w-md rounded-2xl p-6 shadow-2xl relative">
-      <button onclick="closeModal('reportModal')" class="absolute right-4 top-4 text-stone-400"><i data-lucide="x" class="w-5 h-5"></i></button>
-      <h3 class="text-lg font-bold text-rose-600 mb-2 flex items-center gap-2"><i data-lucide="alert-triangle" class="w-5 h-5"></i> Denunciar</h3>
+  <div id="reportModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-white dark:bg-neutral-900 w-full max-w-md rounded-2xl p-6 shadow-2xl relative">
+      <button onclick="closeModal('reportModal')" class="absolute right-4 top-4 text-neutral-400"><i data-lucide="x" class="w-5 h-5"></i></button>
+      <h3 class="text-lg font-black text-rose-600 mb-2 flex items-center gap-2"><i data-lucide="alert-triangle" class="w-5 h-5"></i> Denunciar</h3>
       <form id="reportForm" onsubmit="submitReport(event)" class="space-y-4">
         <div>
-          <label class="block text-xs font-semibold uppercase text-stone-500 mb-1">Motivo</label>
-          <select id="reportReason" required class="w-full text-sm p-2 rounded-lg border border-stone-300 dark:border-stone-700 bg-stone-50 dark:bg-stone-800">
+          <label class="block text-xs font-bold uppercase text-neutral-500 mb-1">Motivo</label>
+          <select id="reportReason" required class="w-full text-sm p-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800">
             <option value="">Selecione...</option>
             <option value="fake">Perfil falso ou golpe</option>
             <option value="offensive">Conteúdo impróprio</option>
@@ -407,15 +398,15 @@
           </select>
         </div>
         <div>
-          <label class="block text-xs font-semibold uppercase text-stone-500 mb-1">Detalhes</label>
-          <textarea id="reportDetails" rows="3" required class="w-full text-sm p-2 rounded-lg border border-stone-300 dark:border-stone-700 bg-stone-50 dark:bg-stone-800"></textarea>
+          <label class="block text-xs font-bold uppercase text-neutral-500 mb-1">Detalhes</label>
+          <textarea id="reportDetails" rows="3" required class="w-full text-sm p-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800"></textarea>
         </div>
         <button type="submit" class="w-full py-2.5 bg-rose-600 text-white font-bold text-sm rounded-xl">Enviar Denúncia</button>
       </form>
     </div>
   </div>
 
-  <!-- FIREBASE MODULAR (USANDO EXCLUSIVAMENTE PRODUTOS 100% GRATUITOS) -->
+  <!-- FIREBASE MODULAR (100% GRATUITO) -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
     import { 
@@ -510,12 +501,12 @@
           document.getElementById('filterCategory').value = cat;
           goToExplore();
         };
-        div.className = 'cursor-pointer p-3 rounded-xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 hover:border-zebu-mustard transition flex flex-col items-center text-center gap-2 shadow-sm';
+        div.className = 'cursor-pointer p-3 rounded-xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 hover:border-black dark:hover:border-white transition flex flex-col items-center text-center gap-2 shadow-sm';
         div.innerHTML = `
-          <div class="w-10 h-10 rounded-full bg-zebu-cream dark:bg-stone-800 text-zebu-green dark:text-zebu-mustard flex items-center justify-center">
+          <div class="w-10 h-10 rounded-full bg-black text-white dark:bg-white dark:text-black flex items-center justify-center">
             <i data-lucide="tag" class="w-5 h-5"></i>
           </div>
-          <span class="text-xs font-semibold leading-tight">${cat}</span>
+          <span class="text-xs font-bold leading-tight">${cat}</span>
         `;
         container.appendChild(div);
       });
@@ -615,7 +606,7 @@
       }
     }
 
-    // COMPRESSOR DE IMAGENS CLIENT-SIDE (ZERO CUSTO, DIRETO NO BANCO)
+    // COMPRESSOR DE IMAGENS CLIENT-SIDE (GRATUITO NO FIRESTORE)
     window.handlePortfolioUpload = async function(e) {
       const files = Array.from(e.target.files);
       if (tempPortfolioImages.length + files.length > 10) {
@@ -640,7 +631,7 @@
           img.src = event.target.result;
           img.onload = () => {
             const canvas = document.createElement('canvas');
-            const maxDim = 800; // Redimensiona para resolução ideal de celular
+            const maxDim = 800;
             let w = img.width;
             let h = img.height;
             if (w > h && w > maxDim) {
@@ -654,7 +645,6 @@
             canvas.height = h;
             const ctx = canvas.getContext('2d');
             ctx.drawImage(img, 0, 0, w, h);
-            // Exporta em qualidade leve WebP/JPEG (apenas ~40KB por foto)
             resolve(canvas.toDataURL('image/jpeg', 0.7));
           };
         };
@@ -667,10 +657,10 @@
       document.getElementById('photoCount').textContent = `${tempPortfolioImages.length} / 10 fotos`;
       tempPortfolioImages.forEach((imgUrl, idx) => {
         const div = document.createElement('div');
-        div.className = 'relative aspect-square rounded-lg overflow-hidden border border-stone-200 dark:border-stone-700';
+        div.className = 'relative aspect-square rounded-lg overflow-hidden border border-neutral-300 dark:border-neutral-700';
         div.innerHTML = `
           <img src="${imgUrl}" class="w-full h-full object-cover">
-          <button type="button" onclick="removePortfolioImage(${idx})" class="absolute top-1 right-1 bg-red-600 text-white rounded-full p-1 text-xs">✕</button>
+          <button type="button" onclick="removePortfolioImage(${idx})" class="absolute top-1 right-1 bg-black text-white rounded-full p-1 text-xs">✕</button>
         `;
         grid.appendChild(div);
       });
@@ -732,33 +722,33 @@
         rec.appendChild(card.cloneNode(true));
       });
 
-      if (!spon.children.length) spon.innerHTML = '<p class="text-xs text-stone-400">Nenhum profissional patrocinado.</p>';
-      if (!rec.children.length) rec.innerHTML = '<p class="text-xs text-stone-400">Nenhum anúncio recente.</p>';
+      if (!spon.children.length) spon.innerHTML = '<p class="text-xs text-neutral-400">Nenhum profissional patrocinado.</p>';
+      if (!rec.children.length) rec.innerHTML = '<p class="text-xs text-neutral-400">Nenhum anúncio recente.</p>';
       applyFilters();
       lucide.createIcons();
     }
 
     function createProCard(p) {
       const card = document.createElement('div');
-      card.className = "bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-2xl p-4 shadow-sm flex flex-col justify-between";
+      card.className = "bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-4 shadow-sm flex flex-col justify-between";
       const price = p.priceType === 'fixed' && p.priceValue > 0 ? `R$ ${p.priceValue.toFixed(2)}` : 'Sob Orçamento';
       
       card.innerHTML = `
         <div class="space-y-3">
           <div class="flex items-center gap-3">
-            <div class="w-11 h-11 rounded-full bg-zebu-green text-zebu-cream flex items-center justify-center font-bold uppercase shrink-0">
+            <div class="w-11 h-11 rounded-full bg-black text-white dark:bg-white dark:text-black flex items-center justify-center font-black uppercase shrink-0">
               ${p.name ? p.name.charAt(0) : 'Z'}
             </div>
             <div>
-              <h3 class="font-bold text-sm">${p.name || 'Profissional'}</h3>
-              <span class="text-xs text-zebu-brown dark:text-zebu-mustard font-semibold">${p.category}</span>
+              <h3 class="font-black text-sm">${p.name || 'Profissional'}</h3>
+              <span class="text-xs font-bold text-neutral-500">${p.category}</span>
             </div>
           </div>
-          <p class="text-xs text-stone-600 dark:text-stone-300 line-clamp-2">${p.bio || 'Sem descrição.'}</p>
+          <p class="text-xs text-neutral-600 dark:text-neutral-400 line-clamp-2">${p.bio || 'Sem descrição.'}</p>
         </div>
-        <div class="mt-4 pt-3 border-t border-stone-100 dark:border-stone-800 flex items-center justify-between">
-          <div><span class="text-[10px] text-stone-400 block">${p.neighborhood || 'Centro'}</span><span class="text-xs font-bold text-zebu-green dark:text-zebu-mustard">${price}</span></div>
-          <button onclick="openProfileModal('${p.id}')" class="px-3 py-1.5 bg-zebu-green text-zebu-cream text-xs font-bold rounded-lg hover:brightness-110">Ver Perfil</button>
+        <div class="mt-4 pt-3 border-t border-neutral-100 dark:border-neutral-800 flex items-center justify-between">
+          <div><span class="text-[10px] text-neutral-400 block">${p.neighborhood || 'Centro'}</span><span class="text-xs font-black text-black dark:text-white">${price}</span></div>
+          <button onclick="openProfileModal('${p.id}')" class="px-3.5 py-1.5 bg-black text-white dark:bg-white dark:text-black text-xs font-black rounded-lg hover:opacity-80 transition">Ver Perfil</button>
         </div>
       `;
       return card;
@@ -798,16 +788,15 @@
       (p.portfolio || []).forEach(url => {
         const img = document.createElement('img');
         img.src = url;
-        img.className = 'w-full aspect-square object-cover rounded-lg border';
+        img.className = 'w-full aspect-square object-cover rounded-lg border border-neutral-300 dark:border-neutral-700';
         g.appendChild(img);
       });
 
-      // PRIVACIDADE WHATSAPP (NUNCA MOSTRA O NÚMERO EM TEXTO)
       const wCont = document.getElementById('modalWhatsappContainer');
       wCont.innerHTML = '';
       if (p.allowWhatsapp && p.whatsappNumber) {
         const btn = document.createElement('button');
-        btn.className = "px-4 py-2 bg-emerald-600 text-white font-bold text-xs rounded-xl flex items-center gap-1.5 shadow";
+        btn.className = "px-4 py-2 bg-black text-white font-black text-xs rounded-xl flex items-center gap-1.5 shadow hover:bg-neutral-800";
         btn.innerHTML = `<i data-lucide="message-circle" class="w-4 h-4"></i> Conversar no WhatsApp`;
         btn.onclick = () => {
           const num = p.whatsappNumber.replace(/\D/g, '');
