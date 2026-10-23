@@ -183,27 +183,32 @@
         </div>
 
         <form id="proProfileForm" onsubmit="saveProProfile(event)" class="space-y-5">
+          <!-- Nome e Categoria -->
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label class="block text-xs font-bold uppercase text-neutral-500 mb-1">Nome de Exibição *</label>
+              <label class="block text-xs font-bold uppercase text-neutral-500 mb-1">Nome de Exibição / Fantasia *</label>
               <input type="text" id="proName" required class="w-full text-sm p-2.5 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800">
             </div>
             <div>
               <label class="block text-xs font-bold uppercase text-neutral-500 mb-1">Categoria Principal *</label>
-              <select id="proCategory" required class="w-full text-sm p-2.5 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800"></select>
+              <select id="proCategory" onchange="checkCustomCategory()" required class="w-full text-sm p-2.5 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800"></select>
+              <!-- Campo caso escolha digitar outra categoria -->
+              <input type="text" id="proCustomCategory" placeholder="Digite sua categoria (ex: Vidraceiro, Adestrador...)" class="hidden mt-2 w-full text-sm p-2.5 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-900">
             </div>
           </div>
 
           <div>
             <label class="block text-xs font-bold uppercase text-neutral-500 mb-1">Serviços Oferecidos (separados por vírgula) *</label>
-            <input type="text" id="proServices" required placeholder="Ex: Faxina pesada, Limpeza pós-obra" class="w-full text-sm p-2.5 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800">
+            <input type="text" id="proServices" required placeholder="Ex: Faxina pesada, Limpeza pós-obra, Passadoria de roupas" class="w-full text-sm p-2.5 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800">
+            <span class="text-[11px] text-neutral-400 mt-1 block">Você pode digitar quantos serviços quiser, separados por vírgula.</span>
           </div>
 
           <div>
             <label class="block text-xs font-bold uppercase text-neutral-500 mb-1">Descrição e Experiência *</label>
-            <textarea id="proBio" rows="4" required placeholder="Conte sobre seu trabalho..." class="w-full text-sm p-2.5 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800"></textarea>
+            <textarea id="proBio" rows="4" required placeholder="Conte sobre sua experiência, seus diferenciais e garantia..." class="w-full text-sm p-2.5 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800"></textarea>
           </div>
 
+          <!-- Preço e Bairro Personalizável -->
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div>
               <label class="block text-xs font-bold uppercase text-neutral-500 mb-1">Modelo de Preço</label>
@@ -218,14 +223,16 @@
             </div>
             <div>
               <label class="block text-xs font-bold uppercase text-neutral-500 mb-1">Seu Bairro Base (Uberaba) *</label>
-              <select id="proNeighborhood" required class="w-full text-sm p-2.5 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800"></select>
+              <select id="proNeighborhood" onchange="checkCustomNeighborhood()" required class="w-full text-sm p-2.5 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800"></select>
+              <!-- Campo caso escolha digitar outro bairro -->
+              <input type="text" id="proCustomNeighborhood" placeholder="Digite o nome do seu bairro..." class="hidden mt-2 w-full text-sm p-2.5 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-900">
             </div>
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label class="block text-xs font-bold uppercase text-neutral-500 mb-1">Regiões Atendidas</label>
-              <input type="text" id="proRegions" placeholder="Ex: Todos os bairros e chácaras" class="w-full text-sm p-2.5 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800">
+              <input type="text" id="proRegions" placeholder="Ex: Todos os bairros, condomínios e chácaras" class="w-full text-sm p-2.5 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800">
             </div>
             <div>
               <label class="block text-xs font-bold uppercase text-neutral-500 mb-1">Horário de Atendimento</label>
@@ -404,7 +411,7 @@
     </div>
   </div>
 
-  <!-- FIREBASE MODULAR (COM AS SUAS CHAVES REAIS DE UBERABA) -->
+  <!-- FIREBASE MODULAR COM CAMPOS PERSONALIZÁVEIS -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
     import { 
@@ -426,7 +433,7 @@
       serverTimestamp 
     } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
 
-    // SUAS CHAVES OFICIAIS DE ZEBU-FREELA-UBERABA (907149441505)
+    // SUAS CHAVES OFICIAIS DO ZEBU-FREELA-UBERABA
     const firebaseConfig = {
       apiKey: "AIzaSyDQtTR_wIjlbAXffj8t9ddJvRIwAuyvG7o",
       authDomain: "zebu-freela-uberaba.firebaseapp.com",
@@ -441,7 +448,7 @@
     const auth = getAuth(app);
     const db = getFirestore(app);
 
-    const CATEGORIES = [
+    const DEFAULT_CATEGORIES = [
       "Diaristas", "Faxineiras", "Babás", "Cuidadores", "Manicures", 
       "Cabeleireiros", "Maquiadores", "Designers", "Fotógrafos", 
       "Professores Particulares", "Eletricistas", "Encanadores", "Pedreiros", 
@@ -450,7 +457,7 @@
       "Técnicos de Informática", "Serviços Rurais (Tratorista, Peão, Cercas)"
     ];
 
-    const NEIGHBORHOODS = [
+    const DEFAULT_NEIGHBORHOODS = [
       "Centro", "Mercês", "São Benedito", "Estados Unidos", "Fabrício", 
       "Abadia", "Santa Maria", "Boa Vista", "Univerdecidade", "Lourdes", 
       "Residencial 2000"
@@ -481,19 +488,64 @@
     }
 
     function populateDropdowns() {
-      ['filterCategory', 'proCategory'].forEach(id => {
-        const sel = document.getElementById(id);
-        CATEGORIES.forEach(c => sel.appendChild(new Option(c, c)));
-      });
-      ['filterNeighborhood', 'proNeighborhood'].forEach(id => {
-        const sel = document.getElementById(id);
-        NEIGHBORHOODS.forEach(n => sel.appendChild(new Option(n, n)));
-      });
+      // Categorias no painel do profissional
+      const proCat = document.getElementById('proCategory');
+      proCat.innerHTML = '';
+      DEFAULT_CATEGORIES.forEach(c => proCat.appendChild(new Option(c, c)));
+      proCat.appendChild(new Option("+ Digitar outra categoria...", "__custom__"));
+
+      // Bairros no painel do profissional
+      const proNeigh = document.getElementById('proNeighborhood');
+      proNeigh.innerHTML = '';
+      DEFAULT_NEIGHBORHOODS.forEach(n => proNeigh.appendChild(new Option(n, n)));
+      proNeigh.appendChild(new Option("+ Digitar outro bairro...", "__custom__"));
+
+      updateFilterDropdowns();
     }
+
+    // Atualiza os filtros de busca combinando a lista padrão + os bairros/serviços adicionados pelos usuários
+    function updateFilterDropdowns() {
+      const dynamicCats = new Set([...DEFAULT_CATEGORIES, ...allProfessionals.map(p => p.category).filter(Boolean)]);
+      const dynamicNeighs = new Set([...DEFAULT_NEIGHBORHOODS, ...allProfessionals.map(p => p.neighborhood).filter(Boolean)]);
+
+      const fCat = document.getElementById('filterCategory');
+      const currentCatVal = fCat.value;
+      fCat.innerHTML = '<option value="">Todas as categorias</option>';
+      Array.from(dynamicCats).sort().forEach(c => fCat.appendChild(new Option(c, c)));
+      if (currentCatVal) fCat.value = currentCatVal;
+
+      const fNeigh = document.getElementById('filterNeighborhood');
+      const currentNeighVal = fNeigh.value;
+      fNeigh.innerHTML = '<option value="">Todos os bairros</option>';
+      Array.from(dynamicNeighs).sort().forEach(n => fNeigh.appendChild(new Option(n, n)));
+      if (currentNeighVal) fNeigh.value = currentNeighVal;
+    }
+
+    window.checkCustomCategory = function() {
+      const val = document.getElementById('proCategory').value;
+      const customInput = document.getElementById('proCustomCategory');
+      if (val === '__custom__') {
+        customInput.classList.remove('hidden');
+        customInput.focus();
+      } else {
+        customInput.classList.add('hidden');
+      }
+    };
+
+    window.checkCustomNeighborhood = function() {
+      const val = document.getElementById('proNeighborhood').value;
+      const customInput = document.getElementById('proCustomNeighborhood');
+      if (val === '__custom__') {
+        customInput.classList.remove('hidden');
+        customInput.focus();
+      } else {
+        customInput.classList.add('hidden');
+      }
+    };
 
     function renderCategoryCards() {
       const container = document.getElementById('categoriesGrid');
-      CATEGORIES.slice(0, 12).forEach(cat => {
+      DEFAULT_CATEGORIES.slice(0, 12).forEach(cat => {
         const div = document.createElement('div');
         div.onclick = () => {
           document.getElementById('filterCategory').value = cat;
@@ -550,8 +602,8 @@
         if (role === 'pro') {
           await setDoc(doc(db, "profiles", cred.user.uid), {
             uid: cred.user.uid,
-            name, category: CATEGORIES[0], services: [], bio: "",
-            neighborhood: NEIGHBORHOODS[0], regions: "Uberaba",
+            name, category: DEFAULT_CATEGORIES[0], services: [], bio: "",
+            neighborhood: DEFAULT_NEIGHBORHOODS[0], regions: "Uberaba",
             priceType: "quote", priceValue: 0, hours: "Comercial",
             allowWhatsapp: false, whatsappNumber: "", portfolio: [],
             isSponsored: false, createdAt: serverTimestamp()
@@ -588,12 +640,33 @@
       if (snap.exists()) {
         const d = snap.data();
         document.getElementById('proName').value = d.name || "";
-        document.getElementById('proCategory').value = d.category || CATEGORIES[0];
+
+        // Categoria (se personalizada, preenche adequadamente)
+        const catSelect = document.getElementById('proCategory');
+        if (DEFAULT_CATEGORIES.includes(d.category)) {
+          catSelect.value = d.category;
+          document.getElementById('proCustomCategory').classList.add('hidden');
+        } else if (d.category) {
+          catSelect.value = '__custom__';
+          document.getElementById('proCustomCategory').classList.remove('hidden');
+          document.getElementById('proCustomCategory').value = d.category;
+        }
+
+        // Bairro (se personalizado, preenche adequadamente)
+        const neighSelect = document.getElementById('proNeighborhood');
+        if (DEFAULT_NEIGHBORHOODS.includes(d.neighborhood)) {
+          neighSelect.value = d.neighborhood;
+          document.getElementById('proCustomNeighborhood').classList.add('hidden');
+        } else if (d.neighborhood) {
+          neighSelect.value = '__custom__';
+          document.getElementById('proCustomNeighborhood').classList.remove('hidden');
+          document.getElementById('proCustomNeighborhood').value = d.neighborhood;
+        }
+
         document.getElementById('proServices').value = (d.services || []).join(', ');
         document.getElementById('proBio').value = d.bio || "";
         document.getElementById('proPriceType').value = d.priceType || "quote";
         document.getElementById('proPriceValue').value = d.priceValue || "";
-        document.getElementById('proNeighborhood').value = d.neighborhood || NEIGHBORHOODS[0];
         document.getElementById('proRegions').value = d.regions || "";
         document.getElementById('proHours').value = d.hours || "";
         document.getElementById('proAllowWhatsapp').checked = !!d.allowWhatsapp;
@@ -671,14 +744,35 @@
     window.saveProProfile = async function(e) {
       e.preventDefault();
       const services = document.getElementById('proServices').value.split(',').map(s => s.trim()).filter(Boolean);
+
+      // Categoria final (padrão ou personalizada)
+      let finalCategory = document.getElementById('proCategory').value;
+      if (finalCategory === '__custom__') {
+        finalCategory = document.getElementById('proCustomCategory').value.trim();
+        if (!finalCategory) {
+          showToast("Por favor, digite o nome da sua categoria.", "error");
+          return;
+        }
+      }
+
+      // Bairro final (padrão ou personalizado)
+      let finalNeighborhood = document.getElementById('proNeighborhood').value;
+      if (finalNeighborhood === '__custom__') {
+        finalNeighborhood = document.getElementById('proCustomNeighborhood').value.trim();
+        if (!finalNeighborhood) {
+          showToast("Por favor, digite o nome do seu bairro.", "error");
+          return;
+        }
+      }
+
       const payload = {
         name: document.getElementById('proName').value.trim(),
-        category: document.getElementById('proCategory').value,
+        category: finalCategory,
         services,
         bio: document.getElementById('proBio').value.trim(),
         priceType: document.getElementById('proPriceType').value,
         priceValue: parseFloat(document.getElementById('proPriceValue').value) || 0,
-        neighborhood: document.getElementById('proNeighborhood').value,
+        neighborhood: finalNeighborhood,
         regions: document.getElementById('proRegions').value.trim(),
         hours: document.getElementById('proHours').value.trim(),
         allowWhatsapp: document.getElementById('proAllowWhatsapp').checked,
@@ -701,6 +795,7 @@
         const snap = await getDocs(collection(db, "profiles"));
         allProfessionals = [];
         snap.forEach(d => allProfessionals.push({ id: d.id, ...d.data() }));
+        updateFilterDropdowns(); // Atualiza filtros com os novos bairros e categorias adicionados
         renderCards();
       } catch (err) {
         console.error(err);
@@ -744,7 +839,7 @@
           <p class="text-xs text-neutral-600 dark:text-neutral-400 line-clamp-2">${p.bio || 'Sem descrição.'}</p>
         </div>
         <div class="mt-4 pt-3 border-t border-neutral-100 dark:border-neutral-800 flex items-center justify-between">
-          <div><span class="text-[10px] text-neutral-400 block">${p.neighborhood || 'Centro'}</span><span class="text-xs font-black text-black dark:text-white">${price}</span></div>
+          <div><span class="text-[10px] text-neutral-400 block">${p.neighborhood || 'Uberaba'}</span><span class="text-xs font-black text-black dark:text-white">${price}</span></div>
           <button onclick="openProfileModal('${p.id}')" class="px-3.5 py-1.5 bg-black text-white dark:bg-white dark:text-black text-xs font-black rounded-lg hover:opacity-80 transition">Ver Perfil</button>
         </div>
       `;
@@ -757,90 +852,10 @@
       const n = document.getElementById('filterNeighborhood').value;
 
       const filtered = allProfessionals.filter(p => {
-        const matchS = !s || (p.name && p.name.toLowerCase().includes(s)) || (p.category && p.category.toLowerCase().includes(s));
+        const matchS = !s || (p.name && p.name.toLowerCase().includes(s)) || (p.category && p.category.toLowerCase().includes(s)) || (p.services && p.services.some(svc => svc.toLowerCase().includes(s)));
         return matchS && (!cat || p.category === cat) && (!n || p.neighborhood === n);
       });
 
       const grid = document.getElementById('resultsGrid');
       grid.innerHTML = '';
-      document.getElementById('resultsCount').textContent = `${filtered.length} profissional(is) em Uberaba`;
-      filtered.forEach(p => grid.appendChild(createProCard(p)));
-      lucide.createIcons();
-    };
-
-    window.openProfileModal = function(id) {
-      const p = allProfessionals.find(x => x.id === id);
-      if (!p) return;
-      currentViewingPro = p;
-
-      document.getElementById('modalProName').textContent = p.name;
-      document.getElementById('modalProCategory').textContent = p.category;
-      document.getElementById('modalProNeighborhood').textContent = `${p.neighborhood || 'Centro'}, Uberaba`;
-      document.getElementById('modalProBio').textContent = p.bio || "Sem descrição.";
-      document.getElementById('modalProPrice').textContent = p.priceType === 'fixed' && p.priceValue > 0 ? `R$ ${p.priceValue.toFixed(2)}` : 'Sob Orçamento';
-      document.getElementById('modalProHours').textContent = p.hours || "A combinar";
-
-      const g = document.getElementById('modalProGallery');
-      g.innerHTML = '';
-      (p.portfolio || []).forEach(url => {
-        const img = document.createElement('img');
-        img.src = url;
-        img.className = 'w-full aspect-square object-cover rounded-lg border border-neutral-300 dark:border-neutral-700';
-        g.appendChild(img);
-      });
-
-      const wCont = document.getElementById('modalWhatsappContainer');
-      wCont.innerHTML = '';
-      if (p.allowWhatsapp && p.whatsappNumber) {
-        const btn = document.createElement('button');
-        btn.className = "px-4 py-2 bg-black text-white font-black text-xs rounded-xl flex items-center gap-1.5 shadow hover:bg-neutral-800";
-        btn.innerHTML = `<i data-lucide="message-circle" class="w-4 h-4"></i> Conversar no WhatsApp`;
-        btn.onclick = () => {
-          const num = p.whatsappNumber.replace(/\D/g, '');
-          const msg = encodeURIComponent("Olá! Encontrei seu perfil no Zebu Freela em Uberaba e gostaria de um orçamento.");
-          window.open(`https://wa.me/55${num}?text=${msg}`, '_blank');
-        };
-        wCont.appendChild(btn);
-      }
-      openModal('profileModal');
-      lucide.createIcons();
-    };
-
-    window.submitReport = async function(e) {
-      e.preventDefault();
-      await addDoc(collection(db, "reports"), {
-        targetProfileId: currentViewingPro.id,
-        reason: document.getElementById('reportReason').value,
-        details: document.getElementById('reportDetails').value,
-        createdAt: serverTimestamp()
-      });
-      showToast("Denúncia recebida.");
-      closeModal('reportModal');
-    };
-
-    window.showSection = function(id) {
-      ['homeSection', 'exploreSection', 'dashboardSection'].forEach(s => document.getElementById(s).classList.add('hidden'));
-      document.getElementById(id + 'Section').classList.remove('hidden');
-    };
-    window.goToExplore = () => { showSection('explore'); applyFilters(); };
-    window.handleQuickSearch = () => { document.getElementById('searchInput').value = document.getElementById('homeSearchInput').value; goToExplore(); };
-    window.handleAdvertiseClick = () => { currentUser ? showSection('dashboard') : openModal('authModal', 'register'); };
-    window.openModal = (id, tab) => { document.getElementById(id).classList.remove('hidden'); document.getElementById(id).classList.add('flex'); if(tab) switchAuthTab(tab); };
-    window.closeModal = (id) => { document.getElementById(id).classList.add('hidden'); document.getElementById(id).classList.remove('flex'); };
-    window.togglePriceValueField = () => { document.getElementById('priceValueContainer').classList.toggle('hidden', document.getElementById('proPriceType').value !== 'fixed'); };
-
-    window.switchAuthTab = function(tab) {
-      const isLogin = tab === 'login';
-      document.getElementById('loginForm').classList.toggle('hidden', !isLogin);
-      document.getElementById('registerForm').classList.toggle('hidden', isLogin);
-    };
-
-    function showToast(msg, type = "success") {
-      const t = document.getElementById('toast');
-      document.getElementById('toastMessage').textContent = msg;
-      t.classList.remove('translate-y-24', 'opacity-0');
-      setTimeout(() => t.classList.add('translate-y-24', 'opacity-0'), 3500);
-    }
-  </script>
-</body>
-</html>
+      document.getElementById('resultsCount').textConten
