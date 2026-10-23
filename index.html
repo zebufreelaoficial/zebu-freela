@@ -16,10 +16,10 @@
         extend: {
           colors: {
             zebu: {
-              green: '#000000',   // Preto total
-              cream: '#FFFFFF',   // Branco puro
-              brown: '#18181B',   // Carvão fosco
-              mustard: '#000000'  // Botões Pretos
+              green: '#000000',
+              cream: '#FFFFFF',
+              brown: '#18181B',
+              mustard: '#000000'
             }
           }
         }
@@ -35,12 +35,10 @@
   <!-- ================= NAVBAR ================= -->
   <header class="sticky top-0 z-40 bg-black text-white shadow-md border-b border-neutral-800">
     <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
-      <!-- SUA LOGO OFICIAL COM O NOME EXATO DO ARQUIVO -->
       <a href="#" onclick="showSection('home')" class="flex items-center gap-2">
         <img src="WhatsApp Image 2026-10-23 at 18.27.58.jpeg" alt="Zebu Freela Uberaba" class="h-10 md:h-12 w-auto object-contain bg-white px-2 py-1 rounded shadow-sm">
       </a>
 
-      <!-- Ações do Cabeçalho -->
       <div class="flex items-center gap-2">
         <button id="themeToggle" class="p-2 rounded-full hover:bg-neutral-800 transition" title="Alternar tema">
           <i data-lucide="moon" class="w-5 h-5 hidden dark:block text-white"></i>
@@ -406,7 +404,7 @@
     </div>
   </div>
 
-  <!-- FIREBASE MODULAR (100% GRATUITO) -->
+  <!-- FIREBASE MODULAR (COM AS SUAS CHAVES REAIS DE UBERABA) -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
     import { 
@@ -428,15 +426,15 @@
       serverTimestamp 
     } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
 
-    // SUAS CHAVES OFICIAIS DE UBERABA
+    // SUAS CHAVES OFICIAIS DE ZEBU-FREELA-UBERABA (907149441505)
     const firebaseConfig = {
-      apiKey: "AIzaSyAfsxXOhdWD38lWBt30GUlwceA05ibjNxk",
-      authDomain: "zebu-freela.firebaseapp.com",
-      projectId: "zebu-freela",
-      storageBucket: "zebu-freela.firebasestorage.app",
-      messagingSenderId: "159035588171",
-      appId: "1:159035588171:web:2b9f8e6da33564e9fd97ce",
-      measurementId: "G-CNYRP4YYGY"
+      apiKey: "AIzaSyDQtTR_wIjlbAXffj8t9ddJvRIwAuyvG7o",
+      authDomain: "zebu-freela-uberaba.firebaseapp.com",
+      projectId: "zebu-freela-uberaba",
+      storageBucket: "zebu-freela-uberaba.firebasestorage.app",
+      messagingSenderId: "907149441505",
+      appId: "1:907149441505:web:28047c8404930976267aa0",
+      measurementId: "G-KKCF8KDCW7"
     };
 
     const app = initializeApp(firebaseConfig);
@@ -606,7 +604,6 @@
       }
     }
 
-    // COMPRESSOR DE IMAGENS CLIENT-SIDE (GRATUITO NO FIRESTORE)
     window.handlePortfolioUpload = async function(e) {
       const files = Array.from(e.target.files);
       if (tempPortfolioImages.length + files.length > 10) {
