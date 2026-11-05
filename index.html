@@ -39,7 +39,17 @@
         <img src="WhatsApp Image 2026-10-23 at 18.27.58.jpeg" alt="Zebu Freela Uberaba" class="h-10 md:h-12 w-auto object-contain bg-white px-2 py-1 rounded shadow-sm">
       </a>
 
+      <nav class="hidden md:flex items-center gap-4 text-xs font-bold uppercase tracking-wider">
+        <button onclick="showSection('home')" class="hover:text-amber-400 transition">Início</button>
+        <button onclick="goToExplore()" class="hover:text-amber-400 transition">Profissionais</button>
+        <button onclick="showSection('blog')" class="text-amber-400 flex items-center gap-1"><i data-lucide="shopping-bag" class="w-3.5 h-3.5"></i> Produtos & Dicas</button>
+      </nav>
+
       <div class="flex items-center gap-2">
+        <button onclick="showSection('blog')" class="md:hidden p-2 rounded-full hover:bg-neutral-800 transition text-amber-400" title="Produtos Indicados">
+          <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+        </button>
+
         <button id="themeToggle" class="p-2 rounded-full hover:bg-neutral-800 transition" title="Alternar tema">
           <i data-lucide="moon" class="w-5 h-5 hidden dark:block text-white"></i>
           <i data-lucide="sun" class="w-5 h-5 block dark:hidden text-white"></i>
@@ -55,6 +65,10 @@
         </div>
 
         <div id="userNavMenu" class="hidden relative flex items-center gap-2">
+          <button id="adminPostBtn" onclick="openModal('adminProductModal')" class="hidden items-center gap-1 text-xs bg-amber-400 text-black px-3 py-1.5 rounded-md font-black hover:bg-amber-300">
+            <i data-lucide="plus-circle" class="w-3.5 h-3.5"></i> + Postar Produto
+          </button>
+
           <button id="proDashboardBtn" onclick="showSection('dashboard')" class="hidden sm:inline-flex items-center gap-1 text-xs bg-neutral-800 text-white border border-neutral-600 px-3 py-1.5 rounded-md font-bold hover:bg-neutral-700">
             <i data-lucide="briefcase" class="w-3.5 h-3.5"></i> Meu Painel
           </button>
@@ -101,6 +115,9 @@
             <button onclick="goToExplore()" class="px-4 py-2.5 bg-white text-black font-bold rounded-xl text-sm hover:bg-neutral-200 transition flex items-center gap-2 shadow">
               <i data-lucide="users" class="w-4 h-4"></i> Encontrar profissionais
             </button>
+            <button onclick="showSection('blog')" class="px-4 py-2.5 bg-amber-400 text-black font-extrabold rounded-xl text-sm hover:bg-amber-300 transition flex items-center gap-2 shadow">
+              <i data-lucide="shopping-bag" class="w-4 h-4"></i> Ver Ferramentas Indicadas
+            </button>
             <button onclick="handleAdvertiseClick()" class="px-4 py-2.5 bg-neutral-900 text-white border border-neutral-700 font-bold rounded-xl text-sm hover:bg-neutral-800 transition flex items-center gap-2">
               <i data-lucide="plus-circle" class="w-4 h-4"></i> Anunciar meus serviços
             </button>
@@ -108,7 +125,7 @@
         </div>
       </div>
 
-      <!-- Categorias com Ícones Específicos -->
+      <!-- Categorias -->
       <div class="space-y-4">
         <div class="flex items-center justify-between">
           <h2 class="text-xl font-black flex items-center gap-2">
@@ -119,7 +136,7 @@
         <div id="categoriesGrid" class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-3"></div>
       </div>
 
-      <!-- Destaques (Patrocinados) -->
+      <!-- Destaques -->
       <div class="space-y-4">
         <div class="flex items-center justify-between">
           <h2 class="text-xl font-black flex items-center gap-2">
@@ -137,6 +154,22 @@
         </h2>
         <div id="recentList" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
       </div>
+    </section>
+
+    <!-- SEÇÃO: BLOG / PRODUTOS INDICADOS -->
+    <section id="blogSection" class="hidden space-y-6">
+      <div class="bg-black text-white p-6 md:p-8 rounded-3xl border border-neutral-800 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+        <div>
+          <span class="text-xs font-extrabold text-amber-400 uppercase tracking-widest block mb-1">Recomendações Oficiais</span>
+          <h2 class="text-2xl md:text-3xl font-black">Produtos & Ferramentas Indicadas</h2>
+          <p class="text-sm text-neutral-400 mt-1">Materiais e ferramentas selecionadas com o melhor custo-benefício para quem trabalha ou contrata em Uberaba.</p>
+        </div>
+        <button id="adminPostBtnBlog" onclick="openModal('adminProductModal')" class="hidden px-4 py-2 bg-amber-400 text-black font-extrabold text-xs rounded-xl hover:bg-amber-300 transition shadow">
+          + Adicionar Nova Indicação
+        </button>
+      </div>
+
+      <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
     </section>
 
     <!-- EXPLORAR -->
@@ -189,7 +222,7 @@
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label class="block text-xs font-bold uppercase text-neutral-500 mb-1">Nome de Exibição / Fantasia *</label>
-              <input type="text" id="proName" required class="w-full text-sm p-2.5 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800">
+              <input type="text" id="proName" required placeholder="Como os clientes vão te chamar" class="w-full text-sm p-2.5 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800">
             </div>
             <div>
               <label class="block text-xs font-bold uppercase text-neutral-500 mb-1">Categoria Principal *</label>
@@ -236,7 +269,7 @@
             </div>
           </div>
 
-          <!-- Fotos de Portfólio (100% Grátis no Firestore) -->
+          <!-- Fotos de Portfólio -->
           <div class="space-y-2 border-t border-neutral-200 dark:border-neutral-800 pt-4">
             <div class="flex items-center justify-between">
               <div>
@@ -252,27 +285,27 @@
             <div id="portfolioPreviewGrid" class="grid grid-cols-2 sm:grid-cols-5 gap-3 pt-2"></div>
           </div>
 
-          <!-- Privacidade & WhatsApp -->
+          <!-- WhatsApp OBRIGATÓRIO PARA ANÚNCIO COMPLETO -->
           <div class="bg-neutral-100 dark:bg-neutral-800 p-4 rounded-xl border border-neutral-300 dark:border-neutral-700 space-y-3">
             <h4 class="text-xs font-bold uppercase tracking-wider text-black dark:text-white flex items-center gap-1.5">
-              <i data-lucide="shield-check" class="w-4 h-4"></i> Privacidade e Contato
+              <i data-lucide="shield-check" class="w-4 h-4 text-emerald-500"></i> Contato Direto via WhatsApp (Obrigatório) *
             </h4>
             <p class="text-xs text-neutral-600 dark:text-neutral-300">
-              Seu telefone **nunca** é exibido em texto na tela. O cliente fala direto com você no WhatsApp.
+              Para a segurança de todos, seu número de telefone **nunca** fica escrito na tela. O cliente só entra em contato pelo botão protegido.
             </p>
-            <div class="flex items-center gap-2">
-              <input type="checkbox" id="proAllowWhatsapp" class="rounded text-black focus:ring-black w-4 h-4">
-              <label for="proAllowWhatsapp" class="text-xs font-bold">Autorizo contato de clientes via WhatsApp</label>
-            </div>
             <div>
-              <label class="block text-xs font-bold text-neutral-600 dark:text-neutral-300 mb-1">WhatsApp (com DDD)</label>
-              <input type="tel" id="proWhatsappNumber" placeholder="34999999999" class="w-full sm:w-64 text-sm p-2 rounded border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-900">
+              <label class="block text-xs font-bold text-neutral-700 dark:text-neutral-200 mb-1">Seu Número de WhatsApp com DDD *</label>
+              <input type="tel" id="proWhatsappNumber" required placeholder="Ex: 34999998888" class="w-full sm:w-72 text-sm p-2.5 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-900 font-mono">
+            </div>
+            <div class="flex items-start gap-2 pt-1">
+              <input type="checkbox" id="proAllowWhatsapp" required checked class="mt-0.5 rounded text-black focus:ring-black w-4 h-4">
+              <label for="proAllowWhatsapp" class="text-xs font-bold">Confirmo que este WhatsApp está ativo e autorizo receber orçamentos de clientes de Uberaba *</label>
             </div>
           </div>
 
           <div class="flex justify-end pt-4">
             <button type="submit" id="saveProfileBtn" class="px-6 py-2.5 bg-black text-white hover:bg-neutral-800 font-black text-sm rounded-xl transition shadow flex items-center gap-2">
-              <i data-lucide="save" class="w-4 h-4"></i> Salvar Anúncio
+              <i data-lucide="save" class="w-4 h-4"></i> Salvar Anúncio Completo
             </button>
           </div>
         </form>
@@ -280,12 +313,71 @@
     </section>
   </main>
 
-  <!-- MODAL AUTH -->
+  <!-- MODAL SECRETO DA ADMINISTRADORA: CADASTRAR PRODUTO DE AFILIADO -->
+  <div id="adminProductModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-white dark:bg-neutral-900 w-full max-w-lg rounded-3xl p-6 shadow-2xl border border-neutral-200 dark:border-neutral-800 relative max-h-[90vh] overflow-y-auto">
+      <button onclick="closeModal('adminProductModal')" class="absolute right-4 top-4 text-neutral-400 hover:text-black dark:hover:text-white">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <h3 class="text-xl font-black mb-1 flex items-center gap-2 text-amber-500">
+        <i data-lucide="sparkles" class="w-5 h-5"></i> Nova Indicação de Produto
+      </h3>
+      <p class="text-xs text-neutral-500 mb-5">Área exclusiva da administradora. Postagens aparecem imediatamente na aba Produtos & Dicas.</p>
+
+      <form id="adminProductForm" onsubmit="saveProduct(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold uppercase text-neutral-500 mb-1">Título do Produto / Ferramenta *</label>
+          <input type="text" id="prodTitle" required placeholder="Ex: Furadeira de Impacto Profissional 650W" class="w-full text-sm p-2.5 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800">
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold uppercase text-neutral-500 mb-1">Categoria de Serviço *</label>
+            <select id="prodCategory" required class="w-full text-sm p-2.5 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800"></select>
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase text-neutral-500 mb-1">Preço Médio (Ex: R$ 149,00)</label>
+            <input type="text" id="prodPrice" placeholder="R$ 149,90" class="w-full text-sm p-2.5 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold uppercase text-neutral-500 mb-1">Seu Link de Afiliado (Shopee, Mercado Livre, etc.) *</label>
+          <input type="url" id="prodAffiliateLink" required placeholder="https://shope.ee/..." class="w-full text-sm p-2.5 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800">
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold uppercase text-neutral-500 mb-1">Descrição / Por que você indica *</label>
+          <textarea id="prodDescription" rows="3" required placeholder="Explique por que essa ferramenta é essencial para o profissional..." class="w-full text-sm p-2.5 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800"></textarea>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold uppercase text-neutral-500 mb-1">Foto do Produto *</label>
+          <input type="file" id="prodImageInput" accept="image/*" required onchange="handleProductPhotoUpload(event)" class="block w-full text-xs text-neutral-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-bold file:bg-black file:text-white">
+          <div id="prodImagePreviewContainer" class="mt-2 hidden">
+            <img id="prodImagePreview" src="" class="w-24 h-24 object-cover rounded-xl border border-neutral-300 dark:border-neutral-700">
+          </div>
+        </div>
+
+        <button type="submit" id="btnSaveProduct" class="w-full py-3 bg-amber-400 text-black font-black text-sm rounded-xl hover:bg-amber-300 transition shadow">
+          Publicar Produto no Site
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL AUTH (LOGIN / REGISTRO) -->
   <div id="authModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4">
     <div class="bg-white dark:bg-neutral-900 w-full max-w-md rounded-2xl p-6 shadow-2xl border border-neutral-200 dark:border-neutral-800 relative max-h-[90vh] overflow-y-auto">
       <button onclick="closeModal('authModal')" class="absolute right-4 top-4 text-neutral-400 hover:text-black dark:hover:text-white">
         <i data-lucide="x" class="w-5 h-5"></i>
       </button>
+
+      <!-- Mensagem amigável de exigência de cadastro para contratar -->
+      <div id="authPromptMessage" class="hidden mb-4 p-3 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-300 dark:border-amber-800 text-xs text-amber-900 dark:text-amber-200 font-medium">
+        👋 <strong>Quase lá!</strong> Crie sua conta gratuita ou faça login para falar com o profissional no WhatsApp com total segurança.
+      </div>
 
       <div class="flex border-b border-neutral-200 dark:border-neutral-700 mb-5">
         <button id="tabLogin" onclick="switchAuthTab('login')" class="flex-1 pb-2 font-black text-sm border-b-2 border-black text-black dark:border-white dark:text-white">Entrar</button>
@@ -318,7 +410,7 @@
           <input type="password" id="regPassword" minlength="6" required class="w-full text-sm p-2.5 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800">
         </div>
         <div>
-          <label class="block text-xs font-bold uppercase text-neutral-500 mb-1">Tipo de Perfil</label>
+          <label class="block text-xs font-bold uppercase text-neutral-500 mb-1">Seu Objetivo</label>
           <div class="grid grid-cols-2 gap-2">
             <label class="flex items-center gap-2 p-2.5 border rounded-lg cursor-pointer text-xs font-bold border-neutral-300 dark:border-neutral-700">
               <input type="radio" name="regRole" value="client" checked> Quero Contratar
@@ -332,7 +424,7 @@
           <input type="checkbox" id="regTerms" required class="mt-1 rounded text-black w-4 h-4">
           <label for="regTerms" class="text-xs text-neutral-500">Concordo com os Termos e Privacidade (LGPD).</label>
         </div>
-        <button type="submit" id="btnRegisterSubmit" class="w-full py-3 bg-black text-white hover:bg-neutral-800 font-black text-sm rounded-xl transition shadow">Criar Conta</button>
+        <button type="submit" id="btnRegisterSubmit" class="w-full py-3 bg-black text-white hover:bg-neutral-800 font-black text-sm rounded-xl transition shadow">Criar Minha Conta Grátis</button>
       </form>
     </div>
   </div>
@@ -409,7 +501,7 @@
     </div>
   </div>
 
-  <!-- FIREBASE MODULAR (100% GRATUITO) -->
+  <!-- FIREBASE MODULAR COM AS DUAS TRAVAS DE SEGURANÇA -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
     import { 
@@ -428,10 +520,11 @@
       collection, 
       getDocs, 
       addDoc, 
+      deleteDoc,
       serverTimestamp 
     } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
 
-    // SUAS CHAVES OFICIAIS DE ZEBU-FREELA-UBERABA (907149441505)
+    // SUAS CHAVES OFICIAIS DO ZEBU-FREELA-UBERABA
     const firebaseConfig = {
       apiKey: "AIzaSyDQtTR_wIjlbAXffj8t9ddJvRIwAuyvG7o",
       authDomain: "zebu-freela-uberaba.firebaseapp.com",
@@ -446,7 +539,8 @@
     const auth = getAuth(app);
     const db = getFirestore(app);
 
-    // CATEGORIAS COM ÍCONES ESPECÍFICOS
+    const ADMIN_EMAIL = "gabi.almeidasaude@gmail.com";
+
     const CATEGORIES_DATA = [
       { name: "Diaristas e Faxineiras", icon: "sparkles" },
       { name: "Eletricistas", icon: "zap" },
@@ -476,7 +570,6 @@
 
     const CATEGORIES = CATEGORIES_DATA.map(c => c.name);
 
-    // LISTA COMPLETA DOS BAIRROS DE UBERABA (ORDEM ALFABÉTICA)
     const NEIGHBORHOODS = [
       "Centro", "Abadia", "Alfredo Freire", "Amoroso Costa", "Antônia Cândida", 
       "Beija-Flor", "Boa Vista", "Chica Ferreira", "Conjunto Uberaba", "Estados Unidos", 
@@ -491,7 +584,9 @@
 
     let currentUser = null;
     let allProfessionals = [];
+    let allProducts = [];
     let tempPortfolioImages = [];
+    let tempProductImage = "";
     let currentViewingPro = null;
 
     window.addEventListener('DOMContentLoaded', () => {
@@ -500,6 +595,7 @@
       populateDropdowns();
       renderCategoryCards();
       setupAuthListener();
+      fetchProducts();
     });
 
     function initTheme() {
@@ -514,12 +610,14 @@
     }
 
     function populateDropdowns() {
-      ['filterCategory', 'proCategory'].forEach(id => {
+      ['filterCategory', 'proCategory', 'prodCategory'].forEach(id => {
         const sel = document.getElementById(id);
+        if (!sel) return;
         CATEGORIES.forEach(c => sel.appendChild(new Option(c, c)));
       });
       ['filterNeighborhood', 'proNeighborhood'].forEach(id => {
         const sel = document.getElementById(id);
+        if (!sel) return;
         NEIGHBORHOODS.forEach(n => sel.appendChild(new Option(n, n)));
       });
     }
@@ -548,9 +646,21 @@
     function setupAuthListener() {
       onAuthStateChanged(auth, async (user) => {
         currentUser = user;
+        const isAdmin = user && user.email === ADMIN_EMAIL;
+
         if (user) {
           document.getElementById('authNavButtons').classList.add('hidden');
           document.getElementById('userNavMenu').classList.remove('hidden');
+
+          if (isAdmin) {
+            document.getElementById('adminPostBtn').classList.remove('hidden');
+            document.getElementById('adminPostBtn').classList.add('inline-flex');
+            document.getElementById('adminPostBtnBlog').classList.remove('hidden');
+          } else {
+            document.getElementById('adminPostBtn').classList.add('hidden');
+            document.getElementById('adminPostBtnBlog').classList.add('hidden');
+          }
+
           const docSnap = await getDoc(doc(db, "users", user.uid));
           if (docSnap.exists() && docSnap.data().role === 'pro') {
             document.getElementById('proDashboardBtn').classList.remove('hidden');
@@ -560,11 +670,132 @@
           document.getElementById('authNavButtons').classList.remove('hidden');
           document.getElementById('userNavMenu').classList.add('hidden');
           document.getElementById('proDashboardBtn').classList.add('hidden');
+          document.getElementById('adminPostBtn').classList.add('hidden');
+          document.getElementById('adminPostBtnBlog').classList.add('hidden');
         }
         fetchProfessionals();
       });
     }
 
+    // -------------------------------------------------------------
+    // GESTÃO DE PRODUTOS / AFILIADOS
+    // -------------------------------------------------------------
+    window.handleProductPhotoUpload = async function(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+      showToast("Comprimindo foto do produto...");
+      tempProductImage = await compressImage(file);
+      document.getElementById('prodImagePreview').src = tempProductImage;
+      document.getElementById('prodImagePreviewContainer').classList.remove('hidden');
+    };
+
+    window.saveProduct = async function(e) {
+      e.preventDefault();
+      if (!currentUser || currentUser.email !== ADMIN_EMAIL) {
+        showToast("Apenas a administradora pode postar produtos.", "error");
+        return;
+      }
+
+      const btn = document.getElementById('btnSaveProduct');
+      btn.disabled = true;
+      btn.textContent = "Publicando...";
+
+      const payload = {
+        title: document.getElementById('prodTitle').value.trim(),
+        category: document.getElementById('prodCategory').value,
+        price: document.getElementById('prodPrice').value.trim() || "",
+        link: document.getElementById('prodAffiliateLink').value.trim(),
+        description: document.getElementById('prodDescription').value.trim(),
+        image: tempProductImage,
+        createdAt: serverTimestamp()
+      };
+
+      try {
+        await addDoc(collection(db, "products"), payload);
+        showToast("Produto indicado publicado com sucesso!");
+        closeModal('adminProductModal');
+        document.getElementById('adminProductForm').reset();
+        document.getElementById('prodImagePreviewContainer').classList.add('hidden');
+        tempProductImage = "";
+        fetchProducts();
+        showSection('blog');
+      } catch (err) {
+        showToast("Erro ao publicar: " + err.message, "error");
+      } finally {
+        btn.disabled = false;
+        btn.textContent = "Publicar Produto no Site";
+      }
+    };
+
+    async function fetchProducts() {
+      try {
+        const snap = await getDocs(collection(db, "products"));
+        allProducts = [];
+        snap.forEach(d => allProducts.push({ id: d.id, ...d.data() }));
+        renderProducts();
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    function renderProducts() {
+      const container = document.getElementById('productsGrid');
+      container.innerHTML = '';
+
+      if (!allProducts.length) {
+        container.innerHTML = '<p class="col-span-full py-8 text-center text-sm text-neutral-400">Nenhum produto indicado no momento. Em breve novas ferramentas!</p>';
+        return;
+      }
+
+      const isAdmin = currentUser && currentUser.email === ADMIN_EMAIL;
+
+      allProducts.forEach(prod => {
+        const card = document.createElement('div');
+        card.className = "bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-3xl p-5 shadow-sm flex flex-col justify-between hover:shadow-md transition";
+        card.innerHTML = `
+          <div class="space-y-3">
+            <div class="relative w-full aspect-video rounded-2xl overflow-hidden bg-neutral-100 dark:bg-neutral-800">
+              <img src="${prod.image}" class="w-full h-full object-cover">
+              <span class="absolute top-2 left-2 bg-black/80 backdrop-blur-sm text-white text-[10px] font-black uppercase px-2.5 py-1 rounded-full">
+                ${prod.category}
+              </span>
+              ${isAdmin ? `<button onclick="deleteProduct('${prod.id}')" class="absolute top-2 right-2 bg-rose-600 text-white p-1.5 rounded-full hover:bg-rose-700 shadow" title="Excluir"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg></button>` : ''}
+            </div>
+
+            <div>
+              <div class="flex items-start justify-between gap-2">
+                <h3 class="font-black text-base leading-snug">${prod.title}</h3>
+                ${prod.price ? `<span class="text-sm font-extrabold text-amber-500 shrink-0">${prod.price}</span>` : ''}
+              </div>
+              <p class="text-xs text-neutral-600 dark:text-neutral-400 mt-2 line-clamp-3 leading-relaxed">${prod.description}</p>
+            </div>
+          </div>
+
+          <div class="mt-4 pt-3 border-t border-neutral-100 dark:border-neutral-800">
+            <a href="${prod.link}" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 bg-amber-400 text-black hover:bg-amber-300 font-black text-xs rounded-xl flex items-center justify-center gap-1.5 shadow transition">
+              <i data-lucide="external-link" class="w-3.5 h-3.5"></i> Ver Oferta Oficial
+            </a>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+      lucide.createIcons();
+    }
+
+    window.deleteProduct = async function(id) {
+      if (!confirm("Tem certeza que deseja apagar essa indicação de produto?")) return;
+      try {
+        await deleteDoc(doc(db, "products", id));
+        showToast("Produto removido.");
+        fetchProducts();
+      } catch (err) {
+        showToast("Erro ao apagar.", "error");
+      }
+    };
+
+    // -------------------------------------------------------------
+    // AUTH & PERFIS
+    // -------------------------------------------------------------
     window.handleRegister = async function(e) {
       e.preventDefault();
       const name = document.getElementById('regName').value.trim();
@@ -593,6 +824,11 @@
         }
         closeModal('authModal');
         showToast("Conta criada com sucesso no Zebu Freela!");
+
+        // Se o modal de um profissional estava aberto, atualiza para liberar o WhatsApp
+        if (currentViewingPro) {
+          openProfileModal(currentViewingPro.id);
+        }
       } catch (err) {
         showToast("Erro: " + err.message, "error");
       }
@@ -606,6 +842,11 @@
         await signInWithEmailAndPassword(auth, email, password);
         closeModal('authModal');
         showToast("Conectado com sucesso!");
+
+        // Se estava tentando falar no WhatsApp, reabre com acesso liberado
+        if (currentViewingPro) {
+          openProfileModal(currentViewingPro.id);
+        }
       } catch (err) {
         showToast("E-mail ou senha incorretos.", "error");
       }
@@ -630,7 +871,7 @@
         document.getElementById('proNeighborhood').value = d.neighborhood || NEIGHBORHOODS[0];
         document.getElementById('proRegions').value = d.regions || "";
         document.getElementById('proHours').value = d.hours || "";
-        document.getElementById('proAllowWhatsapp').checked = !!d.allowWhatsapp;
+        document.getElementById('proAllowWhatsapp').checked = (d.allowWhatsapp !== undefined) ? d.allowWhatsapp : true;
         document.getElementById('proWhatsappNumber').value = d.whatsappNumber || "";
         tempPortfolioImages = d.portfolio || [];
         renderPortfolioPreviews();
@@ -702,9 +943,31 @@
       renderPortfolioPreviews();
     };
 
+    // VALIDAÇÃO ESTRITA: NÃO ACEITA CADASTRO INCOMPLETO
     window.saveProProfile = async function(e) {
       e.preventDefault();
+
+      const rawNumber = document.getElementById('proWhatsappNumber').value.replace(/\D/g, '');
+      const allowWa = document.getElementById('proAllowWhatsapp').checked;
+
+      // TRAVA 1: WHATSAPP OBRIGATÓRIO E VÁLIDO (COM DDD)
+      if (!rawNumber || rawNumber.length < 10) {
+        showToast("Digite seu WhatsApp completo com DDD (Ex: 34999998888).", "error");
+        document.getElementById('proWhatsappNumber').focus();
+        return;
+      }
+
+      if (!allowWa) {
+        showToast("Você precisa autorizar o contato via WhatsApp para salvar o anúncio.", "error");
+        return;
+      }
+
       const services = document.getElementById('proServices').value.split(',').map(s => s.trim()).filter(Boolean);
+      if (!services.length) {
+        showToast("Informe pelo menos um serviço que você oferece.", "error");
+        return;
+      }
+
       const payload = {
         name: document.getElementById('proName').value.trim(),
         category: document.getElementById('proCategory').value,
@@ -715,15 +978,15 @@
         neighborhood: document.getElementById('proNeighborhood').value,
         regions: document.getElementById('proRegions').value.trim(),
         hours: document.getElementById('proHours').value.trim(),
-        allowWhatsapp: document.getElementById('proAllowWhatsapp').checked,
-        whatsappNumber: document.getElementById('proWhatsappNumber').value.replace(/\D/g, ''),
+        allowWhatsapp: true,
+        whatsappNumber: rawNumber,
         portfolio: tempPortfolioImages,
         updatedAt: serverTimestamp()
       };
 
       try {
         await setDoc(doc(db, "profiles", currentUser.uid), payload, { merge: true });
-        showToast("Anúncio salvo com sucesso!");
+        showToast("Anúncio completo salvo com sucesso!");
         fetchProfessionals();
       } catch (err) {
         showToast("Erro ao salvar perfil.", "error");
@@ -734,7 +997,13 @@
       try {
         const snap = await getDocs(collection(db, "profiles"));
         allProfessionals = [];
-        snap.forEach(d => allProfessionals.push({ id: d.id, ...d.data() }));
+        snap.forEach(d => {
+          const data = d.data();
+          // Só exibe se tiver nome e WhatsApp válido (ignora incompletos antigos)
+          if (data.name && data.whatsappNumber && data.whatsappNumber.length >= 10) {
+            allProfessionals.push({ id: d.id, ...data });
+          }
+        });
         renderCards();
       } catch (err) {
         console.error(err);
@@ -805,6 +1074,7 @@
       lucide.createIcons();
     };
 
+    // EXIGÊNCIA DE CADASTRO PARA O CLIENTE FALAR NO WHATSAPP
     window.openProfileModal = function(id) {
       const p = allProfessionals.find(x => x.id === id);
       if (!p) return;
@@ -844,15 +1114,28 @@
 
       const wCont = document.getElementById('modalWhatsappContainer');
       wCont.innerHTML = '';
-      if (p.allowWhatsapp && p.whatsappNumber) {
+
+      if (p.whatsappNumber) {
         const btn = document.createElement('button');
-        btn.className = "px-4 py-2 bg-black text-white font-black text-xs rounded-xl flex items-center gap-1.5 shadow hover:bg-neutral-800";
-        btn.innerHTML = `<i data-lucide="message-circle" class="w-4 h-4"></i> Conversar no WhatsApp`;
-        btn.onclick = () => {
-          const num = p.whatsappNumber.replace(/\D/g, '');
-          const msg = encodeURIComponent("Olá! Encontrei seu perfil no Zebu Freela em Uberaba e gostaria de um orçamento.");
-          window.open(`https://wa.me/55${num}?text=${msg}`, '_blank');
-        };
+
+        // SE O CLIENTE JÁ ESTIVER LOGADO -> ABRE O WHATSAPP DIRETO
+        if (currentUser) {
+          btn.className = "px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs rounded-xl flex items-center gap-1.5 shadow transition";
+          btn.innerHTML = `<i data-lucide="message-circle" class="w-4 h-4"></i> Conversar no WhatsApp`;
+          btn.onclick = () => {
+            const num = p.whatsappNumber.replace(/\D/g, '');
+            const msg = encodeURIComponent(`Olá ${p.name}! Encontrei seu perfil no Zebu Freela em Uberaba e gostaria de um orçamento.`);
+            window.open(`https://wa.me/55${num}?text=${msg}`, '_blank');
+          };
+        } else {
+          // SE O CLIENTE NÃO ESTIVER LOGADO -> EXIGE LOGIN/CADASTRO
+          btn.className = "px-4 py-2 bg-neutral-900 hover:bg-black text-amber-400 border border-amber-400/40 font-black text-xs rounded-xl flex items-center gap-1.5 shadow transition";
+          btn.innerHTML = `<i data-lucide="lock" class="w-4 h-4"></i> Cadastre-se para falar no WhatsApp`;
+          btn.onclick = () => {
+            document.getElementById('authPromptMessage').classList.remove('hidden');
+            openModal('authModal', 'register');
+          };
+        }
         wCont.appendChild(btn);
       }
       openModal('profileModal');
@@ -872,14 +1155,29 @@
     };
 
     window.showSection = function(id) {
-      ['homeSection', 'exploreSection', 'dashboardSection'].forEach(s => document.getElementById(s).classList.add('hidden'));
+      ['homeSection', 'exploreSection', 'dashboardSection', 'blogSection'].forEach(s => document.getElementById(s).classList.add('hidden'));
       document.getElementById(id + 'Section').classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     };
+
     window.goToExplore = () => { showSection('explore'); applyFilters(); };
     window.handleQuickSearch = () => { document.getElementById('searchInput').value = document.getElementById('homeSearchInput').value; goToExplore(); };
     window.handleAdvertiseClick = () => { currentUser ? showSection('dashboard') : openModal('authModal', 'register'); };
-    window.openModal = (id, tab) => { document.getElementById(id).classList.remove('hidden'); document.getElementById(id).classList.add('flex'); if(tab) switchAuthTab(tab); };
-    window.closeModal = (id) => { document.getElementById(id).classList.add('hidden'); document.getElementById(id).classList.remove('flex'); };
+    
+    window.openModal = (id, tab) => { 
+      document.getElementById(id).classList.remove('hidden'); 
+      document.getElementById(id).classList.add('flex'); 
+      if(tab) switchAuthTab(tab); 
+    };
+
+    window.closeModal = (id) => { 
+      document.getElementById(id).classList.add('hidden'); 
+      document.getElementById(id).classList.remove('flex'); 
+      if(id === 'authModal') {
+        document.getElementById('authPromptMessage').classList.add('hidden');
+      }
+    };
+
     window.togglePriceValueField = () => { document.getElementById('priceValueContainer').classList.toggle('hidden', document.getElementById('proPriceType').value !== 'fixed'); };
 
     window.switchAuthTab = function(tab) {
