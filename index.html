@@ -19,7 +19,8 @@
               green: '#000000',
               cream: '#FFFFFF',
               brown: '#18181B',
-              mustard: '#C69214'
+              mustard: '#EE4D2D', // Laranja Shopee para conversão nos produtos
+              amber: '#C69214'    // Dourado do app
             }
           }
         }
@@ -31,12 +32,11 @@
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <style>
-    /* Estilo carrossel mobile sem barra de rolagem feia */
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
   </style>
 </head>
-<body class="bg-neutral-50 text-neutral-900 dark:bg-black dark:text-neutral-100 min-h-screen flex flex-col font-sans transition-colors duration-200 pb-20 md:pb-6">
+<body class="bg-neutral-100 text-neutral-900 dark:bg-black dark:text-neutral-100 min-h-screen flex flex-col font-sans transition-colors duration-200 pb-20 md:pb-6">
 
   <!-- ================= NAVBAR SUPERIOR ================= -->
   <header class="sticky top-0 z-40 bg-black text-white shadow-sm border-b border-neutral-800">
@@ -45,11 +45,11 @@
         <img src="WhatsApp Image 2026-10-23 at 18.27.58.jpeg" alt="Zebu Freela" class="h-9 md:h-12 w-auto object-contain bg-white px-2 py-1 rounded">
       </a>
 
-      <!-- Menu no Computador / Tablet -->
+      <!-- Menu Computador / Tablet -->
       <nav class="hidden md:flex items-center gap-5 text-xs font-bold uppercase tracking-wider">
         <button onclick="showSection('home')" class="hover:text-amber-400 transition">Início</button>
-        <button onclick="goToExplore()" class="hover:text-amber-400 transition">Buscar</button>
-        <button onclick="showSection('blog')" class="text-amber-400 flex items-center gap-1"><i data-lucide="shopping-bag" class="w-3.5 h-3.5"></i> Dicas & Produtos</button>
+        <button onclick="goToExplore()" class="hover:text-amber-400 transition">Buscar Profissionais</button>
+        <button onclick="showSection('blog')" class="text-amber-400 flex items-center gap-1"><i data-lucide="shopping-bag" class="w-3.5 h-3.5"></i> Loja & Ferramentas</button>
       </nav>
 
       <div class="flex items-center gap-1.5 md:gap-2">
@@ -86,12 +86,12 @@
   </div>
 
   <!-- CORPO PRINCIPAL -->
-  <main class="flex-1 max-w-7xl w-full mx-auto px-3.5 py-4 md:p-6 space-y-6 md:space-y-8">
+  <main class="flex-1 max-w-7xl w-full mx-auto px-3 py-4 md:p-6 space-y-6">
 
     <!-- SEÇÃO HOME -->
-    <section id="homeSection" class="space-y-6 md:space-y-10">
+    <section id="homeSection" class="space-y-6">
       
-      <!-- HERO MOBILE-FIRST -->
+      <!-- HERO PRINCIPAL -->
       <div class="relative bg-black text-white rounded-2xl md:rounded-3xl p-5 md:p-12 overflow-hidden shadow-xl border border-neutral-800">
         <div class="max-w-2xl space-y-3 md:space-y-4">
           <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] md:text-xs font-extrabold bg-neutral-900 text-amber-400 border border-neutral-700 uppercase tracking-wider">
@@ -100,11 +100,10 @@
           <h1 class="text-2xl md:text-5xl font-black tracking-tight leading-tight">Qual serviço você precisa hoje?</h1>
           <p class="text-neutral-400 text-xs md:text-base leading-relaxed">Contrate autônomos de confiança perto de você ou anuncie seu trabalho em Uberaba.</p>
 
-          <!-- Barra de Busca -->
           <div class="pt-1 flex flex-col sm:flex-row gap-2">
             <div class="relative flex-1">
               <i data-lucide="search" class="w-4 h-4 absolute left-3.5 top-3 text-neutral-400"></i>
-              <input type="text" id="homeSearchInput" placeholder="Ex: Diarista, Eletricista, Manicure..." 
+              <input type="text" id="homeSearchInput" placeholder="Ex: Diarista, Piscineiro, Enfermagem, Drone..." 
                 class="w-full pl-10 pr-3 py-2.5 rounded-xl bg-neutral-900 border border-neutral-700 text-white placeholder-neutral-500 focus:outline-none focus:ring-1 focus:ring-white text-xs md:text-sm"
                 onkeydown="if(event.key === 'Enter') handleQuickSearch()">
             </div>
@@ -117,6 +116,9 @@
             <button onclick="goToExplore()" class="flex-1 sm:flex-none px-3.5 py-2 bg-white text-black font-bold rounded-xl text-xs hover:bg-neutral-200 transition flex items-center justify-center gap-1.5 shadow">
               <i data-lucide="users" class="w-3.5 h-3.5"></i> Encontrar profissionais
             </button>
+            <button onclick="showSection('blog')" class="flex-1 sm:flex-none px-3.5 py-2 bg-amber-400 text-black font-extrabold rounded-xl text-xs hover:bg-amber-300 transition flex items-center justify-center gap-1.5 shadow">
+              <i data-lucide="shopping-bag" class="w-3.5 h-3.5"></i> Loja de Ferramentas
+            </button>
             <button onclick="handleAdvertiseClick()" class="flex-1 sm:flex-none px-3.5 py-2 bg-neutral-900 text-white border border-neutral-700 font-bold rounded-xl text-xs hover:bg-neutral-800 transition flex items-center justify-center gap-1.5">
               <i data-lucide="plus-circle" class="w-3.5 h-3.5"></i> Anunciar grátis
             </button>
@@ -124,7 +126,21 @@
         </div>
       </div>
 
-      <!-- CATEGORIAS: CARROSSEL NO CELULAR / GRID NO TABLET -->
+      <!-- BLOCO PERSONALIZADO: PRODUTOS PARA A SUA PROFISSÃO (APARECE SE O PROFISSIONAL ESTIVER LOGADO) -->
+      <div id="proPersonalizedProductsSection" class="hidden space-y-3 bg-amber-50 dark:bg-neutral-900/60 p-4 rounded-2xl border border-amber-300 dark:border-neutral-800">
+        <div class="flex items-center justify-between">
+          <div>
+            <span class="text-[10px] font-black uppercase text-amber-600 dark:text-amber-400 tracking-wider">Especial para você</span>
+            <h2 id="proPersonalizedTitle" class="text-sm md:text-base font-black flex items-center gap-1.5">
+              <i data-lucide="sparkles" class="w-4 h-4 text-amber-500"></i> Ferramentas para sua Área
+            </h2>
+          </div>
+          <button onclick="showSection('blog')" class="text-xs font-bold underline hover:opacity-75">Ver catálogo</button>
+        </div>
+        <div id="proPersonalizedGrid" class="grid grid-cols-2 sm:grid-cols-4 gap-2.5"></div>
+      </div>
+
+      <!-- CATEGORIAS (CARROSSEL MOBILE) -->
       <div class="space-y-3">
         <div class="flex items-center justify-between">
           <h2 class="text-base md:text-xl font-black flex items-center gap-1.5">
@@ -132,7 +148,6 @@
           </h2>
           <button onclick="goToExplore()" class="text-xs font-bold underline hover:opacity-75">Ver todas</button>
         </div>
-        <!-- Carrossel deslizável horizontal com o dedo -->
         <div id="categoriesGrid" class="flex md:grid md:grid-cols-6 gap-2.5 overflow-x-auto no-scrollbar py-1"></div>
       </div>
 
@@ -156,23 +171,32 @@
       </div>
     </section>
 
-    <!-- BLOG / PRODUTOS -->
-    <section id="blogSection" class="hidden space-y-4 md:space-y-6">
-      <div class="bg-black text-white p-5 md:p-8 rounded-2xl md:rounded-3xl border border-neutral-800 flex flex-col md:flex-row justify-between items-start md:items-center gap-3">
+    <!-- SEÇÃO: LOJA / PRODUTOS (LAYOUT ESTILO SHOPEE) -->
+    <section id="blogSection" class="hidden space-y-4">
+      <div class="bg-black text-white p-4 md:p-6 rounded-2xl border border-neutral-800 flex flex-col md:flex-row justify-between items-start md:items-center gap-3">
         <div>
-          <span class="text-[10px] md:text-xs font-extrabold text-amber-400 uppercase tracking-widest block mb-1">Recomendações</span>
-          <h2 class="text-xl md:text-3xl font-black">Produtos & Ferramentas</h2>
-          <p class="text-xs md:text-sm text-neutral-400 mt-1">Materiais e ferramentas indicadas para serviços em Uberaba.</p>
+          <span class="text-[10px] font-black uppercase text-amber-400 tracking-widest block">Loja & Dicas Oficiais</span>
+          <h2 class="text-lg md:text-2xl font-black flex items-center gap-2">
+            <i data-lucide="shopping-bag" class="w-5 h-5 text-amber-400"></i> Produtos & Ferramentas
+          </h2>
+          <p class="text-xs text-neutral-400 mt-0.5">Itens recomendados com o melhor custo-benefício para profissionais e clientes em Uberaba.</p>
         </div>
         <button id="adminPostBtnBlog" onclick="openModal('adminProductModal')" class="hidden px-3.5 py-2 bg-amber-400 text-black font-extrabold text-xs rounded-xl hover:bg-amber-300 transition shadow">
-          + Adicionar Indicação
+          + Cadastrar Produto
         </button>
       </div>
-      <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6"></div>
+
+      <!-- FILTRO DE CATEGORIAS ESTILO SHOPEE (CARROSSEL HORIZONTAL) -->
+      <div id="productFilterBar" class="flex gap-1.5 overflow-x-auto no-scrollbar py-1 text-xs">
+        <!-- Renderizado dinamicamente com botões estilo abas -->
+      </div>
+
+      <!-- GRADE DE PRODUTOS SHOPEE (2 COLUNAS NO CELULAR) -->
+      <div id="productsGrid" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-2 md:gap-3"></div>
     </section>
 
-    <!-- EXPLORAR -->
-    <section id="exploreSection" class="hidden space-y-4 md:space-y-6">
+    <!-- EXPLORAR PROFISSIONAIS -->
+    <section id="exploreSection" class="hidden space-y-4">
       <div class="bg-white dark:bg-neutral-900 p-4 md:p-5 rounded-2xl shadow-sm border border-neutral-200 dark:border-neutral-800 space-y-3">
         <div class="relative">
           <i data-lucide="search" class="w-4 h-4 absolute left-3 top-3 text-neutral-400"></i>
@@ -203,7 +227,7 @@
     </section>
 
     <!-- PAINEL PROFISSIONAL -->
-    <section id="dashboardSection" class="hidden space-y-4 md:space-y-6">
+    <section id="dashboardSection" class="hidden space-y-4">
       <div class="bg-white dark:bg-neutral-900 p-4 md:p-6 rounded-2xl shadow-sm border border-neutral-200 dark:border-neutral-800">
         <div class="flex items-center justify-between border-b border-neutral-200 dark:border-neutral-800 pb-3 mb-4">
           <div>
@@ -234,13 +258,26 @@
             </div>
             <div>
               <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Categoria Principal *</label>
-              <select id="proCategory" required class="w-full p-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs"></select>
+              <select id="proCategory" onchange="checkDroneCategoryOptions()" required class="w-full p-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs"></select>
+            </div>
+          </div>
+
+          <!-- OPÇÃO ESPECÍFICA PARA DRONE: AGRÍCOLA OU NÃO -->
+          <div id="droneTypeContainer" class="hidden p-3 rounded-xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-700 space-y-2">
+            <label class="block text-[11px] font-bold uppercase text-neutral-700 dark:text-neutral-200">Especialidade do Drone:</label>
+            <div class="grid grid-cols-2 gap-2">
+              <label class="flex items-center gap-1.5 p-2 bg-white dark:bg-neutral-900 border rounded-lg cursor-pointer text-xs font-bold">
+                <input type="radio" name="droneSpecialty" value="Agrícola (Pulverização / Mapeamento)" checked> Drone Agrícola
+              </label>
+              <label class="flex items-center gap-1.5 p-2 bg-white dark:bg-neutral-900 border rounded-lg cursor-pointer text-xs font-bold">
+                <input type="radio" name="droneSpecialty" value="Convencional (Eventos / Imobiliário)"> Eventos / Fotos
+              </label>
             </div>
           </div>
 
           <div>
             <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Serviços Oferecidos (separados por vírgula) *</label>
-            <input type="text" id="proServices" required placeholder="Ex: Faxina pesada, Pós-obra, Passadoria" class="w-full p-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs">
+            <input type="text" id="proServices" required placeholder="Ex: Limpeza de piscinas, Troca de areia, Tratamento de choque" class="w-full p-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs">
           </div>
 
           <div>
@@ -269,7 +306,7 @@
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
               <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Regiões Atendidas</label>
-              <input type="text" id="proRegions" placeholder="Ex: Todos os bairros e chácaras" class="w-full p-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs">
+              <input type="text" id="proRegions" placeholder="Ex: Todos os bairros, condomínios e chácaras" class="w-full p-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs">
             </div>
             <div>
               <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Horário de Atendimento</label>
@@ -320,7 +357,7 @@
     </button>
     <button onclick="showSection('blog')" class="flex flex-col items-center gap-1 py-1 text-amber-400">
       <i data-lucide="shopping-bag" class="w-5 h-5"></i>
-      <span class="text-[9px] font-bold">Dicas</span>
+      <span class="text-[9px] font-bold">Loja</span>
     </button>
     <button onclick="handleAdvertiseClick()" class="flex flex-col items-center gap-1 py-1 text-neutral-400 hover:text-white">
       <i data-lucide="briefcase" class="w-5 h-5"></i>
@@ -332,38 +369,38 @@
   <div id="adminProductModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-3">
     <div class="bg-white dark:bg-neutral-900 w-full max-w-lg rounded-2xl p-5 shadow-2xl border border-neutral-200 dark:border-neutral-800 relative max-h-[90vh] overflow-y-auto text-xs">
       <button onclick="closeModal('adminProductModal')" class="absolute right-4 top-4 text-neutral-400"><i data-lucide="x" class="w-5 h-5"></i></button>
-      <h3 class="text-base font-black mb-1 text-amber-500 flex items-center gap-1.5"><i data-lucide="sparkles" class="w-4 h-4"></i> Nova Indicação</h3>
+      <h3 class="text-base font-black mb-1 text-amber-500 flex items-center gap-1.5"><i data-lucide="sparkles" class="w-4 h-4"></i> Cadastrar Produto na Loja</h3>
       <form id="adminProductForm" onsubmit="saveProduct(event)" class="space-y-3 mt-3">
         <div>
-          <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Título *</label>
-          <input type="text" id="prodTitle" required placeholder="Ex: Furadeira de Impacto" class="w-full p-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800">
+          <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Título do Produto *</label>
+          <input type="text" id="prodTitle" required placeholder="Ex: Clorador Flutuante para Piscina" class="w-full p-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800">
         </div>
         <div class="grid grid-cols-2 gap-2">
           <div>
-            <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Categoria *</label>
+            <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Categoria de Serviço *</label>
             <select id="prodCategory" required class="w-full p-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800"></select>
           </div>
           <div>
-            <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Preço</label>
-            <input type="text" id="prodPrice" placeholder="R$ 149,90" class="w-full p-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800">
+            <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Preço (Ex: R$ 89,90)</label>
+            <input type="text" id="prodPrice" placeholder="R$ 89,90" class="w-full p-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800">
           </div>
         </div>
         <div>
-          <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Link de Afiliado *</label>
-          <input type="url" id="prodAffiliateLink" required placeholder="https://shope.ee/..." class="w-full p-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800">
+          <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Link de Afiliado (Shopee/Mercado Livre/Amazon) *</label>
+          <input type="url" id="prodAffiliateLink" required placeholder="https://..." class="w-full p-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800">
         </div>
         <div>
-          <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Descrição *</label>
-          <textarea id="prodDescription" rows="2" required placeholder="Por que indica essa ferramenta..." class="w-full p-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800"></textarea>
+          <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Descrição Breve *</label>
+          <textarea id="prodDescription" rows="2" required placeholder="Destaque por que esse item é indispensável..." class="w-full p-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800"></textarea>
         </div>
         <div>
-          <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Foto *</label>
+          <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Foto do Produto *</label>
           <input type="file" id="prodImageInput" accept="image/*" required onchange="handleProductPhotoUpload(event)" class="block w-full text-[10px] text-neutral-500 file:mr-2 file:py-1 file:px-2.5 file:rounded file:border-0 file:bg-black file:text-white">
           <div id="prodImagePreviewContainer" class="mt-2 hidden">
             <img id="prodImagePreview" src="" class="w-16 h-16 object-cover rounded-lg border">
           </div>
         </div>
-        <button type="submit" id="btnSaveProduct" class="w-full py-2.5 bg-amber-400 text-black font-black text-xs rounded-xl hover:bg-amber-300">Publicar Produto</button>
+        <button type="submit" id="btnSaveProduct" class="w-full py-2.5 bg-amber-400 text-black font-black text-xs rounded-xl hover:bg-amber-300">Publicar no Catálogo</button>
       </form>
     </div>
   </div>
@@ -522,7 +559,7 @@
       collection, 
       getDocs, 
       addDoc, 
-      deleteDoc,
+      deleteDoc, 
       updateDoc,
       serverTimestamp 
     } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
@@ -543,8 +580,14 @@
 
     const ADMIN_EMAIL = "gabi.almeidasaude@gmail.com";
 
+    // CATEGORIAS ATUALIZADAS (COM PISCINEIRO, ENFERMAGEM, ORGANIZER, DRONE E RECEPCIONISTA)
     const CATEGORIES_DATA = [
       { name: "Diaristas e Faxineiras", icon: "sparkles" },
+      { name: "Piscineiros", icon: "waves" },
+      { name: "Técnicos em Enfermagem", icon: "stethoscope" },
+      { name: "Personal Organizer", icon: "boxes" },
+      { name: "Operador de Drone", icon: "crosshair" },
+      { name: "Recepcionistas", icon: "user-check" },
       { name: "Eletricistas", icon: "zap" },
       { name: "Encanadores", icon: "wrench" },
       { name: "Pedreiros e Reformas", icon: "hammer" },
@@ -560,7 +603,7 @@
       { name: "Mecânicos e Autoelétrica", icon: "cog" },
       { name: "Chaveiros", icon: "key" },
       { name: "Babás e Cuidadoras", icon: "baby" },
-      { name: "Cuidadores de Idosos", icon: "user-check" },
+      { name: "Cuidadores de Idosos", icon: "heart-handshake" },
       { name: "Professores Particulares", icon: "book-open" },
       { name: "Fotógrafos e Filmagem", icon: "camera" },
       { name: "Designers e Redes Sociais", icon: "palette" },
@@ -585,8 +628,10 @@
     ];
 
     let currentUser = null;
+    let currentUserProfile = null;
     let allProfessionals = [];
     let allProducts = [];
+    let selectedProductCategory = "";
     let tempPortfolioImages = [];
     let tempAvatarImage = "";
     let tempProductImage = "";
@@ -616,11 +661,13 @@
       ['filterCategory', 'proCategory', 'prodCategory'].forEach(id => {
         const sel = document.getElementById(id);
         if (!sel) return;
+        sel.innerHTML = id.includes('filter') ? '<option value="">Todas as categorias</option>' : '';
         CATEGORIES.forEach(c => sel.appendChild(new Option(c, c)));
       });
       ['filterNeighborhood', 'proNeighborhood'].forEach(id => {
         const sel = document.getElementById(id);
         if (!sel) return;
+        sel.innerHTML = id.includes('filter') ? '<option value="">Todos os bairros</option>' : '';
         NEIGHBORHOODS.forEach(n => sel.appendChild(new Option(n, n)));
       });
     }
@@ -630,11 +677,21 @@
       return found ? found.icon : 'briefcase';
     }
 
-    // CARROSSEL DESLIZÁVEL NO MOBILE
+    // DISPARADOR PARA CATEGORIA DRONE
+    window.checkDroneCategoryOptions = function() {
+      const cat = document.getElementById('proCategory').value;
+      const droneBox = document.getElementById('droneTypeContainer');
+      if (cat === "Operador de Drone") {
+        droneBox.classList.remove('hidden');
+      } else {
+        droneBox.classList.add('hidden');
+      }
+    };
+
     function renderCategoryCards() {
       const container = document.getElementById('categoriesGrid');
       container.innerHTML = '';
-      CATEGORIES_DATA.slice(0, 12).forEach(cat => {
+      CATEGORIES_DATA.slice(0, 14).forEach(cat => {
         const div = document.createElement('div');
         div.onclick = () => {
           document.getElementById('filterCategory').value = cat.name;
@@ -674,30 +731,32 @@
           if (docSnap.exists() && docSnap.data().role === 'pro') {
             loadProData();
           }
+
+          // Busca perfil para ver a profissão e personalizar a tela inicial
+          const profSnap = await getDoc(doc(db, "profiles", user.uid));
+          if (profSnap.exists()) {
+            currentUserProfile = profSnap.data();
+            renderPersonalizedHomeProducts();
+          }
         } else {
           document.getElementById('authNavButtons').classList.remove('hidden');
           document.getElementById('userNavMenu').classList.add('hidden');
           document.getElementById('adminPostBtn').classList.add('hidden');
           document.getElementById('adminPostBtnBlog').classList.add('hidden');
+          currentUserProfile = null;
+          document.getElementById('proPersonalizedProductsSection').classList.add('hidden');
         }
         fetchProfessionals();
       });
     }
 
-    window.handleAvatarUpload = async function(e) {
-      const file = e.target.files[0];
-      if (!file) return;
-      showToast("Otimizando foto...");
-      tempAvatarImage = await compressImage(file, 400);
-      document.getElementById('proAvatarPreview').src = tempAvatarImage;
-      document.getElementById('proAvatarPreview').classList.remove('hidden');
-      document.getElementById('proAvatarDefaultIcon').classList.add('hidden');
-    };
-
+    // -------------------------------------------------------------
+    // CATÁLOGO DE AFILIADOS ESTILO SHOPEE
+    // -------------------------------------------------------------
     window.handleProductPhotoUpload = async function(e) {
       const file = e.target.files[0];
       if (!file) return;
-      showToast("Otimizando foto do produto...");
+      showToast("Comprimindo foto do produto...");
       tempProductImage = await compressImage(file, 800);
       document.getElementById('prodImagePreview').src = tempProductImage;
       document.getElementById('prodImagePreviewContainer').classList.remove('hidden');
@@ -746,48 +805,79 @@
         const snap = await getDocs(collection(db, "products"));
         allProducts = [];
         snap.forEach(d => allProducts.push({ id: d.id, ...d.data() }));
-        renderProducts();
+        renderProductFilterBar();
+        renderProductsShopeeStyle();
+        renderPersonalizedHomeProducts();
       } catch (err) {
         console.error(err);
       }
     }
 
-    function renderProducts() {
+    function renderProductFilterBar() {
+      const bar = document.getElementById('productFilterBar');
+      bar.innerHTML = '';
+
+      const catsInProducts = Array.from(new Set(allProducts.map(p => p.category)));
+      const filterList = ["Todas", ...catsInProducts];
+
+      filterList.forEach(cat => {
+        const isSelected = (!selectedProductCategory && cat === "Todas") || (selectedProductCategory === cat);
+        const btn = document.createElement('button');
+        btn.className = `px-3 py-1.5 rounded-full font-bold whitespace-nowrap transition shrink-0 ${isSelected ? 'bg-amber-400 text-black shadow' : 'bg-white dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-700'}`;
+        btn.textContent = cat;
+        btn.onclick = () => {
+          selectedProductCategory = (cat === "Todas") ? "" : cat;
+          renderProductFilterBar();
+          renderProductsShopeeStyle();
+        };
+        bar.appendChild(btn);
+      });
+    }
+
+    // VISUAL SHOPEE: 2 COLUNAS, FOTO QUADRADA, PREÇO EM LARANJA/ÂMBAR E BADGE
+    function renderProductsShopeeStyle() {
       const container = document.getElementById('productsGrid');
       container.innerHTML = '';
 
-      if (!allProducts.length) {
-        container.innerHTML = '<p class="col-span-full py-6 text-center text-xs text-neutral-400">Nenhum produto indicado no momento.</p>';
+      const filtered = selectedProductCategory 
+        ? allProducts.filter(p => p.category === selectedProductCategory)
+        : allProducts;
+
+      if (!filtered.length) {
+        container.innerHTML = '<p class="col-span-full py-8 text-center text-xs text-neutral-400">Nenhum produto cadastrado nesta categoria no momento.</p>';
         return;
       }
 
       const isAdmin = currentUser && currentUser.email === ADMIN_EMAIL;
 
-      allProducts.forEach(prod => {
+      filtered.forEach(prod => {
         const card = document.createElement('div');
-        card.className = "bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-3.5 shadow-sm flex flex-col justify-between";
+        card.className = "bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-xl overflow-hidden shadow-sm flex flex-col justify-between hover:shadow-md transition relative";
+        
         card.innerHTML = `
-          <div class="space-y-2.5">
-            <div class="relative w-full aspect-video rounded-xl overflow-hidden bg-neutral-100 dark:bg-neutral-800">
+          <div>
+            <div class="relative w-full aspect-square bg-neutral-100 dark:bg-neutral-800 overflow-hidden">
               <img src="${prod.image}" class="w-full h-full object-cover">
-              <span class="absolute top-1.5 left-1.5 bg-black/80 backdrop-blur-sm text-white text-[9px] font-black uppercase px-2 py-0.5 rounded-full">
+              <span class="absolute top-1 left-1 bg-black/80 backdrop-blur-sm text-white text-[8px] font-black uppercase px-1.5 py-0.5 rounded">
                 ${prod.category}
               </span>
-              ${isAdmin ? `<button onclick="deleteProduct('${prod.id}')" class="absolute top-1.5 right-1.5 bg-rose-600 text-white p-1 rounded-full"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg></button>` : ''}
+              ${isAdmin ? `<button onclick="deleteProduct('${prod.id}')" class="absolute top-1 right-1 bg-rose-600 text-white p-1 rounded-full shadow"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg></button>` : ''}
             </div>
 
-            <div>
-              <div class="flex items-start justify-between gap-1.5">
-                <h3 class="font-black text-xs md:text-sm leading-snug">${prod.title}</h3>
-                ${prod.price ? `<span class="text-xs font-extrabold text-amber-500 shrink-0">${prod.price}</span>` : ''}
+            <div class="p-2.5 space-y-1">
+              <h3 class="font-bold text-[11px] md:text-xs leading-snug line-clamp-2 text-neutral-900 dark:text-neutral-100">${prod.title}</h3>
+              <p class="text-[10px] text-neutral-500 line-clamp-1">${prod.description}</p>
+              
+              <div class="pt-1 flex items-baseline justify-between">
+                <span class="text-xs md:text-sm font-black text-[#EE4D2D]">${prod.price || 'Confira o preço'}</span>
+                <span class="text-[8px] font-bold px-1 py-0.5 bg-amber-100 text-amber-800 rounded">Indicado</span>
               </div>
-              <p class="text-[11px] text-neutral-600 dark:text-neutral-400 mt-1 line-clamp-2 leading-relaxed">${prod.description}</p>
             </div>
           </div>
 
-          <div class="mt-3 pt-2.5 border-t border-neutral-100 dark:border-neutral-800">
-            <a href="${prod.link}" target="_blank" rel="noopener noreferrer" class="w-full py-2 bg-amber-400 text-black font-black text-xs rounded-lg flex items-center justify-center gap-1 shadow">
-              <i data-lucide="external-link" class="w-3 h-3"></i> Ver Oferta
+          <div class="p-2 pt-0">
+            <a href="${prod.link}" target="_blank" rel="noopener noreferrer" class="w-full py-1.5 bg-[#EE4D2D] hover:bg-[#d73f21] text-white font-black text-[10px] md:text-xs rounded-lg flex items-center justify-center gap-1 shadow transition">
+              <i data-lucide="shopping-cart" class="w-3 h-3"></i> Comprar
             </a>
           </div>
         `;
@@ -796,8 +886,52 @@
       lucide.createIcons();
     }
 
+    // TELA INICIAL PERSONALIZADA: MOSTRA ITENS DA PROFISSÃO DO USUÁRIO
+    function renderPersonalizedHomeProducts() {
+      const section = document.getElementById('proPersonalizedProductsSection');
+      const grid = document.getElementById('proPersonalizedGrid');
+      const title = document.getElementById('proPersonalizedTitle');
+
+      if (!currentUserProfile || !currentUserProfile.category) {
+        section.classList.add('hidden');
+        return;
+      }
+
+      const userCat = currentUserProfile.category;
+      const matchedProducts = allProducts.filter(p => p.category.toLowerCase() === userCat.toLowerCase()).slice(0, 4);
+
+      if (!matchedProducts.length) {
+        section.classList.add('hidden');
+        return;
+      }
+
+      title.innerHTML = `<i data-lucide="sparkles" class="w-4 h-4 text-amber-500"></i> Ferramentas para ${userCat}`;
+      grid.innerHTML = '';
+
+      matchedProducts.forEach(prod => {
+        const item = document.createElement('div');
+        item.className = 'bg-white dark:bg-neutral-900 p-2 rounded-xl border border-neutral-200 dark:border-neutral-800 shadow-sm flex flex-col justify-between';
+        item.innerHTML = `
+          <div>
+            <div class="aspect-square rounded-lg overflow-hidden bg-neutral-100 mb-1.5">
+              <img src="${prod.image}" class="w-full h-full object-cover">
+            </div>
+            <h4 class="font-bold text-[10px] line-clamp-1">${prod.title}</h4>
+            <span class="text-[11px] font-black text-[#EE4D2D] block">${prod.price || ''}</span>
+          </div>
+          <a href="${prod.link}" target="_blank" class="mt-2 w-full py-1 bg-[#EE4D2D] text-white text-[9px] font-bold rounded flex items-center justify-center gap-1">
+            Ver Oferta
+          </a>
+        `;
+        grid.appendChild(item);
+      });
+
+      section.classList.remove('hidden');
+      lucide.createIcons();
+    }
+
     window.deleteProduct = async function(id) {
-      if (!confirm("Apagar produto?")) return;
+      if (!confirm("Apagar produto da loja?")) return;
       try {
         await deleteDoc(doc(db, "products", id));
         showToast("Produto removido.");
@@ -807,94 +941,18 @@
       }
     };
 
-    window.handleRegister = async function(e) {
-      e.preventDefault();
-      const name = document.getElementById('regName').value.trim();
-      const email = document.getElementById('regEmail').value.trim();
-      const password = document.getElementById('regPassword').value;
-      const role = document.querySelector('input[name="regRole"]:checked').value;
-
-      try {
-        const cred = await createUserWithEmailAndPassword(auth, email, password);
-        await updateProfile(cred.user, { displayName: name });
-        await setDoc(doc(db, "users", cred.user.uid), {
-          uid: cred.user.uid,
-          name, email, role,
-          createdAt: serverTimestamp()
-        });
-
-        if (role === 'pro') {
-          await setDoc(doc(db, "profiles", cred.user.uid), {
-            uid: cred.user.uid,
-            name, category: CATEGORIES[0], services: [], bio: "",
-            neighborhood: NEIGHBORHOODS[0], regions: "Uberaba",
-            priceType: "quote", priceValue: 0, hours: "Comercial",
-            allowWhatsapp: false, whatsappNumber: "", portfolio: [],
-            avatar: "", isSponsored: false, createdAt: serverTimestamp()
-          });
-        }
-        closeModal('authModal');
-        showToast("Conta criada com sucesso!");
-
-        if (currentViewingPro) {
-          openProfileModal(currentViewingPro.id);
-        }
-      } catch (err) {
-        showToast("Erro: " + err.message, "error");
-      }
+    // -------------------------------------------------------------
+    // PROFISSIONAIS E ANÚNCIOS
+    // -------------------------------------------------------------
+    window.handleAvatarUpload = async function(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+      showToast("Otimizando foto de perfil...");
+      tempAvatarImage = await compressImage(file, 400);
+      document.getElementById('proAvatarPreview').src = tempAvatarImage;
+      document.getElementById('proAvatarPreview').classList.remove('hidden');
+      document.getElementById('proAvatarDefaultIcon').classList.add('hidden');
     };
-
-    window.handleLogin = async function(e) {
-      e.preventDefault();
-      const email = document.getElementById('loginEmail').value.trim();
-      const password = document.getElementById('loginPassword').value;
-      try {
-        await signInWithEmailAndPassword(auth, email, password);
-        closeModal('authModal');
-        showToast("Conectado com sucesso!");
-
-        if (currentViewingPro) {
-          openProfileModal(currentViewingPro.id);
-        }
-      } catch (err) {
-        showToast("E-mail ou senha incorretos.", "error");
-      }
-    };
-
-    window.logoutUser = async function() {
-      await signOut(auth);
-      showToast("Você saiu da conta.");
-      showSection('home');
-    };
-
-    async function loadProData() {
-      const snap = await getDoc(doc(db, "profiles", currentUser.uid));
-      if (snap.exists()) {
-        const d = snap.data();
-        document.getElementById('proName').value = d.name || "";
-        document.getElementById('proCategory').value = d.category || CATEGORIES[0];
-        document.getElementById('proServices').value = (d.services || []).join(', ');
-        document.getElementById('proBio').value = d.bio || "";
-        document.getElementById('proPriceType').value = d.priceType || "quote";
-        document.getElementById('proPriceValue').value = d.priceValue || "";
-        document.getElementById('proNeighborhood').value = d.neighborhood || NEIGHBORHOODS[0];
-        document.getElementById('proRegions').value = d.regions || "";
-        document.getElementById('proHours').value = d.hours || "";
-        document.getElementById('proAllowWhatsapp').checked = (d.allowWhatsapp !== undefined) ? d.allowWhatsapp : true;
-        document.getElementById('proWhatsappNumber').value = d.whatsappNumber || "";
-        
-        tempAvatarImage = d.avatar || "";
-        if (tempAvatarImage) {
-          document.getElementById('proAvatarPreview').src = tempAvatarImage;
-          document.getElementById('proAvatarPreview').classList.remove('hidden');
-          document.getElementById('proAvatarDefaultIcon').classList.add('hidden');
-        }
-
-        tempPortfolioImages = d.portfolio || [];
-        renderPortfolioPreviews();
-        togglePriceValueField();
-      }
-    }
 
     window.handlePortfolioUpload = async function(e) {
       const files = Array.from(e.target.files);
@@ -976,6 +1034,14 @@
         return;
       }
 
+      let categorySelected = document.getElementById('proCategory').value;
+      
+      // Se for operador de drone, salva o tipo
+      if (categorySelected === "Operador de Drone") {
+        const droneType = document.querySelector('input[name="droneSpecialty"]:checked').value;
+        categorySelected = `Operador de Drone - ${droneType}`;
+      }
+
       const services = document.getElementById('proServices').value.split(',').map(s => s.trim()).filter(Boolean);
       if (!services.length) {
         showToast("Informe pelo menos um serviço.", "error");
@@ -984,7 +1050,7 @@
 
       const payload = {
         name: document.getElementById('proName').value.trim(),
-        category: document.getElementById('proCategory').value,
+        category: categorySelected,
         services,
         bio: document.getElementById('proBio').value.trim(),
         priceType: document.getElementById('proPriceType').value,
@@ -1002,7 +1068,9 @@
       try {
         await setDoc(doc(db, "profiles", currentUser.uid), payload, { merge: true });
         showToast("Anúncio salvo com sucesso!");
+        currentUserProfile = payload;
         fetchProfessionals();
+        renderPersonalizedHomeProducts();
       } catch (err) {
         showToast("Erro ao salvar perfil.", "error");
       }
@@ -1042,12 +1110,11 @@
       lucide.createIcons();
     }
 
-    // CARD MODERNO E COMPACTO PARA O CELULAR
     function createProCard(p) {
       const card = document.createElement('div');
       card.className = "bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-3.5 shadow-sm flex flex-col justify-between";
       const price = p.priceType === 'fixed' && p.priceValue > 0 ? `R$ ${p.priceValue.toFixed(2)}` : 'Sob Orçamento';
-      const iconName = getCategoryIcon(p.category);
+      const iconName = getCategoryIcon(p.category.split(' - ')[0]);
 
       const avatarHTML = p.avatar 
         ? `<img src="${p.avatar}" class="w-10 h-10 rounded-full object-cover shrink-0 border border-neutral-200 dark:border-neutral-700">`
@@ -1062,12 +1129,12 @@
               ${avatarHTML}
               <div>
                 <h3 class="font-black text-xs md:text-sm leading-tight">${p.name || 'Profissional'}</h3>
-                <span class="text-[11px] font-bold text-neutral-500">${p.category}</span>
+                <span class="text-[10px] font-bold text-neutral-500">${p.category}</span>
               </div>
             </div>
             ${p.isSponsored ? `<span class="text-[9px] font-black px-1.5 py-0.5 rounded bg-amber-400 text-black flex items-center gap-0.5"><i data-lucide="crown" class="w-2.5 h-2.5"></i> TOP</span>` : ''}
           </div>
-          <p class="text-[11px] text-neutral-600 dark:text-neutral-400 line-clamp-2 leading-relaxed">${p.bio || 'Sem descrição informada.'}</p>
+          <p class="text-[11px] text-neutral-600 dark:text-neutral-400 line-clamp-2 leading-relaxed">${p.bio || 'Sem descrição.'}</p>
         </div>
         <div class="mt-3 pt-2.5 border-t border-neutral-100 dark:border-neutral-800 flex items-center justify-between">
           <div>
@@ -1087,7 +1154,7 @@
 
       const filtered = allProfessionals.filter(p => {
         const matchS = !s || (p.name && p.name.toLowerCase().includes(s)) || (p.category && p.category.toLowerCase().includes(s)) || (p.services && p.services.some(svc => svc.toLowerCase().includes(s)));
-        return matchS && (!cat || p.category === cat) && (!n || p.neighborhood === n);
+        return matchS && (!cat || p.category.includes(cat)) && (!n || p.neighborhood === n);
       });
 
       const grid = document.getElementById('resultsGrid');
@@ -1110,7 +1177,7 @@
       document.getElementById('modalProHours').textContent = p.hours || "A combinar";
 
       const aCont = document.getElementById('modalProAvatarContainer');
-      const iconName = getCategoryIcon(p.category);
+      const iconName = getCategoryIcon(p.category.split(' - ')[0]);
       if (p.avatar) {
         aCont.innerHTML = `<img src="${p.avatar}" class="w-full h-full object-cover">`;
       } else {
@@ -1198,9 +1265,46 @@
         openProfileModal(currentViewingPro.id);
         fetchProfessionals();
       } catch (err) {
-        showToast("Erro ao alterar: " + err.message, "error");
+        showToast("Erro: " + err.message, "error");
       }
     };
+
+    async function loadProData() {
+      const snap = await getDoc(doc(db, "profiles", currentUser.uid));
+      if (snap.exists()) {
+        const d = snap.data();
+        document.getElementById('proName').value = d.name || "";
+        
+        // Trata a categoria se for drone
+        if (d.category && d.category.includes("Operador de Drone")) {
+          document.getElementById('proCategory').value = "Operador de Drone";
+          checkDroneCategoryOptions();
+        } else {
+          document.getElementById('proCategory').value = d.category || CATEGORIES[0];
+        }
+
+        document.getElementById('proServices').value = (d.services || []).join(', ');
+        document.getElementById('proBio').value = d.bio || "";
+        document.getElementById('proPriceType').value = d.priceType || "quote";
+        document.getElementById('proPriceValue').value = d.priceValue || "";
+        document.getElementById('proNeighborhood').value = d.neighborhood || NEIGHBORHOODS[0];
+        document.getElementById('proRegions').value = d.regions || "";
+        document.getElementById('proHours').value = d.hours || "";
+        document.getElementById('proAllowWhatsapp').checked = (d.allowWhatsapp !== undefined) ? d.allowWhatsapp : true;
+        document.getElementById('proWhatsappNumber').value = d.whatsappNumber || "";
+        
+        tempAvatarImage = d.avatar || "";
+        if (tempAvatarImage) {
+          document.getElementById('proAvatarPreview').src = tempAvatarImage;
+          document.getElementById('proAvatarPreview').classList.remove('hidden');
+          document.getElementById('proAvatarDefaultIcon').classList.add('hidden');
+        }
+
+        tempPortfolioImages = d.portfolio || [];
+        renderPortfolioPreviews();
+        togglePriceValueField();
+      }
+    }
 
     window.submitReport = async function(e) {
       e.preventDefault();
@@ -1212,6 +1316,60 @@
       });
       showToast("Denúncia recebida.");
       closeModal('reportModal');
+    };
+
+    window.handleRegister = async function(e) {
+      e.preventDefault();
+      const name = document.getElementById('regName').value.trim();
+      const email = document.getElementById('regEmail').value.trim();
+      const password = document.getElementById('regPassword').value;
+      const role = document.querySelector('input[name="regRole"]:checked').value;
+
+      try {
+        const cred = await createUserWithEmailAndPassword(auth, email, password);
+        await updateProfile(cred.user, { displayName: name });
+        await setDoc(doc(db, "users", cred.user.uid), {
+          uid: cred.user.uid,
+          name, email, role,
+          createdAt: serverTimestamp()
+        });
+
+        if (role === 'pro') {
+          await setDoc(doc(db, "profiles", cred.user.uid), {
+            uid: cred.user.uid,
+            name, category: CATEGORIES[0], services: [], bio: "",
+            neighborhood: NEIGHBORHOODS[0], regions: "Uberaba",
+            priceType: "quote", priceValue: 0, hours: "Comercial",
+            allowWhatsapp: false, whatsappNumber: "", portfolio: [],
+            avatar: "", isSponsored: false, createdAt: serverTimestamp()
+          });
+        }
+        closeModal('authModal');
+        showToast("Conta criada com sucesso!");
+        if (currentViewingPro) openProfileModal(currentViewingPro.id);
+      } catch (err) {
+        showToast("Erro: " + err.message, "error");
+      }
+    };
+
+    window.handleLogin = async function(e) {
+      e.preventDefault();
+      const email = document.getElementById('loginEmail').value.trim();
+      const password = document.getElementById('loginPassword').value;
+      try {
+        await signInWithEmailAndPassword(auth, email, password);
+        closeModal('authModal');
+        showToast("Conectado com sucesso!");
+        if (currentViewingPro) openProfileModal(currentViewingPro.id);
+      } catch (err) {
+        showToast("E-mail ou senha incorretos.", "error");
+      }
+    };
+
+    window.logoutUser = async function() {
+      await signOut(auth);
+      showToast("Você saiu da conta.");
+      showSection('home');
     };
 
     window.showSection = function(id) {
