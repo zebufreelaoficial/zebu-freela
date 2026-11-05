@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <title>Zebu Freela | Uberaba</title>
+  <title>Zebu Freela | Conectando pessoas e oportunidades em Uberaba</title>
   <link rel="manifest" href="/manifest.json">
-  <meta name="theme-color" content="#000000">
+  <meta name="theme-color" content="#0B0E09">
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -16,11 +16,14 @@
         extend: {
           colors: {
             zebu: {
-              green: '#000000',
-              cream: '#FFFFFF',
-              brown: '#18181B',
-              mustard: '#EE4D2D', // Laranja Shopee para conversão nos produtos
-              amber: '#C69214'    // Dourado do app
+              lime: '#76E000',      // Verde neon da logo
+              limeHover: '#65C400',
+              limeSoft: '#EAFFCE',  // Fundo suave de destaque
+              dark: '#0B0E09',      // Preto carvão nobre
+              darkCard: '#131811',
+              graySoft: '#F6F8F5',
+              grayBorder: '#E5E9E2',
+              shopee: '#EE4D2D'     // Laranja para preços de produtos
             }
           }
         }
@@ -36,43 +39,52 @@
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
   </style>
 </head>
-<body class="bg-neutral-100 text-neutral-900 dark:bg-black dark:text-neutral-100 min-h-screen flex flex-col font-sans transition-colors duration-200 pb-20 md:pb-6">
+<body class="bg-[#F8FAF6] text-neutral-900 dark:bg-[#070A06] dark:text-neutral-100 min-h-screen flex flex-col font-sans transition-colors duration-200 pb-20 md:pb-6">
 
-  <!-- ================= NAVBAR SUPERIOR ================= -->
-  <header class="sticky top-0 z-40 bg-black text-white shadow-sm border-b border-neutral-800">
-    <div class="max-w-7xl mx-auto px-4 h-14 md:h-16 flex items-center justify-between">
+  <!-- ================= TOPBAR (IDÊNTICA À IMAGEM) ================= -->
+  <header class="sticky top-0 z-40 bg-zebu-dark text-white shadow-md border-b border-white/10">
+    <div class="max-w-6xl mx-auto px-4 h-15 md:h-16 flex items-center justify-between">
+      
+      <!-- LOGO ZEBU FREELA UBERABA -->
       <a href="#" onclick="showSection('home')" class="flex items-center gap-2">
-        <img src="WhatsApp Image 2026-10-23 at 18.27.58.jpeg" alt="Zebu Freela" class="h-9 md:h-12 w-auto object-contain bg-white px-2 py-1 rounded">
+        <img src="WhatsApp Image 2026-10-23 at 18.27.58.jpeg" alt="Zebu Freela Uberaba" class="h-9 md:h-11 w-auto object-contain">
       </a>
 
-      <!-- Menu Computador / Tablet -->
-      <nav class="hidden md:flex items-center gap-5 text-xs font-bold uppercase tracking-wider">
-        <button onclick="showSection('home')" class="hover:text-amber-400 transition">Início</button>
-        <button onclick="goToExplore()" class="hover:text-amber-400 transition">Buscar Profissionais</button>
-        <button onclick="showSection('blog')" class="text-amber-400 flex items-center gap-1"><i data-lucide="shopping-bag" class="w-3.5 h-3.5"></i> Loja & Ferramentas</button>
+      <!-- MENU SUPERIOR DESKTOP/TABLET COM INDICADOR VERDE LIME -->
+      <nav class="hidden md:flex items-center gap-6 text-xs font-bold uppercase tracking-wider">
+        <button onclick="showSection('home')" class="text-zebu-lime flex items-center gap-1.5 border-b-2 border-zebu-lime pb-1">
+          <i data-lucide="home" class="w-4 h-4"></i> Início
+        </button>
+        <button onclick="goToExplore()" class="hover:text-zebu-lime transition flex items-center gap-1.5 pb-1">
+          <i data-lucide="layout-grid" class="w-4 h-4"></i> Categorias
+        </button>
+        <button onclick="showSection('jobs')" class="hover:text-zebu-lime transition flex items-center gap-1.5 pb-1">
+          <i data-lucide="briefcase" class="w-4 h-4"></i> Oportunidades
+        </button>
+        <button onclick="showSection('blog')" class="hover:text-zebu-lime transition flex items-center gap-1.5 pb-1">
+          <i data-lucide="tag" class="w-4 h-4"></i> Ofertas
+        </button>
       </nav>
 
-      <div class="flex items-center gap-1.5 md:gap-2">
-        <button id="themeToggle" class="p-2 rounded-full hover:bg-neutral-800 transition" title="Alternar tema">
-          <i data-lucide="moon" class="w-4 h-4 md:w-5 md:h-5 hidden dark:block text-white"></i>
-          <i data-lucide="sun" class="w-4 h-4 md:w-5 md:h-5 block dark:hidden text-white"></i>
+      <!-- AÇÕES DO TOPO -->
+      <div class="flex items-center gap-2">
+        <button id="themeToggle" class="p-2 rounded-full hover:bg-white/10 transition" title="Alternar tema">
+          <i data-lucide="moon" class="w-4 h-4 hidden dark:block text-zebu-lime"></i>
+          <i data-lucide="sun" class="w-4 h-4 block dark:hidden text-zebu-lime"></i>
         </button>
 
         <div id="authNavButtons" class="flex items-center gap-1.5">
-          <button onclick="openModal('authModal', 'login')" class="px-2.5 py-1 md:px-3 md:py-1.5 rounded-lg text-xs md:text-sm font-semibold hover:bg-neutral-800 transition text-white">
-            Entrar
-          </button>
-          <button onclick="openModal('authModal', 'register')" class="px-3 py-1 md:px-4 md:py-1.5 bg-white text-black hover:bg-neutral-200 font-extrabold text-xs md:text-sm rounded-lg transition shadow">
-            Cadastrar
+          <button onclick="openModal('authModal', 'login')" class="px-3 py-1.5 rounded-full border border-white/20 text-xs font-bold hover:bg-white/10 transition text-white flex items-center gap-1.5">
+            <i data-lucide="user" class="w-3.5 h-3.5"></i> Entrar
           </button>
         </div>
 
         <div id="userNavMenu" class="hidden relative flex items-center gap-1.5">
-          <button id="adminPostBtn" onclick="openModal('adminProductModal')" class="hidden items-center gap-1 text-[11px] md:text-xs bg-amber-400 text-black px-2.5 py-1 rounded-md font-black hover:bg-amber-300">
-            <i data-lucide="plus-circle" class="w-3.5 h-3.5"></i> + Produto
+          <button id="adminPostBtn" onclick="openModal('adminProductModal')" class="hidden items-center gap-1 text-[11px] bg-zebu-lime text-black px-2.5 py-1 rounded-full font-black hover:bg-zebu-limeHover shadow-sm">
+            <i data-lucide="plus-circle" class="w-3 h-3"></i> + Oferta
           </button>
-          <button onclick="logoutUser()" class="p-2 rounded-full hover:bg-neutral-800 transition text-neutral-400 hover:text-white" title="Sair">
-            <i data-lucide="log-out" class="w-4 h-4 md:w-5 md:h-5"></i>
+          <button onclick="logoutUser()" class="p-2 rounded-full hover:bg-white/10 transition text-neutral-400 hover:text-white" title="Sair da conta">
+            <i data-lucide="log-out" class="w-4 h-4"></i>
           </button>
         </div>
       </div>
@@ -80,139 +92,208 @@
   </header>
 
   <!-- NOTIFICAÇÃO TOAST -->
-  <div id="toast" class="fixed top-4 left-4 right-4 md:left-auto md:right-4 z-50 transform -translate-y-24 opacity-0 transition-all duration-300 max-w-sm w-full mx-auto bg-black text-white p-3.5 rounded-xl shadow-2xl flex items-start gap-3 border border-neutral-700">
-    <i id="toastIcon" data-lucide="info" class="w-5 h-5 shrink-0 text-white mt-0.5"></i>
-    <p id="toastMessage" class="text-xs md:text-sm font-medium leading-snug"></p>
+  <div id="toast" class="fixed top-4 left-4 right-4 md:left-auto md:right-4 z-50 transform -translate-y-24 opacity-0 transition-all duration-300 max-w-sm w-full mx-auto bg-zebu-dark text-white p-3.5 rounded-2xl shadow-2xl flex items-start gap-3 border border-zebu-lime/40">
+    <i id="toastIcon" data-lucide="info" class="w-5 h-5 shrink-0 text-zebu-lime mt-0.5"></i>
+    <p id="toastMessage" class="text-xs font-medium leading-snug"></p>
   </div>
 
   <!-- CORPO PRINCIPAL -->
-  <main class="flex-1 max-w-7xl w-full mx-auto px-3 py-4 md:p-6 space-y-6">
+  <main class="flex-1 max-w-6xl w-full mx-auto px-3.5 py-4 md:py-6 space-y-6 md:space-y-8">
 
     <!-- SEÇÃO HOME -->
-    <section id="homeSection" class="space-y-6">
+    <section id="homeSection" class="space-y-6 md:space-y-8">
       
-      <!-- HERO PRINCIPAL -->
-      <div class="relative bg-black text-white rounded-2xl md:rounded-3xl p-5 md:p-12 overflow-hidden shadow-xl border border-neutral-800">
-        <div class="max-w-2xl space-y-3 md:space-y-4">
-          <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] md:text-xs font-extrabold bg-neutral-900 text-amber-400 border border-neutral-700 uppercase tracking-wider">
-            <i data-lucide="map-pin" class="w-3 h-3"></i> Uberaba - MG
-          </span>
-          <h1 class="text-2xl md:text-5xl font-black tracking-tight leading-tight">Qual serviço você precisa hoje?</h1>
-          <p class="text-neutral-400 text-xs md:text-base leading-relaxed">Contrate autônomos de confiança perto de você ou anuncie seu trabalho em Uberaba.</p>
+      <!-- HERO COM AS CURVAS MODERNAS EM VERDE LIME (IDÊNTICO À FOTO) -->
+      <div class="relative bg-white dark:bg-zebu-darkCard rounded-3xl p-5 md:p-8 overflow-hidden shadow-sm border border-zebu-grayBorder dark:border-neutral-800">
+        <!-- Manchas verdes neon ao fundo -->
+        <div class="absolute -top-12 -right-12 w-56 h-56 bg-zebu-lime/25 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-16 -left-16 w-64 h-64 bg-zebu-lime/15 rounded-full blur-3xl pointer-events-none"></div>
 
-          <div class="pt-1 flex flex-col sm:flex-row gap-2">
-            <div class="relative flex-1">
-              <i data-lucide="search" class="w-4 h-4 absolute left-3.5 top-3 text-neutral-400"></i>
-              <input type="text" id="homeSearchInput" placeholder="Ex: Diarista, Piscineiro, Enfermagem, Drone..." 
-                class="w-full pl-10 pr-3 py-2.5 rounded-xl bg-neutral-900 border border-neutral-700 text-white placeholder-neutral-500 focus:outline-none focus:ring-1 focus:ring-white text-xs md:text-sm"
-                onkeydown="if(event.key === 'Enter') handleQuickSearch()">
+        <div class="relative z-10 max-w-xl space-y-3">
+          <h1 class="text-2xl md:text-4xl font-black tracking-tight leading-tight">
+            Qual serviço <br class="hidden sm:inline">
+            você precisa <span class="text-zebu-limeHover dark:text-zebu-lime underline decoration-zebu-lime decoration-4 underline-offset-4">hoje?</span>
+          </h1>
+          <p class="text-neutral-500 dark:text-neutral-400 text-xs md:text-sm leading-relaxed">
+            Encontre profissionais, anuncie seu trabalho e descubra ofertas em Uberaba.
+          </p>
+
+          <!-- BARRA DE BUSCA EM PÍLULA (IGUAL À IMAGEM) -->
+          <div class="pt-2 flex items-center bg-white dark:bg-black rounded-full border border-neutral-300 dark:border-neutral-700 shadow-sm p-1">
+            <i data-lucide="search" class="w-4 h-4 ml-3 text-neutral-400 shrink-0"></i>
+            <input type="text" id="homeSearchInput" placeholder="Buscar serviços, profissionais ou produtos..." 
+              class="w-full px-2.5 py-1.5 bg-transparent text-xs md:text-sm focus:outline-none placeholder-neutral-400"
+              onkeydown="if(event.key === 'Enter') handleQuickSearch()">
+            <button onclick="handleQuickSearch()" class="px-5 py-2 bg-zebu-lime hover:bg-zebu-limeHover text-black font-black text-xs rounded-full transition shadow-sm flex items-center gap-1 shrink-0">
+              <i data-lucide="search" class="w-3.5 h-3.5"></i> Buscar
+            </button>
+          </div>
+
+          <!-- 2 CARDS GRANDES DE ENTRADA (PROFISSIONAIS & LOJA) -->
+          <div class="pt-3 grid grid-cols-2 gap-2.5">
+            <div onclick="goToExplore()" class="cursor-pointer bg-zebu-graySoft dark:bg-neutral-900 border border-zebu-grayBorder dark:border-neutral-800 p-3 rounded-2xl flex items-center justify-between hover:border-zebu-lime transition shadow-sm">
+              <div class="flex items-center gap-2.5">
+                <div class="w-9 h-9 rounded-xl bg-zebu-limeSoft text-black flex items-center justify-center font-bold">
+                  <i data-lucide="users" class="w-4 h-4"></i>
+                </div>
+                <div>
+                  <h4 class="font-black text-xs leading-none">Encontrar profissionais</h4>
+                  <span class="text-[9px] text-neutral-500 block mt-0.5">Contrate com facilidade</span>
+                </div>
+              </div>
+              <i data-lucide="chevron-right" class="w-4 h-4 text-neutral-400"></i>
             </div>
-            <button onclick="handleQuickSearch()" class="px-5 py-2.5 bg-white text-black font-extrabold text-xs md:text-sm rounded-xl hover:bg-neutral-200 transition shadow">
-              Buscar
-            </button>
+
+            <div onclick="showSection('blog')" class="cursor-pointer bg-zebu-graySoft dark:bg-neutral-900 border border-zebu-grayBorder dark:border-neutral-800 p-3 rounded-2xl flex items-center justify-between hover:border-zebu-lime transition shadow-sm">
+              <div class="flex items-center gap-2.5">
+                <div class="w-9 h-9 rounded-xl bg-zebu-limeSoft text-black flex items-center justify-center font-bold">
+                  <i data-lucide="shopping-bag" class="w-4 h-4"></i>
+                </div>
+                <div>
+                  <h4 class="font-black text-xs leading-none">Loja de ofertas</h4>
+                  <span class="text-[9px] text-neutral-500 block mt-0.5">Achadinhos incríveis</span>
+                </div>
+              </div>
+              <i data-lucide="chevron-right" class="w-4 h-4 text-neutral-400"></i>
+            </div>
           </div>
 
-          <div class="pt-2 flex flex-wrap gap-2">
-            <button onclick="goToExplore()" class="flex-1 sm:flex-none px-3.5 py-2 bg-white text-black font-bold rounded-xl text-xs hover:bg-neutral-200 transition flex items-center justify-center gap-1.5 shadow">
-              <i data-lucide="users" class="w-3.5 h-3.5"></i> Encontrar profissionais
-            </button>
-            <button onclick="showSection('blog')" class="flex-1 sm:flex-none px-3.5 py-2 bg-amber-400 text-black font-extrabold rounded-xl text-xs hover:bg-amber-300 transition flex items-center justify-center gap-1.5 shadow">
-              <i data-lucide="shopping-bag" class="w-3.5 h-3.5"></i> Loja de Ferramentas
-            </button>
-            <button onclick="handleAdvertiseClick()" class="flex-1 sm:flex-none px-3.5 py-2 bg-neutral-900 text-white border border-neutral-700 font-bold rounded-xl text-xs hover:bg-neutral-800 transition flex items-center justify-center gap-1.5">
-              <i data-lucide="plus-circle" class="w-3.5 h-3.5"></i> Anunciar grátis
-            </button>
-          </div>
+          <!-- BOTÃO VERDE NEON LARGO: ANUNCIAR GRÁTIS -->
+          <button onclick="handleAdvertiseClick()" class="w-full py-3 bg-zebu-lime hover:bg-zebu-limeHover text-black font-black text-xs md:text-sm rounded-2xl transition shadow flex items-center justify-center gap-2">
+            <i data-lucide="megaphone" class="w-4 h-4"></i> Anunciar meus serviços grátis <i data-lucide="chevron-right" class="w-4 h-4"></i>
+          </button>
         </div>
       </div>
 
-      <!-- BLOCO PERSONALIZADO: PRODUTOS PARA A SUA PROFISSÃO (APARECE SE O PROFISSIONAL ESTIVER LOGADO) -->
-      <div id="proPersonalizedProductsSection" class="hidden space-y-3 bg-amber-50 dark:bg-neutral-900/60 p-4 rounded-2xl border border-amber-300 dark:border-neutral-800">
-        <div class="flex items-center justify-between">
-          <div>
-            <span class="text-[10px] font-black uppercase text-amber-600 dark:text-amber-400 tracking-wider">Especial para você</span>
-            <h2 id="proPersonalizedTitle" class="text-sm md:text-base font-black flex items-center gap-1.5">
-              <i data-lucide="sparkles" class="w-4 h-4 text-amber-500"></i> Ferramentas para sua Área
-            </h2>
-          </div>
-          <button onclick="showSection('blog')" class="text-xs font-bold underline hover:opacity-75">Ver catálogo</button>
-        </div>
-        <div id="proPersonalizedGrid" class="grid grid-cols-2 sm:grid-cols-4 gap-2.5"></div>
-      </div>
-
-      <!-- CATEGORIAS (CARROSSEL MOBILE) -->
+      <!-- SEÇÃO: CATEGORIAS (CARROSSEL COM BORDA E ÍCONES MINIMALISTAS) -->
       <div class="space-y-3">
         <div class="flex items-center justify-between">
-          <h2 class="text-base md:text-xl font-black flex items-center gap-1.5">
-            <i data-lucide="layout-grid" class="w-4 h-4 md:w-5 md:h-5"></i> Categorias
+          <h2 class="text-base font-black flex items-center gap-2">
+            <span class="w-4 h-1 bg-zebu-lime rounded-full"></span> Categorias
           </h2>
-          <button onclick="goToExplore()" class="text-xs font-bold underline hover:opacity-75">Ver todas</button>
+          <button onclick="goToExplore()" class="text-xs font-bold hover:underline flex items-center gap-1">Ver todas <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></button>
         </div>
         <div id="categoriesGrid" class="flex md:grid md:grid-cols-6 gap-2.5 overflow-x-auto no-scrollbar py-1"></div>
       </div>
 
-      <!-- DESTAQUES -->
-      <div class="space-y-3">
+      <!-- SEÇÃO: OPORTUNIDADES & BIKOS EM UBERABA (NOVO!) -->
+      <div class="space-y-3 bg-white dark:bg-zebu-darkCard p-4 md:p-5 rounded-3xl border border-zebu-grayBorder dark:border-neutral-800 shadow-sm">
         <div class="flex items-center justify-between">
-          <h2 class="text-base md:text-xl font-black flex items-center gap-1.5">
-            <i data-lucide="crown" class="w-4 h-4 md:w-5 md:h-5 text-amber-500"></i> Destaques
-          </h2>
-          <span class="text-[10px] md:text-xs text-neutral-400">Patrocinados da semana</span>
+          <div>
+            <span class="text-[10px] font-black uppercase text-zebu-limeHover dark:text-zebu-lime tracking-wider block">Mural de Vagas</span>
+            <h2 class="text-base md:text-lg font-black flex items-center gap-2">
+              <i data-lucide="briefcase" class="w-4 h-4 text-zebu-limeHover dark:text-zebu-lime"></i> Oportunidades em Aberto
+            </h2>
+          </div>
+          <button onclick="openModal('postJobModal')" class="px-3 py-1.5 bg-zebu-dark text-zebu-lime hover:brightness-110 font-black text-xs rounded-xl shadow-sm flex items-center gap-1">
+            <i data-lucide="plus-circle" class="w-3.5 h-3.5"></i> Publicar Vaga
+          </button>
         </div>
-        <div id="sponsoredList" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4"></div>
+
+        <p class="text-[11px] text-neutral-500">Clientes e empresas precisando de profissionais em Uberaba agora:</p>
+        <div id="homeJobsList" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3"></div>
       </div>
 
-      <!-- RECENTES -->
-      <div class="space-y-3">
-        <h2 class="text-base md:text-xl font-black flex items-center gap-1.5">
-          <i data-lucide="clock" class="w-4 h-4 md:w-5 md:h-5"></i> Recentes em Uberaba
-        </h2>
-        <div id="recentList" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4"></div>
+      <!-- SEÇÃO: PROFISSIONAIS EM DESTAQUE (CARD PRETO COM BORDA LIME IGUAL À FOTO) -->
+      <div class="space-y-3 bg-zebu-dark text-white p-4 md:p-6 rounded-3xl border border-neutral-800 shadow-md">
+        <div class="flex items-center justify-between">
+          <div>
+            <h2 class="text-base md:text-lg font-black flex items-center gap-2">
+              <span class="w-4 h-1 bg-zebu-lime rounded-full"></span> Profissionais em destaque
+            </h2>
+            <p class="text-[10px] md:text-xs text-neutral-400">Os melhores profissionais de Uberaba, prontos para te atender!</p>
+          </div>
+          <button onclick="goToExplore()" class="text-xs font-bold px-3 py-1 rounded-full border border-neutral-700 hover:border-zebu-lime transition flex items-center gap-1">Ver todos <i data-lucide="arrow-right" class="w-3 h-3"></i></button>
+        </div>
+        <div id="sponsoredList" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3"></div>
+      </div>
+
+      <!-- SEÇÃO: OFERTAS DA SEMANA (ESTILO SHOPEE COM SELO VERDE DE DESCONTO) -->
+      <div class="space-y-3 bg-white dark:bg-zebu-darkCard p-4 md:p-5 rounded-3xl border border-zebu-grayBorder dark:border-neutral-800 shadow-sm">
+        <div class="flex items-center justify-between">
+          <div>
+            <h2 class="text-base font-black flex items-center gap-2">
+              <span class="w-4 h-1 bg-zebu-lime rounded-full"></span> Ofertas da semana
+            </h2>
+            <p class="text-[10px] md:text-xs text-neutral-500">Produtos incríveis com os melhores preços!</p>
+          </div>
+          <button onclick="showSection('blog')" class="text-xs font-bold hover:underline flex items-center gap-1">Ver todas as ofertas <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></button>
+        </div>
+        <div id="homeProductsRow" class="grid grid-cols-2 sm:grid-cols-4 gap-2.5"></div>
+      </div>
+
+      <!-- BANNER RURAL: OPORTUNIDADES NO AGRO (IGUAL AO RODAPÉ DA FOTO) -->
+      <div class="relative bg-zebu-dark text-white rounded-3xl p-4 md:p-6 overflow-hidden border border-neutral-800 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 shadow-sm">
+        <div class="flex items-center gap-3 z-10">
+          <div class="w-12 h-12 rounded-2xl bg-zebu-lime text-black flex items-center justify-center shrink-0">
+            <i data-lucide="tractor" class="w-6 h-6"></i>
+          </div>
+          <div>
+            <h3 class="font-black text-sm md:text-base leading-tight">Oportunidades no Agro</h3>
+            <p class="text-neutral-400 text-xs">Serviços e soluções para o campo, fazendas e chácaras em Uberaba e região.</p>
+          </div>
+        </div>
+        <button onclick="filterAgroCategory()" class="z-10 px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold text-xs rounded-xl transition flex items-center gap-1.5 shrink-0">
+          Explorar oportunidades <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+        </button>
       </div>
     </section>
 
-    <!-- SEÇÃO: LOJA / PRODUTOS (LAYOUT ESTILO SHOPEE) -->
-    <section id="blogSection" class="hidden space-y-4">
-      <div class="bg-black text-white p-4 md:p-6 rounded-2xl border border-neutral-800 flex flex-col md:flex-row justify-between items-start md:items-center gap-3">
+    <!-- SEÇÃO: MURAL COMPLETO DE OPORTUNIDADES (CLIENTES CONTRATANDO) -->
+    <section id="jobsSection" class="hidden space-y-4">
+      <div class="bg-zebu-dark text-white p-5 md:p-6 rounded-3xl border border-neutral-800 flex flex-col md:flex-row justify-between items-start md:items-center gap-3">
         <div>
-          <span class="text-[10px] font-black uppercase text-amber-400 tracking-widest block">Loja & Dicas Oficiais</span>
-          <h2 class="text-lg md:text-2xl font-black flex items-center gap-2">
-            <i data-lucide="shopping-bag" class="w-5 h-5 text-amber-400"></i> Produtos & Ferramentas
+          <span class="text-[10px] font-black uppercase text-zebu-lime tracking-widest block">Mural de Vagas & Serviços</span>
+          <h2 class="text-xl md:text-2xl font-black flex items-center gap-2">
+            <i data-lucide="briefcase" class="w-5 h-5 text-zebu-lime"></i> Oportunidades em Uberaba
           </h2>
-          <p class="text-xs text-neutral-400 mt-0.5">Itens recomendados com o melhor custo-benefício para profissionais e clientes em Uberaba.</p>
+          <p class="text-xs text-neutral-400 mt-0.5">Encontre pessoas que estão precisando de serviços agora ou publique a sua necessidade.</p>
         </div>
-        <button id="adminPostBtnBlog" onclick="openModal('adminProductModal')" class="hidden px-3.5 py-2 bg-amber-400 text-black font-extrabold text-xs rounded-xl hover:bg-amber-300 transition shadow">
-          + Cadastrar Produto
+        <button onclick="openModal('postJobModal')" class="px-4 py-2 bg-zebu-lime hover:bg-zebu-limeHover text-black font-black text-xs rounded-xl shadow transition">
+          + Publicar Nova Vaga
         </button>
       </div>
 
-      <!-- FILTRO DE CATEGORIAS ESTILO SHOPEE (CARROSSEL HORIZONTAL) -->
-      <div id="productFilterBar" class="flex gap-1.5 overflow-x-auto no-scrollbar py-1 text-xs">
-        <!-- Renderizado dinamicamente com botões estilo abas -->
-      </div>
-
-      <!-- GRADE DE PRODUTOS SHOPEE (2 COLUNAS NO CELULAR) -->
-      <div id="productsGrid" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-2 md:gap-3"></div>
+      <div id="allJobsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3"></div>
     </section>
 
-    <!-- EXPLORAR PROFISSIONAIS -->
+    <!-- SEÇÃO: LOJA / ACHADINHOS (ESTILO SHOPEE) -->
+    <section id="blogSection" class="hidden space-y-4">
+      <div class="bg-zebu-dark text-white p-5 md:p-6 rounded-3xl border border-neutral-800 flex flex-col md:flex-row justify-between items-start md:items-center gap-3">
+        <div>
+          <span class="text-[10px] font-black uppercase text-zebu-lime tracking-widest block">Achadinhos do Zebu</span>
+          <h2 class="text-xl md:text-2xl font-black flex items-center gap-2">
+            <i data-lucide="shopping-bag" class="w-5 h-5 text-zebu-lime"></i> Loja de Ofertas
+          </h2>
+          <p class="text-xs text-neutral-400 mt-0.5">Ferramentas e produtos recomendados com os melhores descontos da internet.</p>
+        </div>
+        <button id="adminPostBtnBlog" onclick="openModal('adminProductModal')" class="hidden px-4 py-2 bg-zebu-lime text-black font-black text-xs rounded-xl hover:bg-zebu-limeHover shadow">
+          + Cadastrar Oferta
+        </button>
+      </div>
+
+      <div id="productFilterBar" class="flex gap-1.5 overflow-x-auto no-scrollbar py-1 text-xs"></div>
+      <div id="productsGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2.5"></div>
+    </section>
+
+    <!-- SEÇÃO: EXPLORAR PROFISSIONAIS -->
     <section id="exploreSection" class="hidden space-y-4">
-      <div class="bg-white dark:bg-neutral-900 p-4 md:p-5 rounded-2xl shadow-sm border border-neutral-200 dark:border-neutral-800 space-y-3">
+      <div class="bg-white dark:bg-zebu-darkCard p-4 md:p-5 rounded-3xl shadow-sm border border-zebu-grayBorder dark:border-neutral-800 space-y-3">
         <div class="relative">
-          <i data-lucide="search" class="w-4 h-4 absolute left-3 top-3 text-neutral-400"></i>
-          <input type="text" id="searchInput" placeholder="Buscar profissional, serviço ou bairro..." 
-            class="w-full pl-9 pr-3 py-2 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs md:text-sm focus:ring-1 focus:ring-black outline-none"
+          <i data-lucide="search" class="w-4 h-4 absolute left-3.5 top-3 text-neutral-400"></i>
+          <input type="text" id="searchInput" placeholder="Buscar por profissão, nome ou bairro..." 
+            class="w-full pl-10 pr-3 py-2 rounded-2xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs md:text-sm focus:ring-2 focus:ring-zebu-lime outline-none"
             oninput="applyFilters()">
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
-          <select id="filterCategory" onchange="applyFilters()" class="text-xs py-2 px-2.5 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800">
+          <select id="filterCategory" onchange="applyFilters()" class="text-xs py-2 px-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800">
             <option value="">Todas as categorias</option>
           </select>
-          <select id="filterNeighborhood" onchange="applyFilters()" class="text-xs py-2 px-2.5 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800">
+          <select id="filterNeighborhood" onchange="applyFilters()" class="text-xs py-2 px-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800">
             <option value="">Todos os bairros</option>
           </select>
-          <select id="filterPrice" onchange="applyFilters()" class="text-xs py-2 px-2.5 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800">
+          <select id="filterPrice" onchange="applyFilters()" class="text-xs py-2 px-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800">
             <option value="">Qualquer modelo de preço</option>
             <option value="quote">Apenas Sob Orçamento</option>
             <option value="fixed">Com valor tabelado</option>
@@ -222,54 +303,54 @@
 
       <div class="space-y-3">
         <span id="resultsCount" class="text-xs text-neutral-500 font-bold block">Carregando profissionais...</span>
-        <div id="resultsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4"></div>
+        <div id="resultsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3"></div>
       </div>
     </section>
 
-    <!-- PAINEL PROFISSIONAL -->
+    <!-- SEÇÃO: PAINEL PROFISSIONAL -->
     <section id="dashboardSection" class="hidden space-y-4">
-      <div class="bg-white dark:bg-neutral-900 p-4 md:p-6 rounded-2xl shadow-sm border border-neutral-200 dark:border-neutral-800">
+      <div class="bg-white dark:bg-zebu-darkCard p-4 md:p-6 rounded-3xl shadow-sm border border-zebu-grayBorder dark:border-neutral-800">
         <div class="flex items-center justify-between border-b border-neutral-200 dark:border-neutral-800 pb-3 mb-4">
           <div>
             <h2 class="text-lg md:text-xl font-black">Meu Anúncio</h2>
             <p class="text-[11px] text-neutral-500">Mantenha seus dados atualizados para clientes de Uberaba.</p>
           </div>
-          <span class="text-[10px] font-black px-2.5 py-0.5 rounded-full bg-black text-white dark:bg-white dark:text-black">
+          <span class="text-[10px] font-black px-2.5 py-0.5 rounded-full bg-zebu-lime text-black">
             Profissional
           </span>
         </div>
 
         <form id="proProfileForm" onsubmit="saveProProfile(event)" class="space-y-4 text-xs md:text-sm">
-          <div class="flex items-center gap-3 p-3 rounded-xl bg-neutral-50 dark:bg-neutral-800/60 border border-neutral-200 dark:border-neutral-700">
-            <div id="proAvatarPreviewContainer" class="w-12 h-12 rounded-full bg-black text-white flex items-center justify-center font-black text-base shrink-0 overflow-hidden border border-neutral-300">
-              <i id="proAvatarDefaultIcon" data-lucide="user" class="w-6 h-6"></i>
+          <div class="flex items-center gap-3 p-3 rounded-2xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700">
+            <div id="proAvatarPreviewContainer" class="w-14 h-14 rounded-full bg-zebu-dark text-zebu-lime flex items-center justify-center font-black text-base shrink-0 overflow-hidden border border-neutral-300">
+              <i id="proAvatarDefaultIcon" data-lucide="user" class="w-7 h-7"></i>
               <img id="proAvatarPreview" src="" class="w-full h-full object-cover hidden">
             </div>
             <div class="flex-1">
-              <label class="block text-[11px] font-bold uppercase text-neutral-700 dark:text-neutral-200 mb-0.5">Sua Foto / Logo</label>
-              <input type="file" id="proAvatarInput" accept="image/*" onchange="handleAvatarUpload(event)" class="block w-full text-[10px] text-neutral-500 file:mr-2 file:py-1 file:px-2.5 file:rounded-md file:border-0 file:text-[10px] file:font-bold file:bg-black file:text-white">
+              <label class="block text-[11px] font-bold uppercase text-neutral-700 dark:text-neutral-200 mb-0.5">Sua Foto / Logo *</label>
+              <input type="file" id="proAvatarInput" accept="image/*" onchange="handleAvatarUpload(event)" class="block w-full text-[10px] text-neutral-500 file:mr-2 file:py-1 file:px-2.5 file:rounded-lg file:border-0 file:text-[10px] file:font-bold file:bg-zebu-dark file:text-zebu-lime">
             </div>
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
-              <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Nome de Exibição *</label>
-              <input type="text" id="proName" required placeholder="Como os clientes vão te chamar" class="w-full p-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs">
+              <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Nome de Exibição / Fantasia *</label>
+              <input type="text" id="proName" required placeholder="Como os clientes vão te chamar" class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs">
             </div>
             <div>
               <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Categoria Principal *</label>
-              <select id="proCategory" onchange="checkDroneCategoryOptions()" required class="w-full p-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs"></select>
+              <select id="proCategory" onchange="checkDroneCategoryOptions()" required class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs"></select>
             </div>
           </div>
 
-          <!-- OPÇÃO ESPECÍFICA PARA DRONE: AGRÍCOLA OU NÃO -->
-          <div id="droneTypeContainer" class="hidden p-3 rounded-xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-700 space-y-2">
-            <label class="block text-[11px] font-bold uppercase text-neutral-700 dark:text-neutral-200">Especialidade do Drone:</label>
+          <!-- OPÇÃO DRONE AGRÍCOLA OU CONVENCIONAL -->
+          <div id="droneTypeContainer" class="hidden p-3 rounded-2xl bg-zebu-limeSoft dark:bg-neutral-800 border border-zebu-lime text-black dark:text-white space-y-2">
+            <label class="block text-[11px] font-bold uppercase">Tipo de Drone:</label>
             <div class="grid grid-cols-2 gap-2">
-              <label class="flex items-center gap-1.5 p-2 bg-white dark:bg-neutral-900 border rounded-lg cursor-pointer text-xs font-bold">
+              <label class="flex items-center gap-1.5 p-2 bg-white dark:bg-black rounded-xl border border-neutral-300 cursor-pointer text-xs font-bold">
                 <input type="radio" name="droneSpecialty" value="Agrícola (Pulverização / Mapeamento)" checked> Drone Agrícola
               </label>
-              <label class="flex items-center gap-1.5 p-2 bg-white dark:bg-neutral-900 border rounded-lg cursor-pointer text-xs font-bold">
+              <label class="flex items-center gap-1.5 p-2 bg-white dark:bg-black rounded-xl border border-neutral-300 cursor-pointer text-xs font-bold">
                 <input type="radio" name="droneSpecialty" value="Convencional (Eventos / Imobiliário)"> Eventos / Fotos
               </label>
             </div>
@@ -277,67 +358,67 @@
 
           <div>
             <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Serviços Oferecidos (separados por vírgula) *</label>
-            <input type="text" id="proServices" required placeholder="Ex: Limpeza de piscinas, Troca de areia, Tratamento de choque" class="w-full p-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs">
+            <input type="text" id="proServices" required placeholder="Ex: Faxina pesada, Limpeza pós-obra, Passadoria" class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs">
           </div>
 
           <div>
             <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Descrição e Experiência *</label>
-            <textarea id="proBio" rows="3" required placeholder="Conte sobre sua trajetória, garantia e diferenciais..." class="w-full p-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs"></textarea>
+            <textarea id="proBio" rows="3" required placeholder="Conte sobre sua experiência, seus diferenciais e garantia..." class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs"></textarea>
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
             <div>
-              <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Preço</label>
-              <select id="proPriceType" onchange="togglePriceValueField()" class="w-full p-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs">
+              <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Modelo de Preço</label>
+              <select id="proPriceType" onchange="togglePriceValueField()" class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs">
                 <option value="quote">Sob Orçamento</option>
                 <option value="fixed">A partir de (R$)</option>
               </select>
             </div>
             <div id="priceValueContainer" class="hidden">
               <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Valor (R$)</label>
-              <input type="number" step="0.5" id="proPriceValue" placeholder="150,00" class="w-full p-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs">
+              <input type="number" step="0.5" id="proPriceValue" placeholder="150,00" class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs">
             </div>
             <div>
               <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Seu Bairro Base (Uberaba) *</label>
-              <select id="proNeighborhood" required class="w-full p-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs"></select>
+              <select id="proNeighborhood" required class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs"></select>
             </div>
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
               <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Regiões Atendidas</label>
-              <input type="text" id="proRegions" placeholder="Ex: Todos os bairros, condomínios e chácaras" class="w-full p-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs">
+              <input type="text" id="proRegions" placeholder="Ex: Todos os bairros, condomínios e chácaras" class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs">
             </div>
             <div>
               <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Horário de Atendimento</label>
-              <input type="text" id="proHours" placeholder="Ex: Seg a Sáb das 08h às 18h" class="w-full p-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs">
+              <input type="text" id="proHours" placeholder="Ex: Seg a Sáb das 08h às 18h" class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs">
             </div>
           </div>
 
           <!-- Fotos -->
           <div class="space-y-2 border-t border-neutral-200 dark:border-neutral-800 pt-3">
             <div class="flex items-center justify-between">
-              <label class="block text-[11px] font-bold uppercase text-neutral-500">Fotos dos Trabalhos</label>
+              <label class="block text-[11px] font-bold uppercase text-neutral-500">Fotos de Trabalhos (Até 10 fotos)</label>
               <span id="photoCount" class="text-[11px] font-black">0 / 10 fotos</span>
             </div>
             <input type="file" id="portfolioInput" accept="image/*" multiple onchange="handlePortfolioUpload(event)"
-              class="block w-full text-[10px] text-neutral-500 file:mr-3 file:py-1.5 file:px-2.5 file:rounded-md file:border-0 file:text-[10px] file:font-bold file:bg-black file:text-white">
+              class="block w-full text-[10px] text-neutral-500 file:mr-3 file:py-1.5 file:px-2.5 file:rounded-lg file:border-0 file:text-[10px] file:font-bold file:bg-zebu-dark file:text-zebu-lime">
             <div id="portfolioPreviewGrid" class="grid grid-cols-3 sm:grid-cols-5 gap-2 pt-1"></div>
           </div>
 
           <!-- WhatsApp -->
-          <div class="bg-neutral-100 dark:bg-neutral-800 p-3.5 rounded-xl border border-neutral-300 dark:border-neutral-700 space-y-2.5">
-            <h4 class="text-[11px] font-bold uppercase tracking-wider text-black dark:text-white flex items-center gap-1">
-              <i data-lucide="shield-check" class="w-4 h-4 text-emerald-500"></i> WhatsApp de Contato *
+          <div class="bg-neutral-100 dark:bg-neutral-800 p-3.5 rounded-2xl border border-neutral-300 dark:border-neutral-700 space-y-2.5">
+            <h4 class="text-[11px] font-bold uppercase tracking-wider flex items-center gap-1">
+              <i data-lucide="shield-check" class="w-4 h-4 text-zebu-lime"></i> Contato via WhatsApp (Obrigatório) *
             </h4>
-            <input type="tel" id="proWhatsappNumber" required placeholder="DDD + Número (Ex: 34999998888)" class="w-full p-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-900 font-mono text-xs">
+            <input type="tel" id="proWhatsappNumber" required placeholder="DDD + Número (Ex: 34999998888)" class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-900 font-mono text-xs">
             <div class="flex items-start gap-2">
-              <input type="checkbox" id="proAllowWhatsapp" required checked class="mt-0.5 rounded text-black w-4 h-4">
+              <input type="checkbox" id="proAllowWhatsapp" required checked class="mt-0.5 rounded text-zebu-dark w-4 h-4">
               <label for="proAllowWhatsapp" class="text-[11px] font-bold">Autorizo receber mensagens de clientes no WhatsApp *</label>
             </div>
           </div>
 
-          <button type="submit" id="saveProfileBtn" class="w-full py-3 bg-black text-white hover:bg-neutral-800 font-black text-xs rounded-xl transition shadow flex items-center justify-center gap-1.5">
+          <button type="submit" id="saveProfileBtn" class="w-full py-3.5 bg-zebu-lime hover:bg-zebu-limeHover text-black font-black text-xs md:text-sm rounded-2xl transition shadow flex items-center justify-center gap-1.5">
             <i data-lucide="save" class="w-4 h-4"></i> Salvar Anúncio Completo
           </button>
         </form>
@@ -345,112 +426,196 @@
     </section>
   </main>
 
-  <!-- ================= BARRA INFERIOR MOBILE (ESTILO APP NATIVO) ================= -->
-  <nav class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-black/95 backdrop-blur-md border-t border-neutral-800 flex justify-around items-center h-16 px-2 text-white">
-    <button onclick="showSection('home')" class="flex flex-col items-center gap-1 py-1 text-neutral-400 hover:text-white">
+  <!-- ================= BARRA INFERIOR MOBILE FIXA (IDÊNTICA AOS APPS NATIVOS) ================= -->
+  <nav class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-zebu-dark/95 backdrop-blur-md border-t border-neutral-800 flex justify-around items-center h-16 px-2 text-white">
+    <button onclick="showSection('home')" class="flex flex-col items-center gap-1 py-1 text-zebu-lime">
       <i data-lucide="home" class="w-5 h-5"></i>
       <span class="text-[9px] font-bold">Início</span>
     </button>
     <button onclick="goToExplore()" class="flex flex-col items-center gap-1 py-1 text-neutral-400 hover:text-white">
-      <i data-lucide="search" class="w-5 h-5"></i>
-      <span class="text-[9px] font-bold">Buscar</span>
+      <i data-lucide="layout-grid" class="w-5 h-5"></i>
+      <span class="text-[9px] font-bold">Categorias</span>
     </button>
-    <button onclick="showSection('blog')" class="flex flex-col items-center gap-1 py-1 text-amber-400">
-      <i data-lucide="shopping-bag" class="w-5 h-5"></i>
-      <span class="text-[9px] font-bold">Loja</span>
+    <button onclick="showSection('jobs')" class="flex flex-col items-center gap-1 py-1 text-neutral-400 hover:text-white">
+      <i data-lucide="briefcase" class="w-5 h-5"></i>
+      <span class="text-[9px] font-bold">Vagas</span>
+    </button>
+    <button onclick="showSection('blog')" class="flex flex-col items-center gap-1 py-1 text-neutral-400 hover:text-white">
+      <i data-lucide="tag" class="w-5 h-5"></i>
+      <span class="text-[9px] font-bold">Ofertas</span>
     </button>
     <button onclick="handleAdvertiseClick()" class="flex flex-col items-center gap-1 py-1 text-neutral-400 hover:text-white">
-      <i data-lucide="briefcase" class="w-5 h-5"></i>
-      <span class="text-[9px] font-bold">Painel</span>
+      <i data-lucide="user" class="w-5 h-5"></i>
+      <span class="text-[9px] font-bold">Perfil</span>
     </button>
   </nav>
 
+  <!-- ================= FOOTER INSTITUCIONAL (IGUAL À FOTO) ================= -->
+  <footer class="bg-zebu-dark text-white border-t border-neutral-800 py-8 px-4 mt-auto">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
+      <div class="flex items-center gap-3">
+        <img src="WhatsApp Image 2026-10-23 at 18.27.58.jpeg" class="h-8 w-auto object-contain">
+        <span class="text-xs text-neutral-400 border-l border-neutral-700 pl-3">Conectando pessoas, serviços e oportunidades em Uberaba.</span>
+      </div>
+      <div class="flex items-center gap-3 text-neutral-400">
+        <a href="#" class="p-2 hover:text-zebu-lime"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+        <a href="#" class="p-2 hover:text-zebu-lime"><i data-lucide="message-circle" class="w-5 h-5"></i></a>
+        <a href="#" class="p-2 hover:text-zebu-lime"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= MODAL: PUBLICAR OPORTUNIDADE (CONTRATANTES) ================= -->
+  <div id="postJobModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-3">
+    <div class="bg-white dark:bg-zebu-darkCard w-full max-w-lg rounded-3xl p-5 md:p-6 shadow-2xl border border-zebu-grayBorder dark:border-neutral-800 relative max-h-[90vh] overflow-y-auto text-xs">
+      <button onclick="closeModal('postJobModal')" class="absolute right-4 top-4 text-neutral-400"><i data-lucide="x" class="w-5 h-5"></i></button>
+
+      <h3 class="text-base md:text-lg font-black mb-1 flex items-center gap-2">
+        <i data-lucide="briefcase" class="w-5 h-5 text-zebu-lime"></i> Preciso de um Serviço em Uberaba
+      </h3>
+      <p class="text-neutral-500 mb-4">Publique o que você precisa contratar. Os profissionais da cidade vão ver e te chamar no WhatsApp.</p>
+
+      <form id="jobPostForm" onsubmit="saveJobOpportunity(event)" class="space-y-3">
+        <div>
+          <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Título do Serviço / Vaga *</label>
+          <input type="text" id="jobTitle" required placeholder="Ex: Diarista para faxina pesada / Troca de disjuntor" class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800">
+        </div>
+
+        <div class="grid grid-cols-2 gap-2">
+          <div>
+            <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Profissão Necessária *</label>
+            <select id="jobCategory" required class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800"></select>
+          </div>
+          <div>
+            <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Bairro em Uberaba *</label>
+            <select id="jobNeighborhood" required class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800"></select>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-2">
+          <div>
+            <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Previsão / Prazo</label>
+            <input type="text" id="jobDeadline" placeholder="Ex: Urgente / Para o final de semana" class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800">
+          </div>
+          <div>
+            <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Orçamento Pretendido</label>
+            <input type="text" id="jobBudget" placeholder="Ex: A combinar / Até R$ 200" class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Detalhes do Trabalho *</label>
+          <textarea id="jobDescription" rows="3" required placeholder="Explique os detalhes do serviço para o profissional..." class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800"></textarea>
+        </div>
+
+        <div>
+          <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Seu WhatsApp de Contato *</label>
+          <input type="tel" id="jobWhatsapp" required placeholder="DDD + Número (Ex: 34999998888)" class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 font-mono">
+        </div>
+
+        <button type="submit" id="btnSaveJob" class="w-full py-3 bg-zebu-lime hover:bg-zebu-limeHover text-black font-black text-xs md:text-sm rounded-xl transition shadow">
+          Publicar Vaga no Mural
+        </button>
+      </form>
+    </div>
+  </div>
+
   <!-- MODAL ADMIN PRODUTO -->
   <div id="adminProductModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-3">
-    <div class="bg-white dark:bg-neutral-900 w-full max-w-lg rounded-2xl p-5 shadow-2xl border border-neutral-200 dark:border-neutral-800 relative max-h-[90vh] overflow-y-auto text-xs">
+    <div class="bg-white dark:bg-zebu-darkCard w-full max-w-lg rounded-3xl p-5 shadow-2xl border border-neutral-200 dark:border-neutral-800 relative max-h-[90vh] overflow-y-auto text-xs">
       <button onclick="closeModal('adminProductModal')" class="absolute right-4 top-4 text-neutral-400"><i data-lucide="x" class="w-5 h-5"></i></button>
-      <h3 class="text-base font-black mb-1 text-amber-500 flex items-center gap-1.5"><i data-lucide="sparkles" class="w-4 h-4"></i> Cadastrar Produto na Loja</h3>
+      <h3 class="text-base font-black mb-1 text-zebu-lime flex items-center gap-1.5"><i data-lucide="sparkles" class="w-4 h-4"></i> Cadastrar Oferta na Loja</h3>
       <form id="adminProductForm" onsubmit="saveProduct(event)" class="space-y-3 mt-3">
         <div>
           <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Título do Produto *</label>
-          <input type="text" id="prodTitle" required placeholder="Ex: Clorador Flutuante para Piscina" class="w-full p-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800">
+          <input type="text" id="prodTitle" required placeholder="Ex: Fritadeira Air Fryer Philco 4L" class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800">
         </div>
         <div class="grid grid-cols-2 gap-2">
           <div>
-            <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Categoria de Serviço *</label>
-            <select id="prodCategory" required class="w-full p-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800"></select>
+            <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Categoria *</label>
+            <select id="prodCategory" required class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800"></select>
           </div>
           <div>
-            <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Preço (Ex: R$ 89,90)</label>
-            <input type="text" id="prodPrice" placeholder="R$ 89,90" class="w-full p-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800">
+            <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Preço Atual (Ex: R$ 389,90) *</label>
+            <input type="text" id="prodPrice" required placeholder="R$ 389,90" class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800">
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-2">
+          <div>
+            <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Preço Antigo Riscado (Opcional)</label>
+            <input type="text" id="prodOldPrice" placeholder="R$ 599,90" class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800">
+          </div>
+          <div>
+            <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Selo de Desconto (Ex: -35%)</label>
+            <input type="text" id="prodDiscountBadge" placeholder="-35%" class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800">
           </div>
         </div>
         <div>
           <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Link de Afiliado (Shopee/Mercado Livre/Amazon) *</label>
-          <input type="url" id="prodAffiliateLink" required placeholder="https://..." class="w-full p-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800">
+          <input type="url" id="prodAffiliateLink" required placeholder="https://..." class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800">
         </div>
         <div>
-          <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Descrição Breve *</label>
-          <textarea id="prodDescription" rows="2" required placeholder="Destaque por que esse item é indispensável..." class="w-full p-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800"></textarea>
+          <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Descrição Breve</label>
+          <textarea id="prodDescription" rows="2" placeholder="Destaque por que esse item é recomendado..." class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800"></textarea>
         </div>
         <div>
           <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Foto do Produto *</label>
-          <input type="file" id="prodImageInput" accept="image/*" required onchange="handleProductPhotoUpload(event)" class="block w-full text-[10px] text-neutral-500 file:mr-2 file:py-1 file:px-2.5 file:rounded file:border-0 file:bg-black file:text-white">
+          <input type="file" id="prodImageInput" accept="image/*" required onchange="handleProductPhotoUpload(event)" class="block w-full text-[10px] text-neutral-500 file:mr-2 file:py-1 file:px-2.5 file:rounded-lg file:border-0 file:bg-zebu-dark file:text-zebu-lime">
           <div id="prodImagePreviewContainer" class="mt-2 hidden">
-            <img id="prodImagePreview" src="" class="w-16 h-16 object-cover rounded-lg border">
+            <img id="prodImagePreview" src="" class="w-16 h-16 object-cover rounded-xl border">
           </div>
         </div>
-        <button type="submit" id="btnSaveProduct" class="w-full py-2.5 bg-amber-400 text-black font-black text-xs rounded-xl hover:bg-amber-300">Publicar no Catálogo</button>
+        <button type="submit" id="btnSaveProduct" class="w-full py-3 bg-zebu-lime text-black font-black text-xs rounded-xl hover:bg-zebu-limeHover">Publicar Oferta</button>
       </form>
     </div>
   </div>
 
   <!-- MODAL AUTH -->
   <div id="authModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-3">
-    <div class="bg-white dark:bg-neutral-900 w-full max-w-sm rounded-2xl p-5 shadow-2xl border border-neutral-200 dark:border-neutral-800 relative text-xs">
+    <div class="bg-white dark:bg-zebu-darkCard w-full max-w-sm rounded-3xl p-5 shadow-2xl border border-neutral-200 dark:border-neutral-800 relative text-xs">
       <button onclick="closeModal('authModal')" class="absolute right-3.5 top-3.5 text-neutral-400"><i data-lucide="x" class="w-5 h-5"></i></button>
 
-      <div id="authPromptMessage" class="hidden mb-3 p-2.5 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-300 dark:border-amber-800 text-[11px] text-amber-900 dark:text-amber-200 font-medium">
-        👋 Entre ou cadastre-se grátis para falar com o profissional no WhatsApp!
+      <div id="authPromptMessage" class="hidden mb-3 p-2.5 rounded-xl bg-zebu-limeSoft text-black font-bold text-[11px]">
+        👋 Entre ou cadastre-se grátis para falar com o profissional ou publicar oportunidades!
       </div>
 
       <div class="flex border-b border-neutral-200 dark:border-neutral-700 mb-4">
-        <button id="tabLogin" onclick="switchAuthTab('login')" class="flex-1 pb-2 font-black text-xs border-b-2 border-black text-black dark:border-white dark:text-white">Entrar</button>
+        <button id="tabLogin" onclick="switchAuthTab('login')" class="flex-1 pb-2 font-black text-xs border-b-2 border-zebu-lime text-black dark:text-white">Entrar</button>
         <button id="tabRegister" onclick="switchAuthTab('register')" class="flex-1 pb-2 font-bold text-xs border-b-2 border-transparent text-neutral-400">Criar Conta</button>
       </div>
 
       <form id="loginForm" onsubmit="handleLogin(event)" class="space-y-3">
         <div>
           <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-0.5">E-mail</label>
-          <input type="email" id="loginEmail" required class="w-full p-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs">
+          <input type="email" id="loginEmail" required class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs">
         </div>
         <div>
           <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-0.5">Senha</label>
-          <input type="password" id="loginPassword" required class="w-full p-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs">
+          <input type="password" id="loginPassword" required class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs">
         </div>
-        <button type="submit" id="btnLoginSubmit" class="w-full py-2.5 bg-black text-white hover:bg-neutral-800 font-black text-xs rounded-xl shadow">Acessar</button>
+        <button type="submit" id="btnLoginSubmit" class="w-full py-3 bg-zebu-lime hover:bg-zebu-limeHover text-black font-black text-xs rounded-xl shadow">Acessar</button>
       </form>
 
       <form id="registerForm" onsubmit="handleRegister(event)" class="space-y-3 hidden">
         <div>
           <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-0.5">Nome Completo</label>
-          <input type="text" id="regName" required class="w-full p-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs">
+          <input type="text" id="regName" required class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs">
         </div>
         <div>
           <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-0.5">E-mail</label>
-          <input type="email" id="regEmail" required class="w-full p-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs">
+          <input type="email" id="regEmail" required class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs">
         </div>
         <div>
           <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-0.5">Senha</label>
-          <input type="password" id="regPassword" minlength="6" required class="w-full p-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs">
+          <input type="password" id="regPassword" minlength="6" required class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs">
         </div>
         <div>
           <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-0.5">Objetivo</label>
           <div class="grid grid-cols-2 gap-2">
-            <label class="flex items-center gap-1.5 p-2 border rounded-lg cursor-pointer text-[11px] font-bold border-neutral-300 dark:border-neutral-700">
+            <label class="flex items-center gap-1.5 p-2 border rounded-xl cursor-pointer text-[11px] font-bold border-neutral-300 dark:border-neutral-700">
               <input type="radio" name="regRole" value="client" checked> Contratar
             </label>
-            <label class="flex items-center gap-1.5 p-2 border rounded-lg cursor-pointer text-[11px] font-bold border-neutral-300 dark:border-neutral-700">
+            <label class="flex items-center gap-1.5 p-2 border rounded-xl cursor-pointer text-[11px] font-bold border-neutral-300 dark:border-neutral-700">
               <input type="radio" name="regRole" value="pro"> Trabalhar
             </label>
           </div>
@@ -459,22 +624,24 @@
           <input type="checkbox" id="regTerms" required class="mt-0.5 rounded text-black w-3.5 h-3.5">
           <label for="regTerms" class="text-[10px] text-neutral-500">Concordo com os Termos e Privacidade (LGPD).</label>
         </div>
-        <button type="submit" id="btnRegisterSubmit" class="w-full py-2.5 bg-black text-white hover:bg-neutral-800 font-black text-xs rounded-xl shadow">Criar Conta Grátis</button>
+        <button type="submit" id="btnRegisterSubmit" class="w-full py-3 bg-zebu-lime hover:bg-zebu-limeHover text-black font-black text-xs rounded-xl shadow">Criar Conta Grátis</button>
       </form>
     </div>
   </div>
 
-  <!-- MODAL DETALHES -->
+  <!-- MODAL DETALHES DO PROFISSIONAL -->
   <div id="profileModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-3">
-    <div class="bg-white dark:bg-neutral-900 w-full max-w-lg rounded-2xl shadow-2xl border border-neutral-200 dark:border-neutral-800 relative max-h-[92vh] flex flex-col overflow-hidden text-xs">
+    <div class="bg-white dark:bg-zebu-darkCard w-full max-w-lg rounded-3xl shadow-2xl border border-neutral-200 dark:border-neutral-800 relative max-h-[92vh] flex flex-col overflow-hidden text-xs">
       
       <div class="p-4 border-b border-neutral-200 dark:border-neutral-800 flex justify-between items-start">
         <div class="flex items-center gap-3">
-          <div id="modalProAvatarContainer" class="w-12 h-12 rounded-full bg-black text-white border border-neutral-700 flex items-center justify-center font-black text-lg uppercase shrink-0 overflow-hidden"></div>
+          <div id="modalProAvatarContainer" class="w-14 h-14 rounded-full bg-zebu-dark text-zebu-lime border border-neutral-700 flex items-center justify-center font-black text-lg uppercase shrink-0 overflow-hidden"></div>
           <div>
             <div class="flex items-center gap-1.5">
               <h3 id="modalProName" class="font-black text-sm leading-snug">Profissional</h3>
-              <span id="modalProBadge" class="hidden text-[9px] font-black px-1.5 py-0.5 rounded bg-amber-400 text-black">TOP</span>
+              <span id="modalProBadge" class="hidden text-[9px] font-black px-2 py-0.5 rounded-full bg-zebu-lime text-black flex items-center gap-1">
+                <i data-lucide="check" class="w-3 h-3"></i> VERIFICADO
+              </span>
             </div>
             <p id="modalProCategory" class="text-[11px] font-bold text-neutral-500">Categoria</p>
             <p id="modalProNeighborhood" class="text-[11px] text-neutral-400 flex items-center gap-1 mt-0.5"></p>
@@ -489,15 +656,15 @@
           <p id="modalProBio" class="text-neutral-700 dark:text-neutral-300 whitespace-pre-line text-xs leading-relaxed"></p>
         </div>
         <div>
-          <h4 class="text-[10px] font-black uppercase text-neutral-400 mb-1.5">Serviços</h4>
+          <h4 class="text-[10px] font-black uppercase text-neutral-400 mb-1.5">Serviços Oferecidos</h4>
           <div id="modalProServices" class="flex flex-wrap gap-1"></div>
         </div>
-        <div class="grid grid-cols-2 gap-2 p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800/50">
+        <div class="grid grid-cols-2 gap-2 p-3 rounded-2xl bg-neutral-100 dark:bg-neutral-800/50">
           <div><span class="text-[10px] text-neutral-400 block">Preço</span><span id="modalProPrice" class="font-black text-black dark:text-white text-xs"></span></div>
           <div><span class="text-[10px] text-neutral-400 block">Horários</span><span id="modalProHours" class="font-bold text-neutral-700 dark:text-neutral-300 text-xs"></span></div>
         </div>
         <div>
-          <h4 class="text-[10px] font-black uppercase text-neutral-400 mb-1.5">Portfólio de Trabalhos</h4>
+          <h4 class="text-[10px] font-black uppercase text-neutral-400 mb-1.5">Fotos dos Trabalhos</h4>
           <div id="modalProGallery" class="grid grid-cols-3 gap-1.5"></div>
         </div>
       </div>
@@ -507,7 +674,7 @@
           <button onclick="openReportModal()" class="text-[11px] text-rose-600 hover:underline flex items-center gap-1">
             <i data-lucide="flag" class="w-3.5 h-3.5"></i> Denunciar
           </button>
-          <button id="adminToggleSponsoredBtn" onclick="toggleProfessionalSponsorship()" class="hidden px-2 py-1 bg-amber-400 text-black font-extrabold text-[11px] rounded-lg">
+          <button id="adminToggleSponsoredBtn" onclick="toggleProfessionalSponsorship()" class="hidden px-2.5 py-1 bg-zebu-lime text-black font-extrabold text-[11px] rounded-lg">
             <span id="adminToggleSponsoredText">Destacar</span>
           </button>
         </div>
@@ -518,13 +685,13 @@
 
   <!-- MODAL DENÚNCIA -->
   <div id="reportModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4">
-    <div class="bg-white dark:bg-neutral-900 w-full max-w-sm rounded-2xl p-5 shadow-2xl relative text-xs">
+    <div class="bg-white dark:bg-zebu-darkCard w-full max-w-sm rounded-3xl p-5 shadow-2xl relative text-xs">
       <button onclick="closeModal('reportModal')" class="absolute right-3.5 top-3.5 text-neutral-400"><i data-lucide="x" class="w-5 h-5"></i></button>
       <h3 class="text-sm font-black text-rose-600 mb-2 flex items-center gap-1.5"><i data-lucide="alert-triangle" class="w-4 h-4"></i> Denunciar</h3>
       <form id="reportForm" onsubmit="submitReport(event)" class="space-y-3">
         <div>
           <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-0.5">Motivo</label>
-          <select id="reportReason" required class="w-full p-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs">
+          <select id="reportReason" required class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs">
             <option value="">Selecione...</option>
             <option value="fake">Perfil falso ou golpe</option>
             <option value="offensive">Conteúdo impróprio</option>
@@ -533,14 +700,14 @@
         </div>
         <div>
           <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-0.5">Detalhes</label>
-          <textarea id="reportDetails" rows="3" required class="w-full p-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs"></textarea>
+          <textarea id="reportDetails" rows="3" required class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs"></textarea>
         </div>
-        <button type="submit" class="w-full py-2 bg-rose-600 text-white font-bold text-xs rounded-xl">Enviar Denúncia</button>
+        <button type="submit" class="w-full py-2.5 bg-rose-600 text-white font-bold text-xs rounded-xl">Enviar Denúncia</button>
       </form>
     </div>
   </div>
 
-  <!-- FIREBASE MODULAR -->
+  <!-- FIREBASE MODULAR COM SUPORTE A OPORTUNIDADES E DESTAQUE ADMINISTRATIVO -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
     import { 
@@ -580,13 +747,14 @@
 
     const ADMIN_EMAIL = "gabi.almeidasaude@gmail.com";
 
-    // CATEGORIAS ATUALIZADAS (COM PISCINEIRO, ENFERMAGEM, ORGANIZER, DRONE E RECEPCIONISTA)
+    // CATEGORIAS ATUALIZADAS
     const CATEGORIES_DATA = [
-      { name: "Diaristas e Faxineiras", icon: "sparkles" },
-      { name: "Piscineiros", icon: "waves" },
       { name: "Técnicos em Enfermagem", icon: "stethoscope" },
       { name: "Personal Organizer", icon: "boxes" },
       { name: "Operador de Drone", icon: "crosshair" },
+      { name: "Social Media & Designers", icon: "megaphone" },
+      { name: "Diaristas e Faxineiras", icon: "sparkles" },
+      { name: "Piscineiros", icon: "waves" },
       { name: "Recepcionistas", icon: "user-check" },
       { name: "Eletricistas", icon: "zap" },
       { name: "Encanadores", icon: "wrench" },
@@ -606,7 +774,6 @@
       { name: "Cuidadores de Idosos", icon: "heart-handshake" },
       { name: "Professores Particulares", icon: "book-open" },
       { name: "Fotógrafos e Filmagem", icon: "camera" },
-      { name: "Designers e Redes Sociais", icon: "palette" },
       { name: "Costureiras", icon: "scissors" },
       { name: "Confeiteiras e Salgados", icon: "cake" },
       { name: "Segurança e Câmeras", icon: "shield" },
@@ -631,6 +798,7 @@
     let currentUserProfile = null;
     let allProfessionals = [];
     let allProducts = [];
+    let allJobs = [];
     let selectedProductCategory = "";
     let tempPortfolioImages = [];
     let tempAvatarImage = "";
@@ -644,6 +812,7 @@
       renderCategoryCards();
       setupAuthListener();
       fetchProducts();
+      fetchJobs();
     });
 
     function initTheme() {
@@ -658,13 +827,13 @@
     }
 
     function populateDropdowns() {
-      ['filterCategory', 'proCategory', 'prodCategory'].forEach(id => {
+      ['filterCategory', 'proCategory', 'prodCategory', 'jobCategory'].forEach(id => {
         const sel = document.getElementById(id);
         if (!sel) return;
         sel.innerHTML = id.includes('filter') ? '<option value="">Todas as categorias</option>' : '';
         CATEGORIES.forEach(c => sel.appendChild(new Option(c, c)));
       });
-      ['filterNeighborhood', 'proNeighborhood'].forEach(id => {
+      ['filterNeighborhood', 'proNeighborhood', 'jobNeighborhood'].forEach(id => {
         const sel = document.getElementById(id);
         if (!sel) return;
         sel.innerHTML = id.includes('filter') ? '<option value="">Todos os bairros</option>' : '';
@@ -673,11 +842,10 @@
     }
 
     function getCategoryIcon(catName) {
-      const found = CATEGORIES_DATA.find(c => c.name === catName);
+      const found = CATEGORIES_DATA.find(c => c.name.toLowerCase().includes(catName.toLowerCase()));
       return found ? found.icon : 'briefcase';
     }
 
-    // DISPARADOR PARA CATEGORIA DRONE
     window.checkDroneCategoryOptions = function() {
       const cat = document.getElementById('proCategory').value;
       const droneBox = document.getElementById('droneTypeContainer');
@@ -688,21 +856,26 @@
       }
     };
 
+    window.filterAgroCategory = function() {
+      document.getElementById('filterCategory').value = "Serviços Rurais (Tratorista, Peão)";
+      goToExplore();
+    };
+
     function renderCategoryCards() {
       const container = document.getElementById('categoriesGrid');
       container.innerHTML = '';
-      CATEGORIES_DATA.slice(0, 14).forEach(cat => {
+      CATEGORIES_DATA.slice(0, 10).forEach(cat => {
         const div = document.createElement('div');
         div.onclick = () => {
           document.getElementById('filterCategory').value = cat.name;
           goToExplore();
         };
-        div.className = 'cursor-pointer shrink-0 w-24 md:w-auto p-2.5 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 hover:border-black transition flex flex-col items-center text-center gap-1.5 shadow-sm';
+        div.className = 'cursor-pointer shrink-0 w-28 md:w-auto p-3 rounded-2xl bg-white dark:bg-zebu-darkCard border border-zebu-grayBorder dark:border-neutral-800 hover:border-zebu-lime transition flex flex-col items-center text-center gap-2 shadow-sm';
         div.innerHTML = `
-          <div class="w-9 h-9 rounded-lg bg-black text-white dark:bg-white dark:text-black flex items-center justify-center shrink-0">
-            <i data-lucide="${cat.icon}" class="w-4 h-4"></i>
+          <div class="w-10 h-10 rounded-xl bg-zebu-graySoft dark:bg-neutral-800 flex items-center justify-center shrink-0 text-black dark:text-zebu-lime">
+            <i data-lucide="${cat.icon}" class="w-5 h-5"></i>
           </div>
-          <span class="text-[10px] md:text-xs font-bold leading-tight line-clamp-2">${cat.name}</span>
+          <span class="text-[11px] font-bold leading-tight line-clamp-2">${cat.name}</span>
         `;
         container.appendChild(div);
       });
@@ -731,32 +904,164 @@
           if (docSnap.exists() && docSnap.data().role === 'pro') {
             loadProData();
           }
-
-          // Busca perfil para ver a profissão e personalizar a tela inicial
-          const profSnap = await getDoc(doc(db, "profiles", user.uid));
-          if (profSnap.exists()) {
-            currentUserProfile = profSnap.data();
-            renderPersonalizedHomeProducts();
-          }
         } else {
           document.getElementById('authNavButtons').classList.remove('hidden');
           document.getElementById('userNavMenu').classList.add('hidden');
           document.getElementById('adminPostBtn').classList.add('hidden');
           document.getElementById('adminPostBtnBlog').classList.add('hidden');
-          currentUserProfile = null;
-          document.getElementById('proPersonalizedProductsSection').classList.add('hidden');
         }
         fetchProfessionals();
       });
     }
 
     // -------------------------------------------------------------
-    // CATÁLOGO DE AFILIADOS ESTILO SHOPEE
+    // GESTÃO DE OPORTUNIDADES / VAGAS (COM DESTAQUE PELA DONA)
+    // -------------------------------------------------------------
+    window.saveJobOpportunity = async function(e) {
+      e.preventDefault();
+      if (!currentUser) {
+        showToast("Faça login para publicar uma oportunidade.", "error");
+        openModal('authModal', 'login');
+        return;
+      }
+
+      const rawNumber = document.getElementById('jobWhatsapp').value.replace(/\D/g, '');
+      if (rawNumber.length < 10) {
+        showToast("Informe seu WhatsApp completo com DDD.", "error");
+        return;
+      }
+
+      const btn = document.getElementById('btnSaveJob');
+      btn.disabled = true;
+      btn.textContent = "Publicando...";
+
+      const jobData = {
+        title: document.getElementById('jobTitle').value.trim(),
+        category: document.getElementById('jobCategory').value,
+        neighborhood: document.getElementById('jobNeighborhood').value,
+        deadline: document.getElementById('jobDeadline').value.trim() || "A combinar",
+        budget: document.getElementById('jobBudget').value.trim() || "A combinar",
+        description: document.getElementById('jobDescription').value.trim(),
+        whatsapp: rawNumber,
+        authorUid: currentUser.uid,
+        authorName: currentUser.displayName || "Cliente",
+        isSponsored: false,
+        createdAt: serverTimestamp()
+      };
+
+      try {
+        await addDoc(collection(db, "jobs"), jobData);
+        showToast("Oportunidade publicada no mural de Uberaba!");
+        closeModal('postJobModal');
+        document.getElementById('jobPostForm').reset();
+        fetchJobs();
+      } catch (err) {
+        showToast("Erro ao publicar: " + err.message, "error");
+      } finally {
+        btn.disabled = false;
+        btn.textContent = "Publicar Vaga no Mural";
+      }
+    };
+
+    async function fetchJobs() {
+      try {
+        const snap = await getDocs(collection(db, "jobs"));
+        allJobs = [];
+        snap.forEach(d => allJobs.push({ id: d.id, ...d.data() }));
+        renderJobs();
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    function renderJobs() {
+      const homeList = document.getElementById('homeJobsList');
+      const allGrid = document.getElementById('allJobsGrid');
+      homeList.innerHTML = '';
+      allGrid.innerHTML = '';
+
+      if (!allJobs.length) {
+        const emptyMsg = '<p class="col-span-full py-4 text-center text-xs text-neutral-400">Nenhuma oportunidade em aberto no momento. Seja o primeiro a postar!</p>';
+        homeList.innerHTML = emptyMsg;
+        allGrid.innerHTML = emptyMsg;
+        return;
+      }
+
+      // Ordena colocando os patrocinados/destacados primeiro
+      const sortedJobs = [...allJobs].sort((a, b) => (b.isSponsored ? 1 : 0) - (a.isSponsored ? 1 : 0));
+
+      sortedJobs.slice(0, 6).forEach(j => homeList.appendChild(createJobCard(j)));
+      sortedJobs.forEach(j => allGrid.appendChild(createJobCard(j)));
+      lucide.createIcons();
+    }
+
+    function createJobCard(j) {
+      const card = document.createElement('div');
+      const isAdmin = currentUser && currentUser.email === ADMIN_EMAIL;
+      card.className = `p-4 rounded-2xl border transition shadow-sm flex flex-col justify-between ${j.isSponsored ? 'bg-zebu-limeSoft dark:bg-neutral-900 border-zebu-lime' : 'bg-white dark:bg-zebu-darkCard border-zebu-grayBorder dark:border-neutral-800'}`;
+
+      card.innerHTML = `
+        <div class="space-y-2">
+          <div class="flex items-start justify-between gap-1.5">
+            <span class="text-[9px] font-black uppercase px-2 py-0.5 rounded-full ${j.isSponsored ? 'bg-black text-zebu-lime' : 'bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300'}">
+              ${j.category}
+            </span>
+            ${j.isSponsored ? `<span class="text-[9px] font-black text-black dark:text-zebu-lime flex items-center gap-0.5"><i data-lucide="crown" class="w-3 h-3"></i> DESTAQUE</span>` : ''}
+          </div>
+
+          <h3 class="font-black text-xs md:text-sm leading-snug line-clamp-2">${j.title}</h3>
+          <p class="text-[11px] text-neutral-600 dark:text-neutral-400 line-clamp-2 leading-relaxed">${j.description}</p>
+
+          <div class="pt-1 flex flex-wrap gap-2 text-[10px] text-neutral-500 font-bold">
+            <span class="flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3"></i> ${j.neighborhood}</span>
+            <span class="flex items-center gap-1"><i data-lucide="dollar-sign" class="w-3 h-3"></i> ${j.budget}</span>
+          </div>
+        </div>
+
+        <div class="mt-3 pt-2.5 border-t border-neutral-200 dark:border-neutral-800 flex items-center justify-between gap-2">
+          ${isAdmin ? `
+            <button onclick="toggleJobSponsorship('${j.id}', ${!!j.isSponsored})" class="text-[10px] font-black px-2 py-1 rounded bg-amber-400 text-black hover:bg-amber-300">
+              ${j.isSponsored ? 'Tirar Destaque' : 'Destacar'}
+            </button>
+          ` : '<span></span>'}
+
+          <button onclick="contactJobAuthor('${j.whatsapp}', '${encodeURIComponent(j.title)}')" class="px-3.5 py-1.5 bg-black dark:bg-white text-white dark:text-black font-black text-xs rounded-xl shadow flex items-center gap-1.5 hover:opacity-85">
+            <i data-lucide="message-circle" class="w-3.5 h-3.5 text-zebu-lime"></i> Quero Fazer
+          </button>
+        </div>
+      `;
+      return card;
+    }
+
+    // DESTACAR VAGA COM 1 TOQUE (EXCLUSIVO PARA VOCÊ)
+    window.toggleJobSponsorship = async function(jobId, currentStatus) {
+      if (!currentUser || currentUser.email !== ADMIN_EMAIL) return;
+      try {
+        await updateDoc(doc(db, "jobs", jobId), { isSponsored: !currentStatus });
+        showToast(!currentStatus ? "Vaga colocada em destaque!" : "Destaque removido.");
+        fetchJobs();
+      } catch (err) {
+        showToast("Erro ao alterar destaque: " + err.message, "error");
+      }
+    };
+
+    window.contactJobAuthor = function(phone, jobTitleEncoded) {
+      if (!currentUser) {
+        document.getElementById('authPromptMessage').classList.remove('hidden');
+        openModal('authModal', 'register');
+        return;
+      }
+      const msg = encodeURIComponent(`Olá! Vi sua vaga no Zebu Freela em Uberaba para "${decodeURIComponent(jobTitleEncoded)}" e tenho interesse em realizar o serviço!`);
+      window.open(`https://wa.me/55${phone}?text=${msg}`, '_blank');
+    };
+
+    // -------------------------------------------------------------
+    // LOJA / PRODUTOS AFILIADOS (ESTILO SHOPEE COM DESCONTOS)
     // -------------------------------------------------------------
     window.handleProductPhotoUpload = async function(e) {
       const file = e.target.files[0];
       if (!file) return;
-      showToast("Comprimindo foto do produto...");
+      showToast("Comprimindo foto da oferta...");
       tempProductImage = await compressImage(file, 800);
       document.getElementById('prodImagePreview').src = tempProductImage;
       document.getElementById('prodImagePreviewContainer').classList.remove('hidden');
@@ -776,7 +1081,9 @@
       const payload = {
         title: document.getElementById('prodTitle').value.trim(),
         category: document.getElementById('prodCategory').value,
-        price: document.getElementById('prodPrice').value.trim() || "",
+        price: document.getElementById('prodPrice').value.trim(),
+        oldPrice: document.getElementById('prodOldPrice').value.trim() || "",
+        discountBadge: document.getElementById('prodDiscountBadge').value.trim() || "",
         link: document.getElementById('prodAffiliateLink').value.trim(),
         description: document.getElementById('prodDescription').value.trim(),
         image: tempProductImage,
@@ -785,7 +1092,7 @@
 
       try {
         await addDoc(collection(db, "products"), payload);
-        showToast("Produto publicado com sucesso!");
+        showToast("Oferta publicada no catálogo!");
         closeModal('adminProductModal');
         document.getElementById('adminProductForm').reset();
         document.getElementById('prodImagePreviewContainer').classList.add('hidden');
@@ -796,7 +1103,7 @@
         showToast("Erro ao publicar: " + err.message, "error");
       } finally {
         btn.disabled = false;
-        btn.textContent = "Publicar Produto";
+        btn.textContent = "Publicar Oferta";
       }
     };
 
@@ -806,8 +1113,8 @@
         allProducts = [];
         snap.forEach(d => allProducts.push({ id: d.id, ...d.data() }));
         renderProductFilterBar();
-        renderProductsShopeeStyle();
-        renderPersonalizedHomeProducts();
+        renderProducts();
+        renderHomeProductsRow();
       } catch (err) {
         console.error(err);
       }
@@ -823,19 +1130,19 @@
       filterList.forEach(cat => {
         const isSelected = (!selectedProductCategory && cat === "Todas") || (selectedProductCategory === cat);
         const btn = document.createElement('button');
-        btn.className = `px-3 py-1.5 rounded-full font-bold whitespace-nowrap transition shrink-0 ${isSelected ? 'bg-amber-400 text-black shadow' : 'bg-white dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-700'}`;
+        btn.className = `px-3.5 py-1.5 rounded-full font-bold whitespace-nowrap transition shrink-0 ${isSelected ? 'bg-zebu-lime text-black shadow-sm' : 'bg-white dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-700'}`;
         btn.textContent = cat;
         btn.onclick = () => {
           selectedProductCategory = (cat === "Todas") ? "" : cat;
           renderProductFilterBar();
-          renderProductsShopeeStyle();
+          renderProducts();
         };
         bar.appendChild(btn);
       });
     }
 
-    // VISUAL SHOPEE: 2 COLUNAS, FOTO QUADRADA, PREÇO EM LARANJA/ÂMBAR E BADGE
-    function renderProductsShopeeStyle() {
+    // CATÁLOGO COMPLETO
+    function renderProducts() {
       const container = document.getElementById('productsGrid');
       container.innerHTML = '';
 
@@ -844,97 +1151,69 @@
         : allProducts;
 
       if (!filtered.length) {
-        container.innerHTML = '<p class="col-span-full py-8 text-center text-xs text-neutral-400">Nenhum produto cadastrado nesta categoria no momento.</p>';
+        container.innerHTML = '<p class="col-span-full py-8 text-center text-xs text-neutral-400">Nenhuma oferta cadastrada nesta categoria.</p>';
         return;
       }
 
-      const isAdmin = currentUser && currentUser.email === ADMIN_EMAIL;
-
-      filtered.forEach(prod => {
-        const card = document.createElement('div');
-        card.className = "bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-xl overflow-hidden shadow-sm flex flex-col justify-between hover:shadow-md transition relative";
-        
-        card.innerHTML = `
-          <div>
-            <div class="relative w-full aspect-square bg-neutral-100 dark:bg-neutral-800 overflow-hidden">
-              <img src="${prod.image}" class="w-full h-full object-cover">
-              <span class="absolute top-1 left-1 bg-black/80 backdrop-blur-sm text-white text-[8px] font-black uppercase px-1.5 py-0.5 rounded">
-                ${prod.category}
-              </span>
-              ${isAdmin ? `<button onclick="deleteProduct('${prod.id}')" class="absolute top-1 right-1 bg-rose-600 text-white p-1 rounded-full shadow"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg></button>` : ''}
-            </div>
-
-            <div class="p-2.5 space-y-1">
-              <h3 class="font-bold text-[11px] md:text-xs leading-snug line-clamp-2 text-neutral-900 dark:text-neutral-100">${prod.title}</h3>
-              <p class="text-[10px] text-neutral-500 line-clamp-1">${prod.description}</p>
-              
-              <div class="pt-1 flex items-baseline justify-between">
-                <span class="text-xs md:text-sm font-black text-[#EE4D2D]">${prod.price || 'Confira o preço'}</span>
-                <span class="text-[8px] font-bold px-1 py-0.5 bg-amber-100 text-amber-800 rounded">Indicado</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="p-2 pt-0">
-            <a href="${prod.link}" target="_blank" rel="noopener noreferrer" class="w-full py-1.5 bg-[#EE4D2D] hover:bg-[#d73f21] text-white font-black text-[10px] md:text-xs rounded-lg flex items-center justify-center gap-1 shadow transition">
-              <i data-lucide="shopping-cart" class="w-3 h-3"></i> Comprar
-            </a>
-          </div>
-        `;
-        container.appendChild(card);
-      });
+      filtered.forEach(p => container.appendChild(createProductCardShopee(p)));
       lucide.createIcons();
     }
 
-    // TELA INICIAL PERSONALIZADA: MOSTRA ITENS DA PROFISSÃO DO USUÁRIO
-    function renderPersonalizedHomeProducts() {
-      const section = document.getElementById('proPersonalizedProductsSection');
-      const grid = document.getElementById('proPersonalizedGrid');
-      const title = document.getElementById('proPersonalizedTitle');
-
-      if (!currentUserProfile || !currentUserProfile.category) {
-        section.classList.add('hidden');
+    // LINHA DE OFERTAS DA SEMANA NA HOME (IGUAL À FOTO)
+    function renderHomeProductsRow() {
+      const container = document.getElementById('homeProductsRow');
+      container.innerHTML = '';
+      if (!allProducts.length) {
+        container.innerHTML = '<p class="col-span-full text-center text-xs text-neutral-400 py-3">Em breve novas ofertas da semana!</p>';
         return;
       }
-
-      const userCat = currentUserProfile.category;
-      const matchedProducts = allProducts.filter(p => p.category.toLowerCase() === userCat.toLowerCase()).slice(0, 4);
-
-      if (!matchedProducts.length) {
-        section.classList.add('hidden');
-        return;
-      }
-
-      title.innerHTML = `<i data-lucide="sparkles" class="w-4 h-4 text-amber-500"></i> Ferramentas para ${userCat}`;
-      grid.innerHTML = '';
-
-      matchedProducts.forEach(prod => {
-        const item = document.createElement('div');
-        item.className = 'bg-white dark:bg-neutral-900 p-2 rounded-xl border border-neutral-200 dark:border-neutral-800 shadow-sm flex flex-col justify-between';
-        item.innerHTML = `
-          <div>
-            <div class="aspect-square rounded-lg overflow-hidden bg-neutral-100 mb-1.5">
-              <img src="${prod.image}" class="w-full h-full object-cover">
-            </div>
-            <h4 class="font-bold text-[10px] line-clamp-1">${prod.title}</h4>
-            <span class="text-[11px] font-black text-[#EE4D2D] block">${prod.price || ''}</span>
-          </div>
-          <a href="${prod.link}" target="_blank" class="mt-2 w-full py-1 bg-[#EE4D2D] text-white text-[9px] font-bold rounded flex items-center justify-center gap-1">
-            Ver Oferta
-          </a>
-        `;
-        grid.appendChild(item);
-      });
-
-      section.classList.remove('hidden');
+      allProducts.slice(0, 4).forEach(p => container.appendChild(createProductCardShopee(p)));
       lucide.createIcons();
+    }
+
+    function createProductCardShopee(prod) {
+      const card = document.createElement('div');
+      const isAdmin = currentUser && currentUser.email === ADMIN_EMAIL;
+      card.className = "bg-white dark:bg-zebu-darkCard border border-zebu-grayBorder dark:border-neutral-800 rounded-2xl overflow-hidden shadow-sm flex flex-col justify-between hover:shadow-md transition relative";
+
+      card.innerHTML = `
+        <div>
+          <div class="relative w-full aspect-square bg-neutral-100 dark:bg-neutral-800 overflow-hidden flex items-center justify-center p-2">
+            <img src="${prod.image}" class="w-full h-full object-contain">
+            
+            ${prod.discountBadge ? `
+              <span class="absolute top-1.5 right-1.5 bg-zebu-lime text-black font-black text-[10px] px-1.5 py-0.5 rounded-lg shadow-sm">
+                ${prod.discountBadge}
+              </span>
+            ` : ''}
+
+            ${isAdmin ? `<button onclick="deleteProduct('${prod.id}')" class="absolute top-1.5 left-1.5 bg-rose-600 text-white p-1 rounded-full shadow"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg></button>` : ''}
+          </div>
+
+          <div class="p-2.5 space-y-1">
+            <h4 class="font-bold text-[11px] leading-snug line-clamp-2">${prod.title}</h4>
+            
+            <div class="pt-1">
+              ${prod.oldPrice ? `<span class="text-[9px] text-neutral-400 line-through block">${prod.oldPrice}</span>` : ''}
+              <span class="text-xs md:text-sm font-black text-black dark:text-white">${prod.price}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-2 pt-0 flex justify-end">
+          <a href="${prod.link}" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full bg-zebu-lime hover:bg-zebu-limeHover text-black flex items-center justify-center shadow transition">
+            <i data-lucide="shopping-cart" class="w-4 h-4"></i>
+          </a>
+        </div>
+      `;
+      return card;
     }
 
     window.deleteProduct = async function(id) {
-      if (!confirm("Apagar produto da loja?")) return;
+      if (!confirm("Apagar oferta?")) return;
       try {
         await deleteDoc(doc(db, "products", id));
-        showToast("Produto removido.");
+        showToast("Oferta removida.");
         fetchProducts();
       } catch (err) {
         showToast("Erro ao apagar.", "error");
@@ -942,12 +1221,12 @@
     };
 
     // -------------------------------------------------------------
-    // PROFISSIONAIS E ANÚNCIOS
+    // PROFISSIONAIS E ANÚNCIOS (COM O NOVO DESIGN DA FOTO)
     // -------------------------------------------------------------
     window.handleAvatarUpload = async function(e) {
       const file = e.target.files[0];
       if (!file) return;
-      showToast("Otimizando foto de perfil...");
+      showToast("Comprimindo foto de perfil...");
       tempAvatarImage = await compressImage(file, 400);
       document.getElementById('proAvatarPreview').src = tempAvatarImage;
       document.getElementById('proAvatarPreview').classList.remove('hidden');
@@ -960,7 +1239,6 @@
         showToast("Máximo de 10 fotos no plano gratuito.", "warning");
         return;
       }
-
       showToast("Otimizando fotos...");
       for (const file of files) {
         const compressedBase64 = await compressImage(file, 800);
@@ -1003,7 +1281,7 @@
       document.getElementById('photoCount').textContent = `${tempPortfolioImages.length} / 10 fotos`;
       tempPortfolioImages.forEach((imgUrl, idx) => {
         const div = document.createElement('div');
-        div.className = 'relative aspect-square rounded-lg overflow-hidden border border-neutral-300 dark:border-neutral-700';
+        div.className = 'relative aspect-square rounded-xl overflow-hidden border border-neutral-300 dark:border-neutral-700';
         div.innerHTML = `
           <img src="${imgUrl}" class="w-full h-full object-cover">
           <button type="button" onclick="removePortfolioImage(${idx})" class="absolute top-1 right-1 bg-black text-white rounded-full p-0.5 text-[10px]">✕</button>
@@ -1035,8 +1313,6 @@
       }
 
       let categorySelected = document.getElementById('proCategory').value;
-      
-      // Se for operador de drone, salva o tipo
       if (categorySelected === "Operador de Drone") {
         const droneType = document.querySelector('input[name="droneSpecialty"]:checked').value;
         categorySelected = `Operador de Drone - ${droneType}`;
@@ -1070,7 +1346,6 @@
         showToast("Anúncio salvo com sucesso!");
         currentUserProfile = payload;
         fetchProfessionals();
-        renderPersonalizedHomeProducts();
       } catch (err) {
         showToast("Erro ao salvar perfil.", "error");
       }
@@ -1094,59 +1369,63 @@
 
     function renderCards() {
       const spon = document.getElementById('sponsoredList');
-      const rec = document.getElementById('recentList');
       spon.innerHTML = '';
-      rec.innerHTML = '';
 
-      allProfessionals.forEach(p => {
-        const card = createProCard(p);
-        if (p.isSponsored) spon.appendChild(card);
-        rec.appendChild(card.cloneNode(true));
-      });
+      const sponsoredPros = allProfessionals.filter(p => p.isSponsored);
+      const recentPros = allProfessionals.slice(0, 6);
 
-      if (!spon.children.length) spon.innerHTML = '<p class="text-xs text-neutral-400 py-2">Nenhum profissional em destaque.</p>';
-      if (!rec.children.length) rec.innerHTML = '<p class="text-xs text-neutral-400 py-2">Nenhum anúncio recente.</p>';
+      // Na Home: exibe os patrocinados ou os melhores profissionais
+      const displayPros = sponsoredPros.length ? sponsoredPros : recentPros;
+
+      if (!displayPros.length) {
+        spon.innerHTML = '<p class="text-xs text-neutral-400 py-3 col-span-full text-center">Nenhum profissional cadastrado ainda.</p>';
+      } else {
+        displayPros.forEach(p => spon.appendChild(createFeaturedProCard(p)));
+      }
+
       applyFilters();
       lucide.createIcons();
     }
 
-    function createProCard(p) {
+    // CARD DE PROFISSIONAL EM DESTAQUE (DESIGN IDÊNTICO À FOTO: BORDA BRANCA, CHECK VERDE E BOTÃO EM PÍLULA)
+    function createFeaturedProCard(p) {
       const card = document.createElement('div');
-      card.className = "bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-3.5 shadow-sm flex flex-col justify-between";
-      const price = p.priceType === 'fixed' && p.priceValue > 0 ? `R$ ${p.priceValue.toFixed(2)}` : 'Sob Orçamento';
-      const iconName = getCategoryIcon(p.category.split(' - ')[0]);
+      card.className = "bg-white text-black rounded-2xl overflow-hidden shadow-sm flex flex-col justify-between";
 
-      const avatarHTML = p.avatar 
-        ? `<img src="${p.avatar}" class="w-10 h-10 rounded-full object-cover shrink-0 border border-neutral-200 dark:border-neutral-700">`
-        : `<div class="w-10 h-10 rounded-full bg-black text-white dark:bg-white dark:text-black flex items-center justify-center shrink-0">
-             <i data-lucide="${iconName}" class="w-4 h-4"></i>
-           </div>`;
+      const iconName = getCategoryIcon(p.category.split(' - ')[0]);
+      const imageHTML = p.avatar 
+        ? `<img src="${p.avatar}" class="w-full h-36 object-cover">`
+        : `<div class="w-full h-36 bg-neutral-200 flex items-center justify-center text-neutral-600"><i data-lucide="${iconName}" class="w-12 h-12"></i></div>`;
 
       card.innerHTML = `
-        <div class="space-y-2">
-          <div class="flex items-center justify-between">
-            <div class="flex items-center gap-2.5">
-              ${avatarHTML}
-              <div>
-                <h3 class="font-black text-xs md:text-sm leading-tight">${p.name || 'Profissional'}</h3>
-                <span class="text-[10px] font-bold text-neutral-500">${p.category}</span>
-              </div>
+        <div>
+          <div class="relative">
+            ${imageHTML}
+            <span class="absolute top-2 right-2 w-6 h-6 rounded-full bg-zebu-lime text-black flex items-center justify-center shadow">
+              <i data-lucide="check" class="w-3.5 h-3.5 stroke-[3]"></i>
+            </span>
+          </div>
+
+          <div class="p-3 space-y-1">
+            <h3 class="font-black text-xs md:text-sm leading-tight">${p.name}</h3>
+            <p class="text-[10px] font-bold text-neutral-600 line-clamp-1">${p.category}</p>
+            <div class="flex items-center gap-1 text-[10px] font-bold text-amber-500 pt-0.5">
+              <span>★ 5.0</span>
+              <span class="text-neutral-400 font-normal">(${p.neighborhood || 'Uberaba'})</span>
             </div>
-            ${p.isSponsored ? `<span class="text-[9px] font-black px-1.5 py-0.5 rounded bg-amber-400 text-black flex items-center gap-0.5"><i data-lucide="crown" class="w-2.5 h-2.5"></i> TOP</span>` : ''}
           </div>
-          <p class="text-[11px] text-neutral-600 dark:text-neutral-400 line-clamp-2 leading-relaxed">${p.bio || 'Sem descrição.'}</p>
         </div>
-        <div class="mt-3 pt-2.5 border-t border-neutral-100 dark:border-neutral-800 flex items-center justify-between">
-          <div>
-            <span class="text-[9px] text-neutral-400 block uppercase font-bold">${p.neighborhood || 'Uberaba'}</span>
-            <span class="text-xs font-black text-black dark:text-white">${price}</span>
-          </div>
-          <button onclick="openProfileModal('${p.id}')" class="px-3 py-1.5 bg-black text-white dark:bg-white dark:text-black text-xs font-black rounded-lg hover:opacity-80 transition">Ver Perfil</button>
+
+        <div class="p-3 pt-0">
+          <button onclick="openProfileModal('${p.id}')" class="w-full py-1.5 border border-zebu-lime hover:bg-zebu-limeSoft font-bold text-xs rounded-full transition flex items-center justify-center gap-1">
+            Ver perfil <i data-lucide="arrow-right" class="w-3 h-3"></i>
+          </button>
         </div>
       `;
       return card;
     }
 
+    // LISTAGEM PADRÃO NA BUSCA
     window.applyFilters = function() {
       const s = (document.getElementById('searchInput').value || '').toLowerCase();
       const cat = document.getElementById('filterCategory').value;
@@ -1159,8 +1438,13 @@
 
       const grid = document.getElementById('resultsGrid');
       grid.innerHTML = '';
-      document.getElementById('resultsCount').textContent = `${filtered.length} profissional(is) em Uberaba`;
-      filtered.forEach(p => grid.appendChild(createProCard(p)));
+      document.getElementById('resultsCount').textContent = `${filtered.length} profissional(is) encontrado(s) em Uberaba`;
+
+      if (!filtered.length) {
+        grid.innerHTML = '<p class="col-span-full py-8 text-center text-xs text-neutral-400">Nenhum profissional encontrado com os filtros selecionados.</p>';
+      } else {
+        filtered.forEach(p => grid.appendChild(createFeaturedProCard(p)));
+      }
       lucide.createIcons();
     };
 
@@ -1202,7 +1486,7 @@
           adminToggleBtn.className = "px-2.5 py-1 bg-neutral-200 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 font-extrabold text-[11px] rounded-lg";
         } else {
           adminToggleText.textContent = "Destacar";
-          adminToggleBtn.className = "px-2.5 py-1 bg-amber-400 text-black font-extrabold text-[11px] rounded-lg";
+          adminToggleBtn.className = "px-2.5 py-1 bg-zebu-lime text-black font-extrabold text-[11px] rounded-lg";
         }
       } else {
         adminToggleBtn.classList.add('hidden');
@@ -1212,7 +1496,7 @@
       sCont.innerHTML = '';
       (p.services || []).forEach(svc => {
         const span = document.createElement('span');
-        span.className = 'text-[11px] bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 px-2 py-0.5 rounded-md border border-neutral-300 dark:border-neutral-700';
+        span.className = 'text-[11px] bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 px-2.5 py-0.5 rounded-full border border-neutral-300 dark:border-neutral-700';
         span.textContent = svc;
         sCont.appendChild(span);
       });
@@ -1222,7 +1506,7 @@
       (p.portfolio || []).forEach(url => {
         const img = document.createElement('img');
         img.src = url;
-        img.className = 'w-full aspect-square object-cover rounded-lg border border-neutral-300 dark:border-neutral-700';
+        img.className = 'w-full aspect-square object-cover rounded-xl border border-neutral-300 dark:border-neutral-700';
         g.appendChild(img);
       });
 
@@ -1233,16 +1517,16 @@
         const btn = document.createElement('button');
 
         if (currentUser) {
-          btn.className = "px-3.5 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs rounded-xl flex items-center gap-1 shadow";
-          btn.innerHTML = `<i data-lucide="message-circle" class="w-3.5 h-3.5"></i> Chamar no WhatsApp`;
+          btn.className = "px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs rounded-full flex items-center gap-1.5 shadow";
+          btn.innerHTML = `<i data-lucide="message-circle" class="w-4 h-4"></i> Conversar no WhatsApp`;
           btn.onclick = () => {
             const num = p.whatsappNumber.replace(/\D/g, '');
             const msg = encodeURIComponent(`Olá ${p.name}! Encontrei seu perfil no Zebu Freela em Uberaba e gostaria de um orçamento.`);
             window.open(`https://wa.me/55${num}?text=${msg}`, '_blank');
           };
         } else {
-          btn.className = "px-3 py-1.5 bg-neutral-900 text-amber-400 border border-amber-400/40 font-black text-xs rounded-xl flex items-center gap-1 shadow";
-          btn.innerHTML = `<i data-lucide="lock" class="w-3.5 h-3.5"></i> Cadastre-se para o WhatsApp`;
+          btn.className = "px-4 py-2 bg-black text-zebu-lime border border-zebu-lime/40 font-black text-xs rounded-full flex items-center gap-1.5 shadow";
+          btn.innerHTML = `<i data-lucide="lock" class="w-4 h-4"></i> Cadastre-se para o WhatsApp`;
           btn.onclick = () => {
             document.getElementById('authPromptMessage').classList.remove('hidden');
             openModal('authModal', 'register');
@@ -1261,7 +1545,7 @@
       try {
         await updateDoc(doc(db, "profiles", currentViewingPro.id), { isSponsored: newStatus });
         currentViewingPro.isSponsored = newStatus;
-        showToast(newStatus ? "Profissional em destaque!" : "Destaque removido.");
+        showToast(newStatus ? "Profissional colocado em destaque!" : "Destaque removido.");
         openProfileModal(currentViewingPro.id);
         fetchProfessionals();
       } catch (err) {
@@ -1275,7 +1559,6 @@
         const d = snap.data();
         document.getElementById('proName').value = d.name || "";
         
-        // Trata a categoria se for drone
         if (d.category && d.category.includes("Operador de Drone")) {
           document.getElementById('proCategory').value = "Operador de Drone";
           checkDroneCategoryOptions();
@@ -1373,8 +1656,12 @@
     };
 
     window.showSection = function(id) {
-      ['homeSection', 'exploreSection', 'dashboardSection', 'blogSection'].forEach(s => document.getElementById(s).classList.add('hidden'));
-      document.getElementById(id + 'Section').classList.remove('hidden');
+      ['homeSection', 'exploreSection', 'dashboardSection', 'blogSection', 'jobsSection'].forEach(s => {
+        const el = document.getElementById(s);
+        if (el) el.classList.add('hidden');
+      });
+      const target = document.getElementById(id + 'Section');
+      if (target) target.classList.remove('hidden');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
