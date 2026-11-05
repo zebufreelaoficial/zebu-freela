@@ -156,7 +156,7 @@
       </div>
     </section>
 
-    <!-- SEÇÃO: BLOG / PRODUTOS INDICADOS -->
+    <!-- BLOG / PRODUTOS -->
     <section id="blogSection" class="hidden space-y-6">
       <div class="bg-black text-white p-6 md:p-8 rounded-3xl border border-neutral-800 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
@@ -168,7 +168,6 @@
           + Adicionar Nova Indicação
         </button>
       </div>
-
       <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
     </section>
 
@@ -219,6 +218,20 @@
         </div>
 
         <form id="proProfileForm" onsubmit="saveProProfile(event)" class="space-y-5">
+          
+          <!-- FOTO DE PERFIL / LOGOTIPO DO PROFISSIONAL -->
+          <div class="flex items-center gap-4 p-4 rounded-2xl bg-neutral-50 dark:bg-neutral-800/60 border border-neutral-200 dark:border-neutral-700">
+            <div id="proAvatarPreviewContainer" class="w-16 h-16 rounded-full bg-black text-white flex items-center justify-center font-black text-xl shrink-0 overflow-hidden border border-neutral-300 dark:border-neutral-600">
+              <i id="proAvatarDefaultIcon" data-lucide="user" class="w-8 h-8"></i>
+              <img id="proAvatarPreview" src="" class="w-full h-full object-cover hidden">
+            </div>
+            <div class="flex-1">
+              <label class="block text-xs font-bold uppercase text-neutral-700 dark:text-neutral-200 mb-1">Foto de Perfil ou Logotipo (Opcional)</label>
+              <span class="text-[11px] text-neutral-400 block mb-2">Se não enviar foto, usaremos o ícone da sua profissão automaticamente.</span>
+              <input type="file" id="proAvatarInput" accept="image/*" onchange="handleAvatarUpload(event)" class="block w-full text-xs text-neutral-500 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-bold file:bg-black file:text-white hover:file:bg-neutral-800">
+            </div>
+          </div>
+
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label class="block text-xs font-bold uppercase text-neutral-500 mb-1">Nome de Exibição / Fantasia *</label>
@@ -285,21 +298,21 @@
             <div id="portfolioPreviewGrid" class="grid grid-cols-2 sm:grid-cols-5 gap-3 pt-2"></div>
           </div>
 
-          <!-- WhatsApp OBRIGATÓRIO PARA ANÚNCIO COMPLETO -->
+          <!-- WhatsApp Obrigatório -->
           <div class="bg-neutral-100 dark:bg-neutral-800 p-4 rounded-xl border border-neutral-300 dark:border-neutral-700 space-y-3">
             <h4 class="text-xs font-bold uppercase tracking-wider text-black dark:text-white flex items-center gap-1.5">
               <i data-lucide="shield-check" class="w-4 h-4 text-emerald-500"></i> Contato Direto via WhatsApp (Obrigatório) *
             </h4>
             <p class="text-xs text-neutral-600 dark:text-neutral-300">
-              Para a segurança de todos, seu número de telefone **nunca** fica escrito na tela. O cliente só entra em contato pelo botão protegido.
+              Seu telefone **nunca** fica escrito na tela. O cliente só entra em contato pelo botão protegido.
             </p>
             <div>
-              <label class="block text-xs font-bold text-neutral-700 dark:text-neutral-200 mb-1">Seu Número de WhatsApp com DDD *</label>
+              <label class="block text-xs font-bold text-neutral-700 dark:text-neutral-200 mb-1">Seu WhatsApp com DDD *</label>
               <input type="tel" id="proWhatsappNumber" required placeholder="Ex: 34999998888" class="w-full sm:w-72 text-sm p-2.5 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-900 font-mono">
             </div>
             <div class="flex items-start gap-2 pt-1">
               <input type="checkbox" id="proAllowWhatsapp" required checked class="mt-0.5 rounded text-black focus:ring-black w-4 h-4">
-              <label for="proAllowWhatsapp" class="text-xs font-bold">Confirmo que este WhatsApp está ativo e autorizo receber orçamentos de clientes de Uberaba *</label>
+              <label for="proAllowWhatsapp" class="text-xs font-bold">Autorizo receber contatos de clientes no WhatsApp *</label>
             </div>
           </div>
 
@@ -313,7 +326,7 @@
     </section>
   </main>
 
-  <!-- MODAL SECRETO DA ADMINISTRADORA: CADASTRAR PRODUTO DE AFILIADO -->
+  <!-- MODAL ADMIN: PRODUTO -->
   <div id="adminProductModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4">
     <div class="bg-white dark:bg-neutral-900 w-full max-w-lg rounded-3xl p-6 shadow-2xl border border-neutral-200 dark:border-neutral-800 relative max-h-[90vh] overflow-y-auto">
       <button onclick="closeModal('adminProductModal')" class="absolute right-4 top-4 text-neutral-400 hover:text-black dark:hover:text-white">
@@ -343,7 +356,7 @@
         </div>
 
         <div>
-          <label class="block text-xs font-bold uppercase text-neutral-500 mb-1">Seu Link de Afiliado (Shopee, Mercado Livre, etc.) *</label>
+          <label class="block text-xs font-bold uppercase text-neutral-500 mb-1">Link de Afiliado *</label>
           <input type="url" id="prodAffiliateLink" required placeholder="https://shope.ee/..." class="w-full text-sm p-2.5 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800">
         </div>
 
@@ -367,14 +380,13 @@
     </div>
   </div>
 
-  <!-- MODAL AUTH (LOGIN / REGISTRO) -->
+  <!-- MODAL AUTH -->
   <div id="authModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4">
     <div class="bg-white dark:bg-neutral-900 w-full max-w-md rounded-2xl p-6 shadow-2xl border border-neutral-200 dark:border-neutral-800 relative max-h-[90vh] overflow-y-auto">
       <button onclick="closeModal('authModal')" class="absolute right-4 top-4 text-neutral-400 hover:text-black dark:hover:text-white">
         <i data-lucide="x" class="w-5 h-5"></i>
       </button>
 
-      <!-- Mensagem amigável de exigência de cadastro para contratar -->
       <div id="authPromptMessage" class="hidden mb-4 p-3 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-300 dark:border-amber-800 text-xs text-amber-900 dark:text-amber-200 font-medium">
         👋 <strong>Quase lá!</strong> Crie sua conta gratuita ou faça login para falar com o profissional no WhatsApp com total segurança.
       </div>
@@ -429,12 +441,16 @@
     </div>
   </div>
 
-  <!-- MODAL DETALHES -->
+  <!-- MODAL DETALHES DO PROFISSIONAL (COM BOTÃO DE DESTAQUE PARA ADMIN) -->
   <div id="profileModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-3">
     <div class="bg-white dark:bg-neutral-900 w-full max-w-2xl rounded-2xl shadow-2xl border border-neutral-200 dark:border-neutral-800 relative max-h-[92vh] flex flex-col overflow-hidden">
+      
+      <!-- Topo com Avatar ou Ícone -->
       <div class="p-5 border-b border-neutral-200 dark:border-neutral-800 flex justify-between items-start">
         <div class="flex items-center gap-3">
-          <div id="modalProAvatar" class="w-14 h-14 rounded-full bg-black text-white border border-neutral-700 flex items-center justify-center font-black text-xl uppercase shrink-0">Z</div>
+          <div id="modalProAvatarContainer" class="w-14 h-14 rounded-full bg-black text-white border border-neutral-700 flex items-center justify-center font-black text-xl uppercase shrink-0 overflow-hidden">
+            <!-- Inserido dinamicamente (imagem de rosto ou ícone da categoria) -->
+          </div>
           <div>
             <div class="flex items-center gap-2">
               <h3 id="modalProName" class="font-black text-lg leading-snug">Profissional</h3>
@@ -468,10 +484,19 @@
         </div>
       </div>
 
-      <div class="p-4 border-t border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900/50 flex items-center justify-between">
-        <button onclick="openReportModal()" class="text-xs text-rose-600 hover:underline flex items-center gap-1">
-          <i data-lucide="flag" class="w-3.5 h-3.5"></i> Denunciar
-        </button>
+      <!-- Rodapé com Botão Admin de Destacar + WhatsApp -->
+      <div class="p-4 border-t border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900/50 flex flex-wrap items-center justify-between gap-2">
+        <div class="flex items-center gap-2">
+          <button onclick="openReportModal()" class="text-xs text-rose-600 hover:underline flex items-center gap-1">
+            <i data-lucide="flag" class="w-3.5 h-3.5"></i> Denunciar
+          </button>
+          
+          <!-- BOTÃO EXCLUSIVO DA DONA PARA DESTACAR / DESATIVAR DESTAQUE -->
+          <button id="adminToggleSponsoredBtn" onclick="toggleProfessionalSponsorship()" class="hidden px-2.5 py-1.5 bg-amber-400 hover:bg-amber-300 text-black font-extrabold text-xs rounded-lg transition shadow flex items-center gap-1">
+            <i data-lucide="crown" class="w-3.5 h-3.5"></i> <span id="adminToggleSponsoredText">Destacar Profissional</span>
+          </button>
+        </div>
+
         <div id="modalWhatsappContainer"></div>
       </div>
     </div>
@@ -501,7 +526,7 @@
     </div>
   </div>
 
-  <!-- FIREBASE MODULAR COM AS DUAS TRAVAS DE SEGURANÇA -->
+  <!-- FIREBASE MODULAR -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
     import { 
@@ -521,10 +546,10 @@
       getDocs, 
       addDoc, 
       deleteDoc,
+      updateDoc,
       serverTimestamp 
     } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
 
-    // SUAS CHAVES OFICIAIS DO ZEBU-FREELA-UBERABA
     const firebaseConfig = {
       apiKey: "AIzaSyDQtTR_wIjlbAXffj8t9ddJvRIwAuyvG7o",
       authDomain: "zebu-freela-uberaba.firebaseapp.com",
@@ -586,6 +611,7 @@
     let allProfessionals = [];
     let allProducts = [];
     let tempPortfolioImages = [];
+    let tempAvatarImage = "";
     let tempProductImage = "";
     let currentViewingPro = null;
 
@@ -620,6 +646,11 @@
         if (!sel) return;
         NEIGHBORHOODS.forEach(n => sel.appendChild(new Option(n, n)));
       });
+    }
+
+    function getCategoryIcon(catName) {
+      const found = CATEGORIES_DATA.find(c => c.name === catName);
+      return found ? found.icon : 'briefcase';
     }
 
     function renderCategoryCards() {
@@ -677,14 +708,23 @@
       });
     }
 
-    // -------------------------------------------------------------
-    // GESTÃO DE PRODUTOS / AFILIADOS
-    // -------------------------------------------------------------
+    // FOTO DE ROSTO / AVATAR
+    window.handleAvatarUpload = async function(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+      showToast("Comprimindo foto de perfil...");
+      tempAvatarImage = await compressImage(file, 400);
+      document.getElementById('proAvatarPreview').src = tempAvatarImage;
+      document.getElementById('proAvatarPreview').classList.remove('hidden');
+      document.getElementById('proAvatarDefaultIcon').classList.add('hidden');
+    };
+
+    // BLOG / PRODUTOS
     window.handleProductPhotoUpload = async function(e) {
       const file = e.target.files[0];
       if (!file) return;
       showToast("Comprimindo foto do produto...");
-      tempProductImage = await compressImage(file);
+      tempProductImage = await compressImage(file, 800);
       document.getElementById('prodImagePreview').src = tempProductImage;
       document.getElementById('prodImagePreviewContainer').classList.remove('hidden');
     };
@@ -793,9 +833,7 @@
       }
     };
 
-    // -------------------------------------------------------------
     // AUTH & PERFIS
-    // -------------------------------------------------------------
     window.handleRegister = async function(e) {
       e.preventDefault();
       const name = document.getElementById('regName').value.trim();
@@ -819,13 +857,12 @@
             neighborhood: NEIGHBORHOODS[0], regions: "Uberaba",
             priceType: "quote", priceValue: 0, hours: "Comercial",
             allowWhatsapp: false, whatsappNumber: "", portfolio: [],
-            isSponsored: false, createdAt: serverTimestamp()
+            avatar: "", isSponsored: false, createdAt: serverTimestamp()
           });
         }
         closeModal('authModal');
         showToast("Conta criada com sucesso no Zebu Freela!");
 
-        // Se o modal de um profissional estava aberto, atualiza para liberar o WhatsApp
         if (currentViewingPro) {
           openProfileModal(currentViewingPro.id);
         }
@@ -843,7 +880,6 @@
         closeModal('authModal');
         showToast("Conectado com sucesso!");
 
-        // Se estava tentando falar no WhatsApp, reabre com acesso liberado
         if (currentViewingPro) {
           openProfileModal(currentViewingPro.id);
         }
@@ -873,6 +909,14 @@
         document.getElementById('proHours').value = d.hours || "";
         document.getElementById('proAllowWhatsapp').checked = (d.allowWhatsapp !== undefined) ? d.allowWhatsapp : true;
         document.getElementById('proWhatsappNumber').value = d.whatsappNumber || "";
+        
+        tempAvatarImage = d.avatar || "";
+        if (tempAvatarImage) {
+          document.getElementById('proAvatarPreview').src = tempAvatarImage;
+          document.getElementById('proAvatarPreview').classList.remove('hidden');
+          document.getElementById('proAvatarDefaultIcon').classList.add('hidden');
+        }
+
         tempPortfolioImages = d.portfolio || [];
         renderPortfolioPreviews();
         togglePriceValueField();
@@ -888,13 +932,13 @@
 
       showToast("Otimizando fotos gratuitamente...");
       for (const file of files) {
-        const compressedBase64 = await compressImage(file);
+        const compressedBase64 = await compressImage(file, 800);
         tempPortfolioImages.push(compressedBase64);
       }
       renderPortfolioPreviews();
     };
 
-    function compressImage(file) {
+    function compressImage(file, maxDim = 800) {
       return new Promise((resolve) => {
         const reader = new FileReader();
         reader.readAsDataURL(file);
@@ -903,7 +947,6 @@
           img.src = event.target.result;
           img.onload = () => {
             const canvas = document.createElement('canvas');
-            const maxDim = 800;
             let w = img.width;
             let h = img.height;
             if (w > h && w > maxDim) {
@@ -943,14 +986,12 @@
       renderPortfolioPreviews();
     };
 
-    // VALIDAÇÃO ESTRITA: NÃO ACEITA CADASTRO INCOMPLETO
     window.saveProProfile = async function(e) {
       e.preventDefault();
 
       const rawNumber = document.getElementById('proWhatsappNumber').value.replace(/\D/g, '');
       const allowWa = document.getElementById('proAllowWhatsapp').checked;
 
-      // TRAVA 1: WHATSAPP OBRIGATÓRIO E VÁLIDO (COM DDD)
       if (!rawNumber || rawNumber.length < 10) {
         showToast("Digite seu WhatsApp completo com DDD (Ex: 34999998888).", "error");
         document.getElementById('proWhatsappNumber').focus();
@@ -980,6 +1021,7 @@
         hours: document.getElementById('proHours').value.trim(),
         allowWhatsapp: true,
         whatsappNumber: rawNumber,
+        avatar: tempAvatarImage,
         portfolio: tempPortfolioImages,
         updatedAt: serverTimestamp()
       };
@@ -999,7 +1041,6 @@
         allProfessionals = [];
         snap.forEach(d => {
           const data = d.data();
-          // Só exibe se tiver nome e WhatsApp válido (ignora incompletos antigos)
           if (data.name && data.whatsappNumber && data.whatsappNumber.length >= 10) {
             allProfessionals.push({ id: d.id, ...data });
           }
@@ -1028,18 +1069,25 @@
       lucide.createIcons();
     }
 
+    // GERAÇÃO DO CARD COM FOTO OU ÍCONE
     function createProCard(p) {
       const card = document.createElement('div');
       card.className = "bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-4 shadow-sm flex flex-col justify-between";
       const price = p.priceType === 'fixed' && p.priceValue > 0 ? `R$ ${p.priceValue.toFixed(2)}` : 'Sob Orçamento';
-      
+      const iconName = getCategoryIcon(p.category);
+
+      // Se tem avatar usa imagem, senão usa ícone da profissão
+      const avatarHTML = p.avatar 
+        ? `<img src="${p.avatar}" class="w-12 h-12 rounded-full object-cover shrink-0 border border-neutral-200 dark:border-neutral-700">`
+        : `<div class="w-12 h-12 rounded-full bg-black text-white dark:bg-white dark:text-black flex items-center justify-center shrink-0">
+             <i data-lucide="${iconName}" class="w-5 h-5"></i>
+           </div>`;
+
       card.innerHTML = `
         <div class="space-y-3">
           <div class="flex items-center justify-between">
             <div class="flex items-center gap-3">
-              <div class="w-11 h-11 rounded-full bg-black text-white dark:bg-white dark:text-black flex items-center justify-center font-black uppercase shrink-0">
-                ${p.name ? p.name.charAt(0) : 'Z'}
-              </div>
+              ${avatarHTML}
               <div>
                 <h3 class="font-black text-sm">${p.name || 'Profissional'}</h3>
                 <span class="text-xs font-bold text-neutral-500">${p.category}</span>
@@ -1074,7 +1122,6 @@
       lucide.createIcons();
     };
 
-    // EXIGÊNCIA DE CADASTRO PARA O CLIENTE FALAR NO WHATSAPP
     window.openProfileModal = function(id) {
       const p = allProfessionals.find(x => x.id === id);
       if (!p) return;
@@ -1087,11 +1134,38 @@
       document.getElementById('modalProPrice').textContent = p.priceType === 'fixed' && p.priceValue > 0 ? `R$ ${p.priceValue.toFixed(2)}` : 'Sob Orçamento';
       document.getElementById('modalProHours').textContent = p.hours || "A combinar";
 
+      // Avatar ou Ícone dentro do Modal
+      const aCont = document.getElementById('modalProAvatarContainer');
+      const iconName = getCategoryIcon(p.category);
+      if (p.avatar) {
+        aCont.innerHTML = `<img src="${p.avatar}" class="w-full h-full object-cover">`;
+      } else {
+        aCont.innerHTML = `<i data-lucide="${iconName}" class="w-6 h-6"></i>`;
+      }
+
       const badge = document.getElementById('modalProBadge');
       if (p.isSponsored) {
         badge.classList.remove('hidden');
       } else {
         badge.classList.add('hidden');
+      }
+
+      // BOTÃO ADMIN PARA DESTACAR / DESATIVAR DESTAQUE COM 1 CLIQUE
+      const adminToggleBtn = document.getElementById('adminToggleSponsoredBtn');
+      const adminToggleText = document.getElementById('adminToggleSponsoredText');
+      const isAdmin = currentUser && currentUser.email === ADMIN_EMAIL;
+
+      if (isAdmin) {
+        adminToggleBtn.classList.remove('hidden');
+        if (p.isSponsored) {
+          adminToggleText.textContent = "Remover Destaque";
+          adminToggleBtn.className = "px-2.5 py-1.5 bg-neutral-200 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 font-extrabold text-xs rounded-lg transition shadow flex items-center gap-1";
+        } else {
+          adminToggleText.textContent = "Destacar Profissional";
+          adminToggleBtn.className = "px-2.5 py-1.5 bg-amber-400 hover:bg-amber-300 text-black font-extrabold text-xs rounded-lg transition shadow flex items-center gap-1";
+        }
+      } else {
+        adminToggleBtn.classList.add('hidden');
       }
 
       const sCont = document.getElementById('modalProServices');
@@ -1118,7 +1192,6 @@
       if (p.whatsappNumber) {
         const btn = document.createElement('button');
 
-        // SE O CLIENTE JÁ ESTIVER LOGADO -> ABRE O WHATSAPP DIRETO
         if (currentUser) {
           btn.className = "px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs rounded-xl flex items-center gap-1.5 shadow transition";
           btn.innerHTML = `<i data-lucide="message-circle" class="w-4 h-4"></i> Conversar no WhatsApp`;
@@ -1128,7 +1201,6 @@
             window.open(`https://wa.me/55${num}?text=${msg}`, '_blank');
           };
         } else {
-          // SE O CLIENTE NÃO ESTIVER LOGADO -> EXIGE LOGIN/CADASTRO
           btn.className = "px-4 py-2 bg-neutral-900 hover:bg-black text-amber-400 border border-amber-400/40 font-black text-xs rounded-xl flex items-center gap-1.5 shadow transition";
           btn.innerHTML = `<i data-lucide="lock" class="w-4 h-4"></i> Cadastre-se para falar no WhatsApp`;
           btn.onclick = () => {
@@ -1140,6 +1212,30 @@
       }
       openModal('profileModal');
       lucide.createIcons();
+    };
+
+    // FUNÇÃO QUE PERMITE VOCÊ DESTACAR OU TIRAR O DESTAQUE COM 1 CLIQUE
+    window.toggleProfessionalSponsorship = async function() {
+      if (!currentViewingPro || !currentUser || currentUser.email !== ADMIN_EMAIL) return;
+
+      const newStatus = !currentViewingPro.isSponsored;
+      const confirmMsg = newStatus 
+        ? `Deseja destacar ${currentViewingPro.name} no topo como Patrocinado?`
+        : `Deseja remover o destaque de ${currentViewingPro.name}?`;
+
+      if (!confirm(confirmMsg)) return;
+
+      try {
+        await updateDoc(doc(db, "profiles", currentViewingPro.id), {
+          isSponsored: newStatus
+        });
+        currentViewingPro.isSponsored = newStatus;
+        showToast(newStatus ? "Profissional colocado em Destaque!" : "Destaque removido com sucesso.");
+        openProfileModal(currentViewingPro.id);
+        fetchProfessionals();
+      } catch (err) {
+        showToast("Erro ao alterar destaque: " + err.message, "error");
+      }
     };
 
     window.submitReport = async function(e) {
