@@ -136,4 +136,1122 @@
         <div id="categoriesGrid" class="flex md:grid md:grid-cols-6 gap-2.5 overflow-x-auto no-scrollbar py-1"></div>
       </div>
 
-      <!-- DESTAQU
+      <!-- DESTAQUES -->
+      <div class="space-y-3">
+        <div class="flex items-center justify-between">
+          <h2 class="text-base md:text-xl font-black flex items-center gap-1.5">
+            <i data-lucide="crown" class="w-4 h-4 md:w-5 md:h-5 text-amber-500"></i> Destaques
+          </h2>
+          <span class="text-[10px] md:text-xs text-neutral-400">Patrocinados da semana</span>
+        </div>
+        <div id="sponsoredList" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4"></div>
+      </div>
+
+      <!-- RECENTES -->
+      <div class="space-y-3">
+        <h2 class="text-base md:text-xl font-black flex items-center gap-1.5">
+          <i data-lucide="clock" class="w-4 h-4 md:w-5 md:h-5"></i> Recentes em Uberaba
+        </h2>
+        <div id="recentList" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4"></div>
+      </div>
+    </section>
+
+    <!-- BLOG / PRODUTOS -->
+    <section id="blogSection" class="hidden space-y-4 md:space-y-6">
+      <div class="bg-black text-white p-5 md:p-8 rounded-2xl md:rounded-3xl border border-neutral-800 flex flex-col md:flex-row justify-between items-start md:items-center gap-3">
+        <div>
+          <span class="text-[10px] md:text-xs font-extrabold text-amber-400 uppercase tracking-widest block mb-1">Recomendações</span>
+          <h2 class="text-xl md:text-3xl font-black">Produtos & Ferramentas</h2>
+          <p class="text-xs md:text-sm text-neutral-400 mt-1">Materiais e ferramentas indicadas para serviços em Uberaba.</p>
+        </div>
+        <button id="adminPostBtnBlog" onclick="openModal('adminProductModal')" class="hidden px-3.5 py-2 bg-amber-400 text-black font-extrabold text-xs rounded-xl hover:bg-amber-300 transition shadow">
+          + Adicionar Indicação
+        </button>
+      </div>
+      <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6"></div>
+    </section>
+
+    <!-- EXPLORAR -->
+    <section id="exploreSection" class="hidden space-y-4 md:space-y-6">
+      <div class="bg-white dark:bg-neutral-900 p-4 md:p-5 rounded-2xl shadow-sm border border-neutral-200 dark:border-neutral-800 space-y-3">
+        <div class="relative">
+          <i data-lucide="search" class="w-4 h-4 absolute left-3 top-3 text-neutral-400"></i>
+          <input type="text" id="searchInput" placeholder="Buscar profissional, serviço ou bairro..." 
+            class="w-full pl-9 pr-3 py-2 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs md:text-sm focus:ring-1 focus:ring-black outline-none"
+            oninput="applyFilters()">
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+          <select id="filterCategory" onchange="applyFilters()" class="text-xs py-2 px-2.5 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800">
+            <option value="">Todas as categorias</option>
+          </select>
+          <select id="filterNeighborhood" onchange="applyFilters()" class="text-xs py-2 px-2.5 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800">
+            <option value="">Todos os bairros</option>
+          </select>
+          <select id="filterPrice" onchange="applyFilters()" class="text-xs py-2 px-2.5 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800">
+            <option value="">Qualquer modelo de preço</option>
+            <option value="quote">Apenas Sob Orçamento</option>
+            <option value="fixed">Com valor tabelado</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="space-y-3">
+        <span id="resultsCount" class="text-xs text-neutral-500 font-bold block">Carregando profissionais...</span>
+        <div id="resultsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4"></div>
+      </div>
+    </section>
+
+    <!-- PAINEL PROFISSIONAL -->
+    <section id="dashboardSection" class="hidden space-y-4 md:space-y-6">
+      <div class="bg-white dark:bg-neutral-900 p-4 md:p-6 rounded-2xl shadow-sm border border-neutral-200 dark:border-neutral-800">
+        <div class="flex items-center justify-between border-b border-neutral-200 dark:border-neutral-800 pb-3 mb-4">
+          <div>
+            <h2 class="text-lg md:text-xl font-black">Meu Anúncio</h2>
+            <p class="text-[11px] text-neutral-500">Mantenha seus dados atualizados para clientes de Uberaba.</p>
+          </div>
+          <span class="text-[10px] font-black px-2.5 py-0.5 rounded-full bg-black text-white dark:bg-white dark:text-black">
+            Profissional
+          </span>
+        </div>
+
+        <form id="proProfileForm" onsubmit="saveProProfile(event)" class="space-y-4 text-xs md:text-sm">
+          <div class="flex items-center gap-3 p-3 rounded-xl bg-neutral-50 dark:bg-neutral-800/60 border border-neutral-200 dark:border-neutral-700">
+            <div id="proAvatarPreviewContainer" class="w-12 h-12 rounded-full bg-black text-white flex items-center justify-center font-black text-base shrink-0 overflow-hidden border border-neutral-300">
+              <i id="proAvatarDefaultIcon" data-lucide="user" class="w-6 h-6"></i>
+              <img id="proAvatarPreview" src="" class="w-full h-full object-cover hidden">
+            </div>
+            <div class="flex-1">
+              <label class="block text-[11px] font-bold uppercase text-neutral-700 dark:text-neutral-200 mb-0.5">Sua Foto / Logo</label>
+              <input type="file" id="proAvatarInput" accept="image/*" onchange="handleAvatarUpload(event)" class="block w-full text-[10px] text-neutral-500 file:mr-2 file:py-1 file:px-2.5 file:rounded-md file:border-0 file:text-[10px] file:font-bold file:bg-black file:text-white">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Nome de Exibição *</label>
+              <input type="text" id="proName" required placeholder="Como os clientes vão te chamar" class="w-full p-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs">
+            </div>
+            <div>
+              <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Categoria Principal *</label>
+              <select id="proCategory" required class="w-full p-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs"></select>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Serviços Oferecidos (separados por vírgula) *</label>
+            <input type="text" id="proServices" required placeholder="Ex: Faxina pesada, Pós-obra, Passadoria" class="w-full p-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs">
+          </div>
+
+          <div>
+            <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Descrição e Experiência *</label>
+            <textarea id="proBio" rows="3" required placeholder="Conte sobre sua trajetória, garantia e diferenciais..." class="w-full p-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs"></textarea>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <div>
+              <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Preço</label>
+              <select id="proPriceType" onchange="togglePriceValueField()" class="w-full p-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs">
+                <option value="quote">Sob Orçamento</option>
+                <option value="fixed">A partir de (R$)</option>
+              </select>
+            </div>
+            <div id="priceValueContainer" class="hidden">
+              <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Valor (R$)</label>
+              <input type="number" step="0.5" id="proPriceValue" placeholder="150,00" class="w-full p-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs">
+            </div>
+            <div>
+              <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Seu Bairro Base (Uberaba) *</label>
+              <select id="proNeighborhood" required class="w-full p-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs"></select>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Regiões Atendidas</label>
+              <input type="text" id="proRegions" placeholder="Ex: Todos os bairros e chácaras" class="w-full p-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs">
+            </div>
+            <div>
+              <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Horário de Atendimento</label>
+              <input type="text" id="proHours" placeholder="Ex: Seg a Sáb das 08h às 18h" class="w-full p-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs">
+            </div>
+          </div>
+
+          <!-- Fotos -->
+          <div class="space-y-2 border-t border-neutral-200 dark:border-neutral-800 pt-3">
+            <div class="flex items-center justify-between">
+              <label class="block text-[11px] font-bold uppercase text-neutral-500">Fotos dos Trabalhos</label>
+              <span id="photoCount" class="text-[11px] font-black">0 / 10 fotos</span>
+            </div>
+            <input type="file" id="portfolioInput" accept="image/*" multiple onchange="handlePortfolioUpload(event)"
+              class="block w-full text-[10px] text-neutral-500 file:mr-3 file:py-1.5 file:px-2.5 file:rounded-md file:border-0 file:text-[10px] file:font-bold file:bg-black file:text-white">
+            <div id="portfolioPreviewGrid" class="grid grid-cols-3 sm:grid-cols-5 gap-2 pt-1"></div>
+          </div>
+
+          <!-- WhatsApp -->
+          <div class="bg-neutral-100 dark:bg-neutral-800 p-3.5 rounded-xl border border-neutral-300 dark:border-neutral-700 space-y-2.5">
+            <h4 class="text-[11px] font-bold uppercase tracking-wider text-black dark:text-white flex items-center gap-1">
+              <i data-lucide="shield-check" class="w-4 h-4 text-emerald-500"></i> WhatsApp de Contato *
+            </h4>
+            <input type="tel" id="proWhatsappNumber" required placeholder="DDD + Número (Ex: 34999998888)" class="w-full p-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-900 font-mono text-xs">
+            <div class="flex items-start gap-2">
+              <input type="checkbox" id="proAllowWhatsapp" required checked class="mt-0.5 rounded text-black w-4 h-4">
+              <label for="proAllowWhatsapp" class="text-[11px] font-bold">Autorizo receber mensagens de clientes no WhatsApp *</label>
+            </div>
+          </div>
+
+          <button type="submit" id="saveProfileBtn" class="w-full py-3 bg-black text-white hover:bg-neutral-800 font-black text-xs rounded-xl transition shadow flex items-center justify-center gap-1.5">
+            <i data-lucide="save" class="w-4 h-4"></i> Salvar Anúncio Completo
+          </button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= BARRA INFERIOR MOBILE (ESTILO APP NATIVO) ================= -->
+  <nav class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-black/95 backdrop-blur-md border-t border-neutral-800 flex justify-around items-center h-16 px-2 text-white">
+    <button onclick="showSection('home')" class="flex flex-col items-center gap-1 py-1 text-neutral-400 hover:text-white">
+      <i data-lucide="home" class="w-5 h-5"></i>
+      <span class="text-[9px] font-bold">Início</span>
+    </button>
+    <button onclick="goToExplore()" class="flex flex-col items-center gap-1 py-1 text-neutral-400 hover:text-white">
+      <i data-lucide="search" class="w-5 h-5"></i>
+      <span class="text-[9px] font-bold">Buscar</span>
+    </button>
+    <button onclick="showSection('blog')" class="flex flex-col items-center gap-1 py-1 text-amber-400">
+      <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+      <span class="text-[9px] font-bold">Dicas</span>
+    </button>
+    <button onclick="handleAdvertiseClick()" class="flex flex-col items-center gap-1 py-1 text-neutral-400 hover:text-white">
+      <i data-lucide="briefcase" class="w-5 h-5"></i>
+      <span class="text-[9px] font-bold">Painel</span>
+    </button>
+  </nav>
+
+  <!-- MODAL ADMIN PRODUTO -->
+  <div id="adminProductModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-3">
+    <div class="bg-white dark:bg-neutral-900 w-full max-w-lg rounded-2xl p-5 shadow-2xl border border-neutral-200 dark:border-neutral-800 relative max-h-[90vh] overflow-y-auto text-xs">
+      <button onclick="closeModal('adminProductModal')" class="absolute right-4 top-4 text-neutral-400"><i data-lucide="x" class="w-5 h-5"></i></button>
+      <h3 class="text-base font-black mb-1 text-amber-500 flex items-center gap-1.5"><i data-lucide="sparkles" class="w-4 h-4"></i> Nova Indicação</h3>
+      <form id="adminProductForm" onsubmit="saveProduct(event)" class="space-y-3 mt-3">
+        <div>
+          <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Título *</label>
+          <input type="text" id="prodTitle" required placeholder="Ex: Furadeira de Impacto" class="w-full p-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800">
+        </div>
+        <div class="grid grid-cols-2 gap-2">
+          <div>
+            <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Categoria *</label>
+            <select id="prodCategory" required class="w-full p-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800"></select>
+          </div>
+          <div>
+            <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Preço</label>
+            <input type="text" id="prodPrice" placeholder="R$ 149,90" class="w-full p-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800">
+          </div>
+        </div>
+        <div>
+          <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Link de Afiliado *</label>
+          <input type="url" id="prodAffiliateLink" required placeholder="https://shope.ee/..." class="w-full p-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800">
+        </div>
+        <div>
+          <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Descrição *</label>
+          <textarea id="prodDescription" rows="2" required placeholder="Por que indica essa ferramenta..." class="w-full p-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800"></textarea>
+        </div>
+        <div>
+          <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Foto *</label>
+          <input type="file" id="prodImageInput" accept="image/*" required onchange="handleProductPhotoUpload(event)" class="block w-full text-[10px] text-neutral-500 file:mr-2 file:py-1 file:px-2.5 file:rounded file:border-0 file:bg-black file:text-white">
+          <div id="prodImagePreviewContainer" class="mt-2 hidden">
+            <img id="prodImagePreview" src="" class="w-16 h-16 object-cover rounded-lg border">
+          </div>
+        </div>
+        <button type="submit" id="btnSaveProduct" class="w-full py-2.5 bg-amber-400 text-black font-black text-xs rounded-xl hover:bg-amber-300">Publicar Produto</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL AUTH -->
+  <div id="authModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-3">
+    <div class="bg-white dark:bg-neutral-900 w-full max-w-sm rounded-2xl p-5 shadow-2xl border border-neutral-200 dark:border-neutral-800 relative text-xs">
+      <button onclick="closeModal('authModal')" class="absolute right-3.5 top-3.5 text-neutral-400"><i data-lucide="x" class="w-5 h-5"></i></button>
+
+      <div id="authPromptMessage" class="hidden mb-3 p-2.5 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-300 dark:border-amber-800 text-[11px] text-amber-900 dark:text-amber-200 font-medium">
+        👋 Entre ou cadastre-se grátis para falar com o profissional no WhatsApp!
+      </div>
+
+      <div class="flex border-b border-neutral-200 dark:border-neutral-700 mb-4">
+        <button id="tabLogin" onclick="switchAuthTab('login')" class="flex-1 pb-2 font-black text-xs border-b-2 border-black text-black dark:border-white dark:text-white">Entrar</button>
+        <button id="tabRegister" onclick="switchAuthTab('register')" class="flex-1 pb-2 font-bold text-xs border-b-2 border-transparent text-neutral-400">Criar Conta</button>
+      </div>
+
+      <form id="loginForm" onsubmit="handleLogin(event)" class="space-y-3">
+        <div>
+          <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-0.5">E-mail</label>
+          <input type="email" id="loginEmail" required class="w-full p-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs">
+        </div>
+        <div>
+          <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-0.5">Senha</label>
+          <input type="password" id="loginPassword" required class="w-full p-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs">
+        </div>
+        <button type="submit" id="btnLoginSubmit" class="w-full py-2.5 bg-black text-white hover:bg-neutral-800 font-black text-xs rounded-xl shadow">Acessar</button>
+      </form>
+
+      <form id="registerForm" onsubmit="handleRegister(event)" class="space-y-3 hidden">
+        <div>
+          <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-0.5">Nome Completo</label>
+          <input type="text" id="regName" required class="w-full p-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs">
+        </div>
+        <div>
+          <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-0.5">E-mail</label>
+          <input type="email" id="regEmail" required class="w-full p-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs">
+        </div>
+        <div>
+          <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-0.5">Senha</label>
+          <input type="password" id="regPassword" minlength="6" required class="w-full p-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs">
+        </div>
+        <div>
+          <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-0.5">Objetivo</label>
+          <div class="grid grid-cols-2 gap-2">
+            <label class="flex items-center gap-1.5 p-2 border rounded-lg cursor-pointer text-[11px] font-bold border-neutral-300 dark:border-neutral-700">
+              <input type="radio" name="regRole" value="client" checked> Contratar
+            </label>
+            <label class="flex items-center gap-1.5 p-2 border rounded-lg cursor-pointer text-[11px] font-bold border-neutral-300 dark:border-neutral-700">
+              <input type="radio" name="regRole" value="pro"> Trabalhar
+            </label>
+          </div>
+        </div>
+        <div class="flex items-start gap-1.5 pt-1">
+          <input type="checkbox" id="regTerms" required class="mt-0.5 rounded text-black w-3.5 h-3.5">
+          <label for="regTerms" class="text-[10px] text-neutral-500">Concordo com os Termos e Privacidade (LGPD).</label>
+        </div>
+        <button type="submit" id="btnRegisterSubmit" class="w-full py-2.5 bg-black text-white hover:bg-neutral-800 font-black text-xs rounded-xl shadow">Criar Conta Grátis</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL DETALHES -->
+  <div id="profileModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-3">
+    <div class="bg-white dark:bg-neutral-900 w-full max-w-lg rounded-2xl shadow-2xl border border-neutral-200 dark:border-neutral-800 relative max-h-[92vh] flex flex-col overflow-hidden text-xs">
+      
+      <div class="p-4 border-b border-neutral-200 dark:border-neutral-800 flex justify-between items-start">
+        <div class="flex items-center gap-3">
+          <div id="modalProAvatarContainer" class="w-12 h-12 rounded-full bg-black text-white border border-neutral-700 flex items-center justify-center font-black text-lg uppercase shrink-0 overflow-hidden"></div>
+          <div>
+            <div class="flex items-center gap-1.5">
+              <h3 id="modalProName" class="font-black text-sm leading-snug">Profissional</h3>
+              <span id="modalProBadge" class="hidden text-[9px] font-black px-1.5 py-0.5 rounded bg-amber-400 text-black">TOP</span>
+            </div>
+            <p id="modalProCategory" class="text-[11px] font-bold text-neutral-500">Categoria</p>
+            <p id="modalProNeighborhood" class="text-[11px] text-neutral-400 flex items-center gap-1 mt-0.5"></p>
+          </div>
+        </div>
+        <button onclick="closeModal('profileModal')" class="text-neutral-400 p-1"><i data-lucide="x" class="w-5 h-5"></i></button>
+      </div>
+
+      <div class="p-4 overflow-y-auto space-y-4">
+        <div>
+          <h4 class="text-[10px] font-black uppercase text-neutral-400 mb-1">Sobre</h4>
+          <p id="modalProBio" class="text-neutral-700 dark:text-neutral-300 whitespace-pre-line text-xs leading-relaxed"></p>
+        </div>
+        <div>
+          <h4 class="text-[10px] font-black uppercase text-neutral-400 mb-1.5">Serviços</h4>
+          <div id="modalProServices" class="flex flex-wrap gap-1"></div>
+        </div>
+        <div class="grid grid-cols-2 gap-2 p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800/50">
+          <div><span class="text-[10px] text-neutral-400 block">Preço</span><span id="modalProPrice" class="font-black text-black dark:text-white text-xs"></span></div>
+          <div><span class="text-[10px] text-neutral-400 block">Horários</span><span id="modalProHours" class="font-bold text-neutral-700 dark:text-neutral-300 text-xs"></span></div>
+        </div>
+        <div>
+          <h4 class="text-[10px] font-black uppercase text-neutral-400 mb-1.5">Portfólio de Trabalhos</h4>
+          <div id="modalProGallery" class="grid grid-cols-3 gap-1.5"></div>
+        </div>
+      </div>
+
+      <div class="p-3.5 border-t border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900/50 flex flex-wrap items-center justify-between gap-2">
+        <div class="flex items-center gap-2">
+          <button onclick="openReportModal()" class="text-[11px] text-rose-600 hover:underline flex items-center gap-1">
+            <i data-lucide="flag" class="w-3.5 h-3.5"></i> Denunciar
+          </button>
+          <button id="adminToggleSponsoredBtn" onclick="toggleProfessionalSponsorship()" class="hidden px-2 py-1 bg-amber-400 text-black font-extrabold text-[11px] rounded-lg">
+            <span id="adminToggleSponsoredText">Destacar</span>
+          </button>
+        </div>
+        <div id="modalWhatsappContainer"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL DENÚNCIA -->
+  <div id="reportModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-white dark:bg-neutral-900 w-full max-w-sm rounded-2xl p-5 shadow-2xl relative text-xs">
+      <button onclick="closeModal('reportModal')" class="absolute right-3.5 top-3.5 text-neutral-400"><i data-lucide="x" class="w-5 h-5"></i></button>
+      <h3 class="text-sm font-black text-rose-600 mb-2 flex items-center gap-1.5"><i data-lucide="alert-triangle" class="w-4 h-4"></i> Denunciar</h3>
+      <form id="reportForm" onsubmit="submitReport(event)" class="space-y-3">
+        <div>
+          <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-0.5">Motivo</label>
+          <select id="reportReason" required class="w-full p-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs">
+            <option value="">Selecione...</option>
+            <option value="fake">Perfil falso ou golpe</option>
+            <option value="offensive">Conteúdo impróprio</option>
+            <option value="other">Outro</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-0.5">Detalhes</label>
+          <textarea id="reportDetails" rows="3" required class="w-full p-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs"></textarea>
+        </div>
+        <button type="submit" class="w-full py-2 bg-rose-600 text-white font-bold text-xs rounded-xl">Enviar Denúncia</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- FIREBASE MODULAR -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+    import { 
+      getAuth, 
+      createUserWithEmailAndPassword, 
+      signInWithEmailAndPassword, 
+      signOut, 
+      onAuthStateChanged,
+      updateProfile
+    } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
+    import { 
+      getFirestore, 
+      doc, 
+      setDoc, 
+      getDoc, 
+      collection, 
+      getDocs, 
+      addDoc, 
+      deleteDoc,
+      updateDoc,
+      serverTimestamp 
+    } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDQtTR_wIjlbAXffj8t9ddJvRIwAuyvG7o",
+      authDomain: "zebu-freela-uberaba.firebaseapp.com",
+      projectId: "zebu-freela-uberaba",
+      storageBucket: "zebu-freela-uberaba.firebasestorage.app",
+      messagingSenderId: "907149441505",
+      appId: "1:907149441505:web:28047c8404930976267aa0",
+      measurementId: "G-KKCF8KDCW7"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    const ADMIN_EMAIL = "gabi.almeidasaude@gmail.com";
+
+    const CATEGORIES_DATA = [
+      { name: "Diaristas e Faxineiras", icon: "sparkles" },
+      { name: "Eletricistas", icon: "zap" },
+      { name: "Encanadores", icon: "wrench" },
+      { name: "Pedreiros e Reformas", icon: "hammer" },
+      { name: "Pintores", icon: "paint-roller" },
+      { name: "Manicures e Pedicures", icon: "sparkle" },
+      { name: "Cabeleireiros e Barbeiros", icon: "scissors" },
+      { name: "Maquiadores", icon: "heart" },
+      { name: "Jardineiros", icon: "leaf" },
+      { name: "Montadores de Móveis", icon: "armchair" },
+      { name: "Fretes e Carretos", icon: "truck" },
+      { name: "Serviços Rurais (Tratorista, Peão)", icon: "tractor" },
+      { name: "Técnicos de Informática", icon: "laptop" },
+      { name: "Mecânicos e Autoelétrica", icon: "cog" },
+      { name: "Chaveiros", icon: "key" },
+      { name: "Babás e Cuidadoras", icon: "baby" },
+      { name: "Cuidadores de Idosos", icon: "user-check" },
+      { name: "Professores Particulares", icon: "book-open" },
+      { name: "Fotógrafos e Filmagem", icon: "camera" },
+      { name: "Designers e Redes Sociais", icon: "palette" },
+      { name: "Costureiras", icon: "scissors" },
+      { name: "Confeiteiras e Salgados", icon: "cake" },
+      { name: "Segurança e Câmeras", icon: "shield" },
+      { name: "Músicos e Eventos", icon: "music" }
+    ];
+
+    const CATEGORIES = CATEGORIES_DATA.map(c => c.name);
+
+    const NEIGHBORHOODS = [
+      "Centro", "Abadia", "Alfredo Freire", "Amoroso Costa", "Antônia Cândida", 
+      "Beija-Flor", "Boa Vista", "Chica Ferreira", "Conjunto Uberaba", "Estados Unidos", 
+      "Fabrício", "Gameleiras", "Guanabara", "Jardim Alexandre Campos", "Jardim Induberaba", 
+      "Jardim Uberaba", "Lourdes", "Manoel Mendes", "Maringá", "Mercês", 
+      "Morada do Sol", "Morumbi", "Olinda", "Oneida Mendes", "Pacaembu", 
+      "Parque das Américas", "Planalto", "Recreio dos Bandeirantes", "Residencial 2000", 
+      "Santa Maria", "Santa Marta", "São Benedito", "São Cristóvão", "Silvério Cartafina", 
+      "Tutunas", "Univerdecidade", "Valim de Melo", "Vila Militar", "Vila Olímpica", 
+      "Volta Grande", "Zona Rural / Chácaras", "Outro Bairro de Uberaba"
+    ];
+
+    let currentUser = null;
+    let allProfessionals = [];
+    let allProducts = [];
+    let tempPortfolioImages = [];
+    let tempAvatarImage = "";
+    let tempProductImage = "";
+    let currentViewingPro = null;
+
+    window.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+      initTheme();
+      populateDropdowns();
+      renderCategoryCards();
+      setupAuthListener();
+      fetchProducts();
+    });
+
+    function initTheme() {
+      if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      }
+      document.getElementById('themeToggle').addEventListener('click', () => {
+        const isDark = document.documentElement.classList.toggle('dark');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        lucide.createIcons();
+      });
+    }
+
+    function populateDropdowns() {
+      ['filterCategory', 'proCategory', 'prodCategory'].forEach(id => {
+        const sel = document.getElementById(id);
+        if (!sel) return;
+        CATEGORIES.forEach(c => sel.appendChild(new Option(c, c)));
+      });
+      ['filterNeighborhood', 'proNeighborhood'].forEach(id => {
+        const sel = document.getElementById(id);
+        if (!sel) return;
+        NEIGHBORHOODS.forEach(n => sel.appendChild(new Option(n, n)));
+      });
+    }
+
+    function getCategoryIcon(catName) {
+      const found = CATEGORIES_DATA.find(c => c.name === catName);
+      return found ? found.icon : 'briefcase';
+    }
+
+    // CARROSSEL DESLIZÁVEL NO MOBILE
+    function renderCategoryCards() {
+      const container = document.getElementById('categoriesGrid');
+      container.innerHTML = '';
+      CATEGORIES_DATA.slice(0, 12).forEach(cat => {
+        const div = document.createElement('div');
+        div.onclick = () => {
+          document.getElementById('filterCategory').value = cat.name;
+          goToExplore();
+        };
+        div.className = 'cursor-pointer shrink-0 w-24 md:w-auto p-2.5 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 hover:border-black transition flex flex-col items-center text-center gap-1.5 shadow-sm';
+        div.innerHTML = `
+          <div class="w-9 h-9 rounded-lg bg-black text-white dark:bg-white dark:text-black flex items-center justify-center shrink-0">
+            <i data-lucide="${cat.icon}" class="w-4 h-4"></i>
+          </div>
+          <span class="text-[10px] md:text-xs font-bold leading-tight line-clamp-2">${cat.name}</span>
+        `;
+        container.appendChild(div);
+      });
+      lucide.createIcons();
+    }
+
+    function setupAuthListener() {
+      onAuthStateChanged(auth, async (user) => {
+        currentUser = user;
+        const isAdmin = user && user.email === ADMIN_EMAIL;
+
+        if (user) {
+          document.getElementById('authNavButtons').classList.add('hidden');
+          document.getElementById('userNavMenu').classList.remove('hidden');
+
+          if (isAdmin) {
+            document.getElementById('adminPostBtn').classList.remove('hidden');
+            document.getElementById('adminPostBtn').classList.add('inline-flex');
+            document.getElementById('adminPostBtnBlog').classList.remove('hidden');
+          } else {
+            document.getElementById('adminPostBtn').classList.add('hidden');
+            document.getElementById('adminPostBtnBlog').classList.add('hidden');
+          }
+
+          const docSnap = await getDoc(doc(db, "users", user.uid));
+          if (docSnap.exists() && docSnap.data().role === 'pro') {
+            loadProData();
+          }
+        } else {
+          document.getElementById('authNavButtons').classList.remove('hidden');
+          document.getElementById('userNavMenu').classList.add('hidden');
+          document.getElementById('adminPostBtn').classList.add('hidden');
+          document.getElementById('adminPostBtnBlog').classList.add('hidden');
+        }
+        fetchProfessionals();
+      });
+    }
+
+    window.handleAvatarUpload = async function(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+      showToast("Otimizando foto...");
+      tempAvatarImage = await compressImage(file, 400);
+      document.getElementById('proAvatarPreview').src = tempAvatarImage;
+      document.getElementById('proAvatarPreview').classList.remove('hidden');
+      document.getElementById('proAvatarDefaultIcon').classList.add('hidden');
+    };
+
+    window.handleProductPhotoUpload = async function(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+      showToast("Otimizando foto do produto...");
+      tempProductImage = await compressImage(file, 800);
+      document.getElementById('prodImagePreview').src = tempProductImage;
+      document.getElementById('prodImagePreviewContainer').classList.remove('hidden');
+    };
+
+    window.saveProduct = async function(e) {
+      e.preventDefault();
+      if (!currentUser || currentUser.email !== ADMIN_EMAIL) {
+        showToast("Apenas administradora.", "error");
+        return;
+      }
+
+      const btn = document.getElementById('btnSaveProduct');
+      btn.disabled = true;
+      btn.textContent = "Publicando...";
+
+      const payload = {
+        title: document.getElementById('prodTitle').value.trim(),
+        category: document.getElementById('prodCategory').value,
+        price: document.getElementById('prodPrice').value.trim() || "",
+        link: document.getElementById('prodAffiliateLink').value.trim(),
+        description: document.getElementById('prodDescription').value.trim(),
+        image: tempProductImage,
+        createdAt: serverTimestamp()
+      };
+
+      try {
+        await addDoc(collection(db, "products"), payload);
+        showToast("Produto publicado com sucesso!");
+        closeModal('adminProductModal');
+        document.getElementById('adminProductForm').reset();
+        document.getElementById('prodImagePreviewContainer').classList.add('hidden');
+        tempProductImage = "";
+        fetchProducts();
+        showSection('blog');
+      } catch (err) {
+        showToast("Erro ao publicar: " + err.message, "error");
+      } finally {
+        btn.disabled = false;
+        btn.textContent = "Publicar Produto";
+      }
+    };
+
+    async function fetchProducts() {
+      try {
+        const snap = await getDocs(collection(db, "products"));
+        allProducts = [];
+        snap.forEach(d => allProducts.push({ id: d.id, ...d.data() }));
+        renderProducts();
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    function renderProducts() {
+      const container = document.getElementById('productsGrid');
+      container.innerHTML = '';
+
+      if (!allProducts.length) {
+        container.innerHTML = '<p class="col-span-full py-6 text-center text-xs text-neutral-400">Nenhum produto indicado no momento.</p>';
+        return;
+      }
+
+      const isAdmin = currentUser && currentUser.email === ADMIN_EMAIL;
+
+      allProducts.forEach(prod => {
+        const card = document.createElement('div');
+        card.className = "bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-3.5 shadow-sm flex flex-col justify-between";
+        card.innerHTML = `
+          <div class="space-y-2.5">
+            <div class="relative w-full aspect-video rounded-xl overflow-hidden bg-neutral-100 dark:bg-neutral-800">
+              <img src="${prod.image}" class="w-full h-full object-cover">
+              <span class="absolute top-1.5 left-1.5 bg-black/80 backdrop-blur-sm text-white text-[9px] font-black uppercase px-2 py-0.5 rounded-full">
+                ${prod.category}
+              </span>
+              ${isAdmin ? `<button onclick="deleteProduct('${prod.id}')" class="absolute top-1.5 right-1.5 bg-rose-600 text-white p-1 rounded-full"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg></button>` : ''}
+            </div>
+
+            <div>
+              <div class="flex items-start justify-between gap-1.5">
+                <h3 class="font-black text-xs md:text-sm leading-snug">${prod.title}</h3>
+                ${prod.price ? `<span class="text-xs font-extrabold text-amber-500 shrink-0">${prod.price}</span>` : ''}
+              </div>
+              <p class="text-[11px] text-neutral-600 dark:text-neutral-400 mt-1 line-clamp-2 leading-relaxed">${prod.description}</p>
+            </div>
+          </div>
+
+          <div class="mt-3 pt-2.5 border-t border-neutral-100 dark:border-neutral-800">
+            <a href="${prod.link}" target="_blank" rel="noopener noreferrer" class="w-full py-2 bg-amber-400 text-black font-black text-xs rounded-lg flex items-center justify-center gap-1 shadow">
+              <i data-lucide="external-link" class="w-3 h-3"></i> Ver Oferta
+            </a>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+      lucide.createIcons();
+    }
+
+    window.deleteProduct = async function(id) {
+      if (!confirm("Apagar produto?")) return;
+      try {
+        await deleteDoc(doc(db, "products", id));
+        showToast("Produto removido.");
+        fetchProducts();
+      } catch (err) {
+        showToast("Erro ao apagar.", "error");
+      }
+    };
+
+    window.handleRegister = async function(e) {
+      e.preventDefault();
+      const name = document.getElementById('regName').value.trim();
+      const email = document.getElementById('regEmail').value.trim();
+      const password = document.getElementById('regPassword').value;
+      const role = document.querySelector('input[name="regRole"]:checked').value;
+
+      try {
+        const cred = await createUserWithEmailAndPassword(auth, email, password);
+        await updateProfile(cred.user, { displayName: name });
+        await setDoc(doc(db, "users", cred.user.uid), {
+          uid: cred.user.uid,
+          name, email, role,
+          createdAt: serverTimestamp()
+        });
+
+        if (role === 'pro') {
+          await setDoc(doc(db, "profiles", cred.user.uid), {
+            uid: cred.user.uid,
+            name, category: CATEGORIES[0], services: [], bio: "",
+            neighborhood: NEIGHBORHOODS[0], regions: "Uberaba",
+            priceType: "quote", priceValue: 0, hours: "Comercial",
+            allowWhatsapp: false, whatsappNumber: "", portfolio: [],
+            avatar: "", isSponsored: false, createdAt: serverTimestamp()
+          });
+        }
+        closeModal('authModal');
+        showToast("Conta criada com sucesso!");
+
+        if (currentViewingPro) {
+          openProfileModal(currentViewingPro.id);
+        }
+      } catch (err) {
+        showToast("Erro: " + err.message, "error");
+      }
+    };
+
+    window.handleLogin = async function(e) {
+      e.preventDefault();
+      const email = document.getElementById('loginEmail').value.trim();
+      const password = document.getElementById('loginPassword').value;
+      try {
+        await signInWithEmailAndPassword(auth, email, password);
+        closeModal('authModal');
+        showToast("Conectado com sucesso!");
+
+        if (currentViewingPro) {
+          openProfileModal(currentViewingPro.id);
+        }
+      } catch (err) {
+        showToast("E-mail ou senha incorretos.", "error");
+      }
+    };
+
+    window.logoutUser = async function() {
+      await signOut(auth);
+      showToast("Você saiu da conta.");
+      showSection('home');
+    };
+
+    async function loadProData() {
+      const snap = await getDoc(doc(db, "profiles", currentUser.uid));
+      if (snap.exists()) {
+        const d = snap.data();
+        document.getElementById('proName').value = d.name || "";
+        document.getElementById('proCategory').value = d.category || CATEGORIES[0];
+        document.getElementById('proServices').value = (d.services || []).join(', ');
+        document.getElementById('proBio').value = d.bio || "";
+        document.getElementById('proPriceType').value = d.priceType || "quote";
+        document.getElementById('proPriceValue').value = d.priceValue || "";
+        document.getElementById('proNeighborhood').value = d.neighborhood || NEIGHBORHOODS[0];
+        document.getElementById('proRegions').value = d.regions || "";
+        document.getElementById('proHours').value = d.hours || "";
+        document.getElementById('proAllowWhatsapp').checked = (d.allowWhatsapp !== undefined) ? d.allowWhatsapp : true;
+        document.getElementById('proWhatsappNumber').value = d.whatsappNumber || "";
+        
+        tempAvatarImage = d.avatar || "";
+        if (tempAvatarImage) {
+          document.getElementById('proAvatarPreview').src = tempAvatarImage;
+          document.getElementById('proAvatarPreview').classList.remove('hidden');
+          document.getElementById('proAvatarDefaultIcon').classList.add('hidden');
+        }
+
+        tempPortfolioImages = d.portfolio || [];
+        renderPortfolioPreviews();
+        togglePriceValueField();
+      }
+    }
+
+    window.handlePortfolioUpload = async function(e) {
+      const files = Array.from(e.target.files);
+      if (tempPortfolioImages.length + files.length > 10) {
+        showToast("Máximo de 10 fotos no plano gratuito.", "warning");
+        return;
+      }
+
+      showToast("Otimizando fotos...");
+      for (const file of files) {
+        const compressedBase64 = await compressImage(file, 800);
+        tempPortfolioImages.push(compressedBase64);
+      }
+      renderPortfolioPreviews();
+    };
+
+    function compressImage(file, maxDim = 800) {
+      return new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = (event) => {
+          const img = new Image();
+          img.src = event.target.result;
+          img.onload = () => {
+            const canvas = document.createElement('canvas');
+            let w = img.width;
+            let h = img.height;
+            if (w > h && w > maxDim) {
+              h = Math.round((h * maxDim) / w);
+              w = maxDim;
+            } else if (h > maxDim) {
+              w = Math.round((w * maxDim) / h);
+              h = maxDim;
+            }
+            canvas.width = w;
+            canvas.height = h;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0, w, h);
+            resolve(canvas.toDataURL('image/jpeg', 0.7));
+          };
+        };
+      });
+    }
+
+    function renderPortfolioPreviews() {
+      const grid = document.getElementById('portfolioPreviewGrid');
+      grid.innerHTML = '';
+      document.getElementById('photoCount').textContent = `${tempPortfolioImages.length} / 10 fotos`;
+      tempPortfolioImages.forEach((imgUrl, idx) => {
+        const div = document.createElement('div');
+        div.className = 'relative aspect-square rounded-lg overflow-hidden border border-neutral-300 dark:border-neutral-700';
+        div.innerHTML = `
+          <img src="${imgUrl}" class="w-full h-full object-cover">
+          <button type="button" onclick="removePortfolioImage(${idx})" class="absolute top-1 right-1 bg-black text-white rounded-full p-0.5 text-[10px]">✕</button>
+        `;
+        grid.appendChild(div);
+      });
+    }
+
+    window.removePortfolioImage = function(idx) {
+      tempPortfolioImages.splice(idx, 1);
+      renderPortfolioPreviews();
+    };
+
+    window.saveProProfile = async function(e) {
+      e.preventDefault();
+
+      const rawNumber = document.getElementById('proWhatsappNumber').value.replace(/\D/g, '');
+      const allowWa = document.getElementById('proAllowWhatsapp').checked;
+
+      if (!rawNumber || rawNumber.length < 10) {
+        showToast("Digite seu WhatsApp com DDD.", "error");
+        document.getElementById('proWhatsappNumber').focus();
+        return;
+      }
+
+      if (!allowWa) {
+        showToast("Autorize o WhatsApp para salvar o anúncio.", "error");
+        return;
+      }
+
+      const services = document.getElementById('proServices').value.split(',').map(s => s.trim()).filter(Boolean);
+      if (!services.length) {
+        showToast("Informe pelo menos um serviço.", "error");
+        return;
+      }
+
+      const payload = {
+        name: document.getElementById('proName').value.trim(),
+        category: document.getElementById('proCategory').value,
+        services,
+        bio: document.getElementById('proBio').value.trim(),
+        priceType: document.getElementById('proPriceType').value,
+        priceValue: parseFloat(document.getElementById('proPriceValue').value) || 0,
+        neighborhood: document.getElementById('proNeighborhood').value,
+        regions: document.getElementById('proRegions').value.trim(),
+        hours: document.getElementById('proHours').value.trim(),
+        allowWhatsapp: true,
+        whatsappNumber: rawNumber,
+        avatar: tempAvatarImage,
+        portfolio: tempPortfolioImages,
+        updatedAt: serverTimestamp()
+      };
+
+      try {
+        await setDoc(doc(db, "profiles", currentUser.uid), payload, { merge: true });
+        showToast("Anúncio salvo com sucesso!");
+        fetchProfessionals();
+      } catch (err) {
+        showToast("Erro ao salvar perfil.", "error");
+      }
+    };
+
+    async function fetchProfessionals() {
+      try {
+        const snap = await getDocs(collection(db, "profiles"));
+        allProfessionals = [];
+        snap.forEach(d => {
+          const data = d.data();
+          if (data.name && data.whatsappNumber && data.whatsappNumber.length >= 10) {
+            allProfessionals.push({ id: d.id, ...data });
+          }
+        });
+        renderCards();
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    function renderCards() {
+      const spon = document.getElementById('sponsoredList');
+      const rec = document.getElementById('recentList');
+      spon.innerHTML = '';
+      rec.innerHTML = '';
+
+      allProfessionals.forEach(p => {
+        const card = createProCard(p);
+        if (p.isSponsored) spon.appendChild(card);
+        rec.appendChild(card.cloneNode(true));
+      });
+
+      if (!spon.children.length) spon.innerHTML = '<p class="text-xs text-neutral-400 py-2">Nenhum profissional em destaque.</p>';
+      if (!rec.children.length) rec.innerHTML = '<p class="text-xs text-neutral-400 py-2">Nenhum anúncio recente.</p>';
+      applyFilters();
+      lucide.createIcons();
+    }
+
+    // CARD MODERNO E COMPACTO PARA O CELULAR
+    function createProCard(p) {
+      const card = document.createElement('div');
+      card.className = "bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-3.5 shadow-sm flex flex-col justify-between";
+      const price = p.priceType === 'fixed' && p.priceValue > 0 ? `R$ ${p.priceValue.toFixed(2)}` : 'Sob Orçamento';
+      const iconName = getCategoryIcon(p.category);
+
+      const avatarHTML = p.avatar 
+        ? `<img src="${p.avatar}" class="w-10 h-10 rounded-full object-cover shrink-0 border border-neutral-200 dark:border-neutral-700">`
+        : `<div class="w-10 h-10 rounded-full bg-black text-white dark:bg-white dark:text-black flex items-center justify-center shrink-0">
+             <i data-lucide="${iconName}" class="w-4 h-4"></i>
+           </div>`;
+
+      card.innerHTML = `
+        <div class="space-y-2">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2.5">
+              ${avatarHTML}
+              <div>
+                <h3 class="font-black text-xs md:text-sm leading-tight">${p.name || 'Profissional'}</h3>
+                <span class="text-[11px] font-bold text-neutral-500">${p.category}</span>
+              </div>
+            </div>
+            ${p.isSponsored ? `<span class="text-[9px] font-black px-1.5 py-0.5 rounded bg-amber-400 text-black flex items-center gap-0.5"><i data-lucide="crown" class="w-2.5 h-2.5"></i> TOP</span>` : ''}
+          </div>
+          <p class="text-[11px] text-neutral-600 dark:text-neutral-400 line-clamp-2 leading-relaxed">${p.bio || 'Sem descrição informada.'}</p>
+        </div>
+        <div class="mt-3 pt-2.5 border-t border-neutral-100 dark:border-neutral-800 flex items-center justify-between">
+          <div>
+            <span class="text-[9px] text-neutral-400 block uppercase font-bold">${p.neighborhood || 'Uberaba'}</span>
+            <span class="text-xs font-black text-black dark:text-white">${price}</span>
+          </div>
+          <button onclick="openProfileModal('${p.id}')" class="px-3 py-1.5 bg-black text-white dark:bg-white dark:text-black text-xs font-black rounded-lg hover:opacity-80 transition">Ver Perfil</button>
+        </div>
+      `;
+      return card;
+    }
+
+    window.applyFilters = function() {
+      const s = (document.getElementById('searchInput').value || '').toLowerCase();
+      const cat = document.getElementById('filterCategory').value;
+      const n = document.getElementById('filterNeighborhood').value;
+
+      const filtered = allProfessionals.filter(p => {
+        const matchS = !s || (p.name && p.name.toLowerCase().includes(s)) || (p.category && p.category.toLowerCase().includes(s)) || (p.services && p.services.some(svc => svc.toLowerCase().includes(s)));
+        return matchS && (!cat || p.category === cat) && (!n || p.neighborhood === n);
+      });
+
+      const grid = document.getElementById('resultsGrid');
+      grid.innerHTML = '';
+      document.getElementById('resultsCount').textContent = `${filtered.length} profissional(is) em Uberaba`;
+      filtered.forEach(p => grid.appendChild(createProCard(p)));
+      lucide.createIcons();
+    };
+
+    window.openProfileModal = function(id) {
+      const p = allProfessionals.find(x => x.id === id);
+      if (!p) return;
+      currentViewingPro = p;
+
+      document.getElementById('modalProName').textContent = p.name;
+      document.getElementById('modalProCategory').textContent = p.category;
+      document.getElementById('modalProNeighborhood').textContent = `${p.neighborhood || 'Uberaba'}, Uberaba`;
+      document.getElementById('modalProBio').textContent = p.bio || "Sem descrição.";
+      document.getElementById('modalProPrice').textContent = p.priceType === 'fixed' && p.priceValue > 0 ? `R$ ${p.priceValue.toFixed(2)}` : 'Sob Orçamento';
+      document.getElementById('modalProHours').textContent = p.hours || "A combinar";
+
+      const aCont = document.getElementById('modalProAvatarContainer');
+      const iconName = getCategoryIcon(p.category);
+      if (p.avatar) {
+        aCont.innerHTML = `<img src="${p.avatar}" class="w-full h-full object-cover">`;
+      } else {
+        aCont.innerHTML = `<i data-lucide="${iconName}" class="w-6 h-6"></i>`;
+      }
+
+      const badge = document.getElementById('modalProBadge');
+      if (p.isSponsored) {
+        badge.classList.remove('hidden');
+      } else {
+        badge.classList.add('hidden');
+      }
+
+      const adminToggleBtn = document.getElementById('adminToggleSponsoredBtn');
+      const adminToggleText = document.getElementById('adminToggleSponsoredText');
+      const isAdmin = currentUser && currentUser.email === ADMIN_EMAIL;
+
+      if (isAdmin) {
+        adminToggleBtn.classList.remove('hidden');
+        if (p.isSponsored) {
+          adminToggleText.textContent = "Tirar Destaque";
+          adminToggleBtn.className = "px-2.5 py-1 bg-neutral-200 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 font-extrabold text-[11px] rounded-lg";
+        } else {
+          adminToggleText.textContent = "Destacar";
+          adminToggleBtn.className = "px-2.5 py-1 bg-amber-400 text-black font-extrabold text-[11px] rounded-lg";
+        }
+      } else {
+        adminToggleBtn.classList.add('hidden');
+      }
+
+      const sCont = document.getElementById('modalProServices');
+      sCont.innerHTML = '';
+      (p.services || []).forEach(svc => {
+        const span = document.createElement('span');
+        span.className = 'text-[11px] bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 px-2 py-0.5 rounded-md border border-neutral-300 dark:border-neutral-700';
+        span.textContent = svc;
+        sCont.appendChild(span);
+      });
+
+      const g = document.getElementById('modalProGallery');
+      g.innerHTML = '';
+      (p.portfolio || []).forEach(url => {
+        const img = document.createElement('img');
+        img.src = url;
+        img.className = 'w-full aspect-square object-cover rounded-lg border border-neutral-300 dark:border-neutral-700';
+        g.appendChild(img);
+      });
+
+      const wCont = document.getElementById('modalWhatsappContainer');
+      wCont.innerHTML = '';
+
+      if (p.whatsappNumber) {
+        const btn = document.createElement('button');
+
+        if (currentUser) {
+          btn.className = "px-3.5 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs rounded-xl flex items-center gap-1 shadow";
+          btn.innerHTML = `<i data-lucide="message-circle" class="w-3.5 h-3.5"></i> Chamar no WhatsApp`;
+          btn.onclick = () => {
+            const num = p.whatsappNumber.replace(/\D/g, '');
+            const msg = encodeURIComponent(`Olá ${p.name}! Encontrei seu perfil no Zebu Freela em Uberaba e gostaria de um orçamento.`);
+            window.open(`https://wa.me/55${num}?text=${msg}`, '_blank');
+          };
+        } else {
+          btn.className = "px-3 py-1.5 bg-neutral-900 text-amber-400 border border-amber-400/40 font-black text-xs rounded-xl flex items-center gap-1 shadow";
+          btn.innerHTML = `<i data-lucide="lock" class="w-3.5 h-3.5"></i> Cadastre-se para o WhatsApp`;
+          btn.onclick = () => {
+            document.getElementById('authPromptMessage').classList.remove('hidden');
+            openModal('authModal', 'register');
+          };
+        }
+        wCont.appendChild(btn);
+      }
+      openModal('profileModal');
+      lucide.createIcons();
+    };
+
+    window.toggleProfessionalSponsorship = async function() {
+      if (!currentViewingPro || !currentUser || currentUser.email !== ADMIN_EMAIL) return;
+
+      const newStatus = !currentViewingPro.isSponsored;
+      try {
+        await updateDoc(doc(db, "profiles", currentViewingPro.id), { isSponsored: newStatus });
+        currentViewingPro.isSponsored = newStatus;
+        showToast(newStatus ? "Profissional em destaque!" : "Destaque removido.");
+        openProfileModal(currentViewingPro.id);
+        fetchProfessionals();
+      } catch (err) {
+        showToast("Erro ao alterar: " + err.message, "error");
+      }
+    };
+
+    window.submitReport = async function(e) {
+      e.preventDefault();
+      await addDoc(collection(db, "reports"), {
+        targetProfileId: currentViewingPro.id,
+        reason: document.getElementById('reportReason').value,
+        details: document.getElementById('reportDetails').value,
+        createdAt: serverTimestamp()
+      });
+      showToast("Denúncia recebida.");
+      closeModal('reportModal');
+    };
+
+    window.showSection = function(id) {
+      ['homeSection', 'exploreSection', 'dashboardSection', 'blogSection'].forEach(s => document.getElementById(s).classList.add('hidden'));
+      document.getElementById(id + 'Section').classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    window.goToExplore = () => { showSection('explore'); applyFilters(); };
+    window.handleQuickSearch = () => { document.getElementById('searchInput').value = document.getElementById('homeSearchInput').value; goToExplore(); };
+    window.handleAdvertiseClick = () => { currentUser ? showSection('dashboard') : openModal('authModal', 'register'); };
+    
+    window.openModal = (id, tab) => { 
+      document.getElementById(id).classList.remove('hidden'); 
+      document.getElementById(id).classList.add('flex'); 
+      if(tab) switchAuthTab(tab); 
+    };
+
+    window.closeModal = (id) => { 
+      document.getElementById(id).classList.add('hidden'); 
+      document.getElementById(id).classList.remove('flex'); 
+      if(id === 'authModal') {
+        document.getElementById('authPromptMessage').classList.add('hidden');
+      }
+    };
+
+    window.togglePriceValueField = () => { document.getElementById('priceValueContainer').classList.toggle('hidden', document.getElementById('proPriceType').value !== 'fixed'); };
+
+    window.switchAuthTab = function(tab) {
+      const isLogin = tab === 'login';
+      document.getElementById('loginForm').classList.toggle('hidden', !isLogin);
+      document.getElementById('registerForm').classList.toggle('hidden', isLogin);
+    };
+
+    function showToast(msg, type = "success") {
+      const t = document.getElementById('toast');
+      document.getElementById('toastMessage').textContent = msg;
+      t.classList.remove('-translate-y-24', 'opacity-0');
+      setTimeout(() => t.classList.add('-translate-y-24', 'opacity-0'), 3500);
+    }
+  </script>
+</body>
+</html>
