@@ -16,14 +16,14 @@
         extend: {
           colors: {
             zebu: {
-              lime: '#76E000',      // Verde neon da logo
+              lime: '#76E000',
               limeHover: '#65C400',
-              limeSoft: '#EAFFCE',  // Fundo suave de destaque
-              dark: '#0B0E09',      // Preto carvão nobre
+              limeSoft: '#EAFFCE',  
+              dark: '#0B0E09',      
               darkCard: '#131811',
               graySoft: '#F6F8F5',
               grayBorder: '#E5E9E2',
-              shopee: '#EE4D2D'     // Laranja para preços de produtos
+              shopee: '#EE4D2D'     
             }
           }
         }
@@ -41,16 +41,16 @@
 </head>
 <body class="bg-[#F8FAF6] text-neutral-900 dark:bg-[#070A06] dark:text-neutral-100 min-h-screen flex flex-col font-sans transition-colors duration-200 pb-20 md:pb-6">
 
-  <!-- ================= TOPBAR (IDÊNTICA À IMAGEM) ================= -->
+  <!-- ================= NAVBAR SUPERIOR ================= -->
   <header class="sticky top-0 z-40 bg-zebu-dark text-white shadow-md border-b border-white/10">
     <div class="max-w-6xl mx-auto px-4 h-15 md:h-16 flex items-center justify-between">
       
-      <!-- LOGO ZEBU FREELA UBERABA -->
+      <!-- LOGO ZEBU FREELA -->
       <a href="#" onclick="showSection('home')" class="flex items-center gap-2">
-        <img src="WhatsApp Image 2026-10-23 at 18.27.58.jpeg" alt="Zebu Freela Uberaba" class="h-9 md:h-11 w-auto object-contain">
+        <img src="file_00000000ee94820e8030c8d3a817a851.png" alt="Zebu Freela Uberaba" class="h-9 md:h-11 w-auto object-contain">
       </a>
 
-      <!-- MENU SUPERIOR DESKTOP/TABLET COM INDICADOR VERDE LIME -->
+      <!-- Menu Computador / Tablet -->
       <nav class="hidden md:flex items-center gap-6 text-xs font-bold uppercase tracking-wider">
         <button onclick="showSection('home')" class="text-zebu-lime flex items-center gap-1.5 border-b-2 border-zebu-lime pb-1">
           <i data-lucide="home" class="w-4 h-4"></i> Início
@@ -66,7 +66,6 @@
         </button>
       </nav>
 
-      <!-- AÇÕES DO TOPO -->
       <div class="flex items-center gap-2">
         <button id="themeToggle" class="p-2 rounded-full hover:bg-white/10 transition" title="Alternar tema">
           <i data-lucide="moon" class="w-4 h-4 hidden dark:block text-zebu-lime"></i>
@@ -103,9 +102,8 @@
     <!-- SEÇÃO HOME -->
     <section id="homeSection" class="space-y-6 md:space-y-8">
       
-      <!-- HERO COM AS CURVAS MODERNAS EM VERDE LIME (IDÊNTICO À FOTO) -->
+      <!-- HERO -->
       <div class="relative bg-white dark:bg-zebu-darkCard rounded-3xl p-5 md:p-8 overflow-hidden shadow-sm border border-zebu-grayBorder dark:border-neutral-800">
-        <!-- Manchas verdes neon ao fundo -->
         <div class="absolute -top-12 -right-12 w-56 h-56 bg-zebu-lime/25 rounded-full blur-3xl pointer-events-none"></div>
         <div class="absolute -bottom-16 -left-16 w-64 h-64 bg-zebu-lime/15 rounded-full blur-3xl pointer-events-none"></div>
 
@@ -118,7 +116,6 @@
             Encontre profissionais, anuncie seu trabalho e descubra ofertas em Uberaba.
           </p>
 
-          <!-- BARRA DE BUSCA EM PÍLULA (IGUAL À IMAGEM) -->
           <div class="pt-2 flex items-center bg-white dark:bg-black rounded-full border border-neutral-300 dark:border-neutral-700 shadow-sm p-1">
             <i data-lucide="search" class="w-4 h-4 ml-3 text-neutral-400 shrink-0"></i>
             <input type="text" id="homeSearchInput" placeholder="Buscar serviços, profissionais ou produtos..." 
@@ -129,7 +126,6 @@
             </button>
           </div>
 
-          <!-- 2 CARDS GRANDES DE ENTRADA (PROFISSIONAIS & LOJA) -->
           <div class="pt-3 grid grid-cols-2 gap-2.5">
             <div onclick="goToExplore()" class="cursor-pointer bg-zebu-graySoft dark:bg-neutral-900 border border-zebu-grayBorder dark:border-neutral-800 p-3 rounded-2xl flex items-center justify-between hover:border-zebu-lime transition shadow-sm">
               <div class="flex items-center gap-2.5">
@@ -158,14 +154,13 @@
             </div>
           </div>
 
-          <!-- BOTÃO VERDE NEON LARGO: ANUNCIAR GRÁTIS -->
           <button onclick="handleAdvertiseClick()" class="w-full py-3 bg-zebu-lime hover:bg-zebu-limeHover text-black font-black text-xs md:text-sm rounded-2xl transition shadow flex items-center justify-center gap-2">
             <i data-lucide="megaphone" class="w-4 h-4"></i> Anunciar meus serviços grátis <i data-lucide="chevron-right" class="w-4 h-4"></i>
           </button>
         </div>
       </div>
 
-      <!-- SEÇÃO: CATEGORIAS (CARROSSEL COM BORDA E ÍCONES MINIMALISTAS) -->
+      <!-- CATEGORIAS -->
       <div class="space-y-3">
         <div class="flex items-center justify-between">
           <h2 class="text-base font-black flex items-center gap-2">
@@ -176,7 +171,7 @@
         <div id="categoriesGrid" class="flex md:grid md:grid-cols-6 gap-2.5 overflow-x-auto no-scrollbar py-1"></div>
       </div>
 
-      <!-- SEÇÃO: OPORTUNIDADES & BIKOS EM UBERABA (NOVO!) -->
+      <!-- MURAL DE OPORTUNIDADES (VAGAS EM ABERTO) -->
       <div class="space-y-3 bg-white dark:bg-zebu-darkCard p-4 md:p-5 rounded-3xl border border-zebu-grayBorder dark:border-neutral-800 shadow-sm">
         <div class="flex items-center justify-between">
           <div>
@@ -194,7 +189,7 @@
         <div id="homeJobsList" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3"></div>
       </div>
 
-      <!-- SEÇÃO: PROFISSIONAIS EM DESTAQUE (CARD PRETO COM BORDA LIME IGUAL À FOTO) -->
+      <!-- PROFISSIONAIS EM DESTAQUE -->
       <div class="space-y-3 bg-zebu-dark text-white p-4 md:p-6 rounded-3xl border border-neutral-800 shadow-md">
         <div class="flex items-center justify-between">
           <div>
@@ -203,12 +198,12 @@
             </h2>
             <p class="text-[10px] md:text-xs text-neutral-400">Os melhores profissionais de Uberaba, prontos para te atender!</p>
           </div>
-          <button onclick="goToExplore()" class="text-xs font-bold px-3 py-1 rounded-full border border-neutral-700 hover:border-zebu-lime transition flex items-center gap-1">Ver todos <i data-lucide="arrow-right" class="w-3 h-3"></i></button>
+          <button onclick="goToExplore()" class="text-xs font-bold px-3 py-1 rounded-full border border-neutral-700 hover:border-zebu-lime transition flex items-center gap-1">Ver todos <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></button>
         </div>
         <div id="sponsoredList" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3"></div>
       </div>
 
-      <!-- SEÇÃO: OFERTAS DA SEMANA (ESTILO SHOPEE COM SELO VERDE DE DESCONTO) -->
+      <!-- OFERTAS DA SEMANA -->
       <div class="space-y-3 bg-white dark:bg-zebu-darkCard p-4 md:p-5 rounded-3xl border border-zebu-grayBorder dark:border-neutral-800 shadow-sm">
         <div class="flex items-center justify-between">
           <div>
@@ -221,25 +216,9 @@
         </div>
         <div id="homeProductsRow" class="grid grid-cols-2 sm:grid-cols-4 gap-2.5"></div>
       </div>
-
-      <!-- BANNER RURAL: OPORTUNIDADES NO AGRO (IGUAL AO RODAPÉ DA FOTO) -->
-      <div class="relative bg-zebu-dark text-white rounded-3xl p-4 md:p-6 overflow-hidden border border-neutral-800 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 shadow-sm">
-        <div class="flex items-center gap-3 z-10">
-          <div class="w-12 h-12 rounded-2xl bg-zebu-lime text-black flex items-center justify-center shrink-0">
-            <i data-lucide="tractor" class="w-6 h-6"></i>
-          </div>
-          <div>
-            <h3 class="font-black text-sm md:text-base leading-tight">Oportunidades no Agro</h3>
-            <p class="text-neutral-400 text-xs">Serviços e soluções para o campo, fazendas e chácaras em Uberaba e região.</p>
-          </div>
-        </div>
-        <button onclick="filterAgroCategory()" class="z-10 px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold text-xs rounded-xl transition flex items-center gap-1.5 shrink-0">
-          Explorar oportunidades <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
-        </button>
-      </div>
     </section>
 
-    <!-- SEÇÃO: MURAL COMPLETO DE OPORTUNIDADES (CLIENTES CONTRATANDO) -->
+    <!-- MURAL COMPLETO DE VAGAS -->
     <section id="jobsSection" class="hidden space-y-4">
       <div class="bg-zebu-dark text-white p-5 md:p-6 rounded-3xl border border-neutral-800 flex flex-col md:flex-row justify-between items-start md:items-center gap-3">
         <div>
@@ -247,17 +226,16 @@
           <h2 class="text-xl md:text-2xl font-black flex items-center gap-2">
             <i data-lucide="briefcase" class="w-5 h-5 text-zebu-lime"></i> Oportunidades em Uberaba
           </h2>
-          <p class="text-xs text-neutral-400 mt-0.5">Encontre pessoas que estão precisando de serviços agora ou publique a sua necessidade.</p>
+          <p class="text-xs text-neutral-400 mt-0.5">Encontre pessoas precisando de serviços ou publique a sua necessidade.</p>
         </div>
         <button onclick="openModal('postJobModal')" class="px-4 py-2 bg-zebu-lime hover:bg-zebu-limeHover text-black font-black text-xs rounded-xl shadow transition">
           + Publicar Nova Vaga
         </button>
       </div>
-
       <div id="allJobsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3"></div>
     </section>
 
-    <!-- SEÇÃO: LOJA / ACHADINHOS (ESTILO SHOPEE) -->
+    <!-- LOJA DE OFERTAS -->
     <section id="blogSection" class="hidden space-y-4">
       <div class="bg-zebu-dark text-white p-5 md:p-6 rounded-3xl border border-neutral-800 flex flex-col md:flex-row justify-between items-start md:items-center gap-3">
         <div>
@@ -265,18 +243,17 @@
           <h2 class="text-xl md:text-2xl font-black flex items-center gap-2">
             <i data-lucide="shopping-bag" class="w-5 h-5 text-zebu-lime"></i> Loja de Ofertas
           </h2>
-          <p class="text-xs text-neutral-400 mt-0.5">Ferramentas e produtos recomendados com os melhores descontos da internet.</p>
+          <p class="text-xs text-neutral-400 mt-0.5">Ferramentas e produtos recomendados com os melhores descontos.</p>
         </div>
         <button id="adminPostBtnBlog" onclick="openModal('adminProductModal')" class="hidden px-4 py-2 bg-zebu-lime text-black font-black text-xs rounded-xl hover:bg-zebu-limeHover shadow">
           + Cadastrar Oferta
         </button>
       </div>
-
       <div id="productFilterBar" class="flex gap-1.5 overflow-x-auto no-scrollbar py-1 text-xs"></div>
       <div id="productsGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2.5"></div>
     </section>
 
-    <!-- SEÇÃO: EXPLORAR PROFISSIONAIS -->
+    <!-- EXPLORAR PROFISSIONAIS -->
     <section id="exploreSection" class="hidden space-y-4">
       <div class="bg-white dark:bg-zebu-darkCard p-4 md:p-5 rounded-3xl shadow-sm border border-zebu-grayBorder dark:border-neutral-800 space-y-3">
         <div class="relative">
@@ -285,7 +262,6 @@
             class="w-full pl-10 pr-3 py-2 rounded-2xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs md:text-sm focus:ring-2 focus:ring-zebu-lime outline-none"
             oninput="applyFilters()">
         </div>
-
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
           <select id="filterCategory" onchange="applyFilters()" class="text-xs py-2 px-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800">
             <option value="">Todas as categorias</option>
@@ -300,14 +276,13 @@
           </select>
         </div>
       </div>
-
       <div class="space-y-3">
         <span id="resultsCount" class="text-xs text-neutral-500 font-bold block">Carregando profissionais...</span>
         <div id="resultsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3"></div>
       </div>
     </section>
 
-    <!-- SEÇÃO: PAINEL PROFISSIONAL -->
+    <!-- PAINEL PROFISSIONAL -->
     <section id="dashboardSection" class="hidden space-y-4">
       <div class="bg-white dark:bg-zebu-darkCard p-4 md:p-6 rounded-3xl shadow-sm border border-zebu-grayBorder dark:border-neutral-800">
         <div class="flex items-center justify-between border-b border-neutral-200 dark:border-neutral-800 pb-3 mb-4">
@@ -343,7 +318,6 @@
             </div>
           </div>
 
-          <!-- OPÇÃO DRONE AGRÍCOLA OU CONVENCIONAL -->
           <div id="droneTypeContainer" class="hidden p-3 rounded-2xl bg-zebu-limeSoft dark:bg-neutral-800 border border-zebu-lime text-black dark:text-white space-y-2">
             <label class="block text-[11px] font-bold uppercase">Tipo de Drone:</label>
             <div class="grid grid-cols-2 gap-2">
@@ -395,18 +369,16 @@
             </div>
           </div>
 
-          <!-- Fotos -->
           <div class="space-y-2 border-t border-neutral-200 dark:border-neutral-800 pt-3">
             <div class="flex items-center justify-between">
               <label class="block text-[11px] font-bold uppercase text-neutral-500">Fotos de Trabalhos (Até 10 fotos)</label>
               <span id="photoCount" class="text-[11px] font-black">0 / 10 fotos</span>
             </div>
             <input type="file" id="portfolioInput" accept="image/*" multiple onchange="handlePortfolioUpload(event)"
-              class="block w-full text-[10px] text-neutral-500 file:mr-3 file:py-1.5 file:px-2.5 file:rounded-lg file:border-0 file:text-[10px] file:font-bold file:bg-zebu-dark file:text-zebu-lime">
+              class="block w-full text-[10px] text-neutral-500 file:mr-2 file:py-1 file:px-2.5 file:rounded-lg file:border-0 file:text-[10px] file:font-bold file:bg-zebu-dark file:text-zebu-lime">
             <div id="portfolioPreviewGrid" class="grid grid-cols-3 sm:grid-cols-5 gap-2 pt-1"></div>
           </div>
 
-          <!-- WhatsApp -->
           <div class="bg-neutral-100 dark:bg-neutral-800 p-3.5 rounded-2xl border border-neutral-300 dark:border-neutral-700 space-y-2.5">
             <h4 class="text-[11px] font-bold uppercase tracking-wider flex items-center gap-1">
               <i data-lucide="shield-check" class="w-4 h-4 text-zebu-lime"></i> Contato via WhatsApp (Obrigatório) *
@@ -426,7 +398,7 @@
     </section>
   </main>
 
-  <!-- ================= BARRA INFERIOR MOBILE FIXA (IDÊNTICA AOS APPS NATIVOS) ================= -->
+  <!-- BARRA INFERIOR MOBILE -->
   <nav class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-zebu-dark/95 backdrop-blur-md border-t border-neutral-800 flex justify-around items-center h-16 px-2 text-white">
     <button onclick="showSection('home')" class="flex flex-col items-center gap-1 py-1 text-zebu-lime">
       <i data-lucide="home" class="w-5 h-5"></i>
@@ -450,11 +422,11 @@
     </button>
   </nav>
 
-  <!-- ================= FOOTER INSTITUCIONAL (IGUAL À FOTO) ================= -->
+  <!-- FOOTER INSTITUCIONAL -->
   <footer class="bg-zebu-dark text-white border-t border-neutral-800 py-8 px-4 mt-auto">
     <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
       <div class="flex items-center gap-3">
-        <img src="WhatsApp Image 2026-10-23 at 18.27.58.jpeg" class="h-8 w-auto object-contain">
+        <img src="file_00000000ee94820e8030c8d3a817a851.png" class="h-8 w-auto object-contain">
         <span class="text-xs text-neutral-400 border-l border-neutral-700 pl-3">Conectando pessoas, serviços e oportunidades em Uberaba.</span>
       </div>
       <div class="flex items-center gap-3 text-neutral-400">
@@ -465,7 +437,7 @@
     </div>
   </footer>
 
-  <!-- ================= MODAL: PUBLICAR OPORTUNIDADE (CONTRATANTES) ================= -->
+  <!-- MODAL: PUBLICAR VAGA -->
   <div id="postJobModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-3">
     <div class="bg-white dark:bg-zebu-darkCard w-full max-w-lg rounded-3xl p-5 md:p-6 shadow-2xl border border-zebu-grayBorder dark:border-neutral-800 relative max-h-[90vh] overflow-y-auto text-xs">
       <button onclick="closeModal('postJobModal')" class="absolute right-4 top-4 text-neutral-400"><i data-lucide="x" class="w-5 h-5"></i></button>
@@ -473,7 +445,7 @@
       <h3 class="text-base md:text-lg font-black mb-1 flex items-center gap-2">
         <i data-lucide="briefcase" class="w-5 h-5 text-zebu-lime"></i> Preciso de um Serviço em Uberaba
       </h3>
-      <p class="text-neutral-500 mb-4">Publique o que você precisa contratar. Os profissionais da cidade vão ver e te chamar no WhatsApp.</p>
+      <p class="text-neutral-500 mb-4">Publique o que você precisa contratar. Os profissionais da cidade vão te chamar no WhatsApp.</p>
 
       <form id="jobPostForm" onsubmit="saveJobOpportunity(event)" class="space-y-3">
         <div>
@@ -505,7 +477,7 @@
 
         <div>
           <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Detalhes do Trabalho *</label>
-          <textarea id="jobDescription" rows="3" required placeholder="Explique os detalhes do serviço para o profissional..." class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800"></textarea>
+          <textarea id="jobDescription" rows="3" required placeholder="Explique os detalhes do serviço..." class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800"></textarea>
         </div>
 
         <div>
@@ -536,27 +508,27 @@
             <select id="prodCategory" required class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800"></select>
           </div>
           <div>
-            <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Preço Atual (Ex: R$ 389,90) *</label>
+            <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Preço Atual *</label>
             <input type="text" id="prodPrice" required placeholder="R$ 389,90" class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800">
           </div>
         </div>
         <div class="grid grid-cols-2 gap-2">
           <div>
-            <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Preço Antigo Riscado (Opcional)</label>
+            <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Preço Antigo Riscado</label>
             <input type="text" id="prodOldPrice" placeholder="R$ 599,90" class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800">
           </div>
           <div>
-            <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Selo de Desconto (Ex: -35%)</label>
+            <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Selo (Ex: -35%)</label>
             <input type="text" id="prodDiscountBadge" placeholder="-35%" class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800">
           </div>
         </div>
         <div>
-          <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Link de Afiliado (Shopee/Mercado Livre/Amazon) *</label>
+          <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Link de Afiliado *</label>
           <input type="url" id="prodAffiliateLink" required placeholder="https://..." class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800">
         </div>
         <div>
           <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Descrição Breve</label>
-          <textarea id="prodDescription" rows="2" placeholder="Destaque por que esse item é recomendado..." class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800"></textarea>
+          <textarea id="prodDescription" rows="2" placeholder="Destaque do item..." class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800"></textarea>
         </div>
         <div>
           <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Foto do Produto *</label>
@@ -629,10 +601,9 @@
     </div>
   </div>
 
-  <!-- MODAL DETALHES DO PROFISSIONAL -->
+  <!-- MODAL DETALHES -->
   <div id="profileModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-3">
     <div class="bg-white dark:bg-zebu-darkCard w-full max-w-lg rounded-3xl shadow-2xl border border-neutral-200 dark:border-neutral-800 relative max-h-[92vh] flex flex-col overflow-hidden text-xs">
-      
       <div class="p-4 border-b border-neutral-200 dark:border-neutral-800 flex justify-between items-start">
         <div class="flex items-center gap-3">
           <div id="modalProAvatarContainer" class="w-14 h-14 rounded-full bg-zebu-dark text-zebu-lime border border-neutral-700 flex items-center justify-center font-black text-lg uppercase shrink-0 overflow-hidden"></div>
@@ -707,7 +678,7 @@
     </div>
   </div>
 
-  <!-- FIREBASE MODULAR COM SUPORTE A OPORTUNIDADES E DESTAQUE ADMINISTRATIVO -->
+  <!-- FIREBASE MODULAR -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
     import { 
@@ -747,7 +718,6 @@
 
     const ADMIN_EMAIL = "gabi.almeidasaude@gmail.com";
 
-    // CATEGORIAS ATUALIZADAS
     const CATEGORIES_DATA = [
       { name: "Técnicos em Enfermagem", icon: "stethoscope" },
       { name: "Personal Organizer", icon: "boxes" },
@@ -856,11 +826,6 @@
       }
     };
 
-    window.filterAgroCategory = function() {
-      document.getElementById('filterCategory').value = "Serviços Rurais (Tratorista, Peão)";
-      goToExplore();
-    };
-
     function renderCategoryCards() {
       const container = document.getElementById('categoriesGrid');
       container.innerHTML = '';
@@ -915,7 +880,7 @@
     }
 
     // -------------------------------------------------------------
-    // GESTÃO DE OPORTUNIDADES / VAGAS (COM DESTAQUE PELA DONA)
+    // GESTÃO DE OPORTUNIDADES / VAGAS
     // -------------------------------------------------------------
     window.saveJobOpportunity = async function(e) {
       e.preventDefault();
@@ -987,9 +952,7 @@
         return;
       }
 
-      // Ordena colocando os patrocinados/destacados primeiro
       const sortedJobs = [...allJobs].sort((a, b) => (b.isSponsored ? 1 : 0) - (a.isSponsored ? 1 : 0));
-
       sortedJobs.slice(0, 6).forEach(j => homeList.appendChild(createJobCard(j)));
       sortedJobs.forEach(j => allGrid.appendChild(createJobCard(j)));
       lucide.createIcons();
@@ -1033,7 +996,6 @@
       return card;
     }
 
-    // DESTACAR VAGA COM 1 TOQUE (EXCLUSIVO PARA VOCÊ)
     window.toggleJobSponsorship = async function(jobId, currentStatus) {
       if (!currentUser || currentUser.email !== ADMIN_EMAIL) return;
       try {
@@ -1056,7 +1018,7 @@
     };
 
     // -------------------------------------------------------------
-    // LOJA / PRODUTOS AFILIADOS (ESTILO SHOPEE COM DESCONTOS)
+    // LOJA / PRODUTOS AFILIADOS
     // -------------------------------------------------------------
     window.handleProductPhotoUpload = async function(e) {
       const file = e.target.files[0];
@@ -1141,7 +1103,6 @@
       });
     }
 
-    // CATÁLOGO COMPLETO
     function renderProducts() {
       const container = document.getElementById('productsGrid');
       container.innerHTML = '';
@@ -1159,7 +1120,6 @@
       lucide.createIcons();
     }
 
-    // LINHA DE OFERTAS DA SEMANA NA HOME (IGUAL À FOTO)
     function renderHomeProductsRow() {
       const container = document.getElementById('homeProductsRow');
       container.innerHTML = '';
@@ -1221,7 +1181,7 @@
     };
 
     // -------------------------------------------------------------
-    // PROFISSIONAIS E ANÚNCIOS (COM O NOVO DESIGN DA FOTO)
+    // PROFISSIONAIS E PERFIS
     // -------------------------------------------------------------
     window.handleAvatarUpload = async function(e) {
       const file = e.target.files[0];
@@ -1373,8 +1333,6 @@
 
       const sponsoredPros = allProfessionals.filter(p => p.isSponsored);
       const recentPros = allProfessionals.slice(0, 6);
-
-      // Na Home: exibe os patrocinados ou os melhores profissionais
       const displayPros = sponsoredPros.length ? sponsoredPros : recentPros;
 
       if (!displayPros.length) {
@@ -1387,7 +1345,6 @@
       lucide.createIcons();
     }
 
-    // CARD DE PROFISSIONAL EM DESTAQUE (DESIGN IDÊNTICO À FOTO: BORDA BRANCA, CHECK VERDE E BOTÃO EM PÍLULA)
     function createFeaturedProCard(p) {
       const card = document.createElement('div');
       card.className = "bg-white text-black rounded-2xl overflow-hidden shadow-sm flex flex-col justify-between";
@@ -1425,7 +1382,6 @@
       return card;
     }
 
-    // LISTAGEM PADRÃO NA BUSCA
     window.applyFilters = function() {
       const s = (document.getElementById('searchInput').value || '').toLowerCase();
       const cat = document.getElementById('filterCategory').value;
