@@ -1577,7 +1577,7 @@
 
     function createFeaturedProCard(p) {
       const card = document.createElement('div');
-      card.className = "bg-white text-black rounded-2xl overflow-hidden shadow-sm flex flex-col justify-between border-2 border-amber-400";
+      card.className = `bg-white dark:bg-zebu-darkCard text-neutral-900 dark:text-white rounded-2xl overflow-hidden shadow-sm flex flex-col justify-between border ${p.isSponsored ? 'border-2 border-amber-400' : 'border-neutral-200 dark:border-neutral-800'}`;
       const iconName = getCategoryIcon(p.category.split(' - ')[0]);
       const imageHTML = p.avatar 
         ? `<img src="${p.avatar}" class="w-full h-36 object-cover">`
