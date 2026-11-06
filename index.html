@@ -6,7 +6,7 @@
   <title>Zebu Freela | Conectando pessoas e oportunidades em Uberaba</title>
   <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#0B0E09">
-  <meta name="description" content="Plataforma de autônomos, serviços e equipamentos em Uberaba - MG. Encontre diaristas, eletricistas, pedreiros, piscineiros e anuncie grátis no Zebu Freela.">
+  <meta name="description" content="Plataforma de autônomos, serviços e equipamentos em Uberaba - MG. Diaristas, eletricistas, enfermagem, personal trainer e mais.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://www.zebufreela.com.br">
 
@@ -43,7 +43,7 @@
 
   <!-- ================= TOPBAR ================= -->
   <header class="sticky top-0 z-40 bg-zebu-dark text-white shadow-md border-b border-white/10">
-    <div class="max-w-6xl mx-auto px-4 h-15 md:h-16 flex items-center justify-between">
+    <div class="max-w-6xl mx-auto px-4 h-14 md:h-16 flex items-center justify-between">
       <a href="#" onclick="showSection('home')" class="flex items-center gap-2">
         <img src="file_00000000ee94820e8030c8d3a817a851.png" alt="Zebu Freela Uberaba" class="h-9 md:h-11 w-auto object-contain">
       </a>
@@ -64,7 +64,7 @@
       </nav>
 
       <div class="flex items-center gap-2">
-        <button id="themeToggle" class="p-2 rounded-full hover:bg-white/10 transition" title="Alternar tema">
+        <button id="themeToggle" class="p-2 rounded-full hover:bg-white/10 transition" title="Tema">
           <i data-lucide="moon" class="w-4 h-4 hidden dark:block text-zebu-lime"></i>
           <i data-lucide="sun" class="w-4 h-4 block dark:hidden text-zebu-lime"></i>
         </button>
@@ -76,7 +76,6 @@
         </div>
 
         <div id="userNavMenu" class="hidden relative items-center gap-1.5">
-          <!-- PAINEL DE ATENDIMENTO DA DONA -->
           <button id="adminSupportInboxBtn" onclick="openAdminSupportInbox()" class="hidden items-center gap-1 text-[11px] bg-amber-400 text-black px-2.5 py-1 rounded-full font-black hover:bg-amber-300 shadow">
             <i data-lucide="inbox" class="w-3.5 h-3.5"></i> Atendimentos
           </button>
@@ -190,7 +189,7 @@
         <div id="homeJobsList" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3"></div>
       </div>
 
-      <!-- PROFISSIONAIS EM DESTAQUE (APENAS QUEM FOI DESTACADO) -->
+      <!-- PROFISSIONAIS EM DESTAQUE (APENAS QUEM REALMENTE É PATROCINADO) -->
       <div class="space-y-3 bg-zebu-dark text-white p-4 md:p-6 rounded-3xl border border-neutral-800 shadow-md">
         <div class="flex items-center justify-between">
           <div>
@@ -236,7 +235,7 @@
       <div id="allJobsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3"></div>
     </section>
 
-    <!-- EQUIPAMENTOS -->
+    <!-- EQUIPAMENTOS DE TRABALHO -->
     <section id="blogSection" class="hidden space-y-4">
       <div class="bg-zebu-dark text-white p-5 md:p-6 rounded-3xl border border-neutral-800 flex flex-col md:flex-row justify-between items-start md:items-center gap-3">
         <div>
@@ -250,7 +249,6 @@
           + Cadastrar Equipamento
         </button>
       </div>
-      <div id="productFilterBar" class="flex gap-1.5 overflow-x-auto no-scrollbar py-1 text-xs"></div>
       <div id="productsGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2.5"></div>
     </section>
 
@@ -331,14 +329,14 @@
             <!-- SUGESTÕES DE FUNÇÕES RELACIONADAS PARA CLICAR -->
             <div id="relatedFunctionsContainer" class="hidden p-3 rounded-2xl bg-zebu-limeSoft/50 dark:bg-neutral-800/80 border border-zebu-lime/40 space-y-2">
               <label class="block text-[11px] font-black uppercase text-neutral-800 dark:text-neutral-200 flex items-center gap-1">
-                <i data-lucide="sparkles" class="w-3.5 h-3.5 text-zebu-lime"></i> Funções e Especialidades Relacionadas (toque para adicionar):
+                <i data-lucide="sparkles" class="w-3.5 h-3.5 text-zebu-lime"></i> Especialidades Relacionadas (toque para adicionar aos serviços):
               </label>
               <div id="relatedFunctionsPills" class="flex flex-wrap gap-1.5"></div>
             </div>
 
             <div>
               <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Serviços Oferecidos (separados por vírgula) *</label>
-              <input type="text" id="proServices" required placeholder="Ex: Curativos, Body Piercing, Aplicação de Injeção" class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs">
+              <input type="text" id="proServices" required placeholder="Ex: Faxina pesada, Limpeza pós-obra, Passadoria" class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs">
             </div>
 
             <div>
@@ -449,7 +447,7 @@
     </div>
   </footer>
 
-  <!-- ================= MODAL: CHAT NO SITE (SUPORTE / DESTAQUE / PROFISSIONAL) ================= -->
+  <!-- ================= MODAIS DE CHAT ================= -->
   <div id="inAppChatModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-3">
     <div class="bg-white dark:bg-zebu-darkCard w-full max-w-md rounded-3xl shadow-2xl border border-neutral-200 dark:border-neutral-800 flex flex-col h-[520px] overflow-hidden text-xs">
       <div class="p-3.5 bg-zebu-dark text-white border-b border-neutral-800 flex items-center justify-between">
@@ -459,7 +457,7 @@
           </div>
           <div>
             <h4 id="chatTargetName" class="font-black text-xs leading-none">Atendimento Zebu Freela</h4>
-            <span id="chatTargetSubtitle" class="text-[9px] text-zebu-lime">Online no Site</span>
+            <span id="chatTargetSubtitle" class="text-[9px] text-zebu-lime">Chat Seguro no Site</span>
           </div>
         </div>
         <button onclick="closeModal('inAppChatModal')" class="text-neutral-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
@@ -476,17 +474,17 @@
     </div>
   </div>
 
-  <!-- MODAL: CAIXA DE ATENDIMENTO DA DONA (TODOS QUE QUEREM DESTAQUE/AJUDA) -->
+  <!-- CAIXA DE ATENDIMENTO DA DONA -->
   <div id="adminSupportModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-3">
     <div class="bg-white dark:bg-zebu-darkCard w-full max-w-md rounded-3xl p-5 shadow-2xl border border-neutral-200 dark:border-neutral-800 relative max-h-[85vh] overflow-y-auto text-xs">
       <button onclick="closeModal('adminSupportModal')" class="absolute right-4 top-4 text-neutral-400"><i data-lucide="x" class="w-5 h-5"></i></button>
       <h3 class="text-base font-black mb-1 flex items-center gap-2 text-amber-500"><i data-lucide="inbox" class="w-4 h-4"></i> Atendimentos & Destaques</h3>
-      <p class="text-[11px] text-neutral-500 mb-3">Mensagens recebidas de pessoas querendo destaque ou suporte no site.</p>
+      <p class="text-[11px] text-neutral-500 mb-3">Pessoas querendo destaque ou tirando dúvidas no site.</p>
       <div id="adminSupportList" class="space-y-2"></div>
     </div>
   </div>
 
-  <!-- ================= MODAL ADMIN: CADASTRAR OU EDITAR PRODUTO ================= -->
+  <!-- MODAL ADMIN EQUIPAMENTO -->
   <div id="adminProductModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-3">
     <div class="bg-white dark:bg-zebu-darkCard w-full max-w-lg rounded-3xl p-5 shadow-2xl border border-neutral-200 dark:border-neutral-800 relative max-h-[90vh] overflow-y-auto text-xs">
       <button onclick="closeModal('adminProductModal')" class="absolute right-4 top-4 text-neutral-400"><i data-lucide="x" class="w-5 h-5"></i></button>
@@ -541,17 +539,15 @@
     </div>
   </div>
 
-  <!-- MODAL: POLÍTICA DE PRIVACIDADE & LGPD -->
+  <!-- MODAL: POLÍTICA DE PRIVACIDADE -->
   <div id="privacyModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-3">
     <div class="bg-white dark:bg-zebu-darkCard w-full max-w-xl rounded-3xl p-6 shadow-2xl border border-neutral-200 dark:border-neutral-800 relative max-h-[85vh] overflow-y-auto text-xs space-y-3">
       <button onclick="closeModal('privacyModal')" class="absolute right-4 top-4 text-neutral-400"><i data-lucide="x" class="w-5 h-5"></i></button>
       <h3 class="text-base font-black text-zebu-lime">Política de Privacidade & LGPD</h3>
-      <p class="text-neutral-500">Última atualização: Novembro de 2026. Aplicável a www.zebufreela.com.br.</p>
       <div class="space-y-2.5 leading-relaxed text-neutral-700 dark:text-neutral-300">
-        <p><strong>1. Coleta de Dados:</strong> O Zebu Freela coleta informações como nome, e-mail e dados de anúncios apenas para conectar clientes e prestadores de serviços de Uberaba - MG, em estrita conformidade com a Lei Geral de Proteção de Dados (Lei nº 13.709/2018 - LGPD).</p>
-        <p><strong>2. Google AdSense & Cookies:</strong> Terceiros, incluindo o Google, usam cookies (como o cookie DART) para veicular anúncios com base nas visitas anteriores dos usuários a este ou a outros sites. Os usuários podem desativar a publicidade personalizada acessando as Configurações de Anúncios do Google.</p>
-        <p><strong>3. Links de Afiliados:</strong> A seção de Equipamentos contém links de afiliados para varejistas autorizados (como Shopee, Mercado Livre e Amazon). Não coletamos dados de cartão de crédito nem realizamos cobranças financeiras diretas no site.</p>
-        <p><strong>4. Direitos do Titular:</strong> O usuário pode a qualquer momento editar, excluir ou solicitar a remoção de seus anúncios e dados cadastrais pelo próprio painel da plataforma.</p>
+        <p><strong>1. Coleta de Dados:</strong> O Zebu Freela coleta informações cadastrais apenas para aproximar clientes e autônomos em Uberaba - MG, nos termos da Lei Geral de Proteção de Dados (Lei nº 13.709/2018 - LGPD).</p>
+        <p><strong>2. Google AdSense & Cookies:</strong> Terceiros, incluindo o Google, utilizam cookies (como o cookie DART) para veicular anúncios com base no histórico de navegação. O usuário pode desativar anúncios personalizados nas configurações do Google.</p>
+        <p><strong>3. Links de Afiliados:</strong> A seção Equipamentos de Trabalho pode conter links comissionados para varejistas autorizados (Shopee, Mercado Livre, Amazon). Não processamos dados de pagamento no site.</p>
       </div>
       <button onclick="closeModal('privacyModal')" class="w-full py-2.5 bg-zebu-lime text-black font-black rounded-xl">Entendi e Concordo</button>
     </div>
@@ -562,9 +558,7 @@
     <div class="bg-white dark:bg-zebu-darkCard w-full max-w-xl rounded-3xl p-6 shadow-2xl border border-neutral-200 dark:border-neutral-800 relative max-h-[85vh] overflow-y-auto text-xs space-y-3">
       <button onclick="closeModal('termsModal')" class="absolute right-4 top-4 text-neutral-400"><i data-lucide="x" class="w-5 h-5"></i></button>
       <h3 class="text-base font-black text-zebu-lime">Termos de Uso</h3>
-      <div class="space-y-2.5 leading-relaxed text-neutral-700 dark:text-neutral-300">
-        <p>O <strong>Zebu Freela</strong> é uma plataforma de aproximação comunitária entre autônomos e contratantes em Uberaba - MG. Não intermediamos pagamentos nem somos responsáveis pela execução física dos serviços combinados entre as partes.</p>
-      </div>
+      <p class="leading-relaxed text-neutral-700 dark:text-neutral-300">O Zebu Freela é um guia de contato e divulgação para autônomos em Uberaba. A negociação e execução dos serviços ocorrem sob responsabilidade direta das partes.</p>
       <button onclick="closeModal('termsModal')" class="w-full py-2.5 bg-zebu-lime text-black font-black rounded-xl">Fechar</button>
     </div>
   </div>
@@ -573,16 +567,13 @@
   <div id="authModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-3">
     <div class="bg-white dark:bg-zebu-darkCard w-full max-w-sm rounded-3xl p-5 shadow-2xl border border-neutral-200 dark:border-neutral-800 relative text-xs">
       <button onclick="closeModal('authModal')" class="absolute right-3.5 top-3.5 text-neutral-400"><i data-lucide="x" class="w-5 h-5"></i></button>
-
       <div id="authPromptMessage" class="hidden mb-3 p-2.5 rounded-xl bg-zebu-limeSoft text-black font-bold text-[11px]">
         👋 Entre ou cadastre-se grátis para conversar pelo chat do site!
       </div>
-
       <div class="flex border-b border-neutral-200 dark:border-neutral-700 mb-4">
         <button id="tabLogin" onclick="switchAuthTab('login')" class="flex-1 pb-2 font-black text-xs border-b-2 border-zebu-lime text-black dark:text-white">Entrar</button>
         <button id="tabRegister" onclick="switchAuthTab('register')" class="flex-1 pb-2 font-bold text-xs border-b-2 border-transparent text-neutral-400">Criar Conta</button>
       </div>
-
       <form id="loginForm" onsubmit="handleLogin(event)" class="space-y-3">
         <div>
           <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-0.5">E-mail</label>
@@ -594,7 +585,6 @@
         </div>
         <button type="submit" id="btnLoginSubmit" class="w-full py-3 bg-zebu-lime hover:bg-zebu-limeHover text-black font-black text-xs rounded-xl shadow">Acessar</button>
       </form>
-
       <form id="registerForm" onsubmit="handleRegister(event)" class="space-y-3 hidden">
         <div>
           <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-0.5">Nome Completo</label>
@@ -637,9 +627,9 @@
           <div>
             <div class="flex items-center gap-1.5">
               <h3 id="modalProName" class="font-black text-sm leading-snug">Profissional</h3>
-             ${p.isSponsored ? ` <span id="modalProBadge" class="hidden text-[9px] font-black px-2 py-0.5 rounded-full bg-amber-400 text-black flex items-center gap-1">
+              <span id="modalProBadge" class="hidden text-[9px] font-black px-2 py-0.5 rounded-full bg-amber-400 text-black flex items-center gap-1">
                 <i data-lucide="crown" class="w-3 h-3 fill-black"></i> PATROCINADO
-              </span>` : ''}
+              </span>
             </div>
             <p id="modalProCategory" class="text-[11px] font-bold text-neutral-500">Categoria</p>
             <p id="modalProNeighborhood" class="text-[11px] text-neutral-400 flex items-center gap-1 mt-0.5"></p>
@@ -688,11 +678,11 @@
       <form id="jobPostForm" onsubmit="saveJobOpportunity(event)" class="space-y-3 mt-3">
         <div>
           <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Título do Serviço / Vaga *</label>
-          <input type="text" id="jobTitle" required placeholder="Ex: Técnico de enfermagem para curativos / Personal" class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800">
+          <input type="text" id="jobTitle" required placeholder="Ex: Diarista para faxina pesada" class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800">
         </div>
         <div class="grid grid-cols-2 gap-2">
           <div>
-            <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Profissão Necessária *</label>
+            <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Profissão *</label>
             <select id="jobCategory" required class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800"></select>
           </div>
           <div>
@@ -743,7 +733,6 @@
       deleteDoc, 
       updateDoc,
       query,
-      where,
       orderBy,
       onSnapshot,
       serverTimestamp 
@@ -765,7 +754,7 @@
 
     const ADMIN_EMAIL = "gabi.almeidasaude@gmail.com";
 
-    // CATEGORIAS EM ORDEM ALFABÉTICA
+    // CATEGORIAS ORDEM ALFABÉTICA
     const CATEGORIES_DATA = [
       { name: "Babás e Cuidadoras", icon: "baby" },
       { name: "Buffet & Churrasqueiros", icon: "utensils" },
@@ -803,7 +792,7 @@
 
     const CATEGORIES = CATEGORIES_DATA.map(c => c.name);
 
-    // FUNÇÕES RELACIONADAS PARA CADA CATEGORIA
+    // FUNÇÕES RELACIONADAS
     const RELATED_FUNCTIONS = {
       "Técnicos em Enfermagem": ["Body Piercing", "Cuidador(a)", "Babá", "Aplicação de Injeção", "Curativos", "Home Care", "Acompanhamento Hospitalar"],
       "Chef de Cozinha": ["Buffet Completo", "Churrasqueiro", "Jantares Privados", "Cardápio Personalizado", "Doces & Sobremesas"],
@@ -815,7 +804,7 @@
       "Personal Organizer": ["Organização de Closet", "Mudança Residencial", "Despensa", "Documentos"]
     };
 
-    // BAIRROS EM ORDEM ALFABÉTICA
+    // BAIRROS ORDEM ALFABÉTICA
     const NEIGHBORHOODS = [
       "Abadia", "Alfredo Freire", "Amoroso Costa", "Antônia Cândida", "Beija-Flor", 
       "Boa Vista", "Centro", "Chica Ferreira", "Conjunto Uberaba", "Estados Unidos", 
@@ -934,7 +923,7 @@
     };
 
     // -------------------------------------------------------------
-    // 🪄 MÁGICA DO LINK (COM TRATAMENTO DE IMAGEM)
+    // 🪄 MÁGICA DO LINK
     // -------------------------------------------------------------
     window.handleMagicLinkFetch = async function() {
       const url = document.getElementById('magicLinkInput').value.trim();
@@ -967,11 +956,11 @@
           showToast("🪄 Título e dados puxados com sucesso!");
         } else {
           document.getElementById('prodAffiliateLink').value = url;
-          showToast("Link inserido! Complete o título e preço.");
+          showToast("Link inserido! Complete os campos.");
         }
       } catch (err) {
         document.getElementById('prodAffiliateLink').value = url;
-        showToast("Link inserido! Complete o título e preço.");
+        showToast("Link inserido! Complete os campos.");
       } finally {
         btn.disabled = false;
         btn.innerHTML = `<i data-lucide="wand-2" class="w-3.5 h-3.5"></i> Puxar Dados`;
@@ -1081,7 +1070,6 @@
 
       let chatId;
       if (currentChatRecipient.isSupport) {
-        // Se for a dona respondendo um usuário
         if (currentUser.email === ADMIN_EMAIL) {
           chatId = `support_${currentChatRecipient.uid}`;
         } else {
@@ -1307,10 +1295,10 @@
           <!-- BOTÕES DE ADMIN: EDITAR E EXCLUIR -->
           ${isAdmin ? `
             <div class="absolute top-1.5 right-1.5 flex gap-1 z-10">
-              <button onclick="editProduct('${prod.id}')" class="bg-black/80 hover:bg-black text-zebu-lime p-1.5 rounded-lg shadow" title="Editar Equipamento">
+              <button onclick="editProduct('${prod.id}')" class="bg-black/80 hover:bg-black text-zebu-lime p-1.5 rounded-lg shadow" title="Editar">
                 <i data-lucide="edit-3" class="w-3.5 h-3.5"></i>
               </button>
-              <button onclick="deleteProduct('${prod.id}', '${prod.title}')" class="bg-rose-600/90 hover:bg-rose-600 text-white p-1.5 rounded-lg shadow" title="Excluir Equipamento">
+              <button onclick="deleteProduct('${prod.id}', '${prod.title}')" class="bg-rose-600/90 hover:bg-rose-600 text-white p-1.5 rounded-lg shadow" title="Excluir">
                 <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
               </button>
             </div>
@@ -1559,6 +1547,7 @@
       const spon = document.getElementById('sponsoredList');
       spon.innerHTML = '';
 
+      // REGRA ESTRITA: APENAS QUEM REALMENTE É isSponsored === true
       const sponsoredPros = allProfessionals.filter(p => p.isSponsored === true);
       if (!sponsoredPros.length) {
         spon.innerHTML = `
@@ -1575,30 +1564,37 @@
       lucide.createIcons();
     }
 
+    // CARD DE PROFISSIONAL CORRIGIDO (SEM SELO PATROCINADO FALSO!)
     function createFeaturedProCard(p) {
       const card = document.createElement('div');
+      
+      // Só ganha borda amarela se for de fato patrocinado
       card.className = `bg-white dark:bg-zebu-darkCard text-neutral-900 dark:text-white rounded-2xl overflow-hidden shadow-sm flex flex-col justify-between border ${p.isSponsored ? 'border-2 border-amber-400' : 'border-neutral-200 dark:border-neutral-800'}`;
+      
       const iconName = getCategoryIcon(p.category.split(' - ')[0]);
       const imageHTML = p.avatar 
         ? `<img src="${p.avatar}" class="w-full h-36 object-cover">`
-        : `<div class="w-full h-36 bg-neutral-200 flex items-center justify-center text-neutral-600"><i data-lucide="${iconName}" class="w-12 h-12"></i></div>`;
+        : `<div class="w-full h-36 bg-neutral-200 dark:bg-neutral-800 flex items-center justify-center text-neutral-600"><i data-lucide="${iconName}" class="w-12 h-12"></i></div>`;
 
       card.innerHTML = `
         <div>
           <div class="relative">
             ${imageHTML}
-            <span class="absolute top-2 right-2 px-2 py-0.5 rounded-full bg-amber-400 text-black font-black text-[9px] flex items-center gap-1 shadow-md">
-              <i data-lucide="crown" class="w-3 h-3 fill-black"></i> PATROCINADO
-            </span>
+            <!-- SÓ APARECE SE FOR PATROCINADO DE VERDADE -->
+            ${p.isSponsored ? `
+              <span class="absolute top-2 right-2 px-2 py-0.5 rounded-full bg-amber-400 text-black font-black text-[9px] flex items-center gap-1 shadow-md">
+                <i data-lucide="crown" class="w-3 h-3 fill-black"></i> PATROCINADO
+              </span>
+            ` : ''}
           </div>
           <div class="p-3 space-y-1">
             <h3 class="font-black text-xs md:text-sm leading-tight">${p.name}</h3>
-            <p class="text-[10px] font-bold text-neutral-600 line-clamp-1">${p.category}</p>
-            <span class="text-xs font-black text-black block pt-1">${formatPriceDisplay(p)}</span>
+            <p class="text-[10px] font-bold text-neutral-600 dark:text-neutral-400 line-clamp-1">${p.category}</p>
+            <span class="text-xs font-black text-black dark:text-white block pt-1">${formatPriceDisplay(p)}</span>
           </div>
         </div>
         <div class="p-3 pt-0">
-          <button onclick="openProfileModal('${p.id}')" class="w-full py-1.5 bg-neutral-900 hover:bg-black text-amber-400 font-bold text-xs rounded-full transition flex items-center justify-center gap-1">
+          <button onclick="openProfileModal('${p.id}')" class="w-full py-1.5 bg-neutral-900 dark:bg-white hover:opacity-85 text-white dark:text-black font-bold text-xs rounded-full transition flex items-center justify-center gap-1">
             Ver perfil & Contratar
           </button>
         </div>
@@ -1781,7 +1777,7 @@
     }
 
     // -------------------------------------------------------------
-    // HELPERS & AUTH
+    // HELPERS
     // -------------------------------------------------------------
     window.handleAvatarUpload = async function(e) {
       const file = e.target.files[0];
