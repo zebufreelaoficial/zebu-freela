@@ -1,3 +1,23 @@
+Entendido perfeitamente! Ajustei exatamente os 3 pontos:
+
+1. **🐮 Vaquinha e Texto "Precisa de ajuda?":**  
+   * Retirado o nome "Zebuzinho".  
+   * O botão flutuante e o topo do chat agora têm o emoji da vaquinha e o texto:  
+     👉 **`🐮 Precisa de ajuda?`**
+2. **Equipamentos 100% Organizados por Profissão:**  
+   * Na aba de Equipamentos, agora os produtos ficam **divididos em seções com o título de cada profissão** (ex: *🧹 Diaristas e Faxineiras*, *⚡ Eletricistas*, *🩺 Técnicos em Enfermagem*, etc.).  
+   * A pessoa bate o olho e encontra direto as ferramentas da área dela, além de poder filtrar pelas abinhas no topo!
+
+---
+
+### Código Completo (`index.html`)
+
+Acesse o link no GitHub:  
+👉 `https://github.com/zebufreelaoficial/zebu-freela/edit/main/index.html`
+
+Apague tudo e cole este código completo:
+
+```html
 <!DOCTYPE html>
 <html lang="pt-BR" class="h-full">
 <head>
@@ -6,7 +26,7 @@
   <title>Zebu Freela | Conectando pessoas e oportunidades em Uberaba</title>
   <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#0B0E09">
-  <meta name="description" content="Plataforma de autônomos, serviços e equipamentos em Uberaba - MG. Diaristas, eletricistas, enfermagem, personal trainer e mais.">
+  <meta name="description" content="Plataforma de autônomos, serviços e equipamentos em Uberaba - MG. Encontre diaristas, eletricistas, enfermagem, personal trainer e mais.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://www.zebufreela.com.br">
 
@@ -43,12 +63,11 @@
 
   <!-- ================= TOPBAR ================= -->
   <header class="sticky top-0 z-40 bg-zebu-dark text-white shadow-md border-b border-white/10">
-    <div class="max-w-6xl mx-auto px-4 h-15 md:h-16 flex items-center justify-between">
+    <div class="max-w-6xl mx-auto px-4 h-14 md:h-16 flex items-center justify-between">
       <a href="#home" onclick="showSection('home')" class="flex items-center gap-2">
         <img src="file_00000000ee94820e8030c8d3a817a851.png" alt="Zebu Freela Uberaba" class="h-9 md:h-11 w-auto object-contain">
       </a>
 
-      <!-- Menu no Computador / Tablet -->
       <nav class="hidden md:flex items-center gap-6 text-xs font-bold uppercase tracking-wider">
         <button onclick="showSection('home')" id="nav-home" class="text-zebu-lime flex items-center gap-1.5 pb-1 border-b-2 border-zebu-lime">
           <i data-lucide="home" class="w-4 h-4"></i> Início
@@ -148,7 +167,7 @@
                 </div>
                 <div>
                   <h4 class="font-black text-xs leading-none">Equipamentos</h4>
-                  <span class="text-[9px] text-neutral-500 block mt-0.5">Ferramentas de trabalho</span>
+                  <span class="text-[9px] text-neutral-500 block mt-0.5">Por profissão</span>
                 </div>
               </div>
               <i data-lucide="chevron-right" class="w-4 h-4 text-neutral-400"></i>
@@ -172,7 +191,7 @@
         <div id="categoriesGrid" class="flex md:grid md:grid-cols-6 gap-2.5 overflow-x-auto no-scrollbar py-1"></div>
       </div>
 
-      <!-- MURAL DE OPORTUNIDADES COM VAGAS RELÂMPAGO -->
+      <!-- MURAL DE OPORTUNIDADES -->
       <div class="space-y-3 bg-white dark:bg-zebu-darkCard p-4 md:p-5 rounded-3xl border border-zebu-grayBorder dark:border-neutral-800 shadow-sm">
         <div class="flex items-center justify-between">
           <div>
@@ -209,7 +228,7 @@
             <h2 class="text-base font-black flex items-center gap-2">
               <span class="w-4 h-1 bg-zebu-lime rounded-full"></span> Equipamentos de Trabalho
             </h2>
-            <p class="text-[10px] md:text-xs text-neutral-500">Ferramentas recomendadas com links oficiais</p>
+            <p class="text-[10px] md:text-xs text-neutral-500">Materiais recomendados organizados por profissão</p>
           </div>
           <button onclick="showSection('blog')" class="text-xs font-bold hover:underline flex items-center gap-1">Ver todos <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></button>
         </div>
@@ -234,21 +253,26 @@
       <div id="allJobsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3"></div>
     </section>
 
-    <!-- EQUIPAMENTOS -->
-    <section id="blogSection" class="hidden space-y-4">
+    <!-- SEÇÃO: EQUIPAMENTOS DE TRABALHO (ORGANIZADOS POR PROFISSÃO) -->
+    <section id="blogSection" class="hidden space-y-5">
       <div class="bg-zebu-dark text-white p-5 md:p-6 rounded-3xl border border-neutral-800 flex flex-col md:flex-row justify-between items-start md:items-center gap-3">
         <div>
-          <span class="text-[10px] font-black uppercase text-zebu-lime tracking-widest block">Materiais & Ferramentas</span>
+          <span class="text-[10px] font-black uppercase text-zebu-lime tracking-widest block">Catálogo Oficial</span>
           <h2 class="text-xl md:text-2xl font-black flex items-center gap-2">
-            <i data-lucide="wrench" class="w-5 h-5 text-zebu-lime"></i> Equipamentos de Trabalho
+            <i data-lucide="wrench" class="w-5 h-5 text-zebu-lime"></i> Equipamentos por Profissão
           </h2>
-          <p class="text-xs text-neutral-400 mt-0.5">Toque no produto para acessar a oferta na loja oficial.</p>
+          <p class="text-xs text-neutral-400 mt-0.5">Ferramentas e materiais de trabalho separados por categoria de serviço.</p>
         </div>
         <button id="adminPostBtnBlog" onclick="openCreateProductModal()" class="hidden px-4 py-2 bg-zebu-lime text-black font-black text-xs rounded-xl hover:bg-zebu-limeHover shadow">
           + Cadastrar Equipamento
         </button>
       </div>
-      <div id="productsGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2.5"></div>
+
+      <!-- Filtro Rápido em Abas -->
+      <div id="productFilterBar" class="flex gap-1.5 overflow-x-auto no-scrollbar py-1 text-xs"></div>
+
+      <!-- Container onde os produtos aparecem agrupados por profissão -->
+      <div id="productsByProfessionContainer" class="space-y-6"></div>
     </section>
 
     <!-- EXPLORAR PROFISSIONAIS -->
@@ -383,7 +407,7 @@
                 <span id="photoCount" class="text-[11px] font-black">0 / 10 fotos</span>
               </div>
               <input type="file" id="portfolioInput" accept="image/*" multiple onchange="handlePortfolioUpload(event)"
-                class="block w-full text-[10px] text-neutral-500 file:mr-2 file:py-1 file:px-2.5 file:rounded-lg file:border-0 file:text-[10px] file:font-bold file:bg-zebu-dark file:text-zebu-lime">
+                class="block w-full text-[10px] text-neutral-500 file:mr-3 file:py-1.5 file:px-2.5 file:rounded-lg file:border-0 file:text-[10px] file:font-bold file:bg-zebu-dark file:text-zebu-lime">
               <div id="portfolioPreviewGrid" class="grid grid-cols-3 sm:grid-cols-5 gap-2 pt-1"></div>
             </div>
 
@@ -401,14 +425,11 @@
     </section>
   </main>
 
-  <!-- ================= BOTÃO FLUTUANTE DE SUPORTE (COM O MASCOTE ZEBUZINHO - SEM EMOJI) ================= -->
+  <!-- ================= BOTÃO FLUTUANTE DE ATENDIMENTO COM A VAQUINHA (SEM EMOJI) ================= -->
   <aside aria-label="Suporte" class="fixed bottom-20 md:bottom-6 right-4 z-40">
-    <button onclick="openSupportChat()" class="group flex items-center gap-2 bg-zebu-lime hover:bg-zebu-limeHover text-black px-4 py-2.5 rounded-full shadow-2xl transition-transform hover:scale-105 active:scale-95 border-2 border-black">
-      <!-- Ícone do Mascote Zebuzinho -->
-      <div class="w-6 h-6 rounded-full bg-black text-zebu-lime flex items-center justify-center shrink-0">
-        <i data-lucide="shield" class="w-3.5 h-3.5 fill-zebu-lime"></i>
-      </div>
-      <span class="font-black text-xs">Atendimento Zebuzinho</span>
+    <button onclick="openSupportChat()" class="group flex items-center gap-2 bg-zebu-lime hover:bg-zebu-limeHover text-black px-4 py-2.5 rounded-full shadow-2xl transition-transform hover:scale-105 active:scale-95 border-2 border-black font-black text-xs">
+      <span class="text-base">🐮</span>
+      <span>Precisa de ajuda?</span>
     </button>
   </aside>
 
@@ -454,18 +475,17 @@
     </div>
   </footer>
 
-  <!-- ================= MODAIS DE CHAT (COM O MASCOTE ZEBUZINHO) ================= -->
+  <!-- ================= MODAIS DE CHAT (COM A VAQUINHA 🐮) ================= -->
   <div id="inAppChatModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-3">
     <div class="bg-white dark:bg-zebu-darkCard w-full max-w-md rounded-3xl shadow-2xl border border-neutral-200 dark:border-neutral-800 flex flex-col h-[520px] overflow-hidden text-xs">
       <div class="p-3.5 bg-zebu-dark text-white border-b border-neutral-800 flex items-center justify-between">
         <div class="flex items-center gap-2">
-          <!-- Mascote Zebuzinho no topo do chat -->
-          <div class="w-9 h-9 rounded-full bg-zebu-lime text-black flex items-center justify-center font-bold shrink-0">
-            <i data-lucide="smile" class="w-5 h-5"></i>
+          <div class="w-9 h-9 rounded-full bg-zebu-lime text-black flex items-center justify-center font-bold text-lg shrink-0">
+            🐮
           </div>
           <div>
-            <h4 id="chatTargetName" class="font-black text-xs leading-none">Mascote Zebuzinho</h4>
-            <span id="chatTargetSubtitle" class="text-[9px] text-zebu-lime">Atendimento Oficial do Site</span>
+            <h4 id="chatTargetName" class="font-black text-xs leading-none">Precisa de ajuda?</h4>
+            <span id="chatTargetSubtitle" class="text-[9px] text-zebu-lime">Atendimento Zebu Freela</span>
           </div>
         </div>
         <button onclick="closeModal('inAppChatModal')" class="text-neutral-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
@@ -518,7 +538,7 @@
         </div>
         <div class="grid grid-cols-2 gap-2">
           <div>
-            <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Categoria de Serviço *</label>
+            <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Categoria de Serviço (Profissão) *</label>
             <select id="prodCategory" required class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800"></select>
           </div>
           <div>
@@ -626,7 +646,7 @@
     </div>
   </div>
 
-  <!-- MODAL: PERFIL DO PROFISSIONAL (COM BOTÃO DE EXCLUIR ANÚNCIO PARA ADMIN) -->
+  <!-- MODAL: PERFIL DO PROFISSIONAL -->
   <div id="profileModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-3">
     <div class="bg-white dark:bg-zebu-darkCard w-full max-w-lg rounded-3xl shadow-2xl border border-neutral-200 dark:border-neutral-800 relative max-h-[92vh] flex flex-col overflow-hidden text-xs">
       <div class="p-4 border-b border-neutral-200 dark:border-neutral-800 flex justify-between items-start">
@@ -667,7 +687,6 @@
 
       <div class="p-3.5 border-t border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900/50 flex flex-wrap items-center justify-between gap-2">
         <div class="flex items-center gap-1.5">
-          <!-- BOTÕES EXCLUSIVOS DA DONA DO SITE -->
           <button id="adminToggleSponsoredBtn" onclick="toggleProfessionalSponsorship()" class="hidden px-2.5 py-1.5 bg-amber-400 text-black font-extrabold text-[11px] rounded-xl shadow">
             <span id="adminToggleSponsoredText">Destacar</span>
           </button>
@@ -706,7 +725,6 @@
           </div>
         </div>
 
-        <!-- ⚡ TEMPORIZADOR RELÂMPAGO -->
         <div class="p-3 bg-zebu-limeSoft dark:bg-neutral-800 rounded-2xl border border-zebu-lime space-y-1">
           <label class="block text-[11px] font-black uppercase text-black dark:text-zebu-lime flex items-center gap-1">
             ⚡ Duração da Vaga (Sumiço Automático):
@@ -852,6 +870,7 @@
     let myAds = [];
     let editingAdId = null;
     let editingProductId = null;
+    let selectedProductCategory = "Todas";
     let tempPortfolioImages = [];
     let tempAvatarImage = "";
     let tempProductImage = "";
@@ -859,7 +878,6 @@
     let currentChatRecipient = null;
     let chatUnsubscribe = null;
 
-    // INICIALIZAÇÃO E SUPORTE A LEMBRAR DA PÁGINA (HASH ROUTING)
     window.addEventListener('DOMContentLoaded', () => {
       lucide.createIcons();
       initTheme();
@@ -869,7 +887,6 @@
       fetchProducts();
       fetchJobs();
 
-      // Lê a página que estava salva na URL para não resetar no refresh
       const initialSection = window.location.hash ? window.location.hash.replace('#', '') : 'home';
       showSection(initialSection);
 
@@ -1015,7 +1032,7 @@
     };
 
     // -------------------------------------------------------------
-    // ATENDIMENTO ZEBUZINHO (CHAT NO SITE)
+    // ATENDIMENTO COM A VAQUINHA 🐮 NO SITE
     // -------------------------------------------------------------
     window.openSupportChat = function() {
       if (!currentUser) {
@@ -1025,7 +1042,7 @@
       }
       openInAppChat({
         uid: "ADMIN_SUPPORT",
-        name: "Atendimento Zebuzinho",
+        name: "🐮 Suporte Zebu Freela",
         isSupport: true
       });
     };
@@ -1124,8 +1141,8 @@
         if (snapshot.empty) {
           messagesBox.innerHTML = `
             <div class="text-center py-6 space-y-1">
-              <p class="text-xs font-bold text-neutral-600 dark:text-neutral-300">Olá! Como posso te ajudar hoje?</p>
-              <p class="text-[10px] text-neutral-400">Tire dúvidas sobre o Zebu Freela ou peça suporte!</p>
+              <p class="text-xs font-bold text-neutral-600 dark:text-neutral-300">Olá! 🐮 Precisa de ajuda com o Zebu Freela?</p>
+              <p class="text-[10px] text-neutral-400">Tire suas dúvidas ou fale sobre anúncios diretamente aqui!</p>
             </div>
           `;
           return;
@@ -1173,7 +1190,7 @@
         await addDoc(collection(db, "support_chats", chatId, "messages"), {
           text,
           senderUid: currentUser.uid,
-          senderName: currentUser.displayName || (currentUser.email === ADMIN_EMAIL ? "Zebuzinho (Suporte)" : "Usuário"),
+          senderName: currentUser.displayName || (currentUser.email === ADMIN_EMAIL ? "🐮 Atendimento Zebu Freela" : "Usuário"),
           createdAt: serverTimestamp()
         });
 
@@ -1192,7 +1209,7 @@
     };
 
     // -------------------------------------------------------------
-    // GESTÃO DE EQUIPAMENTOS (CADASTRAR, EDITAR E EXCLUIR)
+    // GESTÃO DE EQUIPAMENTOS (ORGANIZADOS POR PROFISSÃO)
     // -------------------------------------------------------------
     window.openCreateProductModal = function() {
       editingProductId = null;
@@ -1286,26 +1303,90 @@
         const snap = await getDocs(collection(db, "products"));
         allProducts = [];
         snap.forEach(d => allProducts.push({ id: d.id, ...d.data() }));
-        renderProducts();
+        renderProductFilterBar();
+        renderProductsGroupedByProfession();
         renderHomeProductsRow();
       } catch (err) {
         console.error(err);
       }
     }
 
-    function renderProducts() {
-      const container = document.getElementById('productsGrid');
+    function renderProductFilterBar() {
+      const bar = document.getElementById('productFilterBar');
+      if (!bar) return;
+      bar.innerHTML = '';
+
+      const catsInProducts = Array.from(new Set(allProducts.map(p => p.category))).sort();
+      const filterList = ["Todas", ...catsInProducts];
+
+      filterList.forEach(cat => {
+        const isSelected = selectedProductCategory === cat;
+        const btn = document.createElement('button');
+        btn.className = `px-3.5 py-1.5 rounded-full font-bold whitespace-nowrap transition shrink-0 ${isSelected ? 'bg-zebu-lime text-black shadow-sm' : 'bg-white dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-700'}`;
+        btn.textContent = cat;
+        btn.onclick = () => {
+          selectedProductCategory = cat;
+          renderProductFilterBar();
+          renderProductsGroupedByProfession();
+        };
+        bar.appendChild(btn);
+      });
+    }
+
+    // ORGANIZA OS EQUIPAMENTOS EM SEÇÕES CLARAS POR PROFISSÃO
+    function renderProductsGroupedByProfession() {
+      const container = document.getElementById('productsByProfessionContainer');
+      if (!container) return;
       container.innerHTML = '';
+
       if (!allProducts.length) {
-        container.innerHTML = '<p class="col-span-full py-8 text-center text-xs text-neutral-400">Nenhum equipamento cadastrado no momento.</p>';
+        container.innerHTML = '<p class="py-8 text-center text-xs text-neutral-400">Nenhum equipamento cadastrado no momento.</p>';
         return;
       }
-      allProducts.forEach(p => container.appendChild(createProductCard(p)));
+
+      // Agrupa produtos por categoria
+      const grouped = {};
+      allProducts.forEach(prod => {
+        const cat = prod.category || "Outros";
+        if (selectedProductCategory !== "Todas" && cat !== selectedProductCategory) return;
+        if (!grouped[cat]) grouped[cat] = [];
+        grouped[cat].push(prod);
+      });
+
+      const categoriesToShow = Object.keys(grouped).sort();
+
+      if (!categoriesToShow.length) {
+        container.innerHTML = '<p class="py-8 text-center text-xs text-neutral-400">Nenhum equipamento encontrado nesta categoria.</p>';
+        return;
+      }
+
+      categoriesToShow.forEach(catName => {
+        const section = document.createElement('div');
+        section.className = "space-y-3 bg-white dark:bg-zebu-darkCard p-4 rounded-3xl border border-zebu-grayBorder dark:border-neutral-800 shadow-sm";
+
+        const iconName = getCategoryIcon(catName);
+        section.innerHTML = `
+          <div class="flex items-center gap-2 border-b border-neutral-100 dark:border-neutral-800 pb-2">
+            <div class="w-7 h-7 rounded-lg bg-zebu-limeSoft text-black flex items-center justify-center font-bold">
+              <i data-lucide="${iconName}" class="w-4 h-4"></i>
+            </div>
+            <h3 class="font-black text-sm md:text-base">${catName}</h3>
+          </div>
+          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2.5 pt-1" id="cat_grid_${catName.replace(/\s+/g, '_')}"></div>
+        `;
+
+        container.appendChild(section);
+
+        const grid = section.querySelector(`#cat_grid_${catName.replace(/\s+/g, '_')}`);
+        grouped[catName].forEach(prod => grid.appendChild(createProductCard(prod)));
+      });
+
       lucide.createIcons();
     }
 
     function renderHomeProductsRow() {
       const container = document.getElementById('homeProductsRow');
+      if (!container) return;
       container.innerHTML = '';
       if (!allProducts.length) {
         container.innerHTML = '<p class="col-span-full text-center text-xs text-neutral-400 py-3">Em breve novos equipamentos de trabalho!</p>';
@@ -1318,14 +1399,16 @@
     function createProductCard(prod) {
       const card = document.createElement('div');
       const isAdmin = currentUser && currentUser.email === ADMIN_EMAIL;
-      card.className = "bg-white dark:bg-zebu-darkCard border border-zebu-grayBorder dark:border-neutral-800 rounded-2xl overflow-hidden shadow-sm flex flex-col justify-between hover:shadow-md transition relative group";
+      card.className = "bg-[#F8FAF6] dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl overflow-hidden shadow-sm flex flex-col justify-between hover:shadow-md transition relative group";
       
       card.innerHTML = `
         <div>
-          <a href="${prod.link}" target="_blank" rel="noopener noreferrer" class="block relative w-full aspect-square bg-neutral-100 dark:bg-neutral-800 overflow-hidden flex items-center justify-center p-2 cursor-pointer">
+          <!-- IMAGEM CLICÁVEL -->
+          <a href="${prod.link}" target="_blank" rel="noopener noreferrer" class="block relative w-full aspect-square bg-white dark:bg-neutral-800 overflow-hidden flex items-center justify-center p-2 cursor-pointer">
             <img src="${prod.image}" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-200">
           </a>
 
+          <!-- BOTÕES DE ADMIN: EDITAR E EXCLUIR -->
           ${isAdmin ? `
             <div class="absolute top-1.5 right-1.5 flex gap-1 z-10">
               <button onclick="editProduct('${prod.id}')" class="bg-black/80 hover:bg-black text-zebu-lime p-1.5 rounded-lg shadow" title="Editar">
@@ -1355,7 +1438,7 @@
     }
 
     // -------------------------------------------------------------
-    // GESTÃO DE ANÚNCIOS DO PROFISSIONAL
+    // GESTÃO DE MÚLTIPLOS ANÚNCIOS DO PROFISSIONAL
     // -------------------------------------------------------------
     function renderMyAdsList() {
       const container = document.getElementById('myAdsList');
@@ -1469,7 +1552,6 @@
       }
     };
 
-    // EXCLUIR ANÚNCIO VAZIO OU SPAM PELO BOTÃO DA ADMIN
     window.adminDeleteCurrentProfile = async function() {
       if (!currentViewingPro || !currentUser || currentUser.email !== ADMIN_EMAIL) return;
       if (!confirm(`Deseja apagar definitivamente o anúncio de "${currentViewingPro.name}"?`)) return;
@@ -1484,24 +1566,18 @@
       }
     };
 
-    // USUÁRIO EXCLUIR A PRÓPRIA CONTA E DADOS (LGPD)
     window.deleteMyUserAccount = async function() {
       if (!currentUser) return;
       if (!confirm("Atenção: Deseja realmente excluir sua conta? Todos os seus anúncios e dados serão apagados permanentemente.")) return;
 
       try {
-        // Apaga os anúncios dele
         const snap = await getDocs(collection(db, "profiles"));
         snap.forEach(async (d) => {
           if (d.data().authorUid === currentUser.uid || d.id === currentUser.uid) {
             await deleteDoc(doc(db, "profiles", d.id));
           }
         });
-
-        // Apaga documento de usuário
         await deleteDoc(doc(db, "users", currentUser.uid));
-        
-        // Apaga a autenticação
         await deleteUser(auth.currentUser);
         showToast("Sua conta foi excluída com sucesso.");
         showSection('home');
@@ -1619,16 +1695,16 @@
 
     function renderCards() {
       const spon = document.getElementById('sponsoredList');
+      if (!spon) return;
       spon.innerHTML = '';
 
-      // REGRA ESTRITA: APENAS QUEM REALMENTE É isSponsored === true
       const sponsoredPros = allProfessionals.filter(p => p.isSponsored === true);
       if (!sponsoredPros.length) {
         spon.innerHTML = `
           <div class="col-span-full py-5 text-center text-xs text-neutral-400 border border-dashed border-neutral-700 rounded-2xl p-4">
             <i data-lucide="crown" class="w-6 h-6 mx-auto mb-1 text-amber-400/60"></i>
             <p class="font-bold text-neutral-300">Nenhum profissional em destaque no momento.</p>
-            <p class="text-[10px] text-neutral-500 mt-0.5">Quer ser destaque? Toque no botão de atendimento no canto da tela!</p>
+            <p class="text-[10px] text-neutral-500 mt-0.5">Quer ser destaque? Toque no botão de ajuda no canto da tela!</p>
           </div>
         `;
       } else {
@@ -1683,6 +1759,7 @@
       });
 
       const grid = document.getElementById('resultsGrid');
+      if (!grid) return;
       grid.innerHTML = '';
       document.getElementById('resultsCount').textContent = `${filtered.length} profissional(is) em Uberaba`;
 
@@ -1809,7 +1886,6 @@
         const now = Date.now();
         snap.forEach(d => {
           const data = d.data();
-          // Remove vagas cujo temporizador já estourou
           if (!data.expiresAt || data.expiresAt > now) {
             allJobs.push({ id: d.id, ...data });
           }
@@ -1823,18 +1899,18 @@
     function renderJobs() {
       const homeList = document.getElementById('homeJobsList');
       const allGrid = document.getElementById('allJobsGrid');
-      homeList.innerHTML = '';
-      allGrid.innerHTML = '';
+      if (homeList) homeList.innerHTML = '';
+      if (allGrid) allGrid.innerHTML = '';
 
       if (!allJobs.length) {
         const msg = '<p class="col-span-full py-4 text-center text-xs text-neutral-400">Nenhuma vaga em aberto no momento.</p>';
-        homeList.innerHTML = msg;
-        allGrid.innerHTML = msg;
+        if (homeList) homeList.innerHTML = msg;
+        if (allGrid) allGrid.innerHTML = msg;
         return;
       }
 
-      allJobs.slice(0, 6).forEach(j => homeList.appendChild(createJobCard(j)));
-      allJobs.forEach(j => allGrid.appendChild(createJobCard(j)));
+      allJobs.slice(0, 6).forEach(j => { if (homeList) homeList.appendChild(createJobCard(j)); });
+      allJobs.forEach(j => { if (allGrid) allGrid.appendChild(createJobCard(j)); });
       lucide.createIcons();
     }
 
@@ -1932,6 +2008,7 @@
 
     function renderPortfolioPreviews() {
       const grid = document.getElementById('portfolioPreviewGrid');
+      if (!grid) return;
       grid.innerHTML = '';
       document.getElementById('photoCount').textContent = `${tempPortfolioImages.length} / 10 fotos`;
       tempPortfolioImages.forEach((imgUrl, idx) => {
@@ -1985,7 +2062,6 @@
       showSection('home');
     };
 
-    // NAVEGAÇÃO QUE ATUALIZA O LINK DA URL PARA O NAVEGADOR LEMBRAR DA PÁGINA
     window.showSection = function(id, updateHash = true) {
       ['homeSection', 'exploreSection', 'dashboardSection', 'blogSection', 'jobsSection'].forEach(s => {
         const el = document.getElementById(s);
@@ -1995,7 +2071,6 @@
       if (target) target.classList.remove('hidden');
       if (updateHash) window.location.hash = id;
 
-      // Atualiza botões ativos
       ['home', 'explore', 'jobs', 'blog', 'dashboard'].forEach(btnId => {
         const elDesk = document.getElementById(`nav-${btnId}`);
         const elMob = document.getElementById(`mobile-nav-${btnId}`);
@@ -2032,4 +2107,4 @@
     }
   </script>
 </body>
-</html> 
+</html>
