@@ -43,28 +43,29 @@
 
   <!-- ================= TOPBAR ================= -->
   <header class="sticky top-0 z-40 bg-zebu-dark text-white shadow-md border-b border-white/10">
-    <div class="max-w-6xl mx-auto px-4 h-14 md:h-16 flex items-center justify-between">
-      <a href="#" onclick="showSection('home')" class="flex items-center gap-2">
+    <div class="max-w-6xl mx-auto px-4 h-15 md:h-16 flex items-center justify-between">
+      <a href="#home" onclick="showSection('home')" class="flex items-center gap-2">
         <img src="file_00000000ee94820e8030c8d3a817a851.png" alt="Zebu Freela Uberaba" class="h-9 md:h-11 w-auto object-contain">
       </a>
 
+      <!-- Menu no Computador / Tablet -->
       <nav class="hidden md:flex items-center gap-6 text-xs font-bold uppercase tracking-wider">
-        <button onclick="showSection('home')" class="text-zebu-lime flex items-center gap-1.5 border-b-2 border-zebu-lime pb-1">
+        <button onclick="showSection('home')" id="nav-home" class="text-zebu-lime flex items-center gap-1.5 pb-1 border-b-2 border-zebu-lime">
           <i data-lucide="home" class="w-4 h-4"></i> Início
         </button>
-        <button onclick="goToExplore()" class="hover:text-zebu-lime transition flex items-center gap-1.5 pb-1">
+        <button onclick="showSection('explore')" id="nav-explore" class="hover:text-zebu-lime transition flex items-center gap-1.5 pb-1">
           <i data-lucide="layout-grid" class="w-4 h-4"></i> Categorias
         </button>
-        <button onclick="showSection('jobs')" class="hover:text-zebu-lime transition flex items-center gap-1.5 pb-1">
+        <button onclick="showSection('jobs')" id="nav-jobs" class="hover:text-zebu-lime transition flex items-center gap-1.5 pb-1">
           <i data-lucide="briefcase" class="w-4 h-4"></i> Oportunidades
         </button>
-        <button onclick="showSection('blog')" class="hover:text-zebu-lime transition flex items-center gap-1.5 pb-1">
+        <button onclick="showSection('blog')" id="nav-blog" class="hover:text-zebu-lime transition flex items-center gap-1.5 pb-1">
           <i data-lucide="wrench" class="w-4 h-4"></i> Equipamentos
         </button>
       </nav>
 
       <div class="flex items-center gap-2">
-        <button id="themeToggle" class="p-2 rounded-full hover:bg-white/10 transition" title="Tema">
+        <button id="themeToggle" class="p-2 rounded-full hover:bg-white/10 transition" title="Alternar tema">
           <i data-lucide="moon" class="w-4 h-4 hidden dark:block text-zebu-lime"></i>
           <i data-lucide="sun" class="w-4 h-4 block dark:hidden text-zebu-lime"></i>
         </button>
@@ -82,7 +83,7 @@
           <button id="adminPostBtn" onclick="openCreateProductModal()" class="hidden items-center gap-1 text-[11px] bg-zebu-lime text-black px-2.5 py-1 rounded-full font-black hover:bg-zebu-limeHover shadow">
             <i data-lucide="plus-circle" class="w-3 h-3"></i> + Equipamento
           </button>
-          <button onclick="logoutUser()" class="p-2 rounded-full hover:bg-white/10 transition text-neutral-400 hover:text-white" title="Sair">
+          <button onclick="logoutUser()" class="p-2 rounded-full hover:bg-white/10 transition text-neutral-400 hover:text-white" title="Sair da conta">
             <i data-lucide="log-out" class="w-4 h-4"></i>
           </button>
         </div>
@@ -116,7 +117,6 @@
             Encontre profissionais de confiança ou anuncie seu trabalho em Uberaba.
           </p>
 
-          <!-- Barra de Busca -->
           <div class="pt-2 flex items-center bg-white dark:bg-black rounded-full border border-neutral-300 dark:border-neutral-700 shadow-sm p-1">
             <i data-lucide="search" class="w-4 h-4 ml-3 text-neutral-400 shrink-0"></i>
             <input type="text" id="homeSearchInput" placeholder="Buscar serviços, profissionais ou equipamentos..." 
@@ -127,9 +127,8 @@
             </button>
           </div>
 
-          <!-- Cards de Acesso Rápido -->
           <div class="pt-3 grid grid-cols-2 gap-2.5">
-            <div onclick="goToExplore()" class="cursor-pointer bg-zebu-graySoft dark:bg-neutral-900 border border-zebu-grayBorder dark:border-neutral-800 p-3 rounded-2xl flex items-center justify-between hover:border-zebu-lime transition shadow-sm">
+            <div onclick="showSection('explore')" class="cursor-pointer bg-zebu-graySoft dark:bg-neutral-900 border border-zebu-grayBorder dark:border-neutral-800 p-3 rounded-2xl flex items-center justify-between hover:border-zebu-lime transition shadow-sm">
               <div class="flex items-center gap-2.5">
                 <div class="w-9 h-9 rounded-xl bg-zebu-limeSoft text-black flex items-center justify-center font-bold shrink-0">
                   <i data-lucide="users" class="w-4 h-4"></i>
@@ -168,18 +167,18 @@
           <h2 class="text-base font-black flex items-center gap-2">
             <span class="w-4 h-1 bg-zebu-lime rounded-full"></span> Categorias de Serviços
           </h2>
-          <button onclick="goToExplore()" class="text-xs font-bold hover:underline flex items-center gap-1">Ver todas <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></button>
+          <button onclick="showSection('explore')" class="text-xs font-bold hover:underline flex items-center gap-1">Ver todas <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></button>
         </div>
         <div id="categoriesGrid" class="flex md:grid md:grid-cols-6 gap-2.5 overflow-x-auto no-scrollbar py-1"></div>
       </div>
 
-      <!-- MURAL DE OPORTUNIDADES -->
+      <!-- MURAL DE OPORTUNIDADES COM VAGAS RELÂMPAGO -->
       <div class="space-y-3 bg-white dark:bg-zebu-darkCard p-4 md:p-5 rounded-3xl border border-zebu-grayBorder dark:border-neutral-800 shadow-sm">
         <div class="flex items-center justify-between">
           <div>
-            <span class="text-[10px] font-black uppercase text-zebu-limeHover dark:text-zebu-lime tracking-wider block">Mural de Vagas</span>
+            <span class="text-[10px] font-black uppercase text-zebu-limeHover dark:text-zebu-lime tracking-wider block">Mural de Vagas & Bicos</span>
             <h2 class="text-base md:text-lg font-black flex items-center gap-2">
-              <i data-lucide="briefcase" class="w-4 h-4 text-zebu-limeHover dark:text-zebu-lime"></i> Oportunidades em Aberto
+              <i data-lucide="briefcase" class="w-4 h-4 text-zebu-limeHover dark:text-zebu-lime"></i> Oportunidades Abertas
             </h2>
           </div>
           <button onclick="openModal('postJobModal')" class="px-3 py-1.5 bg-zebu-dark text-zebu-lime hover:brightness-110 font-black text-xs rounded-xl shadow-sm flex items-center gap-1">
@@ -189,7 +188,7 @@
         <div id="homeJobsList" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3"></div>
       </div>
 
-      <!-- PROFISSIONAIS EM DESTAQUE (APENAS QUEM REALMENTE É PATROCINADO) -->
+      <!-- PROFISSIONAIS EM DESTAQUE (APENAS COM isSponsored === true) -->
       <div class="space-y-3 bg-zebu-dark text-white p-4 md:p-6 rounded-3xl border border-neutral-800 shadow-md">
         <div class="flex items-center justify-between">
           <div>
@@ -198,7 +197,7 @@
             </h2>
             <p class="text-[10px] md:text-xs text-neutral-400">Verificados e recomendados em Uberaba</p>
           </div>
-          <button onclick="goToExplore()" class="text-xs font-bold px-3 py-1 rounded-full border border-neutral-700 hover:border-zebu-lime transition flex items-center gap-1">Ver todos <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></button>
+          <button onclick="showSection('explore')" class="text-xs font-bold px-3 py-1 rounded-full border border-neutral-700 hover:border-zebu-lime transition flex items-center gap-1">Ver todos <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></button>
         </div>
         <div id="sponsoredList" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3"></div>
       </div>
@@ -210,7 +209,7 @@
             <h2 class="text-base font-black flex items-center gap-2">
               <span class="w-4 h-1 bg-zebu-lime rounded-full"></span> Equipamentos de Trabalho
             </h2>
-            <p class="text-[10px] md:text-xs text-neutral-500">Ferramentas e materiais recomendados</p>
+            <p class="text-[10px] md:text-xs text-neutral-500">Ferramentas recomendadas com links oficiais</p>
           </div>
           <button onclick="showSection('blog')" class="text-xs font-bold hover:underline flex items-center gap-1">Ver todos <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></button>
         </div>
@@ -226,7 +225,7 @@
           <h2 class="text-xl md:text-2xl font-black flex items-center gap-2">
             <i data-lucide="briefcase" class="w-5 h-5 text-zebu-lime"></i> Oportunidades em Uberaba
           </h2>
-          <p class="text-xs text-neutral-400 mt-0.5">Encontre serviços em aberto ou publique o que precisa contratar.</p>
+          <p class="text-xs text-neutral-400 mt-0.5">Vagas convencionais e vagas relâmpago de curta duração.</p>
         </div>
         <button onclick="openModal('postJobModal')" class="px-4 py-2 bg-zebu-lime hover:bg-zebu-limeHover text-black font-black text-xs rounded-xl shadow transition">
           + Publicar Nova Vaga
@@ -235,7 +234,7 @@
       <div id="allJobsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3"></div>
     </section>
 
-    <!-- EQUIPAMENTOS DE TRABALHO -->
+    <!-- EQUIPAMENTOS -->
     <section id="blogSection" class="hidden space-y-4">
       <div class="bg-zebu-dark text-white p-5 md:p-6 rounded-3xl border border-neutral-800 flex flex-col md:flex-row justify-between items-start md:items-center gap-3">
         <div>
@@ -243,7 +242,7 @@
           <h2 class="text-xl md:text-2xl font-black flex items-center gap-2">
             <i data-lucide="wrench" class="w-5 h-5 text-zebu-lime"></i> Equipamentos de Trabalho
           </h2>
-          <p class="text-xs text-neutral-400 mt-0.5">Equipamentos recomendados com links diretos oficiais.</p>
+          <p class="text-xs text-neutral-400 mt-0.5">Toque no produto para acessar a oferta na loja oficial.</p>
         </div>
         <button id="adminPostBtnBlog" onclick="openCreateProductModal()" class="hidden px-4 py-2 bg-zebu-lime text-black font-black text-xs rounded-xl hover:bg-zebu-limeHover shadow">
           + Cadastrar Equipamento
@@ -280,14 +279,19 @@
     <!-- PAINEL PROFISSIONAL -->
     <section id="dashboardSection" class="hidden space-y-4">
       <div class="bg-white dark:bg-zebu-darkCard p-4 md:p-6 rounded-3xl shadow-sm border border-zebu-grayBorder dark:border-neutral-800">
-        <div class="flex items-center justify-between border-b border-neutral-200 dark:border-neutral-800 pb-3 mb-4">
+        <div class="flex flex-wrap items-center justify-between border-b border-neutral-200 dark:border-neutral-800 pb-3 mb-4 gap-2">
           <div>
             <h2 class="text-lg md:text-xl font-black">Meus Anúncios de Serviços</h2>
             <p class="text-[11px] text-neutral-500">Cadastre e edite anúncios separados para cada profissão que você exerce.</p>
           </div>
-          <button onclick="startNewAdForm()" class="px-3.5 py-2 bg-zebu-lime hover:bg-zebu-limeHover text-black font-black text-xs rounded-xl shadow flex items-center gap-1.5 transition">
-            <i data-lucide="plus-circle" class="w-4 h-4"></i> + Criar Novo Anúncio
-          </button>
+          <div class="flex items-center gap-2">
+            <button onclick="startNewAdForm()" class="px-3.5 py-2 bg-zebu-lime hover:bg-zebu-limeHover text-black font-black text-xs rounded-xl shadow flex items-center gap-1.5 transition">
+              <i data-lucide="plus-circle" class="w-4 h-4"></i> + Criar Novo Anúncio
+            </button>
+            <button onclick="deleteMyUserAccount()" class="px-3 py-2 bg-rose-100 hover:bg-rose-200 text-rose-700 dark:bg-rose-950 dark:text-rose-300 font-bold text-xs rounded-xl transition" title="Excluir minha conta e dados">
+              Excluir Conta
+            </button>
+          </div>
         </div>
 
         <div id="myAdsListContainer" class="space-y-3">
@@ -326,7 +330,7 @@
               </div>
             </div>
 
-            <!-- SUGESTÕES DE FUNÇÕES RELACIONADAS PARA CLICAR -->
+            <!-- SUGESTÕES DE FUNÇÕES RELACIONADAS -->
             <div id="relatedFunctionsContainer" class="hidden p-3 rounded-2xl bg-zebu-limeSoft/50 dark:bg-neutral-800/80 border border-zebu-lime/40 space-y-2">
               <label class="block text-[11px] font-black uppercase text-neutral-800 dark:text-neutral-200 flex items-center gap-1">
                 <i data-lucide="sparkles" class="w-3.5 h-3.5 text-zebu-lime"></i> Especialidades Relacionadas (toque para adicionar aos serviços):
@@ -379,7 +383,7 @@
                 <span id="photoCount" class="text-[11px] font-black">0 / 10 fotos</span>
               </div>
               <input type="file" id="portfolioInput" accept="image/*" multiple onchange="handlePortfolioUpload(event)"
-                class="block w-full text-[10px] text-neutral-500 file:mr-3 file:py-1.5 file:px-2.5 file:rounded-lg file:border-0 file:text-[10px] file:font-bold file:bg-zebu-dark file:text-zebu-lime">
+                class="block w-full text-[10px] text-neutral-500 file:mr-2 file:py-1 file:px-2.5 file:rounded-lg file:border-0 file:text-[10px] file:font-bold file:bg-zebu-dark file:text-zebu-lime">
               <div id="portfolioPreviewGrid" class="grid grid-cols-3 sm:grid-cols-5 gap-2 pt-1"></div>
             </div>
 
@@ -397,33 +401,36 @@
     </section>
   </main>
 
-  <!-- ================= BOTÃO FLUTUANTE DE SUPORTE / QUERO DESTAQUE (CHAT NO SITE) ================= -->
+  <!-- ================= BOTÃO FLUTUANTE DE SUPORTE (COM O MASCOTE ZEBUZINHO - SEM EMOJI) ================= -->
   <aside aria-label="Suporte" class="fixed bottom-20 md:bottom-6 right-4 z-40">
-    <button onclick="openSupportChat()" class="group flex items-center gap-2 bg-zebu-lime hover:bg-zebu-limeHover text-black px-4 py-3 rounded-full shadow-2xl transition-transform hover:scale-105 active:scale-95 border-2 border-black">
-      <i data-lucide="message-circle" class="w-5 h-5 shrink-0"></i>
-      <span class="font-black text-xs">💬 Dúvidas / Quero Destaque</span>
+    <button onclick="openSupportChat()" class="group flex items-center gap-2 bg-zebu-lime hover:bg-zebu-limeHover text-black px-4 py-2.5 rounded-full shadow-2xl transition-transform hover:scale-105 active:scale-95 border-2 border-black">
+      <!-- Ícone do Mascote Zebuzinho -->
+      <div class="w-6 h-6 rounded-full bg-black text-zebu-lime flex items-center justify-center shrink-0">
+        <i data-lucide="shield" class="w-3.5 h-3.5 fill-zebu-lime"></i>
+      </div>
+      <span class="font-black text-xs">Atendimento Zebuzinho</span>
     </button>
   </aside>
 
   <!-- ================= BARRA INFERIOR MOBILE ================= -->
   <nav class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-zebu-dark/95 backdrop-blur-md border-t border-neutral-800 flex justify-around items-center h-16 px-2 text-white">
-    <button onclick="showSection('home')" class="flex flex-col items-center gap-1 py-1 text-zebu-lime">
+    <button onclick="showSection('home')" id="mobile-nav-home" class="flex flex-col items-center gap-1 py-1 text-zebu-lime">
       <i data-lucide="home" class="w-5 h-5"></i>
       <span class="text-[9px] font-bold">Início</span>
     </button>
-    <button onclick="goToExplore()" class="flex flex-col items-center gap-1 py-1 text-neutral-400 hover:text-white">
+    <button onclick="showSection('explore')" id="mobile-nav-explore" class="flex flex-col items-center gap-1 py-1 text-neutral-400 hover:text-white">
       <i data-lucide="layout-grid" class="w-5 h-5"></i>
       <span class="text-[9px] font-bold">Categorias</span>
     </button>
-    <button onclick="showSection('jobs')" class="flex flex-col items-center gap-1 py-1 text-neutral-400 hover:text-white">
+    <button onclick="showSection('jobs')" id="mobile-nav-jobs" class="flex flex-col items-center gap-1 py-1 text-neutral-400 hover:text-white">
       <i data-lucide="briefcase" class="w-5 h-5"></i>
       <span class="text-[9px] font-bold">Vagas</span>
     </button>
-    <button onclick="showSection('blog')" class="flex flex-col items-center gap-1 py-1 text-neutral-400 hover:text-white">
+    <button onclick="showSection('blog')" id="mobile-nav-blog" class="flex flex-col items-center gap-1 py-1 text-neutral-400 hover:text-white">
       <i data-lucide="wrench" class="w-5 h-5"></i>
       <span class="text-[9px] font-bold">Equipamentos</span>
     </button>
-    <button onclick="handleAdvertiseClick()" class="flex flex-col items-center gap-1 py-1 text-neutral-400 hover:text-white">
+    <button onclick="handleAdvertiseClick()" id="mobile-nav-dashboard" class="flex flex-col items-center gap-1 py-1 text-neutral-400 hover:text-white">
       <i data-lucide="user" class="w-5 h-5"></i>
       <span class="text-[9px] font-bold">Painel</span>
     </button>
@@ -447,17 +454,18 @@
     </div>
   </footer>
 
-  <!-- ================= MODAIS DE CHAT ================= -->
+  <!-- ================= MODAIS DE CHAT (COM O MASCOTE ZEBUZINHO) ================= -->
   <div id="inAppChatModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-3">
     <div class="bg-white dark:bg-zebu-darkCard w-full max-w-md rounded-3xl shadow-2xl border border-neutral-200 dark:border-neutral-800 flex flex-col h-[520px] overflow-hidden text-xs">
       <div class="p-3.5 bg-zebu-dark text-white border-b border-neutral-800 flex items-center justify-between">
         <div class="flex items-center gap-2">
-          <div class="w-8 h-8 rounded-full bg-zebu-lime text-black flex items-center justify-center font-bold">
-            <i data-lucide="message-circle" class="w-4 h-4"></i>
+          <!-- Mascote Zebuzinho no topo do chat -->
+          <div class="w-9 h-9 rounded-full bg-zebu-lime text-black flex items-center justify-center font-bold shrink-0">
+            <i data-lucide="smile" class="w-5 h-5"></i>
           </div>
           <div>
-            <h4 id="chatTargetName" class="font-black text-xs leading-none">Atendimento Zebu Freela</h4>
-            <span id="chatTargetSubtitle" class="text-[9px] text-zebu-lime">Chat Seguro no Site</span>
+            <h4 id="chatTargetName" class="font-black text-xs leading-none">Mascote Zebuzinho</h4>
+            <span id="chatTargetSubtitle" class="text-[9px] text-zebu-lime">Atendimento Oficial do Site</span>
           </div>
         </div>
         <button onclick="closeModal('inAppChatModal')" class="text-neutral-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
@@ -479,7 +487,7 @@
     <div class="bg-white dark:bg-zebu-darkCard w-full max-w-md rounded-3xl p-5 shadow-2xl border border-neutral-200 dark:border-neutral-800 relative max-h-[85vh] overflow-y-auto text-xs">
       <button onclick="closeModal('adminSupportModal')" class="absolute right-4 top-4 text-neutral-400"><i data-lucide="x" class="w-5 h-5"></i></button>
       <h3 class="text-base font-black mb-1 flex items-center gap-2 text-amber-500"><i data-lucide="inbox" class="w-4 h-4"></i> Atendimentos & Destaques</h3>
-      <p class="text-[11px] text-neutral-500 mb-3">Pessoas querendo destaque ou tirando dúvidas no site.</p>
+      <p class="text-[11px] text-neutral-500 mb-3">Mensagens recebidas de usuários.</p>
       <div id="adminSupportList" class="space-y-2"></div>
     </div>
   </div>
@@ -618,7 +626,7 @@
     </div>
   </div>
 
-  <!-- MODAL: PERFIL DO PROFISSIONAL -->
+  <!-- MODAL: PERFIL DO PROFISSIONAL (COM BOTÃO DE EXCLUIR ANÚNCIO PARA ADMIN) -->
   <div id="profileModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-3">
     <div class="bg-white dark:bg-zebu-darkCard w-full max-w-lg rounded-3xl shadow-2xl border border-neutral-200 dark:border-neutral-800 relative max-h-[92vh] flex flex-col overflow-hidden text-xs">
       <div class="p-4 border-b border-neutral-200 dark:border-neutral-800 flex justify-between items-start">
@@ -658,9 +666,16 @@
       </div>
 
       <div class="p-3.5 border-t border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900/50 flex flex-wrap items-center justify-between gap-2">
-        <button id="adminToggleSponsoredBtn" onclick="toggleProfessionalSponsorship()" class="hidden px-2.5 py-1 bg-amber-400 text-black font-extrabold text-[11px] rounded-lg">
-          <span id="adminToggleSponsoredText">Destacar</span>
-        </button>
+        <div class="flex items-center gap-1.5">
+          <!-- BOTÕES EXCLUSIVOS DA DONA DO SITE -->
+          <button id="adminToggleSponsoredBtn" onclick="toggleProfessionalSponsorship()" class="hidden px-2.5 py-1.5 bg-amber-400 text-black font-extrabold text-[11px] rounded-xl shadow">
+            <span id="adminToggleSponsoredText">Destacar</span>
+          </button>
+          <button id="adminDeleteProfileBtn" onclick="adminDeleteCurrentProfile()" class="hidden px-2.5 py-1.5 bg-rose-600 hover:bg-rose-700 text-white font-extrabold text-[11px] rounded-xl shadow flex items-center gap-1" title="Excluir este anúncio do site">
+            <i data-lucide="trash-2" class="w-3.5 h-3.5"></i> Excluir Anúncio
+          </button>
+        </div>
+
         <button id="btnOpenChatFromProfile" onclick="handleOpenChatClick()" class="ml-auto px-4 py-2 bg-zebu-lime hover:bg-zebu-limeHover text-black font-black text-xs rounded-full shadow flex items-center gap-1.5 transition">
           <i data-lucide="message-square" class="w-4 h-4"></i> Conversar pelo Chat do Site
         </button>
@@ -668,7 +683,7 @@
     </div>
   </div>
 
-  <!-- MODAL: PUBLICAR VAGA -->
+  <!-- MODAL: PUBLICAR VAGA (COM TEMPORIZADOR RELÂMPAGO) -->
   <div id="postJobModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-3">
     <div class="bg-white dark:bg-zebu-darkCard w-full max-w-lg rounded-3xl p-5 md:p-6 shadow-2xl border border-zebu-grayBorder dark:border-neutral-800 relative max-h-[90vh] overflow-y-auto text-xs">
       <button onclick="closeModal('postJobModal')" class="absolute right-4 top-4 text-neutral-400"><i data-lucide="x" class="w-5 h-5"></i></button>
@@ -678,7 +693,7 @@
       <form id="jobPostForm" onsubmit="saveJobOpportunity(event)" class="space-y-3 mt-3">
         <div>
           <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Título do Serviço / Vaga *</label>
-          <input type="text" id="jobTitle" required placeholder="Ex: Diarista para faxina pesada" class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800">
+          <input type="text" id="jobTitle" required placeholder="Ex: Diarista para faxina / Garçom para evento" class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800">
         </div>
         <div class="grid grid-cols-2 gap-2">
           <div>
@@ -690,10 +705,25 @@
             <select id="jobNeighborhood" required class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800"></select>
           </div>
         </div>
+
+        <!-- ⚡ TEMPORIZADOR RELÂMPAGO -->
+        <div class="p-3 bg-zebu-limeSoft dark:bg-neutral-800 rounded-2xl border border-zebu-lime space-y-1">
+          <label class="block text-[11px] font-black uppercase text-black dark:text-zebu-lime flex items-center gap-1">
+            ⚡ Duração da Vaga (Sumiço Automático):
+          </label>
+          <select id="jobDuration" class="w-full p-2 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-black font-bold text-xs">
+            <option value="4">⚡ Vaga Relâmpago: Expira em 4 horas (Bico Hoje)</option>
+            <option value="12">⚡ Vaga Urgente: Expira em 12 horas</option>
+            <option value="24">⚡ Diária: Expira em 24 horas</option>
+            <option value="168" selected>🗓️ Padrão: Expira em 7 dias</option>
+          </select>
+          <span class="text-[10px] text-neutral-600 dark:text-neutral-400 block">Após esse período, a vaga some automaticamente do site!</span>
+        </div>
+
         <div class="grid grid-cols-2 gap-2">
           <div>
-            <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Prazo</label>
-            <input type="text" id="jobDeadline" placeholder="Ex: Urgente / Esta semana" class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800">
+            <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Prazo Descrito</label>
+            <input type="text" id="jobDeadline" placeholder="Ex: Para hoje à noite" class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800">
           </div>
           <div>
             <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Orçamento Estimado</label>
@@ -720,7 +750,8 @@
       signInWithEmailAndPassword, 
       signOut, 
       onAuthStateChanged,
-      updateProfile
+      updateProfile,
+      deleteUser
     } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
     import { 
       getFirestore, 
@@ -792,7 +823,6 @@
 
     const CATEGORIES = CATEGORIES_DATA.map(c => c.name);
 
-    // FUNÇÕES RELACIONADAS
     const RELATED_FUNCTIONS = {
       "Técnicos em Enfermagem": ["Body Piercing", "Cuidador(a)", "Babá", "Aplicação de Injeção", "Curativos", "Home Care", "Acompanhamento Hospitalar"],
       "Chef de Cozinha": ["Buffet Completo", "Churrasqueiro", "Jantares Privados", "Cardápio Personalizado", "Doces & Sobremesas"],
@@ -804,7 +834,6 @@
       "Personal Organizer": ["Organização de Closet", "Mudança Residencial", "Despensa", "Documentos"]
     };
 
-    // BAIRROS ORDEM ALFABÉTICA
     const NEIGHBORHOODS = [
       "Abadia", "Alfredo Freire", "Amoroso Costa", "Antônia Cândida", "Beija-Flor", 
       "Boa Vista", "Centro", "Chica Ferreira", "Conjunto Uberaba", "Estados Unidos", 
@@ -830,6 +859,7 @@
     let currentChatRecipient = null;
     let chatUnsubscribe = null;
 
+    // INICIALIZAÇÃO E SUPORTE A LEMBRAR DA PÁGINA (HASH ROUTING)
     window.addEventListener('DOMContentLoaded', () => {
       lucide.createIcons();
       initTheme();
@@ -838,6 +868,15 @@
       setupAuthListener();
       fetchProducts();
       fetchJobs();
+
+      // Lê a página que estava salva na URL para não resetar no refresh
+      const initialSection = window.location.hash ? window.location.hash.replace('#', '') : 'home';
+      showSection(initialSection);
+
+      window.addEventListener('hashchange', () => {
+        const sec = window.location.hash.replace('#', '') || 'home';
+        showSection(sec, false);
+      });
     });
 
     function initTheme() {
@@ -878,7 +917,7 @@
         const div = document.createElement('div');
         div.onclick = () => {
           document.getElementById('filterCategory').value = cat.name;
-          goToExplore();
+          showSection('explore');
         };
         div.className = 'cursor-pointer shrink-0 w-28 md:w-auto p-3 rounded-2xl bg-white dark:bg-zebu-darkCard border border-zebu-grayBorder dark:border-neutral-800 hover:border-zebu-lime transition flex flex-col items-center text-center gap-2 shadow-sm';
         div.innerHTML = `
@@ -976,7 +1015,7 @@
     };
 
     // -------------------------------------------------------------
-    // CHAT DE SUPORTE / DESTAQUE COM A DONA NO SITE
+    // ATENDIMENTO ZEBUZINHO (CHAT NO SITE)
     // -------------------------------------------------------------
     window.openSupportChat = function() {
       if (!currentUser) {
@@ -986,7 +1025,7 @@
       }
       openInAppChat({
         uid: "ADMIN_SUPPORT",
-        name: "Atendimento & Destaques Zebu Freela",
+        name: "Atendimento Zebuzinho",
         isSupport: true
       });
     };
@@ -1021,7 +1060,7 @@
             <div>
               <div class="flex items-center gap-1.5">
                 <h4 class="font-black text-xs">${c.userName || 'Usuário'}</h4>
-                <span class="text-[9px] bg-amber-400 text-black px-1.5 py-0.5 rounded font-bold">Dúvida / Destaque</span>
+                <span class="text-[9px] bg-amber-400 text-black px-1.5 py-0.5 rounded font-bold">Atendimento</span>
               </div>
               <p class="text-[11px] text-neutral-500 mt-1 line-clamp-1">${c.lastMessage || 'Conversa iniciada'}</p>
             </div>
@@ -1056,7 +1095,7 @@
       }
       currentChatRecipient = recipient;
       document.getElementById('chatTargetName').textContent = recipient.name;
-      document.getElementById('chatTargetSubtitle').textContent = recipient.isSupport ? "Suporte & Destaques Zebu Freela" : "Chat Seguro no Site";
+      document.getElementById('chatTargetSubtitle').textContent = recipient.isSupport ? "Atendimento Oficial do Site" : "Chat Seguro no Site";
       openModal('inAppChatModal');
       listenToChatMessages();
     };
@@ -1070,11 +1109,7 @@
 
       let chatId;
       if (currentChatRecipient.isSupport) {
-        if (currentUser.email === ADMIN_EMAIL) {
-          chatId = `support_${currentChatRecipient.uid}`;
-        } else {
-          chatId = `support_${currentUser.uid}`;
-        }
+        chatId = currentUser.email === ADMIN_EMAIL ? `support_${currentChatRecipient.uid}` : `support_${currentUser.uid}`;
       } else {
         chatId = [currentUser.uid, currentChatRecipient.uid].sort().join('_');
       }
@@ -1089,8 +1124,8 @@
         if (snapshot.empty) {
           messagesBox.innerHTML = `
             <div class="text-center py-6 space-y-1">
-              <p class="text-xs font-bold text-neutral-600 dark:text-neutral-300">Olá! Como podemos te ajudar?</p>
-              <p class="text-[10px] text-neutral-400">Tire dúvidas sobre o site ou saiba como destacar seu anúncio no topo!</p>
+              <p class="text-xs font-bold text-neutral-600 dark:text-neutral-300">Olá! Como posso te ajudar hoje?</p>
+              <p class="text-[10px] text-neutral-400">Tire dúvidas sobre o Zebu Freela ou peça suporte!</p>
             </div>
           `;
           return;
@@ -1138,7 +1173,7 @@
         await addDoc(collection(db, "support_chats", chatId, "messages"), {
           text,
           senderUid: currentUser.uid,
-          senderName: currentUser.displayName || (currentUser.email === ADMIN_EMAIL ? "Administradora Zebu Freela" : "Usuário"),
+          senderName: currentUser.displayName || (currentUser.email === ADMIN_EMAIL ? "Zebuzinho (Suporte)" : "Usuário"),
           createdAt: serverTimestamp()
         });
 
@@ -1287,12 +1322,10 @@
       
       card.innerHTML = `
         <div>
-          <!-- IMAGEM CLICÁVEL -->
           <a href="${prod.link}" target="_blank" rel="noopener noreferrer" class="block relative w-full aspect-square bg-neutral-100 dark:bg-neutral-800 overflow-hidden flex items-center justify-center p-2 cursor-pointer">
             <img src="${prod.image}" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-200">
           </a>
 
-          <!-- BOTÕES DE ADMIN: EDITAR E EXCLUIR -->
           ${isAdmin ? `
             <div class="absolute top-1.5 right-1.5 flex gap-1 z-10">
               <button onclick="editProduct('${prod.id}')" class="bg-black/80 hover:bg-black text-zebu-lime p-1.5 rounded-lg shadow" title="Editar">
@@ -1322,7 +1355,7 @@
     }
 
     // -------------------------------------------------------------
-    // GESTÃO DE MÚLTIPLOS ANÚNCIOS (COM BOTÃO EDITAR / EXCLUIR)
+    // GESTÃO DE ANÚNCIOS DO PROFISSIONAL
     // -------------------------------------------------------------
     function renderMyAdsList() {
       const container = document.getElementById('myAdsList');
@@ -1433,6 +1466,47 @@
         await fetchProfessionals();
       } catch (err) {
         showToast("Erro ao apagar anúncio.");
+      }
+    };
+
+    // EXCLUIR ANÚNCIO VAZIO OU SPAM PELO BOTÃO DA ADMIN
+    window.adminDeleteCurrentProfile = async function() {
+      if (!currentViewingPro || !currentUser || currentUser.email !== ADMIN_EMAIL) return;
+      if (!confirm(`Deseja apagar definitivamente o anúncio de "${currentViewingPro.name}"?`)) return;
+
+      try {
+        await deleteDoc(doc(db, "profiles", currentViewingPro.id));
+        showToast("Anúncio apagado com sucesso pelo administrador.");
+        closeModal('profileModal');
+        await fetchProfessionals();
+      } catch (err) {
+        showToast("Erro ao apagar anúncio.");
+      }
+    };
+
+    // USUÁRIO EXCLUIR A PRÓPRIA CONTA E DADOS (LGPD)
+    window.deleteMyUserAccount = async function() {
+      if (!currentUser) return;
+      if (!confirm("Atenção: Deseja realmente excluir sua conta? Todos os seus anúncios e dados serão apagados permanentemente.")) return;
+
+      try {
+        // Apaga os anúncios dele
+        const snap = await getDocs(collection(db, "profiles"));
+        snap.forEach(async (d) => {
+          if (d.data().authorUid === currentUser.uid || d.id === currentUser.uid) {
+            await deleteDoc(doc(db, "profiles", d.id));
+          }
+        });
+
+        // Apaga documento de usuário
+        await deleteDoc(doc(db, "users", currentUser.uid));
+        
+        // Apaga a autenticação
+        await deleteUser(auth.currentUser);
+        showToast("Sua conta foi excluída com sucesso.");
+        showSection('home');
+      } catch (err) {
+        showToast("Para excluir sua conta, faça login novamente e tente de novo.");
       }
     };
 
@@ -1554,7 +1628,7 @@
           <div class="col-span-full py-5 text-center text-xs text-neutral-400 border border-dashed border-neutral-700 rounded-2xl p-4">
             <i data-lucide="crown" class="w-6 h-6 mx-auto mb-1 text-amber-400/60"></i>
             <p class="font-bold text-neutral-300">Nenhum profissional em destaque no momento.</p>
-            <p class="text-[10px] text-neutral-500 mt-0.5">Quer ser destaque? Toque no botão verde no canto da tela!</p>
+            <p class="text-[10px] text-neutral-500 mt-0.5">Quer ser destaque? Toque no botão de atendimento no canto da tela!</p>
           </div>
         `;
       } else {
@@ -1564,11 +1638,8 @@
       lucide.createIcons();
     }
 
-    // CARD DE PROFISSIONAL CORRIGIDO (SEM SELO PATROCINADO FALSO!)
     function createFeaturedProCard(p) {
       const card = document.createElement('div');
-      
-      // Só ganha borda amarela se for de fato patrocinado
       card.className = `bg-white dark:bg-zebu-darkCard text-neutral-900 dark:text-white rounded-2xl overflow-hidden shadow-sm flex flex-col justify-between border ${p.isSponsored ? 'border-2 border-amber-400' : 'border-neutral-200 dark:border-neutral-800'}`;
       
       const iconName = getCategoryIcon(p.category.split(' - ')[0]);
@@ -1580,7 +1651,6 @@
         <div>
           <div class="relative">
             ${imageHTML}
-            <!-- SÓ APARECE SE FOR PATROCINADO DE VERDADE -->
             ${p.isSponsored ? `
               <span class="absolute top-2 right-2 px-2 py-0.5 rounded-full bg-amber-400 text-black font-black text-[9px] flex items-center gap-1 shadow-md">
                 <i data-lucide="crown" class="w-3 h-3 fill-black"></i> PATROCINADO
@@ -1649,12 +1719,16 @@
       else badge.classList.add('hidden');
 
       const adminToggleBtn = document.getElementById('adminToggleSponsoredBtn');
+      const adminDeleteBtn = document.getElementById('adminDeleteProfileBtn');
       const isAdmin = currentUser && currentUser.email === ADMIN_EMAIL;
+      
       if (isAdmin) {
         adminToggleBtn.classList.remove('hidden');
+        adminDeleteBtn.classList.remove('hidden');
         document.getElementById('adminToggleSponsoredText').textContent = p.isSponsored ? "Tirar Destaque" : "Destacar";
       } else {
         adminToggleBtn.classList.add('hidden');
+        adminDeleteBtn.classList.add('hidden');
       }
 
       const sCont = document.getElementById('modalProServices');
@@ -1694,7 +1768,7 @@
     };
 
     // -------------------------------------------------------------
-    // VAGAS / OPORTUNIDADES
+    // VAGAS / OPORTUNIDADES (COM TEMPORIZADOR RELÂMPAGO)
     // -------------------------------------------------------------
     window.saveJobOpportunity = async function(e) {
       e.preventDefault();
@@ -1702,6 +1776,9 @@
         openModal('authModal', 'login');
         return;
       }
+
+      const durationHours = parseInt(document.getElementById('jobDuration').value) || 168;
+      const expiresAt = Date.now() + (durationHours * 60 * 60 * 1000);
 
       try {
         await addDoc(collection(db, "jobs"), {
@@ -1713,9 +1790,11 @@
           description: document.getElementById('jobDescription').value.trim(),
           authorUid: currentUser.uid,
           authorName: currentUser.displayName || "Cliente",
+          durationHours,
+          expiresAt,
           createdAt: serverTimestamp()
         });
-        showToast("Oportunidade publicada!");
+        showToast("Oportunidade publicada no mural!");
         closeModal('postJobModal');
         fetchJobs();
       } catch (err) {
@@ -1727,7 +1806,14 @@
       try {
         const snap = await getDocs(collection(db, "jobs"));
         allJobs = [];
-        snap.forEach(d => allJobs.push({ id: d.id, ...d.data() }));
+        const now = Date.now();
+        snap.forEach(d => {
+          const data = d.data();
+          // Remove vagas cujo temporizador já estourou
+          if (!data.expiresAt || data.expiresAt > now) {
+            allJobs.push({ id: d.id, ...data });
+          }
+        });
         renderJobs();
       } catch (err) {
         console.error(err);
@@ -1755,11 +1841,25 @@
     function createJobCard(j) {
       const card = document.createElement('div');
       card.className = "p-4 rounded-2xl border bg-white dark:bg-zebu-darkCard border-zebu-grayBorder dark:border-neutral-800 transition shadow-sm flex flex-col justify-between";
+      
+      let countdownHTML = '';
+      if (j.expiresAt) {
+        const diffMs = j.expiresAt - Date.now();
+        const diffHrs = Math.floor(diffMs / (1000 * 60 * 60));
+        const diffMins = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+        if (diffHrs < 24) {
+          countdownHTML = `<span class="text-[9px] font-black text-rose-600 bg-rose-100 dark:bg-rose-950 px-2 py-0.5 rounded-full flex items-center gap-0.5">⏳ Restam ${diffHrs}h ${diffMins}m</span>`;
+        }
+      }
+
       card.innerHTML = `
         <div class="space-y-2">
-          <span class="text-[9px] font-black uppercase px-2 py-0.5 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300">
-            ${j.category}
-          </span>
+          <div class="flex items-center justify-between gap-1">
+            <span class="text-[9px] font-black uppercase px-2 py-0.5 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300">
+              ${j.category}
+            </span>
+            ${countdownHTML}
+          </div>
           <h3 class="font-black text-xs md:text-sm leading-snug line-clamp-2">${j.title}</h3>
           <p class="text-[11px] text-neutral-600 dark:text-neutral-400 line-clamp-2">${j.description}</p>
           <div class="pt-1 flex gap-2 text-[10px] text-neutral-500 font-bold">
@@ -1777,7 +1877,7 @@
     }
 
     // -------------------------------------------------------------
-    // HELPERS
+    // HELPERS & NAVEGAÇÃO
     // -------------------------------------------------------------
     window.handleAvatarUpload = async function(e) {
       const file = e.target.files[0];
@@ -1885,18 +1985,34 @@
       showSection('home');
     };
 
-    window.showSection = function(id) {
+    // NAVEGAÇÃO QUE ATUALIZA O LINK DA URL PARA O NAVEGADOR LEMBRAR DA PÁGINA
+    window.showSection = function(id, updateHash = true) {
       ['homeSection', 'exploreSection', 'dashboardSection', 'blogSection', 'jobsSection'].forEach(s => {
         const el = document.getElementById(s);
         if (el) el.classList.add('hidden');
       });
       const target = document.getElementById(id + 'Section');
       if (target) target.classList.remove('hidden');
+      if (updateHash) window.location.hash = id;
+
+      // Atualiza botões ativos
+      ['home', 'explore', 'jobs', 'blog', 'dashboard'].forEach(btnId => {
+        const elDesk = document.getElementById(`nav-${btnId}`);
+        const elMob = document.getElementById(`mobile-nav-${btnId}`);
+        if (elDesk) {
+          if (btnId === id) elDesk.className = "text-zebu-lime flex items-center gap-1.5 pb-1 border-b-2 border-zebu-lime";
+          else elDesk.className = "hover:text-zebu-lime transition flex items-center gap-1.5 pb-1";
+        }
+        if (elMob) {
+          if (btnId === id) elMob.className = "flex flex-col items-center gap-1 py-1 text-zebu-lime";
+          else elMob.className = "flex flex-col items-center gap-1 py-1 text-neutral-400 hover:text-white";
+        }
+      });
+
       window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
-    window.goToExplore = () => { showSection('explore'); applyFilters(); };
-    window.handleQuickSearch = () => { document.getElementById('searchInput').value = document.getElementById('homeSearchInput').value; goToExplore(); };
+    window.handleQuickSearch = () => { document.getElementById('searchInput').value = document.getElementById('homeSearchInput').value; showSection('explore'); applyFilters(); };
     window.handleAdvertiseClick = () => { currentUser ? showSection('dashboard') : openModal('authModal', 'register'); };
     window.openModal = (id, tab) => { document.getElementById(id).classList.remove('hidden'); document.getElementById(id).classList.add('flex'); if(tab) switchAuthTab(tab); };
     window.closeModal = (id) => { document.getElementById(id).classList.add('hidden'); document.getElementById(id).classList.remove('flex'); };
@@ -1916,4 +2032,4 @@
     }
   </script>
 </body>
-</html>
+</html> 
