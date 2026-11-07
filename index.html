@@ -6,7 +6,7 @@
   <title>Zebu Freela | Conectando pessoas e oportunidades em Uberaba</title>
   <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#0B0E09">
-  <meta name="description" content="Plataforma de autônomos, serviços e equipamentos em Uberaba - MG. Encontre diaristas, eletricistas, enfermagem, personal trainer e mais.">
+  <meta name="description" content="Encontre profissionais autônomos, serviços e equipamentos em Uberaba - MG. Marido de aluguel, diaristas, eletricistas, adestradores e mais.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://www.zebufreela.com.br">
 
@@ -41,22 +41,23 @@
 </head>
 <body class="bg-[#F8FAF6] text-neutral-900 dark:bg-[#070A06] dark:text-neutral-100 min-h-screen flex flex-col font-sans transition-colors duration-200 pb-24 md:pb-6">
 
-  <!-- ================= TOPBAR ================= -->
+  <!-- ================= NAVBAR ================= -->
   <header class="sticky top-0 z-40 bg-zebu-dark text-white shadow-md border-b border-white/10">
     <div class="max-w-6xl mx-auto px-4 h-14 md:h-16 flex items-center justify-between">
       <a href="#home" onclick="showSection('home')" class="flex items-center gap-2">
         <img src="file_00000000ee94820e8030c8d3a817a851.png" alt="Zebu Freela Uberaba" class="h-9 md:h-11 w-auto object-contain">
       </a>
 
+      <!-- Menu Computador / Tablet -->
       <nav class="hidden md:flex items-center gap-6 text-xs font-bold uppercase tracking-wider">
         <button onclick="showSection('home')" id="nav-home" class="text-zebu-lime flex items-center gap-1.5 pb-1 border-b-2 border-zebu-lime">
           <i data-lucide="home" class="w-4 h-4"></i> Início
         </button>
         <button onclick="showSection('explore')" id="nav-explore" class="hover:text-zebu-lime transition flex items-center gap-1.5 pb-1">
-          <i data-lucide="layout-grid" class="w-4 h-4"></i> Categorias
+          <i data-lucide="layout-grid" class="w-4 h-4"></i> Profissionais
         </button>
         <button onclick="showSection('jobs')" id="nav-jobs" class="hover:text-zebu-lime transition flex items-center gap-1.5 pb-1">
-          <i data-lucide="briefcase" class="w-4 h-4"></i> Oportunidades
+          <i data-lucide="briefcase" class="w-4 h-4"></i> Vagas
         </button>
         <button onclick="showSection('blog')" id="nav-blog" class="hover:text-zebu-lime transition flex items-center gap-1.5 pb-1">
           <i data-lucide="wrench" class="w-4 h-4"></i> Equipamentos
@@ -118,7 +119,7 @@
 
           <div class="pt-2 flex items-center bg-white dark:bg-black rounded-full border border-neutral-300 dark:border-neutral-700 shadow-sm p-1">
             <i data-lucide="search" class="w-4 h-4 ml-3 text-neutral-400 shrink-0"></i>
-            <input type="text" id="homeSearchInput" placeholder="Buscar serviços, profissionais ou equipamentos..." 
+            <input type="text" id="homeSearchInput" placeholder="Ex: Marido de aluguel, diarista, adestrador..." 
               class="w-full px-2.5 py-1.5 bg-transparent text-xs md:text-sm focus:outline-none placeholder-neutral-400"
               onkeydown="if(event.key === 'Enter') handleQuickSearch()">
             <button onclick="handleQuickSearch()" class="px-5 py-2 bg-zebu-lime hover:bg-zebu-limeHover text-black font-black text-xs rounded-full transition shadow-sm flex items-center gap-1 shrink-0">
@@ -187,7 +188,7 @@
         <div id="homeJobsList" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3"></div>
       </div>
 
-      <!-- PROFISSIONAIS EM DESTAQUE (APENAS COM isSponsored === true) -->
+      <!-- PROFISSIONAIS EM DESTAQUE (GETNINJAS CARDS) -->
       <div class="space-y-3 bg-zebu-dark text-white p-4 md:p-6 rounded-3xl border border-neutral-800 shadow-md">
         <div class="flex items-center justify-between">
           <div>
@@ -208,7 +209,7 @@
             <h2 class="text-base font-black flex items-center gap-2">
               <span class="w-4 h-1 bg-zebu-lime rounded-full"></span> Equipamentos de Trabalho
             </h2>
-            <p class="text-[10px] md:text-xs text-neutral-500">Materiais recomendados organizados por profissão</p>
+            <p class="text-[10px] md:text-xs text-neutral-500">Ferramentas recomendadas organizadas por profissão</p>
           </div>
           <button onclick="showSection('blog')" class="text-xs font-bold hover:underline flex items-center gap-1">Ver todos <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></button>
         </div>
@@ -248,19 +249,16 @@
         </button>
       </div>
 
-      <!-- Filtro Rápido em Abas -->
       <div id="productFilterBar" class="flex gap-1.5 overflow-x-auto no-scrollbar py-1 text-xs"></div>
-
-      <!-- Container onde os produtos aparecem agrupados por profissão -->
       <div id="productsByProfessionContainer" class="space-y-6"></div>
     </section>
 
-    <!-- EXPLORAR PROFISSIONAIS -->
+    <!-- EXPLORAR PROFISSIONAIS (LAYOUT ESTILO GETNINJAS) -->
     <section id="exploreSection" class="hidden space-y-4">
       <div class="bg-white dark:bg-zebu-darkCard p-4 md:p-5 rounded-3xl shadow-sm border border-zebu-grayBorder dark:border-neutral-800 space-y-3">
         <div class="relative">
           <i data-lucide="search" class="w-4 h-4 absolute left-3.5 top-3 text-neutral-400"></i>
-          <input type="text" id="searchInput" placeholder="Buscar por serviço, nome ou bairro..." 
+          <input type="text" id="searchInput" placeholder="Buscar por serviço, profissão, nome ou bairro..." 
             class="w-full pl-10 pr-3 py-2 rounded-2xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs md:text-sm focus:ring-2 focus:ring-zebu-lime outline-none"
             oninput="applyFilters()">
         </div>
@@ -276,7 +274,7 @@
       </div>
       <div class="space-y-3">
         <span id="resultsCount" class="text-xs text-neutral-500 font-bold block">Carregando profissionais...</span>
-        <div id="resultsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3"></div>
+        <div id="resultsGrid" class="grid grid-cols-1 md:grid-cols-2 gap-3.5"></div>
       </div>
     </section>
 
@@ -318,7 +316,7 @@
                 <img id="proAvatarPreview" src="" class="w-full h-full object-cover hidden">
               </div>
               <div class="flex-1">
-                <label class="block text-[11px] font-bold uppercase text-neutral-700 dark:text-neutral-200 mb-0.5">Foto ou Logotipo do Serviço</label>
+                <label class="block text-[11px] font-bold uppercase text-neutral-700 dark:text-neutral-200 mb-0.5">Sua Foto de Perfil ou Logo *</label>
                 <input type="file" id="proAvatarInput" accept="image/*" onchange="handleAvatarUpload(event)" class="block w-full text-[10px] text-neutral-500 file:mr-2 file:py-1 file:px-2.5 file:rounded-lg file:border-0 file:text-[10px] file:font-bold file:bg-zebu-dark file:text-zebu-lime">
               </div>
             </div>
@@ -326,7 +324,7 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div>
                 <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Nome de Exibição / Fantasia *</label>
-                <input type="text" id="proName" required placeholder="Como os clientes vão te chamar neste serviço" class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs">
+                <input type="text" id="proName" required placeholder="Ex: Carlos Elétrica / Ana Manicure" class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs">
               </div>
               <div>
                 <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Categoria Principal *</label>
@@ -334,22 +332,22 @@
               </div>
             </div>
 
-            <!-- SUGESTÕES DE FUNÇÕES RELACIONADAS -->
+            <!-- SUGESTÕES DE FUNÇÕES RELACIONADAS ESTILO GETNINJAS -->
             <div id="relatedFunctionsContainer" class="hidden p-3 rounded-2xl bg-zebu-limeSoft/50 dark:bg-neutral-800/80 border border-zebu-lime/40 space-y-2">
               <label class="block text-[11px] font-black uppercase text-neutral-800 dark:text-neutral-200 flex items-center gap-1">
-                <i data-lucide="sparkles" class="w-3.5 h-3.5 text-zebu-lime"></i> Especialidades Relacionadas (toque para adicionar aos serviços):
+                <i data-lucide="sparkles" class="w-3.5 h-3.5 text-zebu-lime"></i> Especialidades populares (toque para adicionar aos seus serviços):
               </label>
               <div id="relatedFunctionsPills" class="flex flex-wrap gap-1.5"></div>
             </div>
 
             <div>
               <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Serviços Oferecidos (separados por vírgula) *</label>
-              <input type="text" id="proServices" required placeholder="Ex: Faxina pesada, Limpeza pós-obra, Passadoria" class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs">
+              <input type="text" id="proServices" required placeholder="Ex: Troca de chuveiro, Instalação de tomadas, Pequenos reparos" class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs">
             </div>
 
             <div>
-              <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Descrição e Experiência *</label>
-              <textarea id="proBio" rows="3" required placeholder="Explique sobre sua experiência, garantia e diferenciais..." class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs"></textarea>
+              <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Sobre Você e Experiência *</label>
+              <textarea id="proBio" rows="3" required placeholder="Apresente sua experiência, garantia do serviço, pontualidade..." class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs"></textarea>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -373,12 +371,21 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div>
                 <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Regiões Atendidas</label>
-                <input type="text" id="proRegions" placeholder="Ex: Todos os bairros, condomínios e chácaras" class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs">
+                <input type="text" id="proRegions" placeholder="Ex: Toda Uberaba, condomínios e chácaras" class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs">
               </div>
               <div>
                 <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Horário de Atendimento</label>
-                <input type="text" id="proHours" placeholder="Ex: Seg a Sáb das 08h às 18h" class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs">
+                <input type="text" id="proHours" placeholder="Ex: Seg a Sáb das 08h às 18h / Plantão" class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs">
               </div>
+            </div>
+
+            <!-- WhatsApp de Notificação -->
+            <div class="bg-neutral-50 dark:bg-neutral-800/80 p-3.5 rounded-2xl border border-neutral-200 dark:border-neutral-700 space-y-1.5">
+              <label class="block text-[11px] font-black uppercase text-neutral-700 dark:text-neutral-200">
+                Seu WhatsApp (para receber alertas de novos clientes):
+              </label>
+              <input type="tel" id="proWhatsappNumber" placeholder="DDD + Número (Ex: 34999998888)" class="w-full p-2 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-900 font-mono text-xs">
+              <span class="text-[10px] text-neutral-500 block">Usado para os clientes te enviarem aviso direto quando te mandarem proposta no site.</span>
             </div>
 
             <div class="space-y-2 border-t border-neutral-200 dark:border-neutral-800 pt-3">
@@ -405,7 +412,7 @@
     </section>
   </main>
 
-  <!-- ================= BOTÃO FLUTUANTE DE ATENDIMENTO COM A VAQUINHA (SEM EMOJI) ================= -->
+  <!-- ================= BOTÃO FLUTUANTE DE ATENDIMENTO COM A VAQUINHA 🐮 ================= -->
   <aside aria-label="Suporte" class="fixed bottom-20 md:bottom-6 right-4 z-40">
     <button onclick="openSupportChat()" class="group flex items-center gap-2 bg-zebu-lime hover:bg-zebu-limeHover text-black px-4 py-2.5 rounded-full shadow-2xl transition-transform hover:scale-105 active:scale-95 border-2 border-black font-black text-xs">
       <span class="text-base">🐮</span>
@@ -421,7 +428,7 @@
     </button>
     <button onclick="showSection('explore')" id="mobile-nav-explore" class="flex flex-col items-center gap-1 py-1 text-neutral-400 hover:text-white">
       <i data-lucide="layout-grid" class="w-5 h-5"></i>
-      <span class="text-[9px] font-bold">Categorias</span>
+      <span class="text-[9px] font-bold">Profissionais</span>
     </button>
     <button onclick="showSection('jobs')" id="mobile-nav-jobs" class="flex flex-col items-center gap-1 py-1 text-neutral-400 hover:text-white">
       <i data-lucide="briefcase" class="w-5 h-5"></i>
@@ -437,7 +444,7 @@
     </button>
   </nav>
 
-  <!-- ================= FOOTER INSTITUCIONAL ================= -->
+  <!-- ================= FOOTER ================= -->
   <footer class="bg-zebu-dark text-white border-t border-neutral-800 py-8 px-4 mt-auto">
     <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
       <div class="flex items-center gap-3">
@@ -457,7 +464,7 @@
 
   <!-- ================= MODAIS DE CHAT (COM A VAQUINHA 🐮) ================= -->
   <div id="inAppChatModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-3">
-    <div class="bg-white dark:bg-zebu-darkCard w-full max-w-md rounded-3xl shadow-2xl border border-neutral-200 dark:border-neutral-800 flex flex-col h-[520px] overflow-hidden text-xs">
+    <div class="bg-white dark:bg-zebu-darkCard w-full max-w-md rounded-3xl shadow-2xl border border-neutral-200 dark:border-neutral-800 flex flex-col h-[530px] overflow-hidden text-xs">
       <div class="p-3.5 bg-zebu-dark text-white border-b border-neutral-800 flex items-center justify-between">
         <div class="flex items-center gap-2">
           <div class="w-9 h-9 rounded-full bg-zebu-lime text-black flex items-center justify-center font-bold text-lg shrink-0">
@@ -472,6 +479,14 @@
       </div>
 
       <div id="chatMessagesContainer" class="flex-1 p-3 overflow-y-auto space-y-2 bg-[#F8FAF6] dark:bg-black/60"></div>
+
+      <!-- BOTÃO OPCIONAL: AVISAR NO WHATSAPP QUE MANDOU MENSAGEM -->
+      <div id="chatWhatsappAlertBox" class="hidden px-3 py-1.5 bg-emerald-50 dark:bg-emerald-950/40 border-t border-emerald-200 dark:border-emerald-800 flex items-center justify-between">
+        <span class="text-[10px] text-emerald-800 dark:text-emerald-300 font-bold">Deseja avisar no WhatsApp do profissional?</span>
+        <button id="btnNotifyWhatsappDirect" class="px-2 py-1 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-[10px] rounded-lg flex items-center gap-1 shadow">
+          <i data-lucide="send" class="w-3 h-3"></i> Dar Toque
+        </button>
+      </div>
 
       <form id="chatSendForm" onsubmit="sendChatMessage(event)" class="p-2.5 bg-white dark:bg-neutral-900 border-t border-neutral-200 dark:border-neutral-800 flex gap-1.5">
         <input type="text" id="chatMessageInput" required placeholder="Digite sua mensagem aqui..." class="flex-1 p-2 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs outline-none focus:ring-1 focus:ring-zebu-lime">
@@ -554,8 +569,8 @@
       <h3 class="text-base font-black text-zebu-lime">Política de Privacidade & LGPD</h3>
       <div class="space-y-2.5 leading-relaxed text-neutral-700 dark:text-neutral-300">
         <p><strong>1. Coleta de Dados:</strong> O Zebu Freela coleta informações cadastrais apenas para aproximar clientes e autônomos em Uberaba - MG, nos termos da Lei Geral de Proteção de Dados (Lei nº 13.709/2018 - LGPD).</p>
-        <p><strong>2. Google AdSense & Cookies:</strong> Terceiros, incluindo o Google, utilizam cookies (como o cookie DART) para veicular anúncios com base no histórico de navegação. O usuário pode desativar anúncios personalizados nas configurações do Google.</p>
-        <p><strong>3. Links de Afiliados:</strong> A seção Equipamentos de Trabalho pode conter links comissionados para varejistas autorizados (Shopee, Mercado Livre, Amazon). Não processamos dados de pagamento no site.</p>
+        <p><strong>2. Google AdSense & Cookies:</strong> Terceiros, incluindo o Google, utilizam cookies (como o cookie DART) para veicular anúncios com base no histórico de navegação.</p>
+        <p><strong>3. Links de Afiliados:</strong> A seção Equipamentos de Trabalho pode conter links comissionados para varejistas autorizados (Shopee, Mercado Livre, Amazon).</p>
       </div>
       <button onclick="closeModal('privacyModal')" class="w-full py-2.5 bg-zebu-lime text-black font-black rounded-xl">Entendi e Concordo</button>
     </div>
@@ -626,12 +641,12 @@
     </div>
   </div>
 
-  <!-- MODAL: PERFIL DO PROFISSIONAL -->
+  <!-- MODAL: PERFIL DO PROFISSIONAL (ESTILO GETNINJAS) -->
   <div id="profileModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-3">
     <div class="bg-white dark:bg-zebu-darkCard w-full max-w-lg rounded-3xl shadow-2xl border border-neutral-200 dark:border-neutral-800 relative max-h-[92vh] flex flex-col overflow-hidden text-xs">
       <div class="p-4 border-b border-neutral-200 dark:border-neutral-800 flex justify-between items-start">
         <div class="flex items-center gap-3">
-          <div id="modalProAvatarContainer" class="w-14 h-14 rounded-full bg-zebu-dark text-zebu-lime border border-neutral-700 flex items-center justify-center font-black text-lg uppercase shrink-0 overflow-hidden"></div>
+          <div id="modalProAvatarContainer" class="w-14 h-14 rounded-2xl bg-zebu-dark text-zebu-lime border border-neutral-700 flex items-center justify-center font-black text-lg uppercase shrink-0 overflow-hidden shadow"></div>
           <div>
             <div class="flex items-center gap-1.5">
               <h3 id="modalProName" class="font-black text-sm leading-snug">Profissional</h3>
@@ -648,7 +663,7 @@
 
       <div class="p-4 overflow-y-auto space-y-4">
         <div>
-          <h4 class="text-[10px] font-black uppercase text-neutral-400 mb-1">Sobre</h4>
+          <h4 class="text-[10px] font-black uppercase text-neutral-400 mb-1">Sobre o Profissional</h4>
           <p id="modalProBio" class="text-neutral-700 dark:text-neutral-300 whitespace-pre-line text-xs leading-relaxed"></p>
         </div>
         <div>
@@ -671,18 +686,18 @@
             <span id="adminToggleSponsoredText">Destacar</span>
           </button>
           <button id="adminDeleteProfileBtn" onclick="adminDeleteCurrentProfile()" class="hidden px-2.5 py-1.5 bg-rose-600 hover:bg-rose-700 text-white font-extrabold text-[11px] rounded-xl shadow flex items-center gap-1" title="Excluir este anúncio do site">
-            <i data-lucide="trash-2" class="w-3.5 h-3.5"></i> Excluir Anúncio
+            <i data-lucide="trash-2" class="w-3.5 h-3.5"></i> Excluir
           </button>
         </div>
 
-        <button id="btnOpenChatFromProfile" onclick="handleOpenChatClick()" class="ml-auto px-4 py-2 bg-zebu-lime hover:bg-zebu-limeHover text-black font-black text-xs rounded-full shadow flex items-center gap-1.5 transition">
-          <i data-lucide="message-square" class="w-4 h-4"></i> Conversar pelo Chat do Site
+        <button id="btnOpenChatFromProfile" onclick="handleOpenChatClick()" class="ml-auto px-5 py-2.5 bg-zebu-lime hover:bg-zebu-limeHover text-black font-black text-xs rounded-full shadow-lg flex items-center gap-1.5 transition">
+          <i data-lucide="message-square" class="w-4 h-4"></i> Pedir Orçamento no Chat
         </button>
       </div>
     </div>
   </div>
 
-  <!-- MODAL: PUBLICAR VAGA (COM TEMPORIZADOR RELÂMPAGO) -->
+  <!-- MODAL: PUBLICAR VAGA -->
   <div id="postJobModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-3">
     <div class="bg-white dark:bg-zebu-darkCard w-full max-w-lg rounded-3xl p-5 md:p-6 shadow-2xl border border-zebu-grayBorder dark:border-neutral-800 relative max-h-[90vh] overflow-y-auto text-xs">
       <button onclick="closeModal('postJobModal')" class="absolute right-4 top-4 text-neutral-400"><i data-lucide="x" class="w-5 h-5"></i></button>
@@ -715,7 +730,6 @@
             <option value="24">⚡ Diária: Expira em 24 horas</option>
             <option value="168" selected>🗓️ Padrão: Expira em 7 dias</option>
           </select>
-          <span class="text-[10px] text-neutral-600 dark:text-neutral-400 block">Após esse período, a vaga some automaticamente do site!</span>
         </div>
 
         <div class="grid grid-cols-2 gap-2">
@@ -783,8 +797,10 @@
 
     const ADMIN_EMAIL = "gabi.almeidasaude@gmail.com";
 
-    // CATEGORIAS ORDEM ALFABÉTICA
+    // CATEGORIAS GETNINJAS COMPLETAS EM ORDEM ALFABÉTICA
     const CATEGORIES_DATA = [
+      { name: "Adestrador de Cães", icon: "bone" },
+      { name: "Ar-Condicionado e Refrigeração", icon: "snowflake" },
       { name: "Babás e Cuidadoras", icon: "baby" },
       { name: "Buffet & Churrasqueiros", icon: "utensils" },
       { name: "Cabeleireiros e Barbeiros", icon: "scissors" },
@@ -793,18 +809,22 @@
       { name: "Confeiteiras e Salgados", icon: "cake" },
       { name: "Costureiras", icon: "scissors" },
       { name: "Cuidadores de Idosos", icon: "heart-handshake" },
+      { name: "Dedetização e Pragas", icon: "shield-alert" },
       { name: "Designers e Redes Sociais", icon: "palette" },
       { name: "Diaristas e Faxineiras", icon: "sparkles" },
       { name: "Eletricistas", icon: "zap" },
       { name: "Encanadores", icon: "wrench" },
       { name: "Fotógrafos e Filmagem", icon: "camera" },
       { name: "Fretes e Carretos", icon: "truck" },
+      { name: "Gesseiros e Drywall", icon: "layers" },
       { name: "Jardineiros", icon: "leaf" },
       { name: "Manicures e Pedicures", icon: "sparkle" },
       { name: "Maquiadores", icon: "heart" },
+      { name: "Marceneiros", icon: "hammer" },
+      { name: "Marido de Aluguel (Pequenos Reparos)", icon: "wrench" },
       { name: "Mecânicos e Autoelétrica", icon: "cog" },
       { name: "Montadores de Móveis", icon: "armchair" },
-      { name: "Músicos e Eventos", icon: "music" },
+      { name: "Músicos e DJs", icon: "music" },
       { name: "Operador de Drone", icon: "crosshair" },
       { name: "Pedreiros e Reformas", icon: "hammer" },
       { name: "Personal Organizer", icon: "boxes" },
@@ -814,22 +834,30 @@
       { name: "Professores Particulares", icon: "book-open" },
       { name: "Recepcionistas", icon: "user-check" },
       { name: "Segurança e Câmeras", icon: "shield" },
+      { name: "Serralheiros", icon: "shield" },
       { name: "Serviços Rurais (Tratorista, Peão)", icon: "tractor" },
+      { name: "Tapeceiros e Estofados", icon: "armchair" },
       { name: "Técnicos de Informática", icon: "laptop" },
-      { name: "Técnicos em Enfermagem", icon: "stethoscope" }
+      { name: "Técnicos em Enfermagem", icon: "stethoscope" },
+      { name: "Vidraceiros", icon: "grid" }
     ].sort((a, b) => a.name.localeCompare(b.name));
 
     const CATEGORIES = CATEGORIES_DATA.map(c => c.name);
 
+    // FUNÇÕES E ESPECIALIDADES ESTILO GETNINJAS
     const RELATED_FUNCTIONS = {
+      "Marido de Aluguel (Pequenos Reparos)": ["Troca de Chuveiro", "Instalação de Varal", "Fixação de TV / Suporte", "Troca de Torneira", "Pequenos Reparos Elétricos", "Fechaduras", "Instalação de Cortinas"],
+      "Adestrador de Cães": ["Comportamento Canino", "Adestramento Básico", "Passeador / Dog Walker", "Socialização de Filhotes", "Hospedagem Familiar"],
+      "Ar-Condicionado e Refrigeração": ["Higienização Completa", "Instalação Split", "Carga de Gás", "Manutenção Preventiva", "Conserto de Geladeira"],
       "Técnicos em Enfermagem": ["Body Piercing", "Cuidador(a)", "Babá", "Aplicação de Injeção", "Curativos", "Home Care", "Acompanhamento Hospitalar"],
+      "Marceneiros": ["Móveis Planejados", "Restauração de Móveis", "Cortes Sob Medida", "Ajuste de Portas / Gavetas"],
+      "Vidraceiros": ["Box de Banheiro", "Espelhos Bisotados", "Janelas Blindex", "Portas de Vidro", "Guarda-Corpo"],
+      "Serralheiros": ["Portão Eletrônico", "Grades de Proteção", "Estruturas Metálicas", "Solda em Geral"],
       "Chef de Cozinha": ["Buffet Completo", "Churrasqueiro", "Jantares Privados", "Cardápio Personalizado", "Doces & Sobremesas"],
       "Buffet & Churrasqueiros": ["Churrasco Completo", "Garçom", "Festa Infantil", "Casamentos", "Aluguel de Louças"],
       "Personal Trainer": ["Consultoria Online", "Treino Funcional", "Musculação", "Emagrecimento", "Atendimento em Domicílio"],
       "Diaristas e Faxineiras": ["Faxina Pesada", "Passadeira", "Pós-Obra", "Limpeza de Vidros", "Organização"],
-      "Piscineiros": ["Tratamento de Choque", "Troca de Areia do Filtro", "Manutenção Periódica", "Limpeza de Bordas"],
-      "Operador de Drone": ["Agrícola / Pulverização", "Mapeamento", "Eventos / Casamentos", "Fotos Imobiliárias"],
-      "Personal Organizer": ["Organização de Closet", "Mudança Residencial", "Despensa", "Documentos"]
+      "Piscineiros": ["Tratamento de Choque", "Troca de Areia do Filtro", "Manutenção Periódica", "Limpeza de Bordas"]
     };
 
     const NEIGHBORHOODS = [
@@ -1081,7 +1109,8 @@
       closeModal('profileModal');
       openInAppChat({
         uid: currentViewingPro.authorUid || currentViewingPro.id,
-        name: currentViewingPro.name
+        name: currentViewingPro.name,
+        phone: currentViewingPro.whatsappNumber
       });
     };
 
@@ -1093,6 +1122,20 @@
       currentChatRecipient = recipient;
       document.getElementById('chatTargetName').textContent = recipient.name;
       document.getElementById('chatTargetSubtitle').textContent = recipient.isSupport ? "Atendimento Oficial do Site" : "Chat Seguro no Site";
+      
+      const alertBox = document.getElementById('chatWhatsappAlertBox');
+      const btnNotify = document.getElementById('btnNotifyWhatsappDirect');
+      if (recipient.phone && !recipient.isSupport) {
+        alertBox.classList.remove('hidden');
+        btnNotify.onclick = () => {
+          const num = recipient.phone.replace(/\D/g, '');
+          const msg = encodeURIComponent(`Olá ${recipient.name}! Acabei de te mandar uma proposta de serviço no chat do Zebu Freela: https://www.zebufreela.com.br`);
+          window.open(`https://wa.me/55${num}?text=${msg}`, '_blank');
+        };
+      } else {
+        alertBox.classList.add('hidden');
+      }
+
       openModal('inAppChatModal');
       listenToChatMessages();
     };
@@ -1122,7 +1165,7 @@
           messagesBox.innerHTML = `
             <div class="text-center py-6 space-y-1">
               <p class="text-xs font-bold text-neutral-600 dark:text-neutral-300">Olá! 🐮 Precisa de ajuda com o Zebu Freela?</p>
-              <p class="text-[10px] text-neutral-400">Tire suas dúvidas ou fale sobre anúncios diretamente aqui!</p>
+              <p class="text-[10px] text-neutral-400">Tire suas dúvidas ou combine serviços diretamente pelo chat!</p>
             </div>
           `;
           return;
@@ -1313,7 +1356,6 @@
       });
     }
 
-    // ORGANIZA OS EQUIPAMENTOS EM SEÇÕES CLARAS POR PROFISSÃO
     function renderProductsGroupedByProfession() {
       const container = document.getElementById('productsByProfessionContainer');
       if (!container) return;
@@ -1324,7 +1366,6 @@
         return;
       }
 
-      // Agrupa produtos por categoria
       const grouped = {};
       allProducts.forEach(prod => {
         const cat = prod.category || "Outros";
@@ -1383,12 +1424,10 @@
       
       card.innerHTML = `
         <div>
-          <!-- IMAGEM CLICÁVEL -->
           <a href="${prod.link}" target="_blank" rel="noopener noreferrer" class="block relative w-full aspect-square bg-white dark:bg-neutral-800 overflow-hidden flex items-center justify-center p-2 cursor-pointer">
             <img src="${prod.image}" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-200">
           </a>
 
-          <!-- BOTÕES DE ADMIN: EDITAR E EXCLUIR -->
           ${isAdmin ? `
             <div class="absolute top-1.5 right-1.5 flex gap-1 z-10">
               <button onclick="editProduct('${prod.id}')" class="bg-black/80 hover:bg-black text-zebu-lime p-1.5 rounded-lg shadow" title="Editar">
@@ -1500,6 +1539,7 @@
       document.getElementById('proNeighborhood').value = ad.neighborhood || NEIGHBORHOODS[0];
       document.getElementById('proRegions').value = ad.regions || "";
       document.getElementById('proHours').value = ad.hours || "";
+      document.getElementById('proWhatsappNumber').value = ad.whatsappNumber || "";
 
       tempAvatarImage = ad.avatar || "";
       if (tempAvatarImage) {
@@ -1591,6 +1631,7 @@
         neighborhood: document.getElementById('proNeighborhood').value,
         regions: document.getElementById('proRegions').value.trim(),
         hours: document.getElementById('proHours').value.trim(),
+        whatsappNumber: document.getElementById('proWhatsappNumber').value.replace(/\D/g, ''),
         avatar: tempAvatarImage,
         portfolio: tempPortfolioImages,
         updatedAt: serverTimestamp()
@@ -1694,34 +1735,61 @@
       lucide.createIcons();
     }
 
+    // CARD DE PROFISSIONAL ESTILO GETNINJAS
     function createFeaturedProCard(p) {
       const card = document.createElement('div');
-      card.className = `bg-white dark:bg-zebu-darkCard text-neutral-900 dark:text-white rounded-2xl overflow-hidden shadow-sm flex flex-col justify-between border ${p.isSponsored ? 'border-2 border-amber-400' : 'border-neutral-200 dark:border-neutral-800'}`;
+      card.className = `bg-white dark:bg-zebu-darkCard text-neutral-900 dark:text-white rounded-3xl p-4 shadow-sm hover:shadow-md transition-all flex flex-col justify-between border ${p.isSponsored ? 'border-2 border-amber-400' : 'border-zebu-grayBorder dark:border-neutral-800'}`;
       
       const iconName = getCategoryIcon(p.category.split(' - ')[0]);
       const imageHTML = p.avatar 
-        ? `<img src="${p.avatar}" class="w-full h-36 object-cover">`
-        : `<div class="w-full h-36 bg-neutral-200 dark:bg-neutral-800 flex items-center justify-center text-neutral-600"><i data-lucide="${iconName}" class="w-12 h-12"></i></div>`;
+        ? `<img src="${p.avatar}" class="w-14 h-14 rounded-2xl object-cover shrink-0 border border-neutral-200 dark:border-neutral-700 shadow-sm">`
+        : `<div class="w-14 h-14 rounded-2xl bg-zebu-dark text-zebu-lime flex items-center justify-center shrink-0 shadow-sm"><i data-lucide="${iconName}" class="w-7 h-7"></i></div>`;
+
+      // Tags de especialidades estilo GetNinjas
+      const servicesPills = (p.services || []).slice(0, 3).map(s => 
+        `<span class="text-[10px] bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 px-2 py-0.5 rounded-lg border border-neutral-200 dark:border-neutral-700 font-medium">${s}</span>`
+      ).join('');
 
       card.innerHTML = `
-        <div>
-          <div class="relative">
-            ${imageHTML}
+        <div class="space-y-3">
+          <div class="flex items-start justify-between gap-2">
+            <div class="flex items-center gap-3">
+              ${imageHTML}
+              <div>
+                <div class="flex items-center gap-1.5">
+                  <h3 class="font-black text-sm leading-tight">${p.name}</h3>
+                  <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-zebu-lime fill-black dark:fill-zebu-lime" title="Verificado"></i>
+                </div>
+                <p class="text-[11px] font-bold text-neutral-500 mt-0.5">${p.category}</p>
+                <div class="flex items-center gap-1 text-[10px] font-bold text-amber-500 mt-0.5">
+                  <span>★ 5.0</span>
+                  <span class="text-neutral-400 font-normal">(${p.neighborhood || 'Uberaba'})</span>
+                </div>
+              </div>
+            </div>
+
             ${p.isSponsored ? `
-              <span class="absolute top-2 right-2 px-2 py-0.5 rounded-full bg-amber-400 text-black font-black text-[9px] flex items-center gap-1 shadow-md">
-                <i data-lucide="crown" class="w-3 h-3 fill-black"></i> PATROCINADO
+              <span class="px-2 py-0.5 rounded-full bg-amber-400 text-black font-black text-[9px] flex items-center gap-1 shadow-sm shrink-0">
+                <i data-lucide="crown" class="w-3 h-3 fill-black"></i> TOP
               </span>
             ` : ''}
           </div>
-          <div class="p-3 space-y-1">
-            <h3 class="font-black text-xs md:text-sm leading-tight">${p.name}</h3>
-            <p class="text-[10px] font-bold text-neutral-600 dark:text-neutral-400 line-clamp-1">${p.category}</p>
-            <span class="text-xs font-black text-black dark:text-white block pt-1">${formatPriceDisplay(p)}</span>
+
+          <p class="text-[11px] text-neutral-600 dark:text-neutral-400 line-clamp-2 leading-relaxed">${p.bio || 'Profissional autônomo disponível em Uberaba.'}</p>
+
+          <div class="flex flex-wrap gap-1 pt-0.5">
+            ${servicesPills}
           </div>
         </div>
-        <div class="p-3 pt-0">
-          <button onclick="openProfileModal('${p.id}')" class="w-full py-1.5 bg-neutral-900 dark:bg-white hover:opacity-85 text-white dark:text-black font-bold text-xs rounded-full transition flex items-center justify-center gap-1">
-            Ver perfil & Contratar
+
+        <div class="mt-4 pt-3 border-t border-neutral-100 dark:border-neutral-800 flex items-center justify-between">
+          <div>
+            <span class="text-[9px] uppercase font-bold text-neutral-400 block">Preço estimado</span>
+            <span class="text-xs font-black text-black dark:text-white">${formatPriceDisplay(p)}</span>
+          </div>
+
+          <button onclick="openProfileModal('${p.id}')" class="px-4 py-2 bg-zebu-lime hover:bg-zebu-limeHover text-black font-black text-xs rounded-xl shadow transition flex items-center gap-1">
+            Pedir Orçamento <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
           </button>
         </div>
       `;
@@ -1825,7 +1893,7 @@
     };
 
     // -------------------------------------------------------------
-    // VAGAS / OPORTUNIDADES (COM TEMPORIZADOR RELÂMPAGO)
+    // VAGAS / OPORTUNIDADES
     // -------------------------------------------------------------
     window.saveJobOpportunity = async function(e) {
       e.preventDefault();
@@ -2087,4 +2155,3 @@
     }
   </script>
 </body>
-</html>
