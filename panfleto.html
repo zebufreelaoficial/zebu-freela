@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panfleto Zebu Freela - Imprimir</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @media print {
+      body { background: white; margin: 0; padding: 0; }
+      .no-print { display: none !important; }
+      .page { box-shadow: none !important; border: none !important; margin: 0 !important; width: 100% !important; height: 100vh !important; }
+    }
+  </style>
+</head>
+<body class="bg-neutral-200 min-h-screen py-6 flex flex-col items-center font-sans">
+
+  <!-- BOTÃO FLUTUANTE DE IMPRESSÃO (NÃO SAI NA IMPRESSÃO) -->
+  <div class="no-print mb-4 flex gap-3">
+    <button onclick="window.print()" class="px-6 py-3 bg-[#76E000] hover:bg-[#65C400] text-black font-black text-sm rounded-full shadow-xl flex items-center gap-2">
+      🖨️ Imprimir / Salvar em PDF
+    </button>
+  </div>
+
+  <!-- FOLHA A4 DO PANFLETO -->
+  <div class="page bg-white w-[210mm] min-h-[297mm] p-8 shadow-2xl flex flex-col justify-between border-4 border-black box-border relative text-black">
+    
+    <!-- CABEÇALHO IMPACTANTE -->
+    <div class="text-center space-y-2 border-b-4 border-black pb-4">
+      <div class="flex items-center justify-center gap-3">
+        <span class="text-3xl">🐮</span>
+        <h1 class="text-4xl font-black tracking-tight uppercase">ZEBU FREELA</h1>
+        <span class="bg-[#76E000] text-black font-black text-xs px-2.5 py-1 rounded-md uppercase border border-black">Uberaba - MG</span>
+      </div>
+      <p class="text-sm font-extrabold tracking-widest uppercase text-neutral-700">A Plataforma Oficial de Serviços da Nossa Cidade</p>
+    </div>
+
+    <!-- TÍTULO PRINCIPAL GIGANTE -->
+    <div class="text-center my-3 space-y-2">
+      <h2 class="text-4xl font-black leading-tight uppercase">
+        PRECISA DE SERVIÇO EM CASA?<br>
+        <span class="bg-black text-[#76E000] px-3 py-1 inline-block mt-1">OU TRABALHA POR CONTA?</span>
+      </h2>
+      <p class="text-base font-bold text-neutral-800">
+        Conectamos quem faz com quem precisa contratar pertinho de você, sem taxas e sem burocracia!
+      </p>
+    </div>
+
+    <!-- BLOCO CENTRAL: QR CODE + SERVIÇOS -->
+    <div class="grid grid-cols-2 gap-4 items-center bg-[#F8FAF6] p-5 rounded-3xl border-2 border-black my-2">
+      
+      <!-- LADO DO QR CODE -->
+      <div class="flex flex-col items-center text-center space-y-2">
+        <span class="text-xs font-black uppercase bg-[#76E000] px-3 py-1 rounded-full border border-black">
+          📱 Aponte a câmera do celular
+        </span>
+        <!-- QR Code dinâmico oficial gerado em alta resolução -->
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://www.zebufreela.com.br" alt="QR Code Zebu Freela" class="w-48 h-48 border-4 border-black rounded-2xl shadow-md p-1 bg-white">
+        <span class="text-xs font-black uppercase tracking-wider text-black">ACESSE DIRETO NO SITE:</span>
+        <span class="text-lg font-black text-black bg-[#76E000] px-2 py-0.5 rounded border border-black">
+          www.zebufreela.com.br
+        </span>
+      </div>
+
+      <!-- LADO DA LISTA DE SERVIÇOS -->
+      <div class="space-y-2 pl-2">
+        <h3 class="font-black text-sm uppercase border-b-2 border-black pb-1">Encontre em Uberaba:</h3>
+        <ul class="text-xs font-extrabold space-y-1.5 text-neutral-900">
+          <li class="flex items-center gap-1.5">✅ <span>Diaristas, Faxineiras e Passadeiras</span></li>
+          <li class="flex items-center gap-1.5">✅ <span>Marido de Aluguel e Pequenos Reparos</span></li>
+          <li class="flex items-center gap-1.5">✅ <span>Eletricistas e Encanadores</span></li>
+          <li class="flex items-center gap-1.5">✅ <span>Pedreiros, Pintores e Gesseiros</span></li>
+          <li class="flex items-center gap-1.5">✅ <span>Piscineiros e Jardineiros</span></li>
+          <li class="flex items-center gap-1.5">✅ <span>Manicures, Cabelo e Maquiagem</span></li>
+          <li class="flex items-center gap-1.5">✅ <span>Técnicos em Enfermagem e Cuidadores</span></li>
+          <li class="flex items-center gap-1.5">✅ <span>Fretes, Carretos e Mudanças</span></li>
+          <li class="flex items-center gap-1.5">✅ <span>Adestradores, Drones e Serviços Rurais</span></li>
+        </ul>
+        <div class="pt-2">
+          <span class="text-[11px] font-black bg-black text-white px-2.5 py-1 rounded-md block text-center uppercase">
+            Anúncio 100% Gratuito para Autônomos!
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- MENSAGEM DE IMPACTO -->
+    <div class="text-center py-2">
+      <p class="text-sm font-black uppercase">
+        🤝 Valorize quem trabalha por conta em Uberaba!
+      </p>
+      <p class="text-xs text-neutral-600 font-bold">
+        Converse diretamente no chat seguro da plataforma.
+      </p>
+    </div>
+
+    <!-- TIRINHAS PICOTADAS DESTACÁVEIS NO RODAPÉ (CLÁSSICO DE POSTES) -->
+    <div class="border-t-2 border-dashed border-black pt-3 mt-2">
+      <p class="text-[10px] font-black uppercase text-center mb-2 tracking-widest text-neutral-500">
+        ✂️ Destaque uma tirinha abaixo e leve o contato com você ✂️
+      </p>
+      <div class="grid grid-cols-7 gap-1.5 text-center">
+        <!-- 7 Tirinhas para destacar -->
+        <div class="border-l-2 border-r-2 border-dashed border-black p-1.5 flex flex-col justify-between h-28 bg-[#F8FAF6]">
+          <span class="text-xs">🐮</span>
+          <span class="text-[9px] font-black uppercase leading-tight">Zebu Freela</span>
+          <span class="text-[8px] font-bold leading-tight rotate-180 write-vertical">www.zebufreela.com.br</span>
+          <span class="text-[8px] font-black bg-black text-[#76E000] rounded py-0.5">Uberaba</span>
+        </div>
+        <div class="border-l-2 border-r-2 border-dashed border-black p-1.5 flex flex-col justify-between h-28 bg-[#F8FAF6]">
+          <span class="text-xs">🐮</span>
+          <span class="text-[9px] font-black uppercase leading-tight">Zebu Freela</span>
+          <span class="text-[8px] font-bold leading-tight rotate-180 write-vertical">www.zebufreela.com.br</span>
+          <span class="text-[8px] font-black bg-black text-[#76E000] rounded py-0.5">Uberaba</span>
+        </div>
+        <div class="border-l-2 border-r-2 border-dashed border-black p-1.5 flex flex-col justify-between h-28 bg-[#F8FAF6]">
+          <span class="text-xs">🐮</span>
+          <span class="text-[9px] font-black uppercase leading-tight">Zebu Freela</span>
+          <span class="text-[8px] font-bold leading-tight rotate-180 write-vertical">www.zebufreela.com.br</span>
+          <span class="text-[8px] font-black bg-black text-[#76E000] rounded py-0.5">Uberaba</span>
+        </div>
+        <div class="border-l-2 border-r-2 border-dashed border-black p-1.5 flex flex-col justify-between h-28 bg-[#F8FAF6]">
+          <span class="text-xs">🐮</span>
+          <span class="text-[9px] font-black uppercase leading-tight">Zebu Freela</span>
+          <span class="text-[8px] font-bold leading-tight rotate-180 write-vertical">www.zebufreela.com.br</span>
+          <span class="text-[8px] font-black bg-black text-[#76E000] rounded py-0.5">Uberaba</span>
+        </div>
+        <div class="border-l-2 border-r-2 border-dashed border-black p-1.5 flex flex-col justify-between h-28 bg-[#F8FAF6]">
+          <span class="text-xs">🐮</span>
+          <span class="text-[9px] font-black uppercase leading-tight">Zebu Freela</span>
+          <span class="text-[8px] font-bold leading-tight rotate-180 write-vertical">www.zebufreela.com.br</span>
+          <span class="text-[8px] font-black bg-black text-[#76E000] rounded py-0.5">Uberaba</span>
+        </div>
+        <div class="border-l-2 border-r-2 border-dashed border-black p-1.5 flex flex-col justify-between h-28 bg-[#F8FAF6]">
+          <span class="text-xs">🐮</span>
+          <span class="text-[9px] font-black uppercase leading-tight">Zebu Freela</span>
+          <span class="text-[8px] font-bold leading-tight rotate-180 write-vertical">www.zebufreela.com.br</span>
+          <span class="text-[8px] font-black bg-black text-[#76E000] rounded py-0.5">Uberaba</span>
+        </div>
+        <div class="border-l-2 border-r-2 border-dashed border-black p-1.5 flex flex-col justify-between h-28 bg-[#F8FAF6]">
+          <span class="text-xs">🐮</span>
+          <span class="text-[9px] font-black uppercase leading-tight">Zebu Freela</span>
+          <span class="text-[8px] font-bold leading-tight rotate-180 write-vertical">www.zebufreela.com.br</span>
+          <span class="text-[8px] font-black bg-black text-[#76E000] rounded py-0.5">Uberaba</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
