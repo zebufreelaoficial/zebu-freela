@@ -6,7 +6,7 @@
   <title>Zebu Freela | Conectando pessoas e oportunidades em Uberaba</title>
   <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#0B0E09">
-  <meta name="description" content="Encontre profissionais autônomos, serviços e equipamentos em Uberaba - MG. Marido de aluguel, diaristas, eletricistas, adestradores e mais.">
+  <meta name="description" content="Plataforma de autônomos e serviços em Uberaba - MG. Diaristas, eletricistas, marido de aluguel e mais.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://www.zebufreela.com.br">
 
@@ -24,9 +24,7 @@
               dark: '#0B0E09',      
               darkCard: '#131811',
               graySoft: '#F6F8F5',
-              grayBorder: '#E5E9E2',
-              shopee: '#EE4D2D',
-              gold: '#F59E0B'
+              grayBorder: '#E5E9E2'
             }
           }
         }
@@ -37,18 +35,22 @@
   <style>
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    .chat-pattern {
+      background-color: #0b141a;
+      background-image: radial-gradient(#1f2c34 0.75px, transparent 0.75px);
+      background-size: 16px 16px;
+    }
   </style>
 </head>
-<body class="bg-[#F8FAF6] text-neutral-900 dark:bg-[#070A06] dark:text-neutral-100 min-h-screen flex flex-col font-sans transition-colors duration-200 pb-24 md:pb-6">
+<body class="bg-[#F8FAF6] text-neutral-900 dark:bg-[#070A06] dark:text-neutral-100 min-h-screen flex flex-col font-sans pb-24 md:pb-6">
 
-  <!-- ================= NAVBAR ================= -->
+  <!-- ================= TOPBAR ================= -->
   <header class="sticky top-0 z-40 bg-zebu-dark text-white shadow-md border-b border-white/10">
-    <div class="max-w-6xl mx-auto px-4 h-14 md:h-16 flex items-center justify-between">
+    <div class="max-w-6xl mx-auto px-4 h-15 flex items-center justify-between">
       <a href="#home" onclick="showSection('home')" class="flex items-center gap-2">
-        <img src="file_00000000ee94820e8030c8d3a817a851.png" alt="Zebu Freela Uberaba" class="h-9 md:h-11 w-auto object-contain">
+        <img src="file_00000000ee94820e8030c8d3a817a851.png" alt="Zebu Freela" class="h-9 md:h-11 w-auto object-contain">
       </a>
 
-      <!-- Menu Computador / Tablet -->
       <nav class="hidden md:flex items-center gap-6 text-xs font-bold uppercase tracking-wider">
         <button onclick="showSection('home')" id="nav-home" class="text-zebu-lime flex items-center gap-1.5 pb-1 border-b-2 border-zebu-lime">
           <i data-lucide="home" class="w-4 h-4"></i> Início
@@ -119,7 +121,7 @@
 
           <div class="pt-2 flex items-center bg-white dark:bg-black rounded-full border border-neutral-300 dark:border-neutral-700 shadow-sm p-1">
             <i data-lucide="search" class="w-4 h-4 ml-3 text-neutral-400 shrink-0"></i>
-            <input type="text" id="homeSearchInput" placeholder="Ex: Marido de aluguel, diarista, adestrador..." 
+            <input type="text" id="homeSearchInput" placeholder="Buscar serviços, profissionais ou equipamentos..." 
               class="w-full px-2.5 py-1.5 bg-transparent text-xs md:text-sm focus:outline-none placeholder-neutral-400"
               onkeydown="if(event.key === 'Enter') handleQuickSearch()">
             <button onclick="handleQuickSearch()" class="px-5 py-2 bg-zebu-lime hover:bg-zebu-limeHover text-black font-black text-xs rounded-full transition shadow-sm flex items-center gap-1 shrink-0">
@@ -188,7 +190,7 @@
         <div id="homeJobsList" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3"></div>
       </div>
 
-      <!-- PROFISSIONAIS EM DESTAQUE (GETNINJAS CARDS) -->
+      <!-- PROFISSIONAIS EM DESTAQUE -->
       <div class="space-y-3 bg-zebu-dark text-white p-4 md:p-6 rounded-3xl border border-neutral-800 shadow-md">
         <div class="flex items-center justify-between">
           <div>
@@ -209,7 +211,7 @@
             <h2 class="text-base font-black flex items-center gap-2">
               <span class="w-4 h-1 bg-zebu-lime rounded-full"></span> Equipamentos de Trabalho
             </h2>
-            <p class="text-[10px] md:text-xs text-neutral-500">Ferramentas recomendadas organizadas por profissão</p>
+            <p class="text-[10px] md:text-xs text-neutral-500">Materiais recomendados organizados por profissão</p>
           </div>
           <button onclick="showSection('blog')" class="text-xs font-bold hover:underline flex items-center gap-1">Ver todos <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></button>
         </div>
@@ -234,7 +236,7 @@
       <div id="allJobsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3"></div>
     </section>
 
-    <!-- SEÇÃO: EQUIPAMENTOS DE TRABALHO (ORGANIZADOS POR PROFISSÃO) -->
+    <!-- SEÇÃO: EQUIPAMENTOS DE TRABALHO -->
     <section id="blogSection" class="hidden space-y-5">
       <div class="bg-zebu-dark text-white p-5 md:p-6 rounded-3xl border border-neutral-800 flex flex-col md:flex-row justify-between items-start md:items-center gap-3">
         <div>
@@ -253,12 +255,12 @@
       <div id="productsByProfessionContainer" class="space-y-6"></div>
     </section>
 
-    <!-- EXPLORAR PROFISSIONAIS (LAYOUT ESTILO GETNINJAS) -->
+    <!-- EXPLORAR PROFISSIONAIS -->
     <section id="exploreSection" class="hidden space-y-4">
       <div class="bg-white dark:bg-zebu-darkCard p-4 md:p-5 rounded-3xl shadow-sm border border-zebu-grayBorder dark:border-neutral-800 space-y-3">
         <div class="relative">
           <i data-lucide="search" class="w-4 h-4 absolute left-3.5 top-3 text-neutral-400"></i>
-          <input type="text" id="searchInput" placeholder="Buscar por serviço, profissão, nome ou bairro..." 
+          <input type="text" id="searchInput" placeholder="Buscar por serviço, nome ou bairro..." 
             class="w-full pl-10 pr-3 py-2 rounded-2xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs md:text-sm focus:ring-2 focus:ring-zebu-lime outline-none"
             oninput="applyFilters()">
         </div>
@@ -316,7 +318,7 @@
                 <img id="proAvatarPreview" src="" class="w-full h-full object-cover hidden">
               </div>
               <div class="flex-1">
-                <label class="block text-[11px] font-bold uppercase text-neutral-700 dark:text-neutral-200 mb-0.5">Sua Foto de Perfil ou Logo *</label>
+                <label class="block text-[11px] font-bold uppercase text-neutral-700 dark:text-neutral-200 mb-0.5">Foto de Perfil ou Logo *</label>
                 <input type="file" id="proAvatarInput" accept="image/*" onchange="handleAvatarUpload(event)" class="block w-full text-[10px] text-neutral-500 file:mr-2 file:py-1 file:px-2.5 file:rounded-lg file:border-0 file:text-[10px] file:font-bold file:bg-zebu-dark file:text-zebu-lime">
               </div>
             </div>
@@ -332,17 +334,17 @@
               </div>
             </div>
 
-            <!-- SUGESTÕES DE FUNÇÕES RELACIONADAS ESTILO GETNINJAS -->
+            <!-- SUGESTÕES DE FUNÇÕES RELACIONADAS -->
             <div id="relatedFunctionsContainer" class="hidden p-3 rounded-2xl bg-zebu-limeSoft/50 dark:bg-neutral-800/80 border border-zebu-lime/40 space-y-2">
               <label class="block text-[11px] font-black uppercase text-neutral-800 dark:text-neutral-200 flex items-center gap-1">
-                <i data-lucide="sparkles" class="w-3.5 h-3.5 text-zebu-lime"></i> Especialidades populares (toque para adicionar aos seus serviços):
+                <i data-lucide="sparkles" class="w-3.5 h-3.5 text-zebu-lime"></i> Especialidades populares (toque para adicionar aos serviços):
               </label>
               <div id="relatedFunctionsPills" class="flex flex-wrap gap-1.5"></div>
             </div>
 
             <div>
               <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Serviços Oferecidos (separados por vírgula) *</label>
-              <input type="text" id="proServices" required placeholder="Ex: Troca de chuveiro, Instalação de tomadas, Pequenos reparos" class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs">
+              <input type="text" id="proServices" required placeholder="Ex: Faxina pesada, Limpeza pós-obra, Passadoria" class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs">
             </div>
 
             <div>
@@ -385,7 +387,6 @@
                 Seu WhatsApp (para receber alertas de novos clientes):
               </label>
               <input type="tel" id="proWhatsappNumber" placeholder="DDD + Número (Ex: 34999998888)" class="w-full p-2 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-900 font-mono text-xs">
-              <span class="text-[10px] text-neutral-500 block">Usado para os clientes te enviarem aviso direto quando te mandarem proposta no site.</span>
             </div>
 
             <div class="space-y-2 border-t border-neutral-200 dark:border-neutral-800 pt-3">
@@ -394,7 +395,7 @@
                 <span id="photoCount" class="text-[11px] font-black">0 / 10 fotos</span>
               </div>
               <input type="file" id="portfolioInput" accept="image/*" multiple onchange="handlePortfolioUpload(event)"
-                class="block w-full text-[10px] text-neutral-500 file:mr-3 file:py-1.5 file:px-2.5 file:rounded-lg file:border-0 file:text-[10px] file:font-bold file:bg-zebu-dark file:text-zebu-lime">
+                class="block w-full text-[10px] text-neutral-500 file:mr-2 file:py-1 file:px-2.5 file:rounded-lg file:border-0 file:text-[10px] file:font-bold file:bg-zebu-dark file:text-zebu-lime">
               <div id="portfolioPreviewGrid" class="grid grid-cols-3 sm:grid-cols-5 gap-2 pt-1"></div>
             </div>
 
@@ -462,36 +463,56 @@
     </div>
   </footer>
 
-  <!-- ================= MODAIS DE CHAT (COM A VAQUINHA 🐮) ================= -->
-  <div id="inAppChatModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-3">
-    <div class="bg-white dark:bg-zebu-darkCard w-full max-w-md rounded-3xl shadow-2xl border border-neutral-200 dark:border-neutral-800 flex flex-col h-[530px] overflow-hidden text-xs">
-      <div class="p-3.5 bg-zebu-dark text-white border-b border-neutral-800 flex items-center justify-between">
-        <div class="flex items-center gap-2">
-          <div class="w-9 h-9 rounded-full bg-zebu-lime text-black flex items-center justify-center font-bold text-lg shrink-0">
-            🐮
+  <!-- ================= MODAL DO CHAT NO SITE (DESIGN WHATSAPP/TELEGRAM) ================= -->
+  <div id="inAppChatModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-2 sm:p-4">
+    <div class="bg-[#efeae2] dark:bg-[#0b141a] w-full max-w-md rounded-3xl shadow-2xl border border-neutral-300 dark:border-neutral-800 flex flex-col h-[600px] max-h-[92vh] overflow-hidden text-xs relative">
+      
+      <!-- CABEÇALHO DO CHAT -->
+      <div class="p-3 bg-[#f0f2f5] dark:bg-[#202c33] border-b border-neutral-300 dark:border-neutral-700 flex items-center justify-between shadow-sm shrink-0">
+        <div class="flex items-center gap-2.5">
+          <button onclick="closeModal('inAppChatModal')" class="p-1 -ml-1 text-neutral-600 dark:text-neutral-300 hover:text-black dark:hover:text-white">
+            <i data-lucide="arrow-left" class="w-5 h-5"></i>
+          </button>
+          
+          <div class="relative">
+            <div id="chatHeaderAvatar" class="w-10 h-10 rounded-full bg-zebu-lime text-black flex items-center justify-center font-bold text-base shrink-0 overflow-hidden shadow">
+              🐮
+            </div>
+            <span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-500 border-2 border-white dark:border-[#202c33]"></span>
           </div>
+
           <div>
-            <h4 id="chatTargetName" class="font-black text-xs leading-none">Precisa de ajuda?</h4>
-            <span id="chatTargetSubtitle" class="text-[9px] text-zebu-lime">Atendimento Zebu Freela</span>
+            <h4 id="chatTargetName" class="font-bold text-sm leading-tight text-neutral-900 dark:text-white truncate max-w-[200px]">Atendimento</h4>
+            <div class="flex items-center gap-1 text-[11px] text-emerald-600 dark:text-emerald-400 font-medium">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+              <span id="chatTargetSubtitle">online agora</span>
+            </div>
           </div>
         </div>
-        <button onclick="closeModal('inAppChatModal')" class="text-neutral-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
+
+        <button onclick="closeModal('inAppChatModal')" class="p-1 text-neutral-500 hover:text-neutral-800 dark:hover:text-white">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
       </div>
 
-      <div id="chatMessagesContainer" class="flex-1 p-3 overflow-y-auto space-y-2 bg-[#F8FAF6] dark:bg-black/60"></div>
+      <!-- ÁREA DE MENSAGENS -->
+      <div id="chatMessagesContainer" class="flex-1 p-3 overflow-y-auto space-y-2.5 chat-pattern"></div>
 
-      <!-- BOTÃO OPCIONAL: AVISAR NO WHATSAPP QUE MANDOU MENSAGEM -->
-      <div id="chatWhatsappAlertBox" class="hidden px-3 py-1.5 bg-emerald-50 dark:bg-emerald-950/40 border-t border-emerald-200 dark:border-emerald-800 flex items-center justify-between">
-        <span class="text-[10px] text-emerald-800 dark:text-emerald-300 font-bold">Deseja avisar no WhatsApp do profissional?</span>
-        <button id="btnNotifyWhatsappDirect" class="px-2 py-1 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-[10px] rounded-lg flex items-center gap-1 shadow">
+      <!-- DAR TOQUE NO WHATSAPP -->
+      <div id="chatWhatsappAlertBox" class="hidden px-3 py-1.5 bg-emerald-100 dark:bg-emerald-950/60 border-t border-emerald-300 dark:border-emerald-800 flex items-center justify-between shrink-0">
+        <span class="text-[10px] text-emerald-900 dark:text-emerald-200 font-bold">Avisar no WhatsApp que deixou proposta?</span>
+        <button id="btnNotifyWhatsappDirect" class="px-2.5 py-1 bg-[#25D366] hover:bg-[#1ebd5b] text-black font-black text-[10px] rounded-lg flex items-center gap-1 shadow">
           <i data-lucide="send" class="w-3 h-3"></i> Dar Toque
         </button>
       </div>
 
-      <form id="chatSendForm" onsubmit="sendChatMessage(event)" class="p-2.5 bg-white dark:bg-neutral-900 border-t border-neutral-200 dark:border-neutral-800 flex gap-1.5">
-        <input type="text" id="chatMessageInput" required placeholder="Digite sua mensagem aqui..." class="flex-1 p-2 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs outline-none focus:ring-1 focus:ring-zebu-lime">
-        <button type="submit" class="px-3.5 py-2 bg-zebu-lime hover:bg-zebu-limeHover text-black font-black rounded-xl shadow flex items-center justify-center">
-          <i data-lucide="send" class="w-4 h-4"></i>
+      <!-- BARRA DE DIGITAÇÃO -->
+      <form id="chatSendForm" onsubmit="sendChatMessage(event)" class="p-2 bg-[#f0f2f5] dark:bg-[#202c33] border-t border-neutral-300 dark:border-neutral-700 flex items-center gap-2 shrink-0">
+        <div class="flex-1 flex items-center bg-white dark:bg-[#2a3942] rounded-full px-3.5 py-1.5 border border-neutral-200 dark:border-neutral-600 shadow-inner">
+          <input type="text" id="chatMessageInput" required placeholder="Mensagem..." class="w-full bg-transparent text-xs text-neutral-900 dark:text-white outline-none placeholder-neutral-400">
+        </div>
+        <button type="submit" class="w-10 h-10 rounded-full bg-[#00a884] hover:bg-[#008f6f] text-white flex items-center justify-center shadow-md shrink-0 transition-transform active:scale-90">
+          <i data-lucide="send" class="w-4 h-4 ml-0.5"></i>
         </button>
       </form>
     </div>
@@ -533,7 +554,7 @@
         </div>
         <div class="grid grid-cols-2 gap-2">
           <div>
-            <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Categoria de Serviço (Profissão) *</label>
+            <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Categoria de Serviço *</label>
             <select id="prodCategory" required class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800"></select>
           </div>
           <div>
@@ -1174,13 +1195,26 @@
         snapshot.forEach(docSnap => {
           const m = docSnap.data();
           const isMe = m.senderUid === currentUser.uid;
+          
+          // Formata horário de envio estilo WhatsApp
+          let timeStr = "";
+          if (m.createdAt && m.createdAt.toDate) {
+            const d = m.createdAt.toDate();
+            timeStr = d.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+          } else {
+            timeStr = new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+          }
+
           const bubble = document.createElement('div');
           bubble.className = `flex flex-col ${isMe ? 'items-end' : 'items-start'}`;
           bubble.innerHTML = `
-            <div class="max-w-[80%] p-2.5 rounded-2xl text-xs leading-relaxed shadow-sm ${isMe ? 'bg-zebu-lime text-black rounded-tr-none font-medium' : 'bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-tl-none'}">
-              <p>${m.text}</p>
+            <div class="max-w-[82%] px-3 py-2 rounded-2xl text-xs leading-relaxed shadow-sm relative ${isMe ? 'bg-[#d9fdd3] dark:bg-[#005c4b] text-neutral-900 dark:text-neutral-100 rounded-tr-none' : 'bg-white dark:bg-[#202c33] text-neutral-900 dark:text-neutral-100 rounded-tl-none border border-neutral-200 dark:border-neutral-700'}">
+              <p class="pr-12">${m.text}</p>
+              <div class="absolute bottom-1 right-2 flex items-center gap-1 text-[9px] text-neutral-500 dark:text-neutral-400 font-medium">
+                <span>${timeStr}</span>
+                ${isMe ? '<span class="text-sky-500 font-black">✓✓</span>' : ''}
+              </div>
             </div>
-            <span class="text-[9px] text-neutral-400 mt-0.5 px-1">${m.senderName || ''}</span>
           `;
           messagesBox.appendChild(bubble);
         });
@@ -1745,7 +1779,6 @@
         ? `<img src="${p.avatar}" class="w-14 h-14 rounded-2xl object-cover shrink-0 border border-neutral-200 dark:border-neutral-700 shadow-sm">`
         : `<div class="w-14 h-14 rounded-2xl bg-zebu-dark text-zebu-lime flex items-center justify-center shrink-0 shadow-sm"><i data-lucide="${iconName}" class="w-7 h-7"></i></div>`;
 
-      // Tags de especialidades estilo GetNinjas
       const servicesPills = (p.services || []).slice(0, 3).map(s => 
         `<span class="text-[10px] bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 px-2 py-0.5 rounded-lg border border-neutral-200 dark:border-neutral-700 font-medium">${s}</span>`
       ).join('');
@@ -2155,3 +2188,4 @@
     }
   </script>
 </body>
+</html>
