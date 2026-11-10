@@ -6,7 +6,7 @@
   <title>Zebu Freela | Conectando pessoas e oportunidades em Uberaba</title>
   <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#0B0E09">
-  <meta name="description" content="Plataforma de autônomos e serviços em Uberaba - MG. Diaristas, eletricistas, marido de aluguel e mais.">
+  <meta name="description" content="Plataforma de autônomos, serviços e equipamentos em Uberaba - MG. Diaristas, eletricistas, marido de aluguel e mais.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://www.zebufreela.com.br">
 
@@ -24,7 +24,9 @@
               dark: '#0B0E09',      
               darkCard: '#131811',
               graySoft: '#F6F8F5',
-              grayBorder: '#E5E9E2'
+              grayBorder: '#E5E9E2',
+              shopee: '#EE4D2D',
+              gold: '#F59E0B'
             }
           }
         }
@@ -35,10 +37,11 @@
   <style>
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-    .chat-pattern {
-      background-color: #0b141a;
-      background-image: radial-gradient(#1f2c34 0.75px, transparent 0.75px);
-      background-size: 16px 16px;
+    .chat-bg {
+      background: linear-gradient(180deg, #E8F7D8 0%, #F4FAF0 50%, #FFFFFF 100%);
+    }
+    .dark .chat-bg {
+      background: linear-gradient(180deg, #0D1C0F 0%, #0A140B 50%, #050A05 100%);
     }
   </style>
 </head>
@@ -150,7 +153,7 @@
                 </div>
                 <div>
                   <h4 class="font-black text-xs leading-none">Equipamentos</h4>
-                  <span class="text-[9px] text-neutral-500 block mt-0.5">Por profissão</span>
+                  <span class="text-[9px] text-neutral-500 block mt-0.5">Ferramentas de trabalho</span>
                 </div>
               </div>
               <i data-lucide="chevron-right" class="w-4 h-4 text-neutral-400"></i>
@@ -190,7 +193,7 @@
         <div id="homeJobsList" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3"></div>
       </div>
 
-      <!-- PROFISSIONAIS EM DESTAQUE -->
+      <!-- PROFISSIONAIS EM DESTAQUE (APENAS COM isSponsored === true) -->
       <div class="space-y-3 bg-zebu-dark text-white p-4 md:p-6 rounded-3xl border border-neutral-800 shadow-md">
         <div class="flex items-center justify-between">
           <div>
@@ -204,14 +207,14 @@
         <div id="sponsoredList" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3"></div>
       </div>
 
-      <!-- EQUIPAMENTOS DE TRABALHO -->
+      <!-- EQUIPAMENTOS SELECIONADOS NA HOME -->
       <div class="space-y-3 bg-white dark:bg-zebu-darkCard p-4 md:p-5 rounded-3xl border border-zebu-grayBorder dark:border-neutral-800 shadow-sm">
         <div class="flex items-center justify-between">
           <div>
             <h2 class="text-base font-black flex items-center gap-2">
-              <span class="w-4 h-1 bg-zebu-lime rounded-full"></span> Equipamentos de Trabalho
+              <span class="w-4 h-1 bg-zebu-lime rounded-full"></span> Equipamentos em Destaque
             </h2>
-            <p class="text-[10px] md:text-xs text-neutral-500">Materiais recomendados organizados por profissão</p>
+            <p class="text-[10px] md:text-xs text-neutral-500">Materiais e ferramentas selecionadas</p>
           </div>
           <button onclick="showSection('blog')" class="text-xs font-bold hover:underline flex items-center gap-1">Ver todos <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></button>
         </div>
@@ -236,15 +239,15 @@
       <div id="allJobsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3"></div>
     </section>
 
-    <!-- SEÇÃO: EQUIPAMENTOS DE TRABALHO -->
+    <!-- SEÇÃO: EQUIPAMENTOS (TÍTULO SIMPLES E DIRETO) -->
     <section id="blogSection" class="hidden space-y-5">
       <div class="bg-zebu-dark text-white p-5 md:p-6 rounded-3xl border border-neutral-800 flex flex-col md:flex-row justify-between items-start md:items-center gap-3">
         <div>
           <span class="text-[10px] font-black uppercase text-zebu-lime tracking-widest block">Catálogo Oficial</span>
           <h2 class="text-xl md:text-2xl font-black flex items-center gap-2">
-            <i data-lucide="wrench" class="w-5 h-5 text-zebu-lime"></i> Equipamentos por Profissão
+            <i data-lucide="wrench" class="w-5 h-5 text-zebu-lime"></i> Equipamentos
           </h2>
-          <p class="text-xs text-neutral-400 mt-0.5">Ferramentas e materiais de trabalho separados por categoria de serviço.</p>
+          <p class="text-xs text-neutral-400 mt-0.5">Ferramentas e materiais de trabalho com links diretos oficiais.</p>
         </div>
         <button id="adminPostBtnBlog" onclick="openCreateProductModal()" class="hidden px-4 py-2 bg-zebu-lime text-black font-black text-xs rounded-xl hover:bg-zebu-limeHover shadow">
           + Cadastrar Equipamento
@@ -318,7 +321,7 @@
                 <img id="proAvatarPreview" src="" class="w-full h-full object-cover hidden">
               </div>
               <div class="flex-1">
-                <label class="block text-[11px] font-bold uppercase text-neutral-700 dark:text-neutral-200 mb-0.5">Foto de Perfil ou Logo *</label>
+                <label class="block text-[11px] font-bold uppercase text-neutral-700 dark:text-neutral-200 mb-0.5">Sua Foto de Perfil ou Logo *</label>
                 <input type="file" id="proAvatarInput" accept="image/*" onchange="handleAvatarUpload(event)" class="block w-full text-[10px] text-neutral-500 file:mr-2 file:py-1 file:px-2.5 file:rounded-lg file:border-0 file:text-[10px] file:font-bold file:bg-zebu-dark file:text-zebu-lime">
               </div>
             </div>
@@ -337,14 +340,14 @@
             <!-- SUGESTÕES DE FUNÇÕES RELACIONADAS -->
             <div id="relatedFunctionsContainer" class="hidden p-3 rounded-2xl bg-zebu-limeSoft/50 dark:bg-neutral-800/80 border border-zebu-lime/40 space-y-2">
               <label class="block text-[11px] font-black uppercase text-neutral-800 dark:text-neutral-200 flex items-center gap-1">
-                <i data-lucide="sparkles" class="w-3.5 h-3.5 text-zebu-lime"></i> Especialidades populares (toque para adicionar aos serviços):
+                <i data-lucide="sparkles" class="w-3.5 h-3.5 text-zebu-lime"></i> Especialidades populares (toque para adicionar aos seus serviços):
               </label>
               <div id="relatedFunctionsPills" class="flex flex-wrap gap-1.5"></div>
             </div>
 
             <div>
               <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Serviços Oferecidos (separados por vírgula) *</label>
-              <input type="text" id="proServices" required placeholder="Ex: Faxina pesada, Limpeza pós-obra, Passadoria" class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs">
+              <input type="text" id="proServices" required placeholder="Ex: Troca de chuveiro, Instalação de tomadas, Pequenos reparos" class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs">
             </div>
 
             <div>
@@ -463,27 +466,27 @@
     </div>
   </footer>
 
-  <!-- ================= MODAL DO CHAT NO SITE (DESIGN WHATSAPP/TELEGRAM) ================= -->
+  <!-- ================= MODAL DO CHAT COM DEGRADÊ VERDE E CABEÇALHO CORRIGIDO ================= -->
   <div id="inAppChatModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-2 sm:p-4">
-    <div class="bg-[#efeae2] dark:bg-[#0b141a] w-full max-w-md rounded-3xl shadow-2xl border border-neutral-300 dark:border-neutral-800 flex flex-col h-[600px] max-h-[92vh] overflow-hidden text-xs relative">
+    <div class="chat-bg w-full max-w-md rounded-3xl shadow-2xl border border-neutral-300 dark:border-neutral-800 flex flex-col h-[600px] max-h-[92vh] overflow-hidden text-xs relative">
       
-      <!-- CABEÇALHO DO CHAT -->
-      <div class="p-3 bg-[#f0f2f5] dark:bg-[#202c33] border-b border-neutral-300 dark:border-neutral-700 flex items-center justify-between shadow-sm shrink-0">
+      <!-- CABEÇALHO DO CHAT (MOSTRA O NOME E CATEGORIA REAL DO PROFISSIONAL) -->
+      <div class="p-3.5 bg-white/90 dark:bg-black/90 backdrop-blur-md border-b border-neutral-200 dark:border-neutral-800 flex items-center justify-between shadow-sm shrink-0">
         <div class="flex items-center gap-2.5">
           <button onclick="closeModal('inAppChatModal')" class="p-1 -ml-1 text-neutral-600 dark:text-neutral-300 hover:text-black dark:hover:text-white">
             <i data-lucide="arrow-left" class="w-5 h-5"></i>
           </button>
           
           <div class="relative">
-            <div id="chatHeaderAvatar" class="w-10 h-10 rounded-full bg-zebu-lime text-black flex items-center justify-center font-bold text-base shrink-0 overflow-hidden shadow">
-              🐮
+            <div id="chatHeaderAvatar" class="w-10 h-10 rounded-2xl bg-zebu-dark text-zebu-lime flex items-center justify-center font-bold text-base shrink-0 overflow-hidden shadow border border-neutral-200 dark:border-neutral-700">
+              P
             </div>
-            <span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-500 border-2 border-white dark:border-[#202c33]"></span>
+            <span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-500 border-2 border-white dark:border-black"></span>
           </div>
 
           <div>
-            <h4 id="chatTargetName" class="font-bold text-sm leading-tight text-neutral-900 dark:text-white truncate max-w-[200px]">Atendimento</h4>
-            <div class="flex items-center gap-1 text-[11px] text-emerald-600 dark:text-emerald-400 font-medium">
+            <h4 id="chatTargetName" class="font-black text-xs md:text-sm leading-tight text-neutral-900 dark:text-white truncate max-w-[200px]">Profissional</h4>
+            <div class="flex items-center gap-1 text-[10px] text-emerald-600 dark:text-emerald-400 font-medium">
               <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
               <span id="chatTargetSubtitle">online agora</span>
             </div>
@@ -495,23 +498,23 @@
         </button>
       </div>
 
-      <!-- ÁREA DE MENSAGENS -->
-      <div id="chatMessagesContainer" class="flex-1 p-3 overflow-y-auto space-y-2.5 chat-pattern"></div>
+      <!-- ÁREA DE MENSAGENS COM DEGRADÊ VERDE -->
+      <div id="chatMessagesContainer" class="flex-1 p-3.5 overflow-y-auto space-y-2.5"></div>
 
-      <!-- DAR TOQUE NO WHATSAPP -->
-      <div id="chatWhatsappAlertBox" class="hidden px-3 py-1.5 bg-emerald-100 dark:bg-emerald-950/60 border-t border-emerald-300 dark:border-emerald-800 flex items-center justify-between shrink-0">
-        <span class="text-[10px] text-emerald-900 dark:text-emerald-200 font-bold">Avisar no WhatsApp que deixou proposta?</span>
+      <!-- BOTÃO DE DAR TOQUE NO WHATSAPP -->
+      <div id="chatWhatsappAlertBox" class="hidden px-3.5 py-1.5 bg-emerald-100/90 dark:bg-emerald-950/80 border-t border-emerald-300 dark:border-emerald-800 flex items-center justify-between shrink-0">
+        <span class="text-[10px] text-emerald-950 dark:text-emerald-200 font-bold">Avisar no WhatsApp sobre a mensagem?</span>
         <button id="btnNotifyWhatsappDirect" class="px-2.5 py-1 bg-[#25D366] hover:bg-[#1ebd5b] text-black font-black text-[10px] rounded-lg flex items-center gap-1 shadow">
           <i data-lucide="send" class="w-3 h-3"></i> Dar Toque
         </button>
       </div>
 
       <!-- BARRA DE DIGITAÇÃO -->
-      <form id="chatSendForm" onsubmit="sendChatMessage(event)" class="p-2 bg-[#f0f2f5] dark:bg-[#202c33] border-t border-neutral-300 dark:border-neutral-700 flex items-center gap-2 shrink-0">
-        <div class="flex-1 flex items-center bg-white dark:bg-[#2a3942] rounded-full px-3.5 py-1.5 border border-neutral-200 dark:border-neutral-600 shadow-inner">
-          <input type="text" id="chatMessageInput" required placeholder="Mensagem..." class="w-full bg-transparent text-xs text-neutral-900 dark:text-white outline-none placeholder-neutral-400">
+      <form id="chatSendForm" onsubmit="sendChatMessage(event)" class="p-2.5 bg-white/95 dark:bg-black/95 border-t border-neutral-200 dark:border-neutral-800 flex items-center gap-2 shrink-0">
+        <div class="flex-1 flex items-center bg-neutral-100 dark:bg-neutral-900 rounded-full px-4 py-2 border border-neutral-200 dark:border-neutral-700 shadow-inner">
+          <input type="text" id="chatMessageInput" required placeholder="Digite sua mensagem ou proposta..." class="w-full bg-transparent text-xs text-neutral-900 dark:text-white outline-none placeholder-neutral-400">
         </div>
-        <button type="submit" class="w-10 h-10 rounded-full bg-[#00a884] hover:bg-[#008f6f] text-white flex items-center justify-center shadow-md shrink-0 transition-transform active:scale-90">
+        <button type="submit" class="w-10 h-10 rounded-full bg-zebu-lime hover:bg-zebu-limeHover text-black flex items-center justify-center shadow-md shrink-0 transition-transform active:scale-90">
           <i data-lucide="send" class="w-4 h-4 ml-0.5"></i>
         </button>
       </form>
@@ -578,6 +581,15 @@
             <img id="prodImagePreview" src="" class="w-16 h-16 object-cover rounded-xl border">
           </div>
         </div>
+
+        <!-- ESCOLHER SE O PRODUTO VAI PARA A HOME -->
+        <div class="flex items-center gap-2 p-2.5 bg-zebu-limeSoft dark:bg-neutral-800 rounded-xl border border-zebu-lime">
+          <input type="checkbox" id="prodFeaturedOnHome" class="w-4 h-4 rounded text-zebu-lime focus:ring-0">
+          <label for="prodFeaturedOnHome" class="text-xs font-bold text-black dark:text-white cursor-pointer">
+            ⭐ Exibir este produto na Página Inicial (Home)
+          </label>
+        </div>
+
         <button type="submit" id="btnSaveProduct" class="w-full py-3 bg-zebu-lime text-black font-black text-xs rounded-xl hover:bg-zebu-limeHover">Salvar Produto</button>
       </form>
     </div>
@@ -591,7 +603,7 @@
       <div class="space-y-2.5 leading-relaxed text-neutral-700 dark:text-neutral-300">
         <p><strong>1. Coleta de Dados:</strong> O Zebu Freela coleta informações cadastrais apenas para aproximar clientes e autônomos em Uberaba - MG, nos termos da Lei Geral de Proteção de Dados (Lei nº 13.709/2018 - LGPD).</p>
         <p><strong>2. Google AdSense & Cookies:</strong> Terceiros, incluindo o Google, utilizam cookies (como o cookie DART) para veicular anúncios com base no histórico de navegação.</p>
-        <p><strong>3. Links de Afiliados:</strong> A seção Equipamentos de Trabalho pode conter links comissionados para varejistas autorizados (Shopee, Mercado Livre, Amazon).</p>
+        <p><strong>3. Links de Afiliados:</strong> A seção Equipamentos pode conter links comissionados para varejistas autorizados (Shopee, Mercado Livre, Amazon).</p>
       </div>
       <button onclick="closeModal('privacyModal')" class="w-full py-2.5 bg-zebu-lime text-black font-black rounded-xl">Entendi e Concordo</button>
     </div>
@@ -607,13 +619,15 @@
     </div>
   </div>
 
-  <!-- MODAL AUTH -->
-  <div id="authModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-3">
+  <!-- MODAL AUTH COM PRIORIDADE MÁXIMA (Z-70 PARA FICAR NA FRENTE DE TUDO) -->
+  <div id="authModal" class="fixed inset-0 z-[70] bg-black/85 backdrop-blur-sm hidden items-center justify-center p-3">
     <div class="bg-white dark:bg-zebu-darkCard w-full max-w-sm rounded-3xl p-5 shadow-2xl border border-neutral-200 dark:border-neutral-800 relative text-xs">
       <button onclick="closeModal('authModal')" class="absolute right-3.5 top-3.5 text-neutral-400"><i data-lucide="x" class="w-5 h-5"></i></button>
-      <div id="authPromptMessage" class="hidden mb-3 p-2.5 rounded-xl bg-zebu-limeSoft text-black font-bold text-[11px]">
-        👋 Entre ou cadastre-se grátis para conversar pelo chat do site!
+      
+      <div id="authPromptMessage" class="hidden mb-3 p-3 rounded-2xl bg-zebu-lime text-black font-black text-xs shadow-md">
+        👋 Entre ou cadastre-se grátis para conversar com o profissional pelo chat do site!
       </div>
+
       <div class="flex border-b border-neutral-200 dark:border-neutral-700 mb-4">
         <button id="tabLogin" onclick="switchAuthTab('login')" class="flex-1 pb-2 font-black text-xs border-b-2 border-zebu-lime text-black dark:text-white">Entrar</button>
         <button id="tabRegister" onclick="switchAuthTab('register')" class="flex-1 pb-2 font-bold text-xs border-b-2 border-transparent text-neutral-400">Criar Conta</button>
@@ -662,7 +676,7 @@
     </div>
   </div>
 
-  <!-- MODAL: PERFIL DO PROFISSIONAL (ESTILO GETNINJAS) -->
+  <!-- MODAL: PERFIL DO PROFISSIONAL -->
   <div id="profileModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-3">
     <div class="bg-white dark:bg-zebu-darkCard w-full max-w-lg rounded-3xl shadow-2xl border border-neutral-200 dark:border-neutral-800 relative max-h-[92vh] flex flex-col overflow-hidden text-xs">
       <div class="p-4 border-b border-neutral-200 dark:border-neutral-800 flex justify-between items-start">
@@ -865,7 +879,7 @@
 
     const CATEGORIES = CATEGORIES_DATA.map(c => c.name);
 
-    // FUNÇÕES E ESPECIALIDADES ESTILO GETNINJAS
+    // FUNÇÕES RELACIONADAS
     const RELATED_FUNCTIONS = {
       "Marido de Aluguel (Pequenos Reparos)": ["Troca de Chuveiro", "Instalação de Varal", "Fixação de TV / Suporte", "Troca de Torneira", "Pequenos Reparos Elétricos", "Fechaduras", "Instalação de Cortinas"],
       "Adestrador de Cães": ["Comportamento Canino", "Adestramento Básico", "Passeador / Dog Walker", "Socialização de Filhotes", "Hospedagem Familiar"],
@@ -1061,7 +1075,7 @@
     };
 
     // -------------------------------------------------------------
-    // ATENDIMENTO COM A VAQUINHA 🐮 NO SITE
+    // CHAT (CORRIGIDO: NOME REAL DO PROFISSIONAL E TRAVA DE LOGIN)
     // -------------------------------------------------------------
     window.openSupportChat = function() {
       if (!currentUser) {
@@ -1072,6 +1086,7 @@
       openInAppChat({
         uid: "ADMIN_SUPPORT",
         name: "🐮 Suporte Zebu Freela",
+        subtitle: "Atendimento da Plataforma",
         isSupport: true
       });
     };
@@ -1099,6 +1114,7 @@
             openInAppChat({
               uid: c.userUid,
               name: c.userName || "Usuário",
+              subtitle: "Atendimento",
               isSupport: true
             });
           };
@@ -1120,30 +1136,48 @@
       }
     };
 
+    // CLIQUE NO PERFIL DO PROFISSIONAL (TRAVA DE LOGIN PRIORITÁRIA)
     window.handleOpenChatClick = function() {
       if (!currentUser) {
+        closeModal('profileModal');
         document.getElementById('authPromptMessage').classList.remove('hidden');
         openModal('authModal', 'login');
         return;
       }
       if (!currentViewingPro) return;
+
       closeModal('profileModal');
       openInAppChat({
         uid: currentViewingPro.authorUid || currentViewingPro.id,
         name: currentViewingPro.name,
-        phone: currentViewingPro.whatsappNumber
+        category: currentViewingPro.category,
+        avatar: currentViewingPro.avatar,
+        phone: currentViewingPro.whatsappNumber,
+        isSupport: false
       });
     };
 
     window.openInAppChat = function(recipient) {
       if (!currentUser) {
+        document.getElementById('authPromptMessage').classList.remove('hidden');
         openModal('authModal', 'login');
         return;
       }
       currentChatRecipient = recipient;
-      document.getElementById('chatTargetName').textContent = recipient.name;
-      document.getElementById('chatTargetSubtitle').textContent = recipient.isSupport ? "Atendimento Oficial do Site" : "Chat Seguro no Site";
       
+      // Topo do chat com nome e avatar real do profissional
+      document.getElementById('chatTargetName').textContent = recipient.name;
+      document.getElementById('chatTargetSubtitle').textContent = recipient.category ? `${recipient.category} • online agora` : (recipient.subtitle || "online agora");
+      
+      const avatarBox = document.getElementById('chatHeaderAvatar');
+      if (recipient.isSupport) {
+        avatarBox.innerHTML = `🐮`;
+      } else if (recipient.avatar) {
+        avatarBox.innerHTML = `<img src="${recipient.avatar}" class="w-full h-full object-cover">`;
+      } else {
+        avatarBox.innerHTML = `${recipient.name.charAt(0).toUpperCase()}`;
+      }
+
       const alertBox = document.getElementById('chatWhatsappAlertBox');
       const btnNotify = document.getElementById('btnNotifyWhatsappDirect');
       if (recipient.phone && !recipient.isSupport) {
@@ -1185,8 +1219,8 @@
         if (snapshot.empty) {
           messagesBox.innerHTML = `
             <div class="text-center py-6 space-y-1">
-              <p class="text-xs font-bold text-neutral-600 dark:text-neutral-300">Olá! 🐮 Precisa de ajuda com o Zebu Freela?</p>
-              <p class="text-[10px] text-neutral-400">Tire suas dúvidas ou combine serviços diretamente pelo chat!</p>
+              <p class="text-xs font-bold text-neutral-700 dark:text-neutral-200">Inicie a conversa com ${currentChatRecipient.name}!</p>
+              <p class="text-[10px] text-neutral-500">Tire dúvidas sobre o serviço, combine prazos e orçamentos.</p>
             </div>
           `;
           return;
@@ -1196,7 +1230,6 @@
           const m = docSnap.data();
           const isMe = m.senderUid === currentUser.uid;
           
-          // Formata horário de envio estilo WhatsApp
           let timeStr = "";
           if (m.createdAt && m.createdAt.toDate) {
             const d = m.createdAt.toDate();
@@ -1208,11 +1241,11 @@
           const bubble = document.createElement('div');
           bubble.className = `flex flex-col ${isMe ? 'items-end' : 'items-start'}`;
           bubble.innerHTML = `
-            <div class="max-w-[82%] px-3 py-2 rounded-2xl text-xs leading-relaxed shadow-sm relative ${isMe ? 'bg-[#d9fdd3] dark:bg-[#005c4b] text-neutral-900 dark:text-neutral-100 rounded-tr-none' : 'bg-white dark:bg-[#202c33] text-neutral-900 dark:text-neutral-100 rounded-tl-none border border-neutral-200 dark:border-neutral-700'}">
-              <p class="pr-12">${m.text}</p>
-              <div class="absolute bottom-1 right-2 flex items-center gap-1 text-[9px] text-neutral-500 dark:text-neutral-400 font-medium">
+            <div class="max-w-[85%] px-3.5 py-2.5 rounded-2xl text-xs leading-relaxed shadow-sm relative ${isMe ? 'bg-white text-black border border-neutral-200 font-medium' : 'bg-white text-black border border-neutral-200'}">
+              <p class="pr-10 text-neutral-900">${m.text}</p>
+              <div class="flex items-center justify-end gap-1 text-[9px] text-neutral-400 font-medium mt-1">
                 <span>${timeStr}</span>
-                ${isMe ? '<span class="text-sky-500 font-black">✓✓</span>' : ''}
+                ${isMe ? '<span class="text-emerald-600 font-black">✓✓</span>' : ''}
               </div>
             </div>
           `;
@@ -1266,7 +1299,7 @@
     };
 
     // -------------------------------------------------------------
-    // GESTÃO DE EQUIPAMENTOS (ORGANIZADOS POR PROFISSÃO)
+    // GESTÃO DE EQUIPAMENTOS (COM ESCOLHA DE APARECER NA HOME)
     // -------------------------------------------------------------
     window.openCreateProductModal = function() {
       editingProductId = null;
@@ -1274,6 +1307,7 @@
       document.getElementById('adminProductForm').reset();
       document.getElementById('magicLinkInput').value = '';
       document.getElementById('prodImageUrlDirect').value = '';
+      document.getElementById('prodFeaturedOnHome').checked = false;
       tempProductImage = "";
       document.getElementById('prodImagePreviewContainer').classList.add('hidden');
       openModal('adminProductModal');
@@ -1291,6 +1325,7 @@
       document.getElementById('prodPrice').value = prod.price || "";
       document.getElementById('prodAffiliateLink').value = prod.link || "";
       document.getElementById('prodDescription').value = prod.description || "";
+      document.getElementById('prodFeaturedOnHome').checked = !!prod.isFeaturedOnHome;
       
       tempProductImage = prod.image || "";
       if (tempProductImage) {
@@ -1332,6 +1367,7 @@
         link: document.getElementById('prodAffiliateLink').value.trim(),
         description: document.getElementById('prodDescription').value.trim(),
         image: finalImage,
+        isFeaturedOnHome: document.getElementById('prodFeaturedOnHome').checked,
         updatedAt: serverTimestamp()
       };
 
@@ -1439,15 +1475,20 @@
       lucide.createIcons();
     }
 
+    // HOME: APENAS PRODUTOS MARCADOS COMO isFeaturedOnHome
     function renderHomeProductsRow() {
       const container = document.getElementById('homeProductsRow');
       if (!container) return;
       container.innerHTML = '';
-      if (!allProducts.length) {
-        container.innerHTML = '<p class="col-span-full text-center text-xs text-neutral-400 py-3">Em breve novos equipamentos de trabalho!</p>';
+      
+      const homeFeatured = allProducts.filter(p => p.isFeaturedOnHome === true);
+
+      if (!homeFeatured.length) {
+        container.innerHTML = '<p class="col-span-full text-center text-xs text-neutral-400 py-3">Nenhum equipamento em destaque na página inicial.</p>';
         return;
       }
-      allProducts.slice(0, 4).forEach(p => container.appendChild(createProductCard(p)));
+
+      homeFeatured.slice(0, 4).forEach(p => container.appendChild(createProductCard(p)));
       lucide.createIcons();
     }
 
@@ -1769,7 +1810,6 @@
       lucide.createIcons();
     }
 
-    // CARD DE PROFISSIONAL ESTILO GETNINJAS
     function createFeaturedProCard(p) {
       const card = document.createElement('div');
       card.className = `bg-white dark:bg-zebu-darkCard text-neutral-900 dark:text-white rounded-3xl p-4 shadow-sm hover:shadow-md transition-all flex flex-col justify-between border ${p.isSponsored ? 'border-2 border-amber-400' : 'border-zebu-grayBorder dark:border-neutral-800'}`;
@@ -2025,7 +2065,7 @@
           </div>
         </div>
         <div class="mt-3 pt-2.5 border-t border-neutral-100 dark:border-neutral-800 flex justify-end">
-          <button onclick="openInAppChat({ uid: '${j.authorUid}', name: '${j.authorName}' })" class="px-3.5 py-1.5 bg-black dark:bg-white text-white dark:text-black font-black text-xs rounded-xl shadow flex items-center gap-1.5 hover:opacity-85">
+          <button onclick="openInAppChat({ uid: '${j.authorUid}', name: '${j.authorName}', subtitle: 'Contratante da Vaga' })" class="px-3.5 py-1.5 bg-black dark:bg-white text-white dark:text-black font-black text-xs rounded-xl shadow flex items-center gap-1.5 hover:opacity-85">
             <i data-lucide="message-square" class="w-3.5 h-3.5 text-zebu-lime"></i> Falar com o Contratante
           </button>
         </div>
