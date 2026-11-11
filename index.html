@@ -54,7 +54,7 @@
         <button onclick="showSection('home')" id="nav-home" class="text-zebu-lime flex items-center gap-1.5 pb-1 border-b-2 border-zebu-lime">
           <i data-lucide="home" class="w-4 h-4"></i> Início
         </button>
-        <button onclick="showSection('explore')" id="nav-explore" class="hover:text-zebu-lime transition flex items-center gap-1.5 pb-1">
+        <button onclick="openCategoryShowcase('reformas')" id="nav-explore" class="hover:text-zebu-lime transition flex items-center gap-1.5 pb-1">
           <i data-lucide="layout-grid" class="w-4 h-4"></i> Profissionais
         </button>
         <button onclick="showSection('jobs')" id="nav-jobs" class="hover:text-zebu-lime transition flex items-center gap-1.5 pb-1">
@@ -118,6 +118,7 @@
             Encontre profissionais de confiança ou anuncie seu trabalho em Uberaba.
           </p>
 
+          <!-- Barra de Busca -->
           <div class="pt-2 flex items-center bg-white dark:bg-black rounded-full border border-neutral-300 dark:border-neutral-700 shadow-sm p-1">
             <i data-lucide="search" class="w-4 h-4 ml-3 text-neutral-400 shrink-0"></i>
             <input type="text" id="homeSearchInput" placeholder="Buscar serviços, profissionais ou equipamentos..." 
@@ -129,7 +130,7 @@
           </div>
 
           <div class="pt-3 grid grid-cols-2 gap-2.5">
-            <div onclick="showSection('explore')" class="cursor-pointer bg-zebu-graySoft dark:bg-neutral-900 border border-zebu-grayBorder dark:border-neutral-800 p-3 rounded-2xl flex items-center justify-between hover:border-zebu-lime transition shadow-sm">
+            <div onclick="openCategoryShowcase('reformas')" class="cursor-pointer bg-zebu-graySoft dark:bg-neutral-900 border border-zebu-grayBorder dark:border-neutral-800 p-3 rounded-2xl flex items-center justify-between hover:border-zebu-lime transition shadow-sm">
               <div class="flex items-center gap-2.5">
                 <div class="w-9 h-9 rounded-xl bg-zebu-limeSoft text-black flex items-center justify-center font-bold shrink-0">
                   <i data-lucide="users" class="w-4 h-4"></i>
@@ -168,7 +169,7 @@
           <h2 class="text-base font-black flex items-center gap-2">
             <span class="w-4 h-1 bg-zebu-lime rounded-full"></span> Principais Áreas de Serviços
           </h2>
-          <button onclick="showSection('explore')" class="text-xs font-bold hover:underline flex items-center gap-1">Ver todas <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></button>
+          <button onclick="openCategoryShowcase('reformas')" class="text-xs font-bold hover:underline flex items-center gap-1">Ver todas <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></button>
         </div>
         <div id="macroCategoriesGrid" class="grid grid-cols-2 sm:grid-cols-5 gap-2.5"></div>
       </div>
@@ -179,7 +180,7 @@
           <div>
             <span class="text-[10px] font-black uppercase text-zebu-limeHover dark:text-zebu-lime tracking-wider block">Mural de Vagas & Bicos</span>
             <h2 class="text-base md:text-lg font-black flex items-center gap-2">
-              <i data-lucide="briefcase" class="w-4 h-4 text-zebu-limeHover dark:text-zebu-lime"></i> Oportunidades em Uberaba
+              <i data-lucide="briefcase" class="w-4 h-4 text-zebu-limeHover dark:text-zebu-lime"></i> Oportunidades em Aberto
             </h2>
           </div>
           <button onclick="openModal('postJobModal')" class="px-3 py-1.5 bg-zebu-dark text-zebu-lime hover:brightness-110 font-black text-xs rounded-xl shadow-sm flex items-center gap-1">
@@ -196,26 +197,25 @@
             <h2 class="text-base md:text-lg font-black flex items-center gap-2">
               <span class="w-4 h-1 bg-zebu-lime rounded-full"></span> Profissionais em destaque
             </h2>
-            <p class="text-[10px] md:text-xs text-neutral-400">Deslize para o lado para ver mais profissionais recomendados</p>
+            <p class="text-[10px] md:text-xs text-neutral-400">Deslize para ver profissionais recomendados em Uberaba</p>
           </div>
-          <button onclick="showSection('explore')" class="text-xs font-bold px-3 py-1 rounded-full border border-neutral-700 hover:border-zebu-lime transition flex items-center gap-1">Ver todos <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></button>
+          <button onclick="openCategoryShowcase('reformas')" class="text-xs font-bold px-3 py-1 rounded-full border border-neutral-700 hover:border-zebu-lime transition flex items-center gap-1">Ver todos <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></button>
         </div>
-        <!-- CARROSSEL DESLIZANTE COM SNAP E SCROLL SUAVE -->
         <div id="sponsoredList" class="flex gap-3.5 overflow-x-auto no-scrollbar scroll-smooth py-1 snap-x snap-mandatory"></div>
       </div>
 
-      <!-- EQUIPAMENTOS EM DESTAQUE NA HOME -->
+      <!-- EQUIPAMENTOS EM DESTAQUE NA HOME (CARROSSEL AUTOMÁTICO DESLIZANTE) -->
       <div class="space-y-3 bg-white dark:bg-zebu-darkCard p-4 md:p-5 rounded-3xl border border-zebu-grayBorder dark:border-neutral-800 shadow-sm">
         <div class="flex items-center justify-between">
           <div>
             <h2 class="text-base font-black flex items-center gap-2">
               <span class="w-4 h-1 bg-zebu-lime rounded-full"></span> Equipamentos de Trabalho
             </h2>
-            <p class="text-[10px] md:text-xs text-neutral-500">Ferramentas recomendadas</p>
+            <p class="text-[10px] md:text-xs text-neutral-500">Ferramentas recomendadas (deslize para o lado)</p>
           </div>
-          <button onclick="showSection('blog')" class="text-xs font-bold hover:underline flex items-center gap-1">Ver catálogo completo <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></button>
+          <button onclick="showSection('blog')" class="text-xs font-bold hover:underline flex items-center gap-1">Ver todos <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></button>
         </div>
-        <div id="homeProductsRow" class="grid grid-cols-2 sm:grid-cols-4 gap-2.5"></div>
+        <div id="homeProductsRow" class="flex gap-3 overflow-x-auto no-scrollbar scroll-smooth py-1 snap-x snap-mandatory"></div>
       </div>
     </section>
 
@@ -255,29 +255,81 @@
       <div id="productsByAreaContainer" class="space-y-6"></div>
     </section>
 
-    <!-- EXPLORAR PROFISSIONAIS (ESTILO GETNINJAS) -->
-    <section id="exploreSection" class="hidden space-y-4">
-      <div class="bg-white dark:bg-zebu-darkCard p-4 md:p-5 rounded-3xl shadow-sm border border-zebu-grayBorder dark:border-neutral-800 space-y-3">
+    <!-- ================= VITRINE TEMÁTICA DE PROFISSIONAIS (FIM DA LISTA SEM GRAÇA!) ================= -->
+    <section id="exploreSection" class="hidden space-y-5">
+      
+      <!-- HERO DINÂMICO DA ÁREA ESCOLHIDA (BANNER ESCURO COM NEON) -->
+      <div id="showcaseHero" class="bg-zebu-dark text-white p-5 md:p-7 rounded-3xl border border-neutral-800 shadow-md relative overflow-hidden">
+        <div class="absolute -top-12 -right-12 w-48 h-48 bg-zebu-lime/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="relative z-10 flex items-center justify-between gap-3">
+          <div class="space-y-1">
+            <span id="showcaseCategoryTag" class="text-[10px] font-black uppercase text-zebu-lime tracking-widest block">Profissionais em Uberaba</span>
+            <h2 id="showcaseTitle" class="text-xl md:text-3xl font-black flex items-center gap-2">
+              <span id="showcaseIconBox" class="w-8 h-8 rounded-xl bg-zebu-limeSoft text-black flex items-center justify-center font-bold text-sm">🔨</span>
+              <span id="showcaseName">Reformas & Marido de Aluguel</span>
+            </h2>
+            <p id="showcaseSubtitle" class="text-xs text-neutral-400 max-w-lg">Especialistas e autônomos prontos para atender seu chamado no seu bairro.</p>
+          </div>
+          <button onclick="handleAdvertiseClick()" class="hidden sm:flex px-3.5 py-2 bg-zebu-lime hover:bg-zebu-limeHover text-black font-black text-xs rounded-xl shadow shrink-0">
+            Anunciar nesta Área
+          </button>
+        </div>
+      </div>
+
+      <!-- PÍLULAS DESLIZANTES COM O POLEGAR DAS PROFISSÕES ESPECÍFICAS -->
+      <div class="space-y-1.5">
+        <div id="showcasePillsContainer" class="flex gap-2 overflow-x-auto no-scrollbar py-1"></div>
+      </div>
+
+      <!-- BARRA DE BUSCA E FILTROS RÁPIDOS -->
+      <div class="bg-white dark:bg-zebu-darkCard p-3.5 md:p-4 rounded-2xl shadow-sm border border-zebu-grayBorder dark:border-neutral-800 space-y-2.5">
         <div class="relative">
           <i data-lucide="search" class="w-4 h-4 absolute left-3.5 top-3 text-neutral-400"></i>
-          <input type="text" id="searchInput" placeholder="Buscar por serviço, profissão, nome ou bairro..." 
-            class="w-full pl-10 pr-3 py-2 rounded-2xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs md:text-sm focus:ring-2 focus:ring-zebu-lime outline-none"
+          <input type="text" id="searchInput" placeholder="Buscar por serviço, nome ou bairro..." 
+            class="w-full pl-10 pr-3 py-2 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs md:text-sm focus:ring-2 focus:ring-zebu-lime outline-none"
             oninput="applyFilters()">
         </div>
-        <div class="grid grid-cols-1 sm:grid-cols-4 gap-2">
-          <select id="filterMacro" onchange="handleMacroFilterChange()" class="text-xs py-2 px-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 font-bold"></select>
-          <select id="filterCategory" onchange="applyFilters()" class="text-xs py-2 px-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800"></select>
-          <select id="filterNeighborhood" onchange="applyFilters()" class="text-xs py-2 px-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800"></select>
-          <select id="filterAttendance" onchange="applyFilters()" class="text-xs py-2 px-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800">
-            <option value="">Atendimento (Todos)</option>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+          <!-- SELETOR DE BAIRROS COM OPÇÃO DE DIGITAR -->
+          <div>
+            <select id="filterNeighborhood" onchange="handleNeighborhoodFilterChange()" class="w-full text-xs py-2 px-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 font-medium"></select>
+            <input type="text" id="filterCustomNeighborhoodInput" placeholder="Digite seu bairro em Uberaba..." oninput="applyFilters()" class="hidden mt-1.5 w-full text-xs p-2 rounded-xl border border-zebu-lime bg-white dark:bg-neutral-900 outline-none">
+          </div>
+
+          <!-- LOCAL DE ATENDIMENTO -->
+          <select id="filterAttendance" onchange="applyFilters()" class="text-xs py-2 px-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 font-medium">
+            <option value="">Atendimento: Todos</option>
             <option value="domicilio">Em Domicílio</option>
             <option value="local">Local Próprio</option>
           </select>
+
+          <!-- PREÇO -->
+          <select id="filterPrice" onchange="applyFilters()" class="text-xs py-2 px-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 font-medium">
+            <option value="">Preço: Qualquer modelo</option>
+            <option value="quote">Apenas Sob Orçamento</option>
+            <option value="fixed">Com valor tabelado</option>
+          </select>
         </div>
       </div>
+
+      <!-- LISTA DE PROFISSIONAIS EM CARDS MODERNOS -->
       <div class="space-y-3">
-        <span id="resultsCount" class="text-xs text-neutral-500 font-bold block">Carregando profissionais...</span>
+        <div class="flex items-center justify-between text-xs text-neutral-500 font-bold px-1">
+          <span id="resultsCount">Carregando profissionais...</span>
+        </div>
         <div id="resultsGrid" class="grid grid-cols-1 md:grid-cols-2 gap-3.5"></div>
+      </div>
+
+      <!-- BANNER DE CONVITE NO FIM DA VITRINE -->
+      <div class="bg-gradient-to-r from-neutral-900 to-black p-5 rounded-3xl border border-zebu-lime/40 flex flex-col sm:flex-row items-center justify-between gap-3 text-white text-center sm:text-left">
+        <div>
+          <h4 class="font-black text-sm">Trabalha com serviços em Uberaba?</h4>
+          <p class="text-xs text-neutral-400 mt-0.5">Cadastre seu anúncio grátis e apareça para clientes que buscam no seu bairro.</p>
+        </div>
+        <button onclick="handleAdvertiseClick()" class="px-5 py-2.5 bg-zebu-lime hover:bg-zebu-limeHover text-black font-black text-xs rounded-xl shadow shrink-0">
+          Cadastrar Meu Anúncio Grátis
+        </button>
       </div>
     </section>
 
@@ -293,7 +345,7 @@
             <button onclick="startNewAdForm()" class="px-3.5 py-2 bg-zebu-lime hover:bg-zebu-limeHover text-black font-black text-xs rounded-xl shadow flex items-center gap-1.5 transition">
               <i data-lucide="plus-circle" class="w-4 h-4"></i> + Criar Novo Anúncio
             </button>
-            <button onclick="deleteMyUserAccount()" class="px-3 py-2 bg-rose-100 hover:bg-rose-200 text-rose-700 dark:bg-rose-950 dark:text-rose-300 font-bold text-xs rounded-xl transition">
+            <button onclick="deleteMyUserAccount()" class="px-3 py-2 bg-rose-100 hover:bg-rose-200 text-rose-700 dark:bg-rose-950 dark:text-rose-300 font-bold text-xs rounded-xl transition" title="Excluir minha conta e dados">
               Excluir Conta
             </button>
           </div>
@@ -301,7 +353,7 @@
 
         <div id="myAdsList" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
 
-        <!-- FORMULÁRIO DE ANÚNCIO (COM CAMPO DE VÍDEO) -->
+        <!-- FORMULÁRIO DE ANÚNCIO -->
         <div id="adFormContainer" class="hidden mt-6 pt-5 border-t border-neutral-200 dark:border-neutral-800">
           <div class="flex items-center justify-between mb-4">
             <h3 id="adFormTitle" class="text-sm font-black uppercase text-zebu-lime tracking-wider">Criar Novo Anúncio</h3>
@@ -326,7 +378,7 @@
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
               <div>
                 <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Nome de Exibição / Fantasia *</label>
-                <input type="text" id="proName" required placeholder="Ex: Carlos Elétrica / Marido de Aluguel" class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs">
+                <input type="text" id="proName" required placeholder="Ex: Carlos Marido de Aluguel" class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs">
               </div>
               <div>
                 <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">1. Grande Área *</label>
@@ -338,7 +390,7 @@
               </div>
             </div>
 
-            <!-- PÍLULAS DINÂMICAS DE ESPECIALIDADES -->
+            <!-- SUGESTÕES DE FUNÇÕES RELACIONADAS -->
             <div id="relatedFunctionsContainer" class="hidden p-3 rounded-2xl bg-zebu-limeSoft/50 dark:bg-neutral-800/80 border border-zebu-lime/40 space-y-2">
               <label class="block text-[11px] font-black uppercase text-neutral-800 dark:text-neutral-200 flex items-center gap-1">
                 <i data-lucide="sparkles" class="w-3.5 h-3.5 text-zebu-lime"></i> Especialidades populares (toque para adicionar aos seus serviços):
@@ -351,11 +403,10 @@
               <input type="text" id="proServices" required placeholder="Ex: Troca de chuveiro, Instalação de TV, Torneiras" class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs">
             </div>
 
-            <!-- CAMPO DE VÍDEO DO TRABALHO -->
+            <!-- VÍDEO DO TRABALHO -->
             <div>
-              <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Vídeo dos Trabalhos (YouTube ou Shorts - Opcional)</label>
+              <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Vídeo dos Trabalhos (YouTube, Shorts ou Link Direto - Opcional)</label>
               <input type="url" id="proVideoUrl" placeholder="Ex: https://www.youtube.com/watch?v=... ou https://youtu.be/..." class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs">
-              <span class="text-[10px] text-neutral-400 mt-0.5 block">Cole o link de um vídeo do seu trabalho para exibir no seu perfil!</span>
             </div>
 
             <div>
@@ -375,10 +426,14 @@
                 <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Valor Inicial (R$)</label>
                 <input type="number" step="0.5" id="proPriceValue" placeholder="150,00" class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs">
               </div>
+              
+              <!-- BAIRRO BASE COM OPÇÃO DE DIGITAR -->
               <div>
                 <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Bairro Base (Uberaba) *</label>
-                <select id="proNeighborhood" required class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs"></select>
+                <select id="proNeighborhood" onchange="handleProNeighborhoodChange()" required class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs"></select>
+                <input type="text" id="proCustomNeighborhoodInput" placeholder="Digite o nome do seu bairro..." class="hidden mt-1.5 w-full text-xs p-2 rounded-xl border border-zebu-lime bg-white dark:bg-neutral-900 outline-none">
               </div>
+
               <div>
                 <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Local de Atendimento *</label>
                 <select id="proAttendanceType" class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs font-bold">
@@ -438,7 +493,7 @@
       <i data-lucide="home" class="w-5 h-5"></i>
       <span class="text-[9px] font-bold">Início</span>
     </button>
-    <button onclick="showSection('explore')" id="mobile-nav-explore" class="flex flex-col items-center gap-1 py-1 text-neutral-400 hover:text-white">
+    <button onclick="openCategoryShowcase('reformas')" id="mobile-nav-explore" class="flex flex-col items-center gap-1 py-1 text-neutral-400 hover:text-white">
       <i data-lucide="layout-grid" class="w-5 h-5"></i>
       <span class="text-[9px] font-bold">Profissionais</span>
     </button>
@@ -477,7 +532,6 @@
   <!-- ================= MODAL DO CHAT NO SITE (DEGRADÊ VERDE) ================= -->
   <div id="inAppChatModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-2 sm:p-4">
     <div class="chat-bg w-full max-w-md rounded-3xl shadow-2xl border border-neutral-300 dark:border-neutral-800 flex flex-col h-[600px] max-h-[92vh] overflow-hidden text-xs relative">
-      
       <div class="p-3.5 bg-white/90 dark:bg-black/90 backdrop-blur-md border-b border-neutral-200 dark:border-neutral-800 flex items-center justify-between shadow-sm shrink-0">
         <div class="flex items-center gap-2.5">
           <button onclick="closeModal('inAppChatModal')" class="p-1 -ml-1 text-neutral-600 dark:text-neutral-300 hover:text-black dark:hover:text-white">
@@ -507,6 +561,13 @@
 
       <div id="chatMessagesContainer" class="flex-1 p-3.5 overflow-y-auto space-y-2.5"></div>
 
+      <div id="chatWhatsappAlertBox" class="hidden px-3.5 py-1.5 bg-emerald-100/90 dark:bg-emerald-950/80 border-t border-emerald-300 dark:border-emerald-800 flex items-center justify-between shrink-0">
+        <span class="text-[10px] text-emerald-950 dark:text-emerald-200 font-bold">Avisar no WhatsApp sobre a mensagem?</span>
+        <button id="btnNotifyWhatsappDirect" class="px-2.5 py-1 bg-[#25D366] hover:bg-[#1ebd5b] text-black font-black text-[10px] rounded-lg flex items-center gap-1 shadow">
+          <i data-lucide="send" class="w-3 h-3"></i> Dar Toque
+        </button>
+      </div>
+
       <form id="chatSendForm" onsubmit="sendChatMessage(event)" class="p-2.5 bg-white/95 dark:bg-black/95 border-t border-neutral-200 dark:border-neutral-800 flex items-center gap-2 shrink-0">
         <div class="flex-1 flex items-center bg-neutral-100 dark:bg-neutral-900 rounded-full px-4 py-2 border border-neutral-200 dark:border-neutral-700 shadow-inner">
           <input type="text" id="chatMessageInput" required placeholder="Digite sua mensagem ou proposta..." class="w-full bg-transparent text-xs text-neutral-900 dark:text-white outline-none placeholder-neutral-400">
@@ -528,13 +589,12 @@
     </div>
   </div>
 
-  <!-- MODAL ADMIN EQUIPAMENTO -->
+  <!-- MODAL ADMIN EQUIPAMENTO (MÚLTIPLAS CATEGORIAS) -->
   <div id="adminProductModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-3">
     <div class="bg-white dark:bg-zebu-darkCard w-full max-w-lg rounded-3xl p-5 shadow-2xl border border-neutral-200 dark:border-neutral-800 relative max-h-[90vh] overflow-y-auto text-xs">
       <button onclick="closeModal('adminProductModal')" class="absolute right-4 top-4 text-neutral-400"><i data-lucide="x" class="w-5 h-5"></i></button>
       <h3 id="adminProductModalTitle" class="text-base font-black mb-1 text-zebu-lime flex items-center gap-1.5"><i data-lucide="wrench" class="w-4 h-4"></i> Cadastrar Equipamento</h3>
       
-      <!-- 🪄 MÁGICA DO LINK -->
       <div class="p-3 bg-zebu-limeSoft dark:bg-neutral-800 rounded-2xl border border-zebu-lime my-3 space-y-2">
         <label class="block text-[11px] font-black uppercase text-black dark:text-zebu-lime flex items-center gap-1">
           🪄 Mágica do Link (Auto-preenchimento)
@@ -617,7 +677,7 @@
     </div>
   </div>
 
-  <!-- MODAL AUTH (LOGIN COM GOOGLE & EMAIL) -->
+  <!-- MODAL AUTH -->
   <div id="authModal" class="fixed inset-0 z-[70] bg-black/85 backdrop-blur-sm hidden items-center justify-center p-3">
     <div class="bg-white dark:bg-zebu-darkCard w-full max-w-sm rounded-3xl p-5 shadow-2xl border border-neutral-200 dark:border-neutral-800 relative text-xs">
       <button onclick="closeModal('authModal')" class="absolute right-3.5 top-3.5 text-neutral-400"><i data-lucide="x" class="w-5 h-5"></i></button>
@@ -683,7 +743,7 @@
     </div>
   </div>
 
-  <!-- MODAL: PERFIL DO PROFISSIONAL (COM VÍDEO & COMPARTILHAMENTO) -->
+  <!-- MODAL: PERFIL DO PROFISSIONAL -->
   <div id="profileModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-3">
     <div class="bg-white dark:bg-zebu-darkCard w-full max-w-lg rounded-3xl shadow-2xl border border-neutral-200 dark:border-neutral-800 relative max-h-[92vh] flex flex-col overflow-hidden text-xs">
       <div class="p-4 border-b border-neutral-200 dark:border-neutral-800 flex justify-between items-start">
@@ -704,8 +764,6 @@
       </div>
 
       <div class="p-4 overflow-y-auto space-y-4">
-        
-        <!-- VÍDEO DO PROFISSIONAL (SE TIVER LINK CADASTRADO) -->
         <div id="modalProVideoContainer" class="hidden space-y-1.5">
           <h4 class="text-[10px] font-black uppercase text-neutral-400 flex items-center gap-1">
             <i data-lucide="video" class="w-3.5 h-3.5 text-zebu-lime"></i> Vídeo Demonstrativo
@@ -741,7 +799,7 @@
           <button id="adminToggleSponsoredBtn" onclick="toggleProfessionalSponsorship()" class="hidden px-2.5 py-1.5 bg-amber-400 text-black font-extrabold text-[11px] rounded-xl shadow">
             <span id="adminToggleSponsoredText">Destacar</span>
           </button>
-          <button id="adminDeleteProfileBtn" onclick="adminDeleteCurrentProfile()" class="hidden px-2.5 py-1.5 bg-rose-600 hover:bg-rose-700 text-white font-extrabold text-[11px] rounded-xl shadow flex items-center gap-1">
+          <button id="adminDeleteProfileBtn" onclick="adminDeleteCurrentProfile()" class="hidden px-2.5 py-1.5 bg-rose-600 hover:bg-rose-700 text-white font-extrabold text-[11px] rounded-xl shadow flex items-center gap-1" title="Excluir este anúncio do site">
             <i data-lucide="trash-2" class="w-3.5 h-3.5"></i> Excluir
           </button>
         </div>
@@ -862,6 +920,7 @@
         id: "reformas",
         name: "Reformas & Marido de Aluguel",
         icon: "wrench",
+        subtitle: "Especialistas em consertos, elétrica, pintura, alvenaria e reparos no seu bairro.",
         professions: ["Marido de Aluguel", "Pedreiro", "Pintor", "Eletricista", "Encanador", "Gesseiro / Drywall", "Serralheiro", "Vidraceiro", "Montador de Móveis", "Calheiro / Telhadista"],
         subfunctions: ["Troca de Chuveiro", "Instalação de Varal", "Suporte de TV", "Troca de Torneira", "Reparos Elétricos", "Fechaduras", "Pintura de Parede", "Alvenaria", "Box de Banheiro"]
       },
@@ -869,6 +928,7 @@
         id: "agro",
         name: "Agronegócio & Campo",
         icon: "tractor",
+        subtitle: "Mão de obra e especialistas para fazendas, sítios e manejo agropecuário de Uberaba.",
         professions: ["Tratorista / Operador", "Peão / Trabalhador Rural", "Cercador / Currais", "Inseminador Bovino", "Mecânico de Tratores", "Veterinário Rural", "Agrônomo / Técnico Agrícola", "Pulverização / Drones"],
         subfunctions: ["Plantio", "Colheita", "Gradeamento", "Pulverização", "Manejo de Gado", "Cercas de Arame", "Manutenção de Ordenha"]
       },
@@ -876,6 +936,7 @@
         id: "domesticos",
         name: "Serviços Domésticos",
         icon: "sparkles",
+        subtitle: "Limpeza, cuidados para a casa e manutenção residencial de confiança.",
         professions: ["Diarista e Faxineira", "Passadeira", "Cozinheira", "Piscineiro", "Jardineiro", "Limpeza Pós-Obra"],
         subfunctions: ["Faxina Pesada", "Passadoria", "Tratamento de Choque", "Poda e Grama", "Limpeza de Vidros", "Organização"]
       },
@@ -883,6 +944,7 @@
         id: "beleza",
         name: "Beleza & Estética",
         icon: "sparkle",
+        subtitle: "Profissionais de cuidados pessoais, cabelo, unhas e estética em Uberaba.",
         professions: ["Manicure e Pedicure", "Cabeleireira(o) / Barbeiro", "Designer de Sobrancelhas", "Maquiadora", "Depilação", "Massoterapeuta"],
         subfunctions: ["Unhas em Gel", "Corte / Barba", "Escova / Luzes", "Alongamento de Cílios", "Drenagem Linfática", "Limpeza de Pele"]
       },
@@ -890,6 +952,7 @@
         id: "auto",
         name: "Auto & Motos",
         icon: "cog",
+        subtitle: "Socorro mecânico, autoelétrica, lavagem e manutenção veicular.",
         professions: ["Mecânico", "Eletricista Automotivo", "Borracheiro", "Guincho", "Estética Automotiva / Lavagem"],
         subfunctions: ["Troca de Óleo", "Freios e Suspensão", "Bateria e Elétrica", "Socorro 24h", "Polimento e Cristalização"]
       },
@@ -897,6 +960,7 @@
         id: "assistencia",
         name: "Assistência Técnica",
         icon: "laptop",
+        subtitle: "Conserto de celulares, computadores, eletrodomésticos e refrigeração.",
         professions: ["Conserto de Celular", "Computadores / Notebooks", "Conserto de TV", "Geladeiras / Lavadoras", "Ar-Condicionado / Refrigeração"],
         subfunctions: ["Troca de Tela", "Formatação / Backup", "Carga de Gás", "Higienização Split", "Placas e Componentes"]
       },
@@ -904,6 +968,7 @@
         id: "pets",
         name: "Pets & Animais",
         icon: "bone",
+        subtitle: "Cuidados, adestramento, passeios e saúde para seu melhor amigo.",
         professions: ["Adestrador de Cães", "Banho e Tosa", "Passeador / Dog Walker", "Veterinário Domiciliar", "Cuidador / Pet Sitter"],
         subfunctions: ["Comportamento Canino", "Obediência Básica", "Hospedagem Familiar", "Socialização", "Vacinação"]
       },
@@ -911,6 +976,7 @@
         id: "eventos",
         name: "Eventos & Festas",
         icon: "utensils",
+        subtitle: "Tudo para festas, churrascos, casamentos e comemorações inesquecíveis.",
         professions: ["Buffet Completo", "Churrasqueiro", "Garçom", "DJ / Som", "Fotógrafo / Filmagem", "Confeiteira / Bolos", "Decoração"],
         subfunctions: ["Churrasco a Domicílio", "Doces Finos", "Aniversários / Casamentos", "Locação de Mesas e Cadeiras"]
       },
@@ -918,6 +984,7 @@
         id: "fretes",
         name: "Fretes & Entregas",
         icon: "truck",
+        subtitle: "Mudanças residenciais, carretos, motoboy e entregas rápidas.",
         professions: ["Fretes e Mudanças", "Carretos Rápidos", "Motoboy / Entregador", "Motorista Particular"],
         subfunctions: ["Mudança Residencial", "Içamento", "Entregas Rápidas", "Viagens Regionais"]
       },
@@ -925,6 +992,7 @@
         id: "saude",
         name: "Saúde & Cuidado",
         icon: "stethoscope",
+        subtitle: "Acompanhamento profissional, enfermagem domiciliar, idosos e crianças.",
         professions: ["Técnico em Enfermagem", "Cuidador de Idosos", "Babá", "Fisioterapeuta Domiciliar"],
         subfunctions: ["Body Piercing", "Curativos e Escaras", "Aplicação de Injeção", "Acompanhamento Hospitalar", "Reabilitação"]
       }
@@ -940,7 +1008,7 @@
       "Morumbi", "Olinda", "Oneida Mendes", "Pacaembu", "Parque das Américas", "Planalto", 
       "Recreio dos Bandeirantes", "Residencial 2000", "Santa Maria", "Santa Marta", 
       "São Benedito", "São Cristóvão", "Silvério Cartafina", "Tutunas", "Univerdecidade", 
-      "Valim de Melo", "Vila Militar", "Vila Olímpica", "Volta Grande", "Zona Rural / Chácaras", "Outro Bairro"
+      "Valim de Melo", "Vila Militar", "Vila Olímpica", "Volta Grande", "Zona Rural / Chácaras", "Outro Bairro..."
     ].sort((a, b) => a.localeCompare(b));
 
     let currentUser = null;
@@ -948,6 +1016,8 @@
     let allProducts = [];
     let allJobs = [];
     let myAds = [];
+    let currentShowcaseMacro = "reformas";
+    let selectedSubProfession = "";
     let editingAdId = null;
     let editingProductId = null;
     let selectedProductMacro = "Todas";
@@ -958,6 +1028,7 @@
     let currentChatRecipient = null;
     let chatUnsubscribe = null;
     let sponsoredAutoScrollTimer = null;
+    let productsAutoScrollTimer = null;
 
     window.addEventListener('DOMContentLoaded', () => {
       lucide.createIcons();
@@ -989,14 +1060,6 @@
     }
 
     function populateDropdowns() {
-      const fMacro = document.getElementById('filterMacro');
-      fMacro.innerHTML = '<option value="">Todas as Áreas</option>';
-      MACRO_CATEGORIES.forEach(m => fMacro.appendChild(new Option(m.name, m.id)));
-
-      const fCat = document.getElementById('filterCategory');
-      fCat.innerHTML = '<option value="">Todas as Profissões</option>';
-      ALL_PROFESSIONS.forEach(p => fCat.appendChild(new Option(p, p)));
-
       const fNeigh = document.getElementById('filterNeighborhood');
       fNeigh.innerHTML = '<option value="">Todos os Bairros</option>';
       NEIGHBORHOODS.forEach(n => fNeigh.appendChild(new Option(n, n)));
@@ -1028,19 +1091,18 @@
     }
 
     function getProfessionIcon(profName) {
-      const macro = MACRO_CATEGORIES.find(m => m.professions.includes(profName));
+      const macro = MACRO_CATEGORIES.find(m => m.professions.some(p => p.toLowerCase() === (profName || '').toLowerCase()));
       return macro ? macro.icon : 'wrench';
     }
 
+    // CARDS DAS 10 GRANDES ÁREAS NA HOME
     function renderMacroCategoryCards() {
       const container = document.getElementById('macroCategoriesGrid');
       container.innerHTML = '';
       MACRO_CATEGORIES.forEach(cat => {
         const div = document.createElement('div');
         div.onclick = () => {
-          document.getElementById('filterMacro').value = cat.id;
-          handleMacroFilterChange();
-          showSection('explore');
+          openCategoryShowcase(cat.id);
         };
         div.className = 'cursor-pointer p-3.5 rounded-2xl bg-white dark:bg-zebu-darkCard border border-zebu-grayBorder dark:border-neutral-800 hover:border-zebu-lime transition flex flex-col items-center text-center gap-2 shadow-sm hover:scale-[1.02]';
         div.innerHTML = `
@@ -1054,18 +1116,73 @@
       lucide.createIcons();
     }
 
-    window.handleMacroFilterChange = function() {
-      const macroId = document.getElementById('filterMacro').value;
-      const catSelect = document.getElementById('filterCategory');
-      catSelect.innerHTML = '<option value="">Todas as Profissões</option>';
+    // =============================================================
+    // VITRINE TEMÁTICA DA CATEGORIA (SUBSTITUI A LISTA SEM GRAÇA!)
+    // =============================================================
+    window.openCategoryShowcase = function(macroId) {
+      currentShowcaseMacro = macroId || "reformas";
+      selectedSubProfession = "";
+      const macro = MACRO_CATEGORIES.find(m => m.id === currentShowcaseMacro) || MACRO_CATEGORIES[0];
+
+      // Atualiza Hero Temático
+      document.getElementById('showcaseName').textContent = macro.name;
+      document.getElementById('showcaseSubtitle').textContent = macro.subtitle;
+      document.getElementById('showcaseIconBox').innerHTML = `<i data-lucide="${macro.icon}" class="w-5 h-5"></i>`;
+
+      // Renderiza Pílulas Deslizantes de Sub-profissões
+      const pillsContainer = document.getElementById('showcasePillsContainer');
+      pillsContainer.innerHTML = '';
       
-      if (macroId) {
-        const macro = MACRO_CATEGORIES.find(m => m.id === macroId);
-        if (macro) macro.professions.forEach(p => catSelect.appendChild(new Option(p, p)));
+      const allPill = document.createElement('button');
+      allPill.className = 'px-3.5 py-1.5 rounded-full font-black text-xs whitespace-nowrap bg-zebu-lime text-black shadow shrink-0';
+      allPill.textContent = 'Todas';
+      allPill.onclick = () => selectSubProfessionPill('', allPill);
+      pillsContainer.appendChild(allPill);
+
+      macro.professions.forEach(prof => {
+        const pill = document.createElement('button');
+        pill.className = 'px-3.5 py-1.5 rounded-full font-bold text-xs whitespace-nowrap bg-white dark:bg-neutral-800 text-neutral-700 dark:text-neutral-200 border border-neutral-200 dark:border-neutral-700 hover:border-zebu-lime shrink-0 transition';
+        pill.textContent = prof;
+        pill.onclick = () => selectSubProfessionPill(prof, pill);
+        pillsContainer.appendChild(pill);
+      });
+
+      showSection('explore');
+      applyFilters();
+    };
+
+    function selectSubProfessionPill(prof, btnEl) {
+      selectedSubProfession = prof;
+      const pills = document.querySelectorAll('#showcasePillsContainer button');
+      pills.forEach(p => p.className = 'px-3.5 py-1.5 rounded-full font-bold text-xs whitespace-nowrap bg-white dark:bg-neutral-800 text-neutral-700 dark:text-neutral-200 border border-neutral-200 dark:border-neutral-700 hover:border-zebu-lime shrink-0 transition');
+      btnEl.className = 'px-3.5 py-1.5 rounded-full font-black text-xs whitespace-nowrap bg-zebu-lime text-black shadow shrink-0';
+      applyFilters();
+    }
+
+    // DIGITAR BAIRRO PERSONALIZADO
+    window.handleNeighborhoodFilterChange = function() {
+      const val = document.getElementById('filterNeighborhood').value;
+      const input = document.getElementById('filterCustomNeighborhoodInput');
+      if (val === "Outro Bairro...") {
+        input.classList.remove('hidden');
+        input.focus();
       } else {
-        ALL_PROFESSIONS.forEach(p => catSelect.appendChild(new Option(p, p)));
+        input.classList.add('hidden');
+        input.value = '';
       }
       applyFilters();
+    };
+
+    window.handleProNeighborhoodChange = function() {
+      const val = document.getElementById('proNeighborhood').value;
+      const input = document.getElementById('proCustomNeighborhoodInput');
+      if (val === "Outro Bairro...") {
+        input.classList.remove('hidden');
+        input.focus();
+      } else {
+        input.classList.add('hidden');
+        input.value = '';
+      }
     };
 
     window.handleProMacroChange = function() {
@@ -1161,7 +1278,7 @@
     };
 
     // -------------------------------------------------------------
-    // CHAT (NOME REAL E DEGRADÊ VERDE)
+    // CHAT (DEGRADÊ VERDE E NOME REAL)
     // -------------------------------------------------------------
     window.openSupportChat = function() {
       if (!currentUser) {
@@ -1370,7 +1487,7 @@
     };
 
     // -------------------------------------------------------------
-    // LOJA / EQUIPAMENTOS (MÚLTIPLAS CATEGORIAS E DESTAQUE HOME)
+    // LOJA / EQUIPAMENTOS (RECUPERAÇÃO DE PRODUTOS GARANTIDA!)
     // -------------------------------------------------------------
     window.openCreateProductModal = function() {
       editingProductId = null;
@@ -1508,6 +1625,14 @@
       });
     }
 
+    // BUSCA BLINDADA PARA NENHUM PRODUTO SUMIR
+    function productMatchesMacro(prod, macro) {
+      if (prod.macros && Array.isArray(prod.macros) && prod.macros.includes(macro.id)) return true;
+      if (prod.category === macro.id || prod.category === macro.name) return true;
+      if (macro.professions && macro.professions.some(p => p.toLowerCase() === (prod.category || '').toLowerCase())) return true;
+      return false;
+    }
+
     function renderProductsByArea() {
       const container = document.getElementById('productsByAreaContainer');
       if (!container) return;
@@ -1523,7 +1648,7 @@
         : MACRO_CATEGORIES.filter(m => m.id === selectedProductMacro);
 
       activeMacros.forEach(macro => {
-        const prods = allProducts.filter(p => (p.macros && p.macros.includes(macro.id)) || p.category === macro.id || p.category === macro.name);
+        const prods = allProducts.filter(p => productMatchesMacro(p, macro));
         if (!prods.length) return;
 
         const section = document.createElement('div');
@@ -1543,33 +1668,67 @@
         prods.forEach(prod => grid.appendChild(createProductCard(prod)));
       });
 
-      if (!container.children.length) {
-        container.innerHTML = '<p class="py-8 text-center text-xs text-neutral-400">Nenhum equipamento cadastrado para esta área.</p>';
+      // SE HOUVER PRODUTOS ANTIGOS QUE NÃO CAÍRAM EM NENHUMA MACRO, MOSTRA EM UMA SESSÃO ESPECIAL PARA NUNCA SUMIR
+      const orphanProds = allProducts.filter(p => !MACRO_CATEGORIES.some(m => productMatchesMacro(p, m)));
+      if (orphanProds.length && selectedProductMacro === "Todas") {
+        const section = document.createElement('div');
+        section.className = "space-y-3 bg-white dark:bg-zebu-darkCard p-4 rounded-3xl border border-zebu-grayBorder dark:border-neutral-800 shadow-sm";
+        section.innerHTML = `
+          <div class="flex items-center gap-2 border-b border-neutral-100 dark:border-neutral-800 pb-2">
+            <h3 class="font-black text-sm md:text-base">Outras Ferramentas & Equipamentos</h3>
+          </div>
+          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2.5 pt-1" id="macro_grid_outros"></div>
+        `;
+        container.appendChild(section);
+        const grid = section.querySelector('#macro_grid_outros');
+        orphanProds.forEach(prod => grid.appendChild(createProductCard(prod)));
       }
+
       lucide.createIcons();
     }
 
+    // HOME: CARROSSEL DESLIZANTE DE EQUIPAMENTOS
     function renderHomeProductsRow() {
       const container = document.getElementById('homeProductsRow');
       if (!container) return;
       container.innerHTML = '';
       
       let homeFeatured = allProducts.filter(p => p.isFeaturedOnHome === true);
-      if (!homeFeatured.length) homeFeatured = allProducts.slice(0, 4);
+      if (!homeFeatured.length) homeFeatured = allProducts.slice(0, 6);
 
       if (!homeFeatured.length) {
         container.innerHTML = '<p class="col-span-full text-center text-xs text-neutral-400 py-3">Em breve novos equipamentos de trabalho!</p>';
         return;
       }
 
-      homeFeatured.slice(0, 4).forEach(p => container.appendChild(createProductCard(p)));
+      homeFeatured.forEach(p => container.appendChild(createProductCard(p, true)));
+      startProductsAutoScroll();
       lucide.createIcons();
     }
 
-    function createProductCard(prod) {
+    function startProductsAutoScroll() {
+      const container = document.getElementById('homeProductsRow');
+      if (!container) return;
+      if (productsAutoScrollTimer) clearInterval(productsAutoScrollTimer);
+
+      productsAutoScrollTimer = setInterval(() => {
+        if (container.matches(':hover')) return;
+        const card = container.querySelector('.snap-start');
+        const cardWidth = card ? card.offsetWidth + 12 : 180;
+
+        if (container.scrollLeft + container.clientWidth >= container.scrollWidth - 15) {
+          container.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          container.scrollBy({ left: cardWidth, behavior: 'smooth' });
+        }
+      }, 3500);
+    }
+
+    function createProductCard(prod, isCarousel = false) {
       const card = document.createElement('div');
       const isAdmin = currentUser && currentUser.email === ADMIN_EMAIL;
-      card.className = "bg-[#F8FAF6] dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl overflow-hidden shadow-sm flex flex-col justify-between hover:shadow-md transition relative group";
+      const widthClass = isCarousel ? 'w-[160px] sm:w-[190px] shrink-0 snap-start' : 'w-full';
+      card.className = `${widthClass} bg-[#F8FAF6] dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl overflow-hidden shadow-sm flex flex-col justify-between hover:shadow-md transition relative group`;
       
       card.innerHTML = `
         <div>
@@ -1666,6 +1825,7 @@
       document.getElementById('proAvatarPreview').classList.add('hidden');
       document.getElementById('proAvatarDefaultIcon').classList.remove('hidden');
       document.getElementById('relatedFunctionsContainer').classList.add('hidden');
+      document.getElementById('proCustomNeighborhoodInput').classList.add('hidden');
       renderPortfolioPreviews();
       document.getElementById('adFormContainer').classList.remove('hidden');
       document.getElementById('adFormContainer').scrollIntoView({ behavior: 'smooth' });
@@ -1691,7 +1851,17 @@
       document.getElementById('proBio').value = ad.bio || "";
       document.getElementById('proPriceType').value = ad.priceType || "quote";
       document.getElementById('proPriceValue').value = ad.priceValue || "";
-      document.getElementById('proNeighborhood').value = ad.neighborhood || NEIGHBORHOODS[0];
+      
+      // Bairro
+      if (NEIGHBORHOODS.includes(ad.neighborhood)) {
+        document.getElementById('proNeighborhood').value = ad.neighborhood;
+        document.getElementById('proCustomNeighborhoodInput').classList.add('hidden');
+      } else {
+        document.getElementById('proNeighborhood').value = "Outro Bairro...";
+        document.getElementById('proCustomNeighborhoodInput').classList.remove('hidden');
+        document.getElementById('proCustomNeighborhoodInput').value = ad.neighborhood || "";
+      }
+
       document.getElementById('proAttendanceType').value = ad.attendanceType || "domicilio";
       document.getElementById('proRegions').value = ad.regions || "";
       document.getElementById('proWhatsappNumber').value = ad.whatsappNumber || "";
@@ -1771,6 +1941,12 @@
         return;
       }
 
+      // Bairro final
+      let finalNeighborhood = document.getElementById('proNeighborhood').value;
+      if (finalNeighborhood === "Outro Bairro...") {
+        finalNeighborhood = document.getElementById('proCustomNeighborhoodInput').value.trim() || "Outro Bairro";
+      }
+
       const btn = document.getElementById('saveProfileBtn');
       btn.disabled = true;
       btn.textContent = "Salvando...";
@@ -1785,7 +1961,7 @@
         bio: document.getElementById('proBio').value.trim(),
         priceType: document.getElementById('proPriceType').value,
         priceValue: parseFloat(document.getElementById('proPriceValue').value) || 0,
-        neighborhood: document.getElementById('proNeighborhood').value,
+        neighborhood: finalNeighborhood,
         attendanceType: document.getElementById('proAttendanceType').value,
         regions: document.getElementById('proRegions').value.trim(),
         whatsappNumber: document.getElementById('proWhatsappNumber').value.replace(/\D/g, ''),
@@ -1829,7 +2005,6 @@
       return 'Domicílio & Local';
     }
 
-    // HELPER PARA EMBUTIR VÍDEOS DO YOUTUBE
     function getYoutubeEmbedUrl(url) {
       if (!url) return null;
       const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=|shorts\/)([^#&?]*).*/;
@@ -1885,7 +2060,6 @@
       }
     }
 
-    // CARROSSEL AUTOMÁTICO DESLIZANTE NOS DESTAQUES
     function renderCards() {
       const spon = document.getElementById('sponsoredList');
       if (!spon) return;
@@ -1908,14 +2082,13 @@
       lucide.createIcons();
     }
 
-    // LÓGICA DE AUTO-DESLIZAMENTO DO CARROSSEL
     function startSponsoredAutoScroll() {
       const container = document.getElementById('sponsoredList');
       if (!container) return;
       if (sponsoredAutoScrollTimer) clearInterval(sponsoredAutoScrollTimer);
 
       sponsoredAutoScrollTimer = setInterval(() => {
-        if (container.matches(':hover')) return; // Pausa no mouse ou toque
+        if (container.matches(':hover')) return;
         const card = container.querySelector('.snap-start');
         const cardWidth = card ? card.offsetWidth + 14 : 310;
 
@@ -1927,7 +2100,7 @@
       }, 3500);
     }
 
-    // CARD GETNINJAS (COM SUPORTE A CARROSSEL HORIZONTAL)
+    // CARD GETNINJAS COM MINIATURA DOS TRABALHOS (VITRINE REAL)
     function createFeaturedProCard(p, isCarousel = false) {
       const card = document.createElement('div');
       
@@ -1942,6 +2115,21 @@
       const servicesPills = (p.services || []).slice(0, 3).map(s => 
         `<span class="text-[10px] bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 px-2 py-0.5 rounded-lg border border-neutral-200 dark:border-neutral-700 font-medium">${s}</span>`
       ).join('');
+
+      // Miniaturas das fotos de trabalhos anteriores
+      let portfolioThumbnailsHTML = '';
+      if (p.portfolio && p.portfolio.length > 0) {
+        portfolioThumbnailsHTML = `
+          <div class="flex gap-1.5 pt-1 overflow-hidden">
+            ${p.portfolio.slice(0, 3).map(url => `
+              <div class="w-12 h-12 rounded-xl overflow-hidden bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 shrink-0">
+                <img src="${url}" class="w-full h-full object-cover">
+              </div>
+            `).join('')}
+            ${p.portfolio.length > 3 ? `<span class="text-[10px] text-neutral-400 self-center font-bold pl-1">+${p.portfolio.length - 3}</span>` : ''}
+          </div>
+        `;
+      }
 
       card.innerHTML = `
         <div class="space-y-3">
@@ -1979,6 +2167,8 @@
           <div class="flex flex-wrap gap-1 pt-0.5">
             ${servicesPills}
           </div>
+
+          ${portfolioThumbnailsHTML}
         </div>
 
         <div class="mt-4 pt-3 border-t border-neutral-100 dark:border-neutral-800 flex items-center justify-between">
@@ -1995,20 +2185,37 @@
       return card;
     }
 
+    // FILTRO BLINDADO NA VITRINE
     window.applyFilters = function() {
       const s = (document.getElementById('searchInput').value || '').toLowerCase();
-      const macro = document.getElementById('filterMacro').value;
-      const cat = document.getElementById('filterCategory').value;
-      const n = document.getElementById('filterNeighborhood').value;
+      let n = document.getElementById('filterNeighborhood').value;
+      if (n === "Outro Bairro...") {
+        n = (document.getElementById('filterCustomNeighborhoodInput').value || '').trim();
+      }
       const att = document.getElementById('filterAttendance').value;
+      const price = document.getElementById('filterPrice').value;
+
+      const currentMacro = MACRO_CATEGORIES.find(m => m.id === currentShowcaseMacro);
 
       const filtered = allProfessionals.filter(p => {
-        const matchS = !s || (p.name && p.name.toLowerCase().includes(s)) || (p.category && p.category.toLowerCase().includes(s)) || (p.services && p.services.some(svc => svc.toLowerCase().includes(s)));
-        const matchMacro = !macro || p.macroCategory === macro || (MACRO_CATEGORIES.find(m => m.id === macro)?.professions.includes(p.category));
-        const matchCat = !cat || p.category === cat;
-        const matchN = !n || p.neighborhood === n;
+        const matchSearch = !s || (p.name && p.name.toLowerCase().includes(s)) || (p.category && p.category.toLowerCase().includes(s)) || (p.services && p.services.some(svc => svc.toLowerCase().includes(s))) || (p.bio && p.bio.toLowerCase().includes(s));
+        
+        // Pertence à macrocategoria da vitrine
+        const matchMacro = !currentMacro || p.macroCategory === currentMacro.id || currentMacro.professions.some(prof => prof.toLowerCase() === (p.category || '').toLowerCase());
+
+        // Sub-profissão da pílula
+        const matchPill = !selectedSubProfession || p.category.toLowerCase() === selectedSubProfession.toLowerCase();
+
+        // Bairro
+        const matchNeigh = !n || (p.neighborhood && p.neighborhood.toLowerCase().includes(n.toLowerCase()));
+
+        // Atendimento
         const matchAtt = !att || p.attendanceType === att || p.attendanceType === 'ambos';
-        return matchS && matchMacro && matchCat && matchN && matchAtt;
+
+        // Preço
+        const matchPrice = !price || p.priceType === price;
+
+        return matchSearch && matchMacro && matchPill && matchNeigh && matchAtt && matchPrice;
       });
 
       const grid = document.getElementById('resultsGrid');
@@ -2017,7 +2224,13 @@
       document.getElementById('resultsCount').textContent = `${filtered.length} profissional(is) em Uberaba`;
 
       if (!filtered.length) {
-        grid.innerHTML = '<p class="col-span-full py-8 text-center text-xs text-neutral-400">Nenhum profissional encontrado com os filtros selecionados.</p>';
+        grid.innerHTML = `
+          <div class="col-span-full py-10 text-center text-xs text-neutral-400 border border-dashed border-neutral-300 dark:border-neutral-700 rounded-3xl p-6 space-y-2">
+            <i data-lucide="user-x" class="w-8 h-8 mx-auto text-neutral-300"></i>
+            <p class="font-bold text-neutral-600 dark:text-neutral-300">Nenhum profissional encontrado com os filtros atuais.</p>
+            <p class="text-[11px]">Você trabalha com isso em Uberaba? Seja o primeiro a cadastrar!</p>
+          </div>
+        `;
       } else {
         filtered.forEach(p => grid.appendChild(createFeaturedProCard(p, false)));
       }
@@ -2036,7 +2249,7 @@
       document.getElementById('modalProPrice').textContent = formatPriceDisplay(p);
       document.getElementById('modalProAttendance').textContent = formatAttendanceDisplay(p.attendanceType);
 
-      // RENDERIZAÇÃO DO VÍDEO DO PROFISSIONAL
+      // Vídeo Player
       const videoCont = document.getElementById('modalProVideoContainer');
       const videoWrapper = document.getElementById('modalProVideoWrapper');
       if (p.videoUrl) {
@@ -2316,7 +2529,6 @@
       });
     }
 
-    // LOGIN COM GOOGLE
     window.handleGoogleLogin = async function() {
       try {
         const result = await signInWithPopup(auth, googleProvider);
@@ -2400,7 +2612,12 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
-    window.handleQuickSearch = () => { document.getElementById('searchInput').value = document.getElementById('homeSearchInput').value; showSection('explore'); applyFilters(); };
+    window.handleQuickSearch = () => {
+      const term = document.getElementById('homeSearchInput').value.trim();
+      document.getElementById('searchInput').value = term;
+      openCategoryShowcase('reformas');
+    };
+
     window.handleAdvertiseClick = () => { currentUser ? showSection('dashboard') : openModal('authModal', 'register'); };
     window.openModal = (id, tab) => { document.getElementById(id).classList.remove('hidden'); document.getElementById(id).classList.add('flex'); if(tab) switchAuthTab(tab); };
     window.closeModal = (id) => { document.getElementById(id).classList.add('hidden'); document.getElementById(id).classList.remove('flex'); };
@@ -2421,3 +2638,4 @@
   </script>
 </body>
 </html>
+ 
