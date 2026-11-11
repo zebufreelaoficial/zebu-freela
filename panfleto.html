@@ -6,7 +6,7 @@
   <title>Zebu Freela | Conectando pessoas e oportunidades em Uberaba</title>
   <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#0B0E09">
-  <meta name="description" content="Plataforma de autônomos, serviços e equipamentos em Uberaba - MG. Marido de aluguel, diaristas, eletricistas e mais.">
+  <meta name="description" content="Plataforma de autônomos, serviços e equipamentos em Uberaba - MG. Diaristas, eletricistas, marido de aluguel e mais.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://www.zebufreela.com.br">
 
@@ -118,7 +118,6 @@
             Encontre profissionais de confiança ou anuncie seu trabalho em Uberaba.
           </p>
 
-          <!-- Barra de Busca -->
           <div class="pt-2 flex items-center bg-white dark:bg-black rounded-full border border-neutral-300 dark:border-neutral-700 shadow-sm p-1">
             <i data-lucide="search" class="w-4 h-4 ml-3 text-neutral-400 shrink-0"></i>
             <input type="text" id="homeSearchInput" placeholder="Buscar serviços, profissionais ou equipamentos..." 
@@ -190,18 +189,19 @@
         <div id="homeJobsList" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3"></div>
       </div>
 
-      <!-- PROFISSIONAIS EM DESTAQUE -->
+      <!-- PROFISSIONAIS EM DESTAQUE (CARROSSEL AUTOMÁTICO DESLIZANTE) -->
       <div class="space-y-3 bg-zebu-dark text-white p-4 md:p-6 rounded-3xl border border-neutral-800 shadow-md">
         <div class="flex items-center justify-between">
           <div>
             <h2 class="text-base md:text-lg font-black flex items-center gap-2">
               <span class="w-4 h-1 bg-zebu-lime rounded-full"></span> Profissionais em destaque
             </h2>
-            <p class="text-[10px] md:text-xs text-neutral-400">Verificados e recomendados em Uberaba</p>
+            <p class="text-[10px] md:text-xs text-neutral-400">Deslize para o lado para ver mais profissionais recomendados</p>
           </div>
           <button onclick="showSection('explore')" class="text-xs font-bold px-3 py-1 rounded-full border border-neutral-700 hover:border-zebu-lime transition flex items-center gap-1">Ver todos <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></button>
         </div>
-        <div id="sponsoredList" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3"></div>
+        <!-- CARROSSEL DESLIZANTE COM SNAP E SCROLL SUAVE -->
+        <div id="sponsoredList" class="flex gap-3.5 overflow-x-auto no-scrollbar scroll-smooth py-1 snap-x snap-mandatory"></div>
       </div>
 
       <!-- EQUIPAMENTOS EM DESTAQUE NA HOME -->
@@ -301,7 +301,7 @@
 
         <div id="myAdsList" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
 
-        <!-- FORMULÁRIO DE ANÚNCIO (ESTRUTURADO PELAS MACRO-CATEGORIAS) -->
+        <!-- FORMULÁRIO DE ANÚNCIO (COM CAMPO DE VÍDEO) -->
         <div id="adFormContainer" class="hidden mt-6 pt-5 border-t border-neutral-200 dark:border-neutral-800">
           <div class="flex items-center justify-between mb-4">
             <h3 id="adFormTitle" class="text-sm font-black uppercase text-zebu-lime tracking-wider">Criar Novo Anúncio</h3>
@@ -349,6 +349,13 @@
             <div>
               <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Serviços Oferecidos (separados por vírgula) *</label>
               <input type="text" id="proServices" required placeholder="Ex: Troca de chuveiro, Instalação de TV, Torneiras" class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs">
+            </div>
+
+            <!-- CAMPO DE VÍDEO DO TRABALHO -->
+            <div>
+              <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Vídeo dos Trabalhos (YouTube ou Shorts - Opcional)</label>
+              <input type="url" id="proVideoUrl" placeholder="Ex: https://www.youtube.com/watch?v=... ou https://youtu.be/..." class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs">
+              <span class="text-[10px] text-neutral-400 mt-0.5 block">Cole o link de um vídeo do seu trabalho para exibir no seu perfil!</span>
             </div>
 
             <div>
@@ -521,7 +528,7 @@
     </div>
   </div>
 
-  <!-- MODAL ADMIN EQUIPAMENTO (COM MÚLTIPLAS CATEGORIAS) -->
+  <!-- MODAL ADMIN EQUIPAMENTO -->
   <div id="adminProductModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-3">
     <div class="bg-white dark:bg-zebu-darkCard w-full max-w-lg rounded-3xl p-5 shadow-2xl border border-neutral-200 dark:border-neutral-800 relative max-h-[90vh] overflow-y-auto text-xs">
       <button onclick="closeModal('adminProductModal')" class="absolute right-4 top-4 text-neutral-400"><i data-lucide="x" class="w-5 h-5"></i></button>
@@ -546,7 +553,6 @@
           <input type="text" id="prodTitle" required placeholder="Ex: Furadeira de Impacto Profissional" class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800">
         </div>
         
-        <!-- MÚLTIPLAS CATEGORIAS PARA O MESMO PRODUTO -->
         <div class="space-y-1.5">
           <label class="block text-[11px] font-bold uppercase text-neutral-500">Áreas em que o produto vai aparecer (marque quantas quiser): *</label>
           <div id="productMacroCheckboxes" class="grid grid-cols-2 gap-1.5 p-2.5 bg-neutral-50 dark:bg-neutral-800 rounded-xl border border-neutral-300 dark:border-neutral-700 max-h-36 overflow-y-auto"></div>
@@ -620,7 +626,6 @@
         👋 Entre ou cadastre-se grátis para falar com o profissional pelo chat do site!
       </div>
 
-      <!-- BOTÃO DE LOGIN COM 1 CLIQUE PELO GOOGLE -->
       <button onclick="handleGoogleLogin()" class="w-full py-2.5 bg-white text-black border border-neutral-300 hover:bg-neutral-100 font-bold rounded-xl shadow-sm flex items-center justify-center gap-2 mb-3 transition">
         <svg class="w-4 h-4" viewBox="0 0 24 24"><path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.8-2.4 3.65v3.03h3.9c2.28-2.1 3.6-5.2 3.6-9.12z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.9-3.03c-1.08.72-2.45 1.16-4.03 1.16-3.1 0-5.74-2.1-6.68-4.92H1.22v3.13C3.25 21.43 7.34 24 12 24z"/><path fill="#FBBC05" d="M5.32 14.3c-.24-.72-.37-1.49-.37-2.3s.13-1.58.37-2.3V6.57H1.22C.44 8.12 0 9.99 0 12s.44 3.88 1.22 5.43l4.1-3.13z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.34 0 3.25 2.57 1.22 6.57l4.1 3.13c.94-2.82 3.58-4.95 6.68-4.95z"/></svg>
         Entrar com o Google
@@ -678,7 +683,7 @@
     </div>
   </div>
 
-  <!-- MODAL: PERFIL DO PROFISSIONAL (COM COMPARTILHAMENTO VIRAL) -->
+  <!-- MODAL: PERFIL DO PROFISSIONAL (COM VÍDEO & COMPARTILHAMENTO) -->
   <div id="profileModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-3">
     <div class="bg-white dark:bg-zebu-darkCard w-full max-w-lg rounded-3xl shadow-2xl border border-neutral-200 dark:border-neutral-800 relative max-h-[92vh] flex flex-col overflow-hidden text-xs">
       <div class="p-4 border-b border-neutral-200 dark:border-neutral-800 flex justify-between items-start">
@@ -699,6 +704,15 @@
       </div>
 
       <div class="p-4 overflow-y-auto space-y-4">
+        
+        <!-- VÍDEO DO PROFISSIONAL (SE TIVER LINK CADASTRADO) -->
+        <div id="modalProVideoContainer" class="hidden space-y-1.5">
+          <h4 class="text-[10px] font-black uppercase text-neutral-400 flex items-center gap-1">
+            <i data-lucide="video" class="w-3.5 h-3.5 text-zebu-lime"></i> Vídeo Demonstrativo
+          </h4>
+          <div id="modalProVideoWrapper" class="w-full aspect-video rounded-2xl overflow-hidden bg-black shadow-md border border-neutral-200 dark:border-neutral-800"></div>
+        </div>
+
         <div>
           <h4 class="text-[10px] font-black uppercase text-neutral-400 mb-1">Sobre o Profissional</h4>
           <p id="modalProBio" class="text-neutral-700 dark:text-neutral-300 whitespace-pre-line text-xs leading-relaxed"></p>
@@ -712,7 +726,6 @@
           <div><span class="text-[10px] text-neutral-400 block">Atendimento</span><span id="modalProAttendance" class="font-bold text-neutral-700 dark:text-neutral-300 text-xs"></span></div>
         </div>
 
-        <!-- BOTÃO COMPARTILHAR VIRAL NO WHATSAPP -->
         <button id="btnShareWhatsappProfile" class="w-full py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs rounded-xl shadow flex items-center justify-center gap-1.5 transition">
           <i data-lucide="share-2" class="w-4 h-4"></i> 📲 Compartilhar este perfil no WhatsApp
         </button>
@@ -740,7 +753,7 @@
     </div>
   </div>
 
-  <!-- MODAL: PUBLICAR VAGA COM TEMPORIZADOR -->
+  <!-- MODAL: PUBLICAR VAGA -->
   <div id="postJobModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-3">
     <div class="bg-white dark:bg-zebu-darkCard w-full max-w-lg rounded-3xl p-5 md:p-6 shadow-2xl border border-zebu-grayBorder dark:border-neutral-800 relative max-h-[90vh] overflow-y-auto text-xs">
       <button onclick="closeModal('postJobModal')" class="absolute right-4 top-4 text-neutral-400"><i data-lucide="x" class="w-5 h-5"></i></button>
@@ -917,10 +930,8 @@
       }
     ];
 
-    // TODAS AS PROFISSÕES EXTRAÍDAS EM ORDEM ALFABÉTICA
     const ALL_PROFESSIONS = Array.from(new Set(MACRO_CATEGORIES.flatMap(m => m.professions))).sort((a,b) => a.localeCompare(b));
 
-    // BAIRROS ORDEM ALFABÉTICA
     const NEIGHBORHOODS = [
       "Abadia", "Alfredo Freire", "Amoroso Costa", "Antônia Cândida", "Beija-Flor", 
       "Boa Vista", "Centro", "Chica Ferreira", "Conjunto Uberaba", "Estados Unidos", 
@@ -946,6 +957,7 @@
     let currentViewingPro = null;
     let currentChatRecipient = null;
     let chatUnsubscribe = null;
+    let sponsoredAutoScrollTimer = null;
 
     window.addEventListener('DOMContentLoaded', () => {
       lucide.createIcons();
@@ -977,7 +989,6 @@
     }
 
     function populateDropdowns() {
-      // Filtros da busca
       const fMacro = document.getElementById('filterMacro');
       fMacro.innerHTML = '<option value="">Todas as Áreas</option>';
       MACRO_CATEGORIES.forEach(m => fMacro.appendChild(new Option(m.name, m.id)));
@@ -990,7 +1001,6 @@
       fNeigh.innerHTML = '<option value="">Todos os Bairros</option>';
       NEIGHBORHOODS.forEach(n => fNeigh.appendChild(new Option(n, n)));
 
-      // Form de Anúncio
       const pMacro = document.getElementById('proMacroCategory');
       pMacro.innerHTML = '<option value="">Selecione a Grande Área...</option>';
       MACRO_CATEGORIES.forEach(m => pMacro.appendChild(new Option(m.name, m.id)));
@@ -999,7 +1009,6 @@
       pNeigh.innerHTML = '';
       NEIGHBORHOODS.forEach(n => pNeigh.appendChild(new Option(n, n)));
 
-      // Form de Vagas
       const jCat = document.getElementById('jobCategory');
       jCat.innerHTML = '';
       ALL_PROFESSIONS.forEach(p => jCat.appendChild(new Option(p, p)));
@@ -1008,7 +1017,6 @@
       jNeigh.innerHTML = '';
       NEIGHBORHOODS.forEach(n => jNeigh.appendChild(new Option(n, n)));
 
-      // Checkboxes de Macro para Produtos
       const pBoxes = document.getElementById('productMacroCheckboxes');
       pBoxes.innerHTML = '';
       MACRO_CATEGORIES.forEach(m => {
@@ -1019,17 +1027,11 @@
       });
     }
 
-    function getMacroIcon(macroId) {
-      const found = MACRO_CATEGORIES.find(m => m.id === macroId);
-      return found ? found.icon : 'wrench';
-    }
-
     function getProfessionIcon(profName) {
       const macro = MACRO_CATEGORIES.find(m => m.professions.includes(profName));
       return macro ? macro.icon : 'wrench';
     }
 
-    // CARDS DAS 10 GRANDES ÁREAS NA HOME
     function renderMacroCategoryCards() {
       const container = document.getElementById('macroCategoriesGrid');
       container.innerHTML = '';
@@ -1506,7 +1508,6 @@
       });
     }
 
-    // ORGANIZA PRODUTOS PELAS 10 GRANDES ÁREAS
     function renderProductsByArea() {
       const container = document.getElementById('productsByAreaContainer');
       if (!container) return;
@@ -1522,7 +1523,6 @@
         : MACRO_CATEGORIES.filter(m => m.id === selectedProductMacro);
 
       activeMacros.forEach(macro => {
-        // Encontra produtos que possuem essa macrocategoria
         const prods = allProducts.filter(p => (p.macros && p.macros.includes(macro.id)) || p.category === macro.id || p.category === macro.name);
         if (!prods.length) return;
 
@@ -1549,7 +1549,6 @@
       lucide.createIcons();
     }
 
-    // HOME: EXIBE PRODUTOS DESTACADOS
     function renderHomeProductsRow() {
       const container = document.getElementById('homeProductsRow');
       if (!container) return;
@@ -1680,7 +1679,6 @@
       document.getElementById('adFormTitle').textContent = `Editando Anúncio: ${ad.name}`;
       document.getElementById('proName').value = ad.name || "";
       
-      // Encontra a macrocategoria da profissão
       const macro = MACRO_CATEGORIES.find(m => m.professions.includes(ad.category)) || MACRO_CATEGORIES[0];
       document.getElementById('proMacroCategory').value = macro.id;
       handleProMacroChange();
@@ -1689,6 +1687,7 @@
       handleCategorySelectionChange();
 
       document.getElementById('proServices').value = (ad.services || []).join(', ');
+      document.getElementById('proVideoUrl').value = ad.videoUrl || "";
       document.getElementById('proBio').value = ad.bio || "";
       document.getElementById('proPriceType').value = ad.priceType || "quote";
       document.getElementById('proPriceValue').value = ad.priceValue || "";
@@ -1782,6 +1781,7 @@
         macroCategory: document.getElementById('proMacroCategory').value,
         category: document.getElementById('proCategory').value,
         services,
+        videoUrl: document.getElementById('proVideoUrl').value.trim(),
         bio: document.getElementById('proBio').value.trim(),
         priceType: document.getElementById('proPriceType').value,
         priceValue: parseFloat(document.getElementById('proPriceValue').value) || 0,
@@ -1827,6 +1827,14 @@
       if (type === 'domicilio') return 'Atende em Domicílio';
       if (type === 'local') return 'Tem Local Próprio';
       return 'Domicílio & Local';
+    }
+
+    // HELPER PARA EMBUTIR VÍDEOS DO YOUTUBE
+    function getYoutubeEmbedUrl(url) {
+      if (!url) return null;
+      const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=|shorts\/)([^#&?]*).*/;
+      const match = url.match(regExp);
+      return (match && match[2].length === 11) ? `https://www.youtube.com/embed/${match[2]}` : null;
     }
 
     // -------------------------------------------------------------
@@ -1877,6 +1885,7 @@
       }
     }
 
+    // CARROSSEL AUTOMÁTICO DESLIZANTE NOS DESTAQUES
     function renderCards() {
       const spon = document.getElementById('sponsoredList');
       if (!spon) return;
@@ -1885,23 +1894,45 @@
       const sponsoredPros = allProfessionals.filter(p => p.isSponsored === true);
       if (!sponsoredPros.length) {
         spon.innerHTML = `
-          <div class="col-span-full py-5 text-center text-xs text-neutral-400 border border-dashed border-neutral-700 rounded-2xl p-4">
+          <div class="w-full py-5 text-center text-xs text-neutral-400 border border-dashed border-neutral-700 rounded-2xl p-4">
             <i data-lucide="crown" class="w-6 h-6 mx-auto mb-1 text-amber-400/60"></i>
             <p class="font-bold text-neutral-300">Nenhum profissional em destaque no momento.</p>
             <p class="text-[10px] text-neutral-500 mt-0.5">Quer ser destaque? Toque no botão de ajuda no canto da tela!</p>
           </div>
         `;
       } else {
-        sponsoredPros.forEach(p => spon.appendChild(createFeaturedProCard(p)));
+        sponsoredPros.forEach(p => spon.appendChild(createFeaturedProCard(p, true)));
+        startSponsoredAutoScroll();
       }
       applyFilters();
       lucide.createIcons();
     }
 
-    // CARD GETNINJAS (COM SELOS HUMANIZADOS: PIX, ORÇAMENTO GRÁTIS, ATENDIMENTO)
-    function createFeaturedProCard(p) {
+    // LÓGICA DE AUTO-DESLIZAMENTO DO CARROSSEL
+    function startSponsoredAutoScroll() {
+      const container = document.getElementById('sponsoredList');
+      if (!container) return;
+      if (sponsoredAutoScrollTimer) clearInterval(sponsoredAutoScrollTimer);
+
+      sponsoredAutoScrollTimer = setInterval(() => {
+        if (container.matches(':hover')) return; // Pausa no mouse ou toque
+        const card = container.querySelector('.snap-start');
+        const cardWidth = card ? card.offsetWidth + 14 : 310;
+
+        if (container.scrollLeft + container.clientWidth >= container.scrollWidth - 15) {
+          container.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          container.scrollBy({ left: cardWidth, behavior: 'smooth' });
+        }
+      }, 3500);
+    }
+
+    // CARD GETNINJAS (COM SUPORTE A CARROSSEL HORIZONTAL)
+    function createFeaturedProCard(p, isCarousel = false) {
       const card = document.createElement('div');
-      card.className = `bg-white dark:bg-zebu-darkCard text-neutral-900 dark:text-white rounded-3xl p-4 shadow-sm hover:shadow-md transition-all flex flex-col justify-between border ${p.isSponsored ? 'border-2 border-amber-400' : 'border-zebu-grayBorder dark:border-neutral-800'}`;
+      
+      const widthClass = isCarousel ? 'w-[290px] sm:w-[320px] shrink-0 snap-start' : 'w-full';
+      card.className = `${widthClass} bg-white dark:bg-zebu-darkCard text-neutral-900 dark:text-white rounded-3xl p-4 shadow-sm hover:shadow-md transition-all flex flex-col justify-between border ${p.isSponsored ? 'border-2 border-amber-400' : 'border-zebu-grayBorder dark:border-neutral-800'}`;
       
       const iconName = getProfessionIcon(p.category);
       const imageHTML = p.avatar 
@@ -1939,11 +1970,10 @@
 
           <p class="text-[11px] text-neutral-600 dark:text-neutral-400 line-clamp-2 leading-relaxed">${p.bio || 'Profissional autônomo disponível em Uberaba.'}</p>
 
-          <!-- SELOS HUMANIZADOS -->
           <div class="flex flex-wrap gap-1 text-[9px] font-bold text-neutral-500">
             <span class="px-2 py-0.5 bg-neutral-100 dark:bg-neutral-800 rounded-md">📍 ${formatAttendanceDisplay(p.attendanceType)}</span>
-            <span class="px-2 py-0.5 bg-neutral-100 dark:bg-neutral-800 rounded-md">💳 Aceita Pix & Cartão</span>
-            <span class="px-2 py-0.5 bg-neutral-100 dark:bg-neutral-800 rounded-md text-emerald-600 dark:text-emerald-400">✨ Orçamento sem compromisso</span>
+            <span class="px-2 py-0.5 bg-neutral-100 dark:bg-neutral-800 rounded-md">💳 Pix & Cartão</span>
+            ${p.videoUrl ? `<span class="px-2 py-0.5 bg-zebu-limeSoft text-black rounded-md flex items-center gap-0.5"><i data-lucide="play" class="w-2.5 h-2.5"></i> Vídeo</span>` : ''}
           </div>
 
           <div class="flex flex-wrap gap-1 pt-0.5">
@@ -1989,7 +2019,7 @@
       if (!filtered.length) {
         grid.innerHTML = '<p class="col-span-full py-8 text-center text-xs text-neutral-400">Nenhum profissional encontrado com os filtros selecionados.</p>';
       } else {
-        filtered.forEach(p => grid.appendChild(createFeaturedProCard(p)));
+        filtered.forEach(p => grid.appendChild(createFeaturedProCard(p, false)));
       }
       lucide.createIcons();
     };
@@ -2006,6 +2036,23 @@
       document.getElementById('modalProPrice').textContent = formatPriceDisplay(p);
       document.getElementById('modalProAttendance').textContent = formatAttendanceDisplay(p.attendanceType);
 
+      // RENDERIZAÇÃO DO VÍDEO DO PROFISSIONAL
+      const videoCont = document.getElementById('modalProVideoContainer');
+      const videoWrapper = document.getElementById('modalProVideoWrapper');
+      if (p.videoUrl) {
+        const embedUrl = getYoutubeEmbedUrl(p.videoUrl);
+        if (embedUrl) {
+          videoWrapper.innerHTML = `<iframe src="${embedUrl}" class="w-full h-full" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+          videoCont.classList.remove('hidden');
+        } else {
+          videoWrapper.innerHTML = `<a href="${p.videoUrl}" target="_blank" class="w-full h-full flex items-center justify-center bg-neutral-900 text-zebu-lime font-bold text-xs gap-2"><i data-lucide="play-circle" class="w-6 h-6"></i> Assistir Vídeo Externo</a>`;
+          videoCont.classList.remove('hidden');
+        }
+      } else {
+        videoWrapper.innerHTML = '';
+        videoCont.classList.add('hidden');
+      }
+
       const aCont = document.getElementById('modalProAvatarContainer');
       const iconName = getProfessionIcon(p.category);
       if (p.avatar) {
@@ -2018,7 +2065,6 @@
       if (p.isSponsored) badge.classList.remove('hidden');
       else badge.classList.add('hidden');
 
-      // Botão compartilhar no WhatsApp do perfil
       document.getElementById('btnShareWhatsappProfile').onclick = () => {
         const text = encodeURIComponent(`Confira os serviços de ${p.name} (${p.category}) no Zebu Freela em Uberaba: https://www.zebufreela.com.br/#explore`);
         window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
@@ -2074,7 +2120,7 @@
     };
 
     // -------------------------------------------------------------
-    // VAGAS / OPORTUNIDADES (COM ENCERRAMENTO PELO AUTOR)
+    // VAGAS / OPORTUNIDADES
     // -------------------------------------------------------------
     window.saveJobOpportunity = async function(e) {
       e.preventDefault();
