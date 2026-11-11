@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>Zebu Freela | Conectando pessoas e oportunidades em Uberaba</title>
   <link rel="manifest" href="/manifest.json">
-  <meta name="theme-color" content="#0B0E09">
+  <meta name="theme-color" content="#070B06">
   <meta name="description" content="Plataforma de autônomos, serviços e equipamentos em Uberaba - MG. Diaristas, eletricistas, marido de aluguel e mais.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://www.zebufreela.com.br">
@@ -21,8 +21,8 @@
               lime: '#76E000',
               limeHover: '#65C400',
               limeSoft: '#EAFFCE',  
-              dark: '#0B0E09',      
-              darkCard: '#131811',
+              dark: '#070B06',      
+              darkCard: '#10170F',
               graySoft: '#F6F8F5',
               grayBorder: '#E5E9E2',
               shopee: '#EE4D2D',
@@ -39,12 +39,13 @@
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     .chat-bg { background: linear-gradient(180deg, #E8F7D8 0%, #F4FAF0 50%, #FFFFFF 100%); }
     .dark .chat-bg { background: linear-gradient(180deg, #0D1C0F 0%, #0A140B 50%, #050A05 100%); }
+    .dark-gradient { background: linear-gradient(135deg, #070B06 0%, #121B0F 50%, #070B06 100%); }
   </style>
 </head>
 <body class="bg-[#F8FAF6] text-neutral-900 dark:bg-[#070A06] dark:text-neutral-100 min-h-screen flex flex-col font-sans pb-24 md:pb-6">
 
-  <!-- ================= TOPBAR ================= -->
-  <header class="sticky top-0 z-40 bg-zebu-dark text-white shadow-md border-b border-white/10">
+  <!-- ================= TOPBAR (COM DEGRADÊ) ================= -->
+  <header class="sticky top-0 z-40 bg-gradient-to-r from-[#070B06] via-[#121B0F] to-[#070B06] text-white shadow-md border-b border-white/10">
     <div class="max-w-6xl mx-auto px-4 h-15 flex items-center justify-between">
       <a href="#home" onclick="showSection('home')" class="flex items-center gap-2">
         <img src="file_00000000ee94820e8030c8d3a817a851.png" alt="Zebu Freela" class="h-9 md:h-11 w-auto object-contain">
@@ -54,7 +55,7 @@
         <button onclick="showSection('home')" id="nav-home" class="text-zebu-lime flex items-center gap-1.5 pb-1 border-b-2 border-zebu-lime">
           <i data-lucide="home" class="w-4 h-4"></i> Início
         </button>
-        <button onclick="openCategoryShowcase('reformas')" id="nav-explore" class="hover:text-zebu-lime transition flex items-center gap-1.5 pb-1">
+        <button onclick="openProfessionExplore('')" id="nav-explore" class="hover:text-zebu-lime transition flex items-center gap-1.5 pb-1">
           <i data-lucide="layout-grid" class="w-4 h-4"></i> Profissionais
         </button>
         <button onclick="showSection('jobs')" id="nav-jobs" class="hover:text-zebu-lime transition flex items-center gap-1.5 pb-1">
@@ -66,7 +67,7 @@
       </nav>
 
       <div class="flex items-center gap-2">
-        <button id="themeToggle" class="p-2 rounded-full hover:bg-white/10 transition" title="Tema">
+        <button id="themeToggle" class="p-2 rounded-full hover:bg-white/10 transition" title="Alternar tema">
           <i data-lucide="moon" class="w-4 h-4 hidden dark:block text-zebu-lime"></i>
           <i data-lucide="sun" class="w-4 h-4 block dark:hidden text-zebu-lime"></i>
         </button>
@@ -93,7 +94,7 @@
   </header>
 
   <!-- NOTIFICAÇÃO TOAST -->
-  <div id="toast" class="fixed top-4 left-4 right-4 md:left-auto md:right-4 z-50 transform -translate-y-24 opacity-0 transition-all duration-300 max-w-sm w-full mx-auto bg-zebu-dark text-white p-3.5 rounded-2xl shadow-2xl flex items-start gap-3 border border-zebu-lime/40">
+  <div id="toast" class="fixed top-4 left-4 right-4 md:left-auto md:right-4 z-50 transform -translate-y-24 opacity-0 transition-all duration-300 max-w-sm w-full mx-auto bg-gradient-to-r from-[#070B06] to-[#121B0F] text-white p-3.5 rounded-2xl shadow-2xl flex items-start gap-3 border border-zebu-lime/40">
     <i id="toastIcon" data-lucide="info" class="w-5 h-5 shrink-0 text-zebu-lime mt-0.5"></i>
     <p id="toastMessage" class="text-xs font-medium leading-snug"></p>
   </div>
@@ -118,8 +119,8 @@
             Encontre profissionais de confiança ou anuncie seu trabalho em Uberaba.
           </p>
 
-          <!-- Barra de Busca -->
-          <div class="pt-2 flex items-center bg-white dark:bg-black rounded-full border border-neutral-300 dark:border-neutral-700 shadow-sm p-1">
+          <!-- Barra de Busca Rápida -->
+          <div class="pt-2 flex items-center bg-white dark:bg-[#070B06] rounded-full border border-neutral-300 dark:border-neutral-700 shadow-sm p-1">
             <i data-lucide="search" class="w-4 h-4 ml-3 text-neutral-400 shrink-0"></i>
             <input type="text" id="homeSearchInput" placeholder="Buscar serviços, profissionais ou equipamentos..." 
               class="w-full px-2.5 py-1.5 bg-transparent text-xs md:text-sm focus:outline-none placeholder-neutral-400"
@@ -130,7 +131,7 @@
           </div>
 
           <div class="pt-3 grid grid-cols-2 gap-2.5">
-            <div onclick="openCategoryShowcase('reformas')" class="cursor-pointer bg-zebu-graySoft dark:bg-neutral-900 border border-zebu-grayBorder dark:border-neutral-800 p-3 rounded-2xl flex items-center justify-between hover:border-zebu-lime transition shadow-sm">
+            <div onclick="openProfessionExplore('')" class="cursor-pointer bg-zebu-graySoft dark:bg-[#121B0F]/50 border border-zebu-grayBorder dark:border-neutral-800 p-3 rounded-2xl flex items-center justify-between hover:border-zebu-lime transition shadow-sm">
               <div class="flex items-center gap-2.5">
                 <div class="w-9 h-9 rounded-xl bg-zebu-limeSoft text-black flex items-center justify-center font-bold shrink-0">
                   <i data-lucide="users" class="w-4 h-4"></i>
@@ -143,14 +144,14 @@
               <i data-lucide="chevron-right" class="w-4 h-4 text-neutral-400"></i>
             </div>
 
-            <div onclick="showSection('blog')" class="cursor-pointer bg-zebu-graySoft dark:bg-neutral-900 border border-zebu-grayBorder dark:border-neutral-800 p-3 rounded-2xl flex items-center justify-between hover:border-zebu-lime transition shadow-sm">
+            <div onclick="showSection('blog')" class="cursor-pointer bg-zebu-graySoft dark:bg-[#121B0F]/50 border border-zebu-grayBorder dark:border-neutral-800 p-3 rounded-2xl flex items-center justify-between hover:border-zebu-lime transition shadow-sm">
               <div class="flex items-center gap-2.5">
                 <div class="w-9 h-9 rounded-xl bg-zebu-limeSoft text-black flex items-center justify-center font-bold shrink-0">
                   <i data-lucide="wrench" class="w-4 h-4"></i>
                 </div>
                 <div>
                   <h4 class="font-black text-xs leading-none">Equipamentos</h4>
-                  <span class="text-[9px] text-neutral-500 block mt-0.5">Por área profissional</span>
+                  <span class="text-[9px] text-neutral-500 block mt-0.5">Ferramentas de trabalho</span>
                 </div>
               </div>
               <i data-lucide="chevron-right" class="w-4 h-4 text-neutral-400"></i>
@@ -163,15 +164,15 @@
         </div>
       </div>
 
-      <!-- 10 GRANDES ÁREAS (MACRO-CATEGORIAS) -->
+      <!-- CATEGORIAS (ORDEM ALFABÉTICA) -->
       <div class="space-y-3">
         <div class="flex items-center justify-between">
           <h2 class="text-base font-black flex items-center gap-2">
-            <span class="w-4 h-1 bg-zebu-lime rounded-full"></span> Principais Áreas de Serviços
+            <span class="w-4 h-1 bg-zebu-lime rounded-full"></span> Principais Categorias
           </h2>
-          <button onclick="openCategoryShowcase('reformas')" class="text-xs font-bold hover:underline flex items-center gap-1">Ver todas <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></button>
+          <button onclick="openProfessionExplore('')" class="text-xs font-bold hover:underline flex items-center gap-1">Ver todas <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></button>
         </div>
-        <div id="macroCategoriesGrid" class="grid grid-cols-2 sm:grid-cols-5 gap-2.5"></div>
+        <div id="homeCategoriesGrid" class="flex md:grid md:grid-cols-6 gap-2.5 overflow-x-auto no-scrollbar py-1"></div>
       </div>
 
       <!-- MURAL DE OPORTUNIDADES -->
@@ -183,15 +184,15 @@
               <i data-lucide="briefcase" class="w-4 h-4 text-zebu-limeHover dark:text-zebu-lime"></i> Oportunidades em Aberto
             </h2>
           </div>
-          <button onclick="openModal('postJobModal')" class="px-3 py-1.5 bg-zebu-dark text-zebu-lime hover:brightness-110 font-black text-xs rounded-xl shadow-sm flex items-center gap-1">
+          <button onclick="openModal('postJobModal')" class="px-3 py-1.5 bg-gradient-to-r from-[#070B06] to-[#121B0F] text-zebu-lime hover:brightness-110 font-black text-xs rounded-xl shadow-sm flex items-center gap-1 border border-white/10">
             <i data-lucide="plus-circle" class="w-3.5 h-3.5"></i> Publicar Vaga
           </button>
         </div>
         <div id="homeJobsList" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3"></div>
       </div>
 
-      <!-- PROFISSIONAIS EM DESTAQUE (CARROSSEL AUTOMÁTICO DESLIZANTE) -->
-      <div class="space-y-3 bg-zebu-dark text-white p-4 md:p-6 rounded-3xl border border-neutral-800 shadow-md">
+      <!-- PROFISSIONAIS EM DESTAQUE (COM DEGRADÊ ESCURO) -->
+      <div class="space-y-3 bg-gradient-to-br from-[#070B06] via-[#121B0F] to-[#070B06] text-white p-4 md:p-6 rounded-3xl border border-neutral-800 shadow-md">
         <div class="flex items-center justify-between">
           <div>
             <h2 class="text-base md:text-lg font-black flex items-center gap-2">
@@ -199,12 +200,12 @@
             </h2>
             <p class="text-[10px] md:text-xs text-neutral-400">Deslize para ver profissionais recomendados em Uberaba</p>
           </div>
-          <button onclick="openCategoryShowcase('reformas')" class="text-xs font-bold px-3 py-1 rounded-full border border-neutral-700 hover:border-zebu-lime transition flex items-center gap-1">Ver todos <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></button>
+          <button onclick="openProfessionExplore('')" class="text-xs font-bold px-3 py-1 rounded-full border border-neutral-700 hover:border-zebu-lime transition flex items-center gap-1">Ver todos <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></button>
         </div>
         <div id="sponsoredList" class="flex gap-3.5 overflow-x-auto no-scrollbar scroll-smooth py-1 snap-x snap-mandatory"></div>
       </div>
 
-      <!-- EQUIPAMENTOS EM DESTAQUE NA HOME (CARROSSEL AUTOMÁTICO DESLIZANTE) -->
+      <!-- EQUIPAMENTOS EM DESTAQUE NA HOME -->
       <div class="space-y-3 bg-white dark:bg-zebu-darkCard p-4 md:p-5 rounded-3xl border border-zebu-grayBorder dark:border-neutral-800 shadow-sm">
         <div class="flex items-center justify-between">
           <div>
@@ -219,9 +220,9 @@
       </div>
     </section>
 
-    <!-- MURAL COMPLETO DE VAGAS -->
+    <!-- MURAL COMPLETO DE VAGAS (COM DEGRADÊ) -->
     <section id="jobsSection" class="hidden space-y-4">
-      <div class="bg-zebu-dark text-white p-5 md:p-6 rounded-3xl border border-neutral-800 flex flex-col md:flex-row justify-between items-start md:items-center gap-3">
+      <div class="bg-gradient-to-r from-[#070B06] via-[#121B0F] to-[#070B06] text-white p-5 md:p-6 rounded-3xl border border-neutral-800 flex flex-col md:flex-row justify-between items-start md:items-center gap-3">
         <div>
           <span class="text-[10px] font-black uppercase text-zebu-lime tracking-widest block">Mural de Oportunidades</span>
           <h2 class="text-xl md:text-2xl font-black flex items-center gap-2">
@@ -236,15 +237,15 @@
       <div id="allJobsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3"></div>
     </section>
 
-    <!-- LOJA DE EQUIPAMENTOS (ORGANIZADA PELAS 10 ÁREAS) -->
+    <!-- SEÇÃO: EQUIPAMENTOS (ORGANIZADOS POR PROFISSÃO COM DEGRADÊ) -->
     <section id="blogSection" class="hidden space-y-5">
-      <div class="bg-zebu-dark text-white p-5 md:p-6 rounded-3xl border border-neutral-800 flex flex-col md:flex-row justify-between items-start md:items-center gap-3">
+      <div class="bg-gradient-to-r from-[#070B06] via-[#121B0F] to-[#070B06] text-white p-5 md:p-6 rounded-3xl border border-neutral-800 flex flex-col md:flex-row justify-between items-start md:items-center gap-3">
         <div>
           <span class="text-[10px] font-black uppercase text-zebu-lime tracking-widest block">Catálogo Oficial</span>
           <h2 class="text-xl md:text-2xl font-black flex items-center gap-2">
             <i data-lucide="wrench" class="w-5 h-5 text-zebu-lime"></i> Equipamentos
           </h2>
-          <p class="text-xs text-neutral-400 mt-0.5">Ferramentas organizadas pelas principais áreas de trabalho.</p>
+          <p class="text-xs text-neutral-400 mt-0.5">Ferramentas e materiais de trabalho separados por profissão.</p>
         </div>
         <button id="adminPostBtnBlog" onclick="openCreateProductModal()" class="hidden px-4 py-2 bg-zebu-lime text-black font-black text-xs rounded-xl hover:bg-zebu-limeHover shadow">
           + Cadastrar Equipamento
@@ -252,23 +253,24 @@
       </div>
 
       <div id="productFilterBar" class="flex gap-1.5 overflow-x-auto no-scrollbar py-1 text-xs"></div>
-      <div id="productsByAreaContainer" class="space-y-6"></div>
+      <div id="productsByProfessionContainer" class="space-y-6"></div>
     </section>
 
-    <!-- ================= VITRINE TEMÁTICA DE PROFISSIONAIS (FIM DA LISTA SEM GRAÇA!) ================= -->
+    <!-- EXPLORAR PROFISSIONAIS (COM DEGRADÊ) -->
     <section id="exploreSection" class="hidden space-y-5">
       
-      <!-- HERO DINÂMICO DA ÁREA ESCOLHIDA (BANNER ESCURO COM NEON) -->
-      <div id="showcaseHero" class="bg-zebu-dark text-white p-5 md:p-7 rounded-3xl border border-neutral-800 shadow-md relative overflow-hidden">
-        <div class="absolute -top-12 -right-12 w-48 h-48 bg-zebu-lime/20 rounded-full blur-3xl pointer-events-none"></div>
+      <!-- HERO DINÂMICO COM DEGRADÊ ESCURO -->
+      <div id="showcaseHero" class="bg-gradient-to-r from-[#070B06] via-[#121B0F] to-[#070B06] text-white p-5 md:p-6 rounded-3xl border border-neutral-800 shadow-md relative overflow-hidden">
         <div class="relative z-10 flex items-center justify-between gap-3">
           <div class="space-y-1">
             <span id="showcaseCategoryTag" class="text-[10px] font-black uppercase text-zebu-lime tracking-widest block">Profissionais em Uberaba</span>
             <h2 id="showcaseTitle" class="text-xl md:text-3xl font-black flex items-center gap-2">
-              <span id="showcaseIconBox" class="w-8 h-8 rounded-xl bg-zebu-limeSoft text-black flex items-center justify-center font-bold text-sm">🔨</span>
-              <span id="showcaseName">Reformas & Marido de Aluguel</span>
+              <span id="showcaseIconBox" class="w-8 h-8 rounded-xl bg-zebu-limeSoft text-black flex items-center justify-center font-bold text-sm">
+                <i data-lucide="users" class="w-4 h-4"></i>
+              </span>
+              <span id="showcaseName">Todos os Profissionais</span>
             </h2>
-            <p id="showcaseSubtitle" class="text-xs text-neutral-400 max-w-lg">Especialistas e autônomos prontos para atender seu chamado no seu bairro.</p>
+            <p id="showcaseSubtitle" class="text-xs text-neutral-400 max-w-lg">Encontre especialistas prontos para atender no seu bairro.</p>
           </div>
           <button onclick="handleAdvertiseClick()" class="hidden sm:flex px-3.5 py-2 bg-zebu-lime hover:bg-zebu-limeHover text-black font-black text-xs rounded-xl shadow shrink-0">
             Anunciar nesta Área
@@ -276,35 +278,32 @@
         </div>
       </div>
 
-      <!-- PÍLULAS DESLIZANTES COM O POLEGAR DAS PROFISSÕES ESPECÍFICAS -->
-      <div class="space-y-1.5">
-        <div id="showcasePillsContainer" class="flex gap-2 overflow-x-auto no-scrollbar py-1"></div>
+      <!-- PÍLULAS DESLIZANTES COM TODAS AS PROFISSÕES -->
+      <div class="space-y-1">
+        <div id="exploreProfessionsPills" class="flex gap-2 overflow-x-auto no-scrollbar py-1"></div>
       </div>
 
-      <!-- BARRA DE BUSCA E FILTROS RÁPIDOS -->
+      <!-- BARRA DE BUSCA E FILTROS -->
       <div class="bg-white dark:bg-zebu-darkCard p-3.5 md:p-4 rounded-2xl shadow-sm border border-zebu-grayBorder dark:border-neutral-800 space-y-2.5">
         <div class="relative">
           <i data-lucide="search" class="w-4 h-4 absolute left-3.5 top-3 text-neutral-400"></i>
-          <input type="text" id="searchInput" placeholder="Buscar por serviço, nome ou bairro..." 
+          <input type="text" id="searchInput" placeholder="Buscar por serviço, profissão, nome ou bairro..." 
             class="w-full pl-10 pr-3 py-2 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs md:text-sm focus:ring-2 focus:ring-zebu-lime outline-none"
             oninput="applyFilters()">
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
-          <!-- SELETOR DE BAIRROS COM OPÇÃO DE DIGITAR -->
           <div>
             <select id="filterNeighborhood" onchange="handleNeighborhoodFilterChange()" class="w-full text-xs py-2 px-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 font-medium"></select>
             <input type="text" id="filterCustomNeighborhoodInput" placeholder="Digite seu bairro em Uberaba..." oninput="applyFilters()" class="hidden mt-1.5 w-full text-xs p-2 rounded-xl border border-zebu-lime bg-white dark:bg-neutral-900 outline-none">
           </div>
 
-          <!-- LOCAL DE ATENDIMENTO -->
           <select id="filterAttendance" onchange="applyFilters()" class="text-xs py-2 px-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 font-medium">
             <option value="">Atendimento: Todos</option>
             <option value="domicilio">Em Domicílio</option>
             <option value="local">Local Próprio</option>
           </select>
 
-          <!-- PREÇO -->
           <select id="filterPrice" onchange="applyFilters()" class="text-xs py-2 px-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 font-medium">
             <option value="">Preço: Qualquer modelo</option>
             <option value="quote">Apenas Sob Orçamento</option>
@@ -313,33 +312,19 @@
         </div>
       </div>
 
-      <!-- LISTA DE PROFISSIONAIS EM CARDS MODERNOS -->
       <div class="space-y-3">
-        <div class="flex items-center justify-between text-xs text-neutral-500 font-bold px-1">
-          <span id="resultsCount">Carregando profissionais...</span>
-        </div>
+        <span id="resultsCount" class="text-xs text-neutral-500 font-bold block px-1">Carregando profissionais...</span>
         <div id="resultsGrid" class="grid grid-cols-1 md:grid-cols-2 gap-3.5"></div>
-      </div>
-
-      <!-- BANNER DE CONVITE NO FIM DA VITRINE -->
-      <div class="bg-gradient-to-r from-neutral-900 to-black p-5 rounded-3xl border border-zebu-lime/40 flex flex-col sm:flex-row items-center justify-between gap-3 text-white text-center sm:text-left">
-        <div>
-          <h4 class="font-black text-sm">Trabalha com serviços em Uberaba?</h4>
-          <p class="text-xs text-neutral-400 mt-0.5">Cadastre seu anúncio grátis e apareça para clientes que buscam no seu bairro.</p>
-        </div>
-        <button onclick="handleAdvertiseClick()" class="px-5 py-2.5 bg-zebu-lime hover:bg-zebu-limeHover text-black font-black text-xs rounded-xl shadow shrink-0">
-          Cadastrar Meu Anúncio Grátis
-        </button>
       </div>
     </section>
 
-    <!-- PAINEL PROFISSIONAL -->
+    <!-- PAINEL PROFISSIONAL (SEM "GRANDE ÁREA", DIRETO E RÁPIDO!) -->
     <section id="dashboardSection" class="hidden space-y-4">
       <div class="bg-white dark:bg-zebu-darkCard p-4 md:p-6 rounded-3xl shadow-sm border border-zebu-grayBorder dark:border-neutral-800">
         <div class="flex flex-wrap items-center justify-between border-b border-neutral-200 dark:border-neutral-800 pb-3 mb-4 gap-2">
           <div>
             <h2 class="text-lg md:text-xl font-black">Meus Anúncios de Serviços</h2>
-            <p class="text-[11px] text-neutral-500">Crie anúncios separados para cada profissão que você exerce.</p>
+            <p class="text-[11px] text-neutral-500">Cadastre e edite anúncios separados para cada profissão que você exerce.</p>
           </div>
           <div class="flex items-center gap-2">
             <button onclick="startNewAdForm()" class="px-3.5 py-2 bg-zebu-lime hover:bg-zebu-limeHover text-black font-black text-xs rounded-xl shadow flex items-center gap-1.5 transition">
@@ -353,7 +338,7 @@
 
         <div id="myAdsList" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
 
-        <!-- FORMULÁRIO DE ANÚNCIO -->
+        <!-- FORMULÁRIO DE ANÚNCIO (DIRETO NA PROFISSÃO) -->
         <div id="adFormContainer" class="hidden mt-6 pt-5 border-t border-neutral-200 dark:border-neutral-800">
           <div class="flex items-center justify-between mb-4">
             <h3 id="adFormTitle" class="text-sm font-black uppercase text-zebu-lime tracking-wider">Criar Novo Anúncio</h3>
@@ -365,32 +350,29 @@
           <form id="proProfileForm" onsubmit="saveProProfile(event)" class="space-y-4 text-xs md:text-sm">
             
             <div class="flex items-center gap-3 p-3 rounded-2xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700">
-              <div id="proAvatarPreviewContainer" class="w-14 h-14 rounded-full bg-zebu-dark text-zebu-lime flex items-center justify-center font-black text-base shrink-0 overflow-hidden border border-neutral-300">
+              <div id="proAvatarPreviewContainer" class="w-14 h-14 rounded-full bg-gradient-to-r from-[#070B06] to-[#121B0F] text-zebu-lime flex items-center justify-center font-black text-base shrink-0 overflow-hidden border border-neutral-300">
                 <i id="proAvatarDefaultIcon" data-lucide="user" class="w-7 h-7"></i>
                 <img id="proAvatarPreview" src="" class="w-full h-full object-cover hidden">
               </div>
               <div class="flex-1">
                 <label class="block text-[11px] font-bold uppercase text-neutral-700 dark:text-neutral-200 mb-0.5">Sua Foto de Perfil ou Logo *</label>
-                <input type="file" id="proAvatarInput" accept="image/*" onchange="handleAvatarUpload(event)" class="block w-full text-[10px] text-neutral-500 file:mr-2 file:py-1 file:px-2.5 file:rounded-lg file:border-0 file:text-[10px] file:font-bold file:bg-zebu-dark file:text-zebu-lime">
+                <input type="file" id="proAvatarInput" accept="image/*" onchange="handleAvatarUpload(event)" class="block w-full text-[10px] text-neutral-500 file:mr-2 file:py-1 file:px-2.5 file:rounded-lg file:border-0 file:text-[10px] file:font-bold file:bg-[#070B06] file:text-zebu-lime">
               </div>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <!-- APENAS NOME E PROFISSÃO DIRETA (SEM GRANDE ÁREA) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div>
                 <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Nome de Exibição / Fantasia *</label>
                 <input type="text" id="proName" required placeholder="Ex: Carlos Marido de Aluguel" class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs">
               </div>
               <div>
-                <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">1. Grande Área *</label>
-                <select id="proMacroCategory" onchange="handleProMacroChange()" required class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs font-bold"></select>
-              </div>
-              <div>
-                <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">2. Profissão Específica *</label>
-                <select id="proCategory" onchange="handleCategorySelectionChange()" required class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs"></select>
+                <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Profissão Principal *</label>
+                <select id="proCategory" onchange="handleCategorySelectionChange()" required class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs font-bold"></select>
               </div>
             </div>
 
-            <!-- SUGESTÕES DE FUNÇÕES RELACIONADAS -->
+            <!-- ESPECIALIDADES POPULARES COM 1 TOQUE -->
             <div id="relatedFunctionsContainer" class="hidden p-3 rounded-2xl bg-zebu-limeSoft/50 dark:bg-neutral-800/80 border border-zebu-lime/40 space-y-2">
               <label class="block text-[11px] font-black uppercase text-neutral-800 dark:text-neutral-200 flex items-center gap-1">
                 <i data-lucide="sparkles" class="w-3.5 h-3.5 text-zebu-lime"></i> Especialidades populares (toque para adicionar aos seus serviços):
@@ -403,7 +385,6 @@
               <input type="text" id="proServices" required placeholder="Ex: Troca de chuveiro, Instalação de TV, Torneiras" class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs">
             </div>
 
-            <!-- VÍDEO DO TRABALHO -->
             <div>
               <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Vídeo dos Trabalhos (YouTube, Shorts ou Link Direto - Opcional)</label>
               <input type="url" id="proVideoUrl" placeholder="Ex: https://www.youtube.com/watch?v=... ou https://youtu.be/..." class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs">
@@ -426,14 +407,11 @@
                 <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Valor Inicial (R$)</label>
                 <input type="number" step="0.5" id="proPriceValue" placeholder="150,00" class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs">
               </div>
-              
-              <!-- BAIRRO BASE COM OPÇÃO DE DIGITAR -->
               <div>
                 <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Bairro Base (Uberaba) *</label>
                 <select id="proNeighborhood" onchange="handleProNeighborhoodChange()" required class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs"></select>
                 <input type="text" id="proCustomNeighborhoodInput" placeholder="Digite o nome do seu bairro..." class="hidden mt-1.5 w-full text-xs p-2 rounded-xl border border-zebu-lime bg-white dark:bg-neutral-900 outline-none">
               </div>
-
               <div>
                 <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Local de Atendimento *</label>
                 <select id="proAttendanceType" class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-xs font-bold">
@@ -461,7 +439,7 @@
                 <span id="photoCount" class="text-[11px] font-black">0 / 10 fotos</span>
               </div>
               <input type="file" id="portfolioInput" accept="image/*" multiple onchange="handlePortfolioUpload(event)"
-                class="block w-full text-[10px] text-neutral-500 file:mr-3 file:py-1.5 file:px-2.5 file:rounded-lg file:border-0 file:text-[10px] file:font-bold file:bg-zebu-dark file:text-zebu-lime">
+                class="block w-full text-[10px] text-neutral-500 file:mr-3 file:py-1.5 file:px-2.5 file:rounded-lg file:border-0 file:text-[10px] file:font-bold file:bg-[#070B06] file:text-zebu-lime">
               <div id="portfolioPreviewGrid" class="grid grid-cols-3 sm:grid-cols-5 gap-2 pt-1"></div>
             </div>
 
@@ -487,13 +465,13 @@
     </button>
   </aside>
 
-  <!-- ================= BARRA INFERIOR MOBILE ================= -->
-  <nav class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-zebu-dark/95 backdrop-blur-md border-t border-neutral-800 flex justify-around items-center h-16 px-2 text-white">
+  <!-- ================= BARRA INFERIOR MOBILE (COM DEGRADÊ) ================= -->
+  <nav class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-gradient-to-r from-[#070B06] via-[#121B0F] to-[#070B06] border-t border-neutral-800 flex justify-around items-center h-16 px-2 text-white shadow-xl">
     <button onclick="showSection('home')" id="mobile-nav-home" class="flex flex-col items-center gap-1 py-1 text-zebu-lime">
       <i data-lucide="home" class="w-5 h-5"></i>
       <span class="text-[9px] font-bold">Início</span>
     </button>
-    <button onclick="openCategoryShowcase('reformas')" id="mobile-nav-explore" class="flex flex-col items-center gap-1 py-1 text-neutral-400 hover:text-white">
+    <button onclick="openProfessionExplore('')" id="mobile-nav-explore" class="flex flex-col items-center gap-1 py-1 text-neutral-400 hover:text-white">
       <i data-lucide="layout-grid" class="w-5 h-5"></i>
       <span class="text-[9px] font-bold">Profissionais</span>
     </button>
@@ -511,8 +489,8 @@
     </button>
   </nav>
 
-  <!-- ================= FOOTER ================= -->
-  <footer class="bg-zebu-dark text-white border-t border-neutral-800 py-8 px-4 mt-auto">
+  <!-- ================= FOOTER (COM DEGRADÊ) ================= -->
+  <footer class="bg-gradient-to-b from-[#070B06] via-[#0E170C] to-[#050805] text-white border-t border-neutral-800 py-8 px-4 mt-auto">
     <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
       <div class="flex items-center gap-3">
         <img src="file_00000000ee94820e8030c8d3a817a851.png" class="h-8 w-auto object-contain">
@@ -539,7 +517,7 @@
           </button>
           
           <div class="relative">
-            <div id="chatHeaderAvatar" class="w-10 h-10 rounded-2xl bg-zebu-dark text-zebu-lime flex items-center justify-center font-bold text-base shrink-0 overflow-hidden shadow border border-neutral-200 dark:border-neutral-700">
+            <div id="chatHeaderAvatar" class="w-10 h-10 rounded-2xl bg-[#070B06] text-zebu-lime flex items-center justify-center font-bold text-base shrink-0 overflow-hidden shadow border border-neutral-200 dark:border-neutral-700">
               P
             </div>
             <span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-500 border-2 border-white dark:border-black"></span>
@@ -589,7 +567,7 @@
     </div>
   </div>
 
-  <!-- MODAL ADMIN EQUIPAMENTO (MÚLTIPLAS CATEGORIAS) -->
+  <!-- MODAL ADMIN EQUIPAMENTO -->
   <div id="adminProductModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-3">
     <div class="bg-white dark:bg-zebu-darkCard w-full max-w-lg rounded-3xl p-5 shadow-2xl border border-neutral-200 dark:border-neutral-800 relative max-h-[90vh] overflow-y-auto text-xs">
       <button onclick="closeModal('adminProductModal')" class="absolute right-4 top-4 text-neutral-400"><i data-lucide="x" class="w-5 h-5"></i></button>
@@ -601,7 +579,7 @@
         </label>
         <div class="flex gap-1.5">
           <input type="url" id="magicLinkInput" placeholder="Cole o link da Shopee, Mercado Livre ou Amazon..." class="flex-1 p-2 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-black text-xs outline-none">
-          <button type="button" id="btnMagicFetch" onclick="handleMagicLinkFetch()" class="px-3 py-2 bg-black text-zebu-lime font-black text-xs rounded-xl hover:bg-neutral-900 transition flex items-center gap-1 shrink-0 shadow">
+          <button type="button" id="btnMagicFetch" onclick="handleMagicLinkFetch()" class="px-3 py-2 bg-[#070B06] text-zebu-lime font-black text-xs rounded-xl hover:bg-neutral-900 transition flex items-center gap-1 shrink-0 shadow">
             <i data-lucide="wand-2" class="w-3.5 h-3.5"></i> Puxar Dados
           </button>
         </div>
@@ -613,9 +591,9 @@
           <input type="text" id="prodTitle" required placeholder="Ex: Furadeira de Impacto Profissional" class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800">
         </div>
         
-        <div class="space-y-1.5">
-          <label class="block text-[11px] font-bold uppercase text-neutral-500">Áreas em que o produto vai aparecer (marque quantas quiser): *</label>
-          <div id="productMacroCheckboxes" class="grid grid-cols-2 gap-1.5 p-2.5 bg-neutral-50 dark:bg-neutral-800 rounded-xl border border-neutral-300 dark:border-neutral-700 max-h-36 overflow-y-auto"></div>
+        <div>
+          <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Profissão / Categoria Principal *</label>
+          <select id="prodCategory" required class="w-full p-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 font-bold text-xs"></select>
         </div>
 
         <div class="grid grid-cols-2 gap-2">
@@ -634,8 +612,8 @@
         </div>
         <div>
           <label class="block text-[11px] font-bold uppercase text-neutral-500 mb-1">Foto do Produto (ou link direto)</label>
-          <input type="file" id="prodImageInput" accept="image/*" onchange="handleProductPhotoUpload(event)" class="block w-full text-[10px] text-neutral-500 file:mr-2 file:py-1 file:px-2.5 file:rounded-lg file:border-0 file:bg-zebu-dark file:text-zebu-lime">
-          <input type="url" id="prodImageUrlDirect" placeholder="Ou cole o link direto da imagem..." oninput="previewDirectImageUrl(this.value)" class="mt-1.5 w-full p-2 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-[10px]">
+          <input type="file" id="prodImageInput" accept="image/*" onchange="handleProductPhotoUpload(event)" class="block w-full text-[10px] text-neutral-500 file:mr-2 file:py-1 file:px-2.5 file:rounded-lg file:border-0 file:bg-[#070B06] file:text-zebu-lime">
+          <input type="url" id="prodImageUrlDirect" placeholder="Ou cole o link direto da imagem aqui..." oninput="previewDirectImageUrl(this.value)" class="mt-1.5 w-full p-2 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-[10px]">
           <div id="prodImagePreviewContainer" class="mt-2 hidden">
             <img id="prodImagePreview" src="" class="w-16 h-16 object-cover rounded-xl border">
           </div>
@@ -748,7 +726,7 @@
     <div class="bg-white dark:bg-zebu-darkCard w-full max-w-lg rounded-3xl shadow-2xl border border-neutral-200 dark:border-neutral-800 relative max-h-[92vh] flex flex-col overflow-hidden text-xs">
       <div class="p-4 border-b border-neutral-200 dark:border-neutral-800 flex justify-between items-start">
         <div class="flex items-center gap-3">
-          <div id="modalProAvatarContainer" class="w-14 h-14 rounded-2xl bg-zebu-dark text-zebu-lime border border-neutral-700 flex items-center justify-center font-black text-lg uppercase shrink-0 overflow-hidden shadow"></div>
+          <div id="modalProAvatarContainer" class="w-14 h-14 rounded-2xl bg-[#070B06] text-zebu-lime border border-neutral-700 flex items-center justify-center font-black text-lg uppercase shrink-0 overflow-hidden shadow"></div>
           <div>
             <div class="flex items-center gap-1.5">
               <h3 id="modalProName" class="font-black text-sm leading-snug">Profissional</h3>
@@ -914,91 +892,64 @@
 
     const ADMIN_EMAIL = "gabi.almeidasaude@gmail.com";
 
-    // 10 GRANDES ÁREAS (MACRO-CATEGORIAS)
-    const MACRO_CATEGORIES = [
-      {
-        id: "reformas",
-        name: "Reformas & Marido de Aluguel",
-        icon: "wrench",
-        subtitle: "Especialistas em consertos, elétrica, pintura, alvenaria e reparos no seu bairro.",
-        professions: ["Marido de Aluguel", "Pedreiro", "Pintor", "Eletricista", "Encanador", "Gesseiro / Drywall", "Serralheiro", "Vidraceiro", "Montador de Móveis", "Calheiro / Telhadista"],
-        subfunctions: ["Troca de Chuveiro", "Instalação de Varal", "Suporte de TV", "Troca de Torneira", "Reparos Elétricos", "Fechaduras", "Pintura de Parede", "Alvenaria", "Box de Banheiro"]
-      },
-      {
-        id: "agro",
-        name: "Agronegócio & Campo",
-        icon: "tractor",
-        subtitle: "Mão de obra e especialistas para fazendas, sítios e manejo agropecuário de Uberaba.",
-        professions: ["Tratorista / Operador", "Peão / Trabalhador Rural", "Cercador / Currais", "Inseminador Bovino", "Mecânico de Tratores", "Veterinário Rural", "Agrônomo / Técnico Agrícola", "Pulverização / Drones"],
-        subfunctions: ["Plantio", "Colheita", "Gradeamento", "Pulverização", "Manejo de Gado", "Cercas de Arame", "Manutenção de Ordenha"]
-      },
-      {
-        id: "domesticos",
-        name: "Serviços Domésticos",
-        icon: "sparkles",
-        subtitle: "Limpeza, cuidados para a casa e manutenção residencial de confiança.",
-        professions: ["Diarista e Faxineira", "Passadeira", "Cozinheira", "Piscineiro", "Jardineiro", "Limpeza Pós-Obra"],
-        subfunctions: ["Faxina Pesada", "Passadoria", "Tratamento de Choque", "Poda e Grama", "Limpeza de Vidros", "Organização"]
-      },
-      {
-        id: "beleza",
-        name: "Beleza & Estética",
-        icon: "sparkle",
-        subtitle: "Profissionais de cuidados pessoais, cabelo, unhas e estética em Uberaba.",
-        professions: ["Manicure e Pedicure", "Cabeleireira(o) / Barbeiro", "Designer de Sobrancelhas", "Maquiadora", "Depilação", "Massoterapeuta"],
-        subfunctions: ["Unhas em Gel", "Corte / Barba", "Escova / Luzes", "Alongamento de Cílios", "Drenagem Linfática", "Limpeza de Pele"]
-      },
-      {
-        id: "auto",
-        name: "Auto & Motos",
-        icon: "cog",
-        subtitle: "Socorro mecânico, autoelétrica, lavagem e manutenção veicular.",
-        professions: ["Mecânico", "Eletricista Automotivo", "Borracheiro", "Guincho", "Estética Automotiva / Lavagem"],
-        subfunctions: ["Troca de Óleo", "Freios e Suspensão", "Bateria e Elétrica", "Socorro 24h", "Polimento e Cristalização"]
-      },
-      {
-        id: "assistencia",
-        name: "Assistência Técnica",
-        icon: "laptop",
-        subtitle: "Conserto de celulares, computadores, eletrodomésticos e refrigeração.",
-        professions: ["Conserto de Celular", "Computadores / Notebooks", "Conserto de TV", "Geladeiras / Lavadoras", "Ar-Condicionado / Refrigeração"],
-        subfunctions: ["Troca de Tela", "Formatação / Backup", "Carga de Gás", "Higienização Split", "Placas e Componentes"]
-      },
-      {
-        id: "pets",
-        name: "Pets & Animais",
-        icon: "bone",
-        subtitle: "Cuidados, adestramento, passeios e saúde para seu melhor amigo.",
-        professions: ["Adestrador de Cães", "Banho e Tosa", "Passeador / Dog Walker", "Veterinário Domiciliar", "Cuidador / Pet Sitter"],
-        subfunctions: ["Comportamento Canino", "Obediência Básica", "Hospedagem Familiar", "Socialização", "Vacinação"]
-      },
-      {
-        id: "eventos",
-        name: "Eventos & Festas",
-        icon: "utensils",
-        subtitle: "Tudo para festas, churrascos, casamentos e comemorações inesquecíveis.",
-        professions: ["Buffet Completo", "Churrasqueiro", "Garçom", "DJ / Som", "Fotógrafo / Filmagem", "Confeiteira / Bolos", "Decoração"],
-        subfunctions: ["Churrasco a Domicílio", "Doces Finos", "Aniversários / Casamentos", "Locação de Mesas e Cadeiras"]
-      },
-      {
-        id: "fretes",
-        name: "Fretes & Entregas",
-        icon: "truck",
-        subtitle: "Mudanças residenciais, carretos, motoboy e entregas rápidas.",
-        professions: ["Fretes e Mudanças", "Carretos Rápidos", "Motoboy / Entregador", "Motorista Particular"],
-        subfunctions: ["Mudança Residencial", "Içamento", "Entregas Rápidas", "Viagens Regionais"]
-      },
-      {
-        id: "saude",
-        name: "Saúde & Cuidado",
-        icon: "stethoscope",
-        subtitle: "Acompanhamento profissional, enfermagem domiciliar, idosos e crianças.",
-        professions: ["Técnico em Enfermagem", "Cuidador de Idosos", "Babá", "Fisioterapeuta Domiciliar"],
-        subfunctions: ["Body Piercing", "Curativos e Escaras", "Aplicação de Injeção", "Acompanhamento Hospitalar", "Reabilitação"]
-      }
-    ];
+    // CATEGORIAS COMPLETAS EM ORDEM ALFABÉTICA
+    const CATEGORIES_DATA = [
+      { name: "Adestrador de Cães", icon: "bone" },
+      { name: "Ar-Condicionado e Refrigeração", icon: "snowflake" },
+      { name: "Babás e Cuidadoras", icon: "baby" },
+      { name: "Buffet & Churrasqueiros", icon: "utensils" },
+      { name: "Cabeleireiros e Barbeiros", icon: "scissors" },
+      { name: "Chef de Cozinha", icon: "chef-hat" },
+      { name: "Chaveiros", icon: "key" },
+      { name: "Confeiteiras e Salgados", icon: "cake" },
+      { name: "Costureiras", icon: "scissors" },
+      { name: "Cuidadores de Idosos", icon: "heart-handshake" },
+      { name: "Dedetização e Pragas", icon: "shield-alert" },
+      { name: "Designers e Redes Sociais", icon: "palette" },
+      { name: "Diaristas e Faxineiras", icon: "sparkles" },
+      { name: "Eletricistas", icon: "zap" },
+      { name: "Encanadores", icon: "wrench" },
+      { name: "Fotógrafos e Filmagem", icon: "camera" },
+      { name: "Fretes e Mudanças", icon: "truck" },
+      { name: "Gesseiros e Drywall", icon: "layers" },
+      { name: "Jardineiros", icon: "leaf" },
+      { name: "Manicures e Pedicures", icon: "sparkle" },
+      { name: "Maquiadores", icon: "heart" },
+      { name: "Marceneiros", icon: "hammer" },
+      { name: "Marido de Aluguel", icon: "wrench" },
+      { name: "Mecânicos e Autoelétrica", icon: "cog" },
+      { name: "Montadores de Móveis", icon: "armchair" },
+      { name: "Músicos e DJs", icon: "music" },
+      { name: "Operador de Drone", icon: "crosshair" },
+      { name: "Pedreiros e Reformas", icon: "hammer" },
+      { name: "Personal Organizer", icon: "boxes" },
+      { name: "Personal Trainer", icon: "dumbbell" },
+      { name: "Pintores", icon: "paint-roller" },
+      { name: "Piscineiros", icon: "waves" },
+      { name: "Professores Particulares", icon: "book-open" },
+      { name: "Recepcionistas", icon: "user-check" },
+      { name: "Segurança e Câmeras", icon: "shield" },
+      { name: "Serralheiros", icon: "shield" },
+      { name: "Serviços Rurais (Tratorista, Peão)", icon: "tractor" },
+      { name: "Tapeceiros e Estofados", icon: "armchair" },
+      { name: "Técnicos de Informática", icon: "laptop" },
+      { name: "Técnicos em Enfermagem", icon: "stethoscope" },
+      { name: "Vidraceiros", icon: "grid" }
+    ].sort((a, b) => a.name.localeCompare(b.name));
 
-    const ALL_PROFESSIONS = Array.from(new Set(MACRO_CATEGORIES.flatMap(m => m.professions))).sort((a,b) => a.localeCompare(b));
+    const CATEGORIES = CATEGORIES_DATA.map(c => c.name);
+
+    // ESPECIALIDADES POPULARES
+    const RELATED_FUNCTIONS = {
+      "Marido de Aluguel": ["Troca de Chuveiro", "Instalação de Varal", "Fixação de TV", "Troca de Torneira", "Reparos Elétricos", "Fechaduras", "Instalação de Cortinas"],
+      "Adestrador de Cães": ["Comportamento Canino", "Adestramento Básico", "Passeador / Dog Walker", "Socialização", "Hospedagem Familiar"],
+      "Ar-Condicionado e Refrigeração": ["Higienização Split", "Instalação", "Carga de Gás", "Manutenção Preventiva", "Conserto de Geladeira"],
+      "Técnicos em Enfermagem": ["Body Piercing", "Cuidador(a)", "Babá", "Aplicação de Injeção", "Curativos", "Home Care", "Acompanhamento Hospitalar"],
+      "Diaristas e Faxineiras": ["Faxina Pesada", "Passadeira", "Pós-Obra", "Limpeza de Vidros", "Organização"],
+      "Piscineiros": ["Tratamento de Choque", "Troca de Areia", "Manutenção Periódica", "Limpeza de Bordas"],
+      "Chef de Cozinha": ["Buffet Completo", "Churrasqueiro", "Jantares Privados", "Cardápio Personalizado"],
+      "Personal Trainer": ["Consultoria Online", "Treino Funcional", "Musculação", "Emagrecimento", "Atendimento em Domicílio"]
+    };
 
     const NEIGHBORHOODS = [
       "Abadia", "Alfredo Freire", "Amoroso Costa", "Antônia Cândida", "Beija-Flor", 
@@ -1016,11 +967,10 @@
     let allProducts = [];
     let allJobs = [];
     let myAds = [];
-    let currentShowcaseMacro = "reformas";
-    let selectedSubProfession = "";
+    let selectedProfession = "";
     let editingAdId = null;
     let editingProductId = null;
-    let selectedProductMacro = "Todas";
+    let selectedProductProfession = "Todas";
     let tempPortfolioImages = [];
     let tempAvatarImage = "";
     let tempProductImage = "";
@@ -1034,7 +984,7 @@
       lucide.createIcons();
       initTheme();
       populateDropdowns();
-      renderMacroCategoryCards();
+      renderHomeCategories();
       setupAuthListener();
       fetchProducts();
       fetchJobs();
@@ -1064,9 +1014,13 @@
       fNeigh.innerHTML = '<option value="">Todos os Bairros</option>';
       NEIGHBORHOODS.forEach(n => fNeigh.appendChild(new Option(n, n)));
 
-      const pMacro = document.getElementById('proMacroCategory');
-      pMacro.innerHTML = '<option value="">Selecione a Grande Área...</option>';
-      MACRO_CATEGORIES.forEach(m => pMacro.appendChild(new Option(m.name, m.id)));
+      const pCat = document.getElementById('proCategory');
+      pCat.innerHTML = '<option value="">Selecione sua Profissão...</option>';
+      CATEGORIES.forEach(c => pCat.appendChild(new Option(c, c)));
+
+      const prodCat = document.getElementById('prodCategory');
+      prodCat.innerHTML = '';
+      CATEGORIES.forEach(c => prodCat.appendChild(new Option(c, c)));
 
       const pNeigh = document.getElementById('proNeighborhood');
       pNeigh.innerHTML = '';
@@ -1074,92 +1028,84 @@
 
       const jCat = document.getElementById('jobCategory');
       jCat.innerHTML = '';
-      ALL_PROFESSIONS.forEach(p => jCat.appendChild(new Option(p, p)));
+      CATEGORIES.forEach(c => jCat.appendChild(new Option(c, c)));
 
       const jNeigh = document.getElementById('jobNeighborhood');
       jNeigh.innerHTML = '';
       NEIGHBORHOODS.forEach(n => jNeigh.appendChild(new Option(n, n)));
-
-      const pBoxes = document.getElementById('productMacroCheckboxes');
-      pBoxes.innerHTML = '';
-      MACRO_CATEGORIES.forEach(m => {
-        const lbl = document.createElement('label');
-        lbl.className = 'flex items-center gap-1.5 text-[11px] font-bold cursor-pointer';
-        lbl.innerHTML = `<input type="checkbox" name="productMacroCheck" value="${m.id}" class="rounded text-zebu-lime"> ${m.name}`;
-        pBoxes.appendChild(lbl);
-      });
     }
 
     function getProfessionIcon(profName) {
-      const macro = MACRO_CATEGORIES.find(m => m.professions.some(p => p.toLowerCase() === (profName || '').toLowerCase()));
-      return macro ? macro.icon : 'wrench';
+      const found = CATEGORIES_DATA.find(c => c.name.toLowerCase() === (profName || '').toLowerCase());
+      return found ? found.icon : 'wrench';
     }
 
-    // CARDS DAS 10 GRANDES ÁREAS NA HOME
-    function renderMacroCategoryCards() {
-      const container = document.getElementById('macroCategoriesGrid');
+    // HOME: CATEGORIAS DESLIZANTES
+    function renderHomeCategories() {
+      const container = document.getElementById('homeCategoriesGrid');
       container.innerHTML = '';
-      MACRO_CATEGORIES.forEach(cat => {
+      CATEGORIES_DATA.slice(0, 12).forEach(cat => {
         const div = document.createElement('div');
-        div.onclick = () => {
-          openCategoryShowcase(cat.id);
-        };
-        div.className = 'cursor-pointer p-3.5 rounded-2xl bg-white dark:bg-zebu-darkCard border border-zebu-grayBorder dark:border-neutral-800 hover:border-zebu-lime transition flex flex-col items-center text-center gap-2 shadow-sm hover:scale-[1.02]';
+        div.onclick = () => openProfessionExplore(cat.name);
+        div.className = 'cursor-pointer shrink-0 w-24 md:w-auto p-3 rounded-2xl bg-white dark:bg-zebu-darkCard border border-zebu-grayBorder dark:border-neutral-800 hover:border-zebu-lime transition flex flex-col items-center text-center gap-1.5 shadow-sm';
         div.innerHTML = `
-          <div class="w-11 h-11 rounded-2xl bg-zebu-graySoft dark:bg-neutral-800 flex items-center justify-center shrink-0 text-black dark:text-zebu-lime shadow-inner">
+          <div class="w-10 h-10 rounded-xl bg-zebu-graySoft dark:bg-neutral-800 flex items-center justify-center shrink-0 text-black dark:text-zebu-lime">
             <i data-lucide="${cat.icon}" class="w-5 h-5"></i>
           </div>
-          <span class="text-xs font-black leading-tight line-clamp-2">${cat.name}</span>
+          <span class="text-[11px] font-bold leading-tight line-clamp-2">${cat.name}</span>
         `;
         container.appendChild(div);
       });
       lucide.createIcons();
     }
 
-    // =============================================================
-    // VITRINE TEMÁTICA DA CATEGORIA (SUBSTITUI A LISTA SEM GRAÇA!)
-    // =============================================================
-    window.openCategoryShowcase = function(macroId) {
-      currentShowcaseMacro = macroId || "reformas";
-      selectedSubProfession = "";
-      const macro = MACRO_CATEGORIES.find(m => m.id === currentShowcaseMacro) || MACRO_CATEGORIES[0];
-
-      // Atualiza Hero Temático
-      document.getElementById('showcaseName').textContent = macro.name;
-      document.getElementById('showcaseSubtitle').textContent = macro.subtitle;
-      document.getElementById('showcaseIconBox').innerHTML = `<i data-lucide="${macro.icon}" class="w-5 h-5"></i>`;
-
-      // Renderiza Pílulas Deslizantes de Sub-profissões
-      const pillsContainer = document.getElementById('showcasePillsContainer');
-      pillsContainer.innerHTML = '';
-      
-      const allPill = document.createElement('button');
-      allPill.className = 'px-3.5 py-1.5 rounded-full font-black text-xs whitespace-nowrap bg-zebu-lime text-black shadow shrink-0';
-      allPill.textContent = 'Todas';
-      allPill.onclick = () => selectSubProfessionPill('', allPill);
-      pillsContainer.appendChild(allPill);
-
-      macro.professions.forEach(prof => {
-        const pill = document.createElement('button');
-        pill.className = 'px-3.5 py-1.5 rounded-full font-bold text-xs whitespace-nowrap bg-white dark:bg-neutral-800 text-neutral-700 dark:text-neutral-200 border border-neutral-200 dark:border-neutral-700 hover:border-zebu-lime shrink-0 transition';
-        pill.textContent = prof;
-        pill.onclick = () => selectSubProfessionPill(prof, pill);
-        pillsContainer.appendChild(pill);
-      });
-
+    // EXPLORAR PROFISSIONAIS: DINÂMICO E SEM TRAVAR
+    window.openProfessionExplore = function(profName) {
+      selectedProfession = profName || "";
+      renderExplorePills();
+      updateExploreBanner();
       showSection('explore');
       applyFilters();
     };
 
-    function selectSubProfessionPill(prof, btnEl) {
-      selectedSubProfession = prof;
-      const pills = document.querySelectorAll('#showcasePillsContainer button');
-      pills.forEach(p => p.className = 'px-3.5 py-1.5 rounded-full font-bold text-xs whitespace-nowrap bg-white dark:bg-neutral-800 text-neutral-700 dark:text-neutral-200 border border-neutral-200 dark:border-neutral-700 hover:border-zebu-lime shrink-0 transition');
-      btnEl.className = 'px-3.5 py-1.5 rounded-full font-black text-xs whitespace-nowrap bg-zebu-lime text-black shadow shrink-0';
-      applyFilters();
+    function renderExplorePills() {
+      const pillsContainer = document.getElementById('exploreProfessionsPills');
+      pillsContainer.innerHTML = '';
+
+      const allPill = document.createElement('button');
+      allPill.className = `px-3.5 py-1.5 rounded-full font-black text-xs whitespace-nowrap transition shrink-0 ${!selectedProfession ? 'bg-zebu-lime text-black shadow' : 'bg-white dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-700'}`;
+      allPill.textContent = 'Todas as Profissões';
+      allPill.onclick = () => openProfessionExplore('');
+      pillsContainer.appendChild(allPill);
+
+      CATEGORIES.forEach(cat => {
+        const isSel = selectedProfession === cat;
+        const pill = document.createElement('button');
+        pill.className = `px-3.5 py-1.5 rounded-full font-bold text-xs whitespace-nowrap transition shrink-0 ${isSel ? 'bg-zebu-lime text-black shadow' : 'bg-white dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-700 hover:border-zebu-lime'}`;
+        pill.textContent = cat;
+        pill.onclick = () => openProfessionExplore(cat);
+        pillsContainer.appendChild(pill);
+      });
     }
 
-    // DIGITAR BAIRRO PERSONALIZADO
+    function updateExploreBanner() {
+      const title = document.getElementById('showcaseName');
+      const sub = document.getElementById('showcaseSubtitle');
+      const iconBox = document.getElementById('showcaseIconBox');
+
+      if (selectedProfession) {
+        title.textContent = `${selectedProfession} em Uberaba`;
+        sub.textContent = `Profissionais avaliados prontos para atender seu chamado no seu bairro.`;
+        const icon = getProfessionIcon(selectedProfession);
+        iconBox.innerHTML = `<i data-lucide="${icon}" class="w-4 h-4"></i>`;
+      } else {
+        title.textContent = `Todos os Profissionais em Uberaba`;
+        sub.textContent = `Encontre especialistas avaliados para qualquer serviço na sua região.`;
+        iconBox.innerHTML = `<i data-lucide="users" class="w-4 h-4"></i>`;
+      }
+      lucide.createIcons();
+    }
+
     window.handleNeighborhoodFilterChange = function() {
       const val = document.getElementById('filterNeighborhood').value;
       const input = document.getElementById('filterCustomNeighborhoodInput');
@@ -1185,28 +1131,16 @@
       }
     };
 
-    window.handleProMacroChange = function() {
-      const macroId = document.getElementById('proMacroCategory').value;
-      const catSelect = document.getElementById('proCategory');
-      catSelect.innerHTML = '<option value="">Selecione a Profissão...</option>';
-      
-      const macro = MACRO_CATEGORIES.find(m => m.id === macroId);
-      if (macro) {
-        macro.professions.forEach(p => catSelect.appendChild(new Option(p, p)));
-      }
-      handleCategorySelectionChange();
-    };
-
     window.handleCategorySelectionChange = function() {
-      const macroId = document.getElementById('proMacroCategory').value;
-      const macro = MACRO_CATEGORIES.find(m => m.id === macroId);
+      const cat = document.getElementById('proCategory').value;
       const container = document.getElementById('relatedFunctionsContainer');
       const pillsContainer = document.getElementById('relatedFunctionsPills');
 
-      if (macro && macro.subfunctions && macro.subfunctions.length > 0) {
+      const funcs = RELATED_FUNCTIONS[cat];
+      if (funcs && funcs.length > 0) {
         container.classList.remove('hidden');
         pillsContainer.innerHTML = '';
-        macro.subfunctions.forEach(func => {
+        funcs.forEach(func => {
           const btn = document.createElement('button');
           btn.type = 'button';
           btn.className = 'px-2.5 py-1 bg-white dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-700 hover:border-zebu-lime text-[10px] font-bold rounded-lg transition';
@@ -1225,6 +1159,7 @@
       } else {
         container.classList.add('hidden');
       }
+      lucide.createIcons();
     };
 
     // -------------------------------------------------------------
@@ -1487,7 +1422,7 @@
     };
 
     // -------------------------------------------------------------
-    // LOJA / EQUIPAMENTOS (RECUPERAÇÃO DE PRODUTOS GARANTIDA!)
+    // LOJA / EQUIPAMENTOS (ORGANIZADOS POR PROFISSÃO)
     // -------------------------------------------------------------
     window.openCreateProductModal = function() {
       editingProductId = null;
@@ -1496,7 +1431,6 @@
       document.getElementById('magicLinkInput').value = '';
       document.getElementById('prodImageUrlDirect').value = '';
       document.getElementById('prodFeaturedOnHome').checked = false;
-      document.querySelectorAll('input[name="productMacroCheck"]').forEach(c => c.checked = false);
       tempProductImage = "";
       document.getElementById('prodImagePreviewContainer').classList.add('hidden');
       openModal('adminProductModal');
@@ -1510,15 +1444,11 @@
       editingProductId = productId;
       document.getElementById('adminProductModalTitle').innerHTML = `<i data-lucide="edit-3" class="w-4 h-4"></i> Editar Equipamento`;
       document.getElementById('prodTitle').value = prod.title || "";
+      document.getElementById('prodCategory').value = prod.category || CATEGORIES[0];
       document.getElementById('prodPrice').value = prod.price || "";
       document.getElementById('prodAffiliateLink').value = prod.link || "";
       document.getElementById('prodDescription').value = prod.description || "";
       document.getElementById('prodFeaturedOnHome').checked = !!prod.isFeaturedOnHome;
-
-      const checkedMacros = prod.macros || (prod.category ? [prod.category] : []);
-      document.querySelectorAll('input[name="productMacroCheck"]').forEach(cb => {
-        cb.checked = checkedMacros.includes(cb.value);
-      });
       
       tempProductImage = prod.image || "";
       if (tempProductImage) {
@@ -1546,12 +1476,6 @@
       e.preventDefault();
       if (!currentUser || currentUser.email !== ADMIN_EMAIL) return;
 
-      const selectedMacros = Array.from(document.querySelectorAll('input[name="productMacroCheck"]:checked')).map(c => c.value);
-      if (!selectedMacros.length) {
-        showToast("Selecione pelo menos uma área para o produto.", "error");
-        return;
-      }
-
       const btn = document.getElementById('btnSaveProduct');
       btn.disabled = true;
       btn.textContent = "Salvando...";
@@ -1561,8 +1485,7 @@
 
       const payload = {
         title: document.getElementById('prodTitle').value.trim(),
-        macros: selectedMacros,
-        category: selectedMacros[0],
+        category: document.getElementById('prodCategory').value,
         price: document.getElementById('prodPrice').value.trim(),
         link: document.getElementById('prodAffiliateLink').value.trim(),
         description: document.getElementById('prodDescription').value.trim(),
@@ -1597,7 +1520,7 @@
         allProducts = [];
         snap.forEach(d => allProducts.push({ id: d.id, ...d.data() }));
         renderProductFilterBar();
-        renderProductsByArea();
+        renderProductsByProfession();
         renderHomeProductsRow();
       } catch (err) {
         console.error(err);
@@ -1609,32 +1532,26 @@
       if (!bar) return;
       bar.innerHTML = '';
 
-      const filterList = [{ id: "Todas", name: "Todas as Áreas" }, ...MACRO_CATEGORIES];
+      const catsInProducts = Array.from(new Set(allProducts.map(p => p.category))).sort();
+      const filterList = ["Todas", ...catsInProducts];
 
-      filterList.forEach(m => {
-        const isSelected = selectedProductMacro === m.id;
+      filterList.forEach(c => {
+        const isSelected = selectedProductProfession === c;
         const btn = document.createElement('button');
         btn.className = `px-3.5 py-1.5 rounded-full font-bold whitespace-nowrap transition shrink-0 ${isSelected ? 'bg-zebu-lime text-black shadow-sm' : 'bg-white dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-700'}`;
-        btn.textContent = m.name;
+        btn.textContent = c;
         btn.onclick = () => {
-          selectedProductMacro = m.id;
+          selectedProductProfession = c;
           renderProductFilterBar();
-          renderProductsByArea();
+          renderProductsByProfession();
         };
         bar.appendChild(btn);
       });
     }
 
-    // BUSCA BLINDADA PARA NENHUM PRODUTO SUMIR
-    function productMatchesMacro(prod, macro) {
-      if (prod.macros && Array.isArray(prod.macros) && prod.macros.includes(macro.id)) return true;
-      if (prod.category === macro.id || prod.category === macro.name) return true;
-      if (macro.professions && macro.professions.some(p => p.toLowerCase() === (prod.category || '').toLowerCase())) return true;
-      return false;
-    }
-
-    function renderProductsByArea() {
-      const container = document.getElementById('productsByAreaContainer');
+    // ORGANIZA OS EQUIPAMENTOS DIRETAMENTE POR PROFISSÃO
+    function renderProductsByProfession() {
+      const container = document.getElementById('productsByProfessionContainer');
       if (!container) return;
       container.innerHTML = '';
 
@@ -1643,46 +1560,40 @@
         return;
       }
 
-      const activeMacros = selectedProductMacro === "Todas" 
-        ? MACRO_CATEGORIES 
-        : MACRO_CATEGORIES.filter(m => m.id === selectedProductMacro);
+      const grouped = {};
+      allProducts.forEach(prod => {
+        const cat = prod.category || "Geral";
+        if (selectedProductProfession !== "Todas" && cat !== selectedProductProfession) return;
+        if (!grouped[cat]) grouped[cat] = [];
+        grouped[cat].push(prod);
+      });
 
-      activeMacros.forEach(macro => {
-        const prods = allProducts.filter(p => productMatchesMacro(p, macro));
-        if (!prods.length) return;
+      const categoriesToShow = Object.keys(grouped).sort();
 
+      if (!categoriesToShow.length) {
+        container.innerHTML = '<p class="py-8 text-center text-xs text-neutral-400">Nenhum equipamento cadastrado para esta categoria.</p>';
+        return;
+      }
+
+      categoriesToShow.forEach(catName => {
         const section = document.createElement('div');
         section.className = "space-y-3 bg-white dark:bg-zebu-darkCard p-4 rounded-3xl border border-zebu-grayBorder dark:border-neutral-800 shadow-sm";
+
+        const iconName = getProfessionIcon(catName);
         section.innerHTML = `
           <div class="flex items-center gap-2 border-b border-neutral-100 dark:border-neutral-800 pb-2">
             <div class="w-8 h-8 rounded-xl bg-zebu-limeSoft text-black flex items-center justify-center font-bold">
-              <i data-lucide="${macro.icon}" class="w-4 h-4"></i>
+              <i data-lucide="${iconName}" class="w-4 h-4"></i>
             </div>
-            <h3 class="font-black text-sm md:text-base">${macro.name}</h3>
+            <h3 class="font-black text-sm md:text-base">${catName}</h3>
           </div>
-          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2.5 pt-1" id="macro_grid_${macro.id}"></div>
+          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2.5 pt-1" id="cat_grid_${catName.replace(/[^a-zA-Z0-9]/g, '_')}"></div>
         `;
         container.appendChild(section);
 
-        const grid = section.querySelector(`#macro_grid_${macro.id}`);
-        prods.forEach(prod => grid.appendChild(createProductCard(prod)));
+        const grid = section.querySelector(`#cat_grid_${catName.replace(/[^a-zA-Z0-9]/g, '_')}`);
+        grouped[catName].forEach(prod => grid.appendChild(createProductCard(prod)));
       });
-
-      // SE HOUVER PRODUTOS ANTIGOS QUE NÃO CAÍRAM EM NENHUMA MACRO, MOSTRA EM UMA SESSÃO ESPECIAL PARA NUNCA SUMIR
-      const orphanProds = allProducts.filter(p => !MACRO_CATEGORIES.some(m => productMatchesMacro(p, m)));
-      if (orphanProds.length && selectedProductMacro === "Todas") {
-        const section = document.createElement('div');
-        section.className = "space-y-3 bg-white dark:bg-zebu-darkCard p-4 rounded-3xl border border-zebu-grayBorder dark:border-neutral-800 shadow-sm";
-        section.innerHTML = `
-          <div class="flex items-center gap-2 border-b border-neutral-100 dark:border-neutral-800 pb-2">
-            <h3 class="font-black text-sm md:text-base">Outras Ferramentas & Equipamentos</h3>
-          </div>
-          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2.5 pt-1" id="macro_grid_outros"></div>
-        `;
-        container.appendChild(section);
-        const grid = section.querySelector('#macro_grid_outros');
-        orphanProds.forEach(prod => grid.appendChild(createProductCard(prod)));
-      }
 
       lucide.createIcons();
     }
@@ -1790,7 +1701,7 @@
         const iconName = getProfessionIcon(ad.category);
         const avatarHTML = ad.avatar 
           ? `<img src="${ad.avatar}" class="w-12 h-12 rounded-full object-cover shrink-0 border border-neutral-300">`
-          : `<div class="w-12 h-12 rounded-full bg-zebu-dark text-zebu-lime flex items-center justify-center shrink-0"><i data-lucide="${iconName}" class="w-5 h-5"></i></div>`;
+          : `<div class="w-12 h-12 rounded-full bg-[#070B06] text-zebu-lime flex items-center justify-center shrink-0"><i data-lucide="${iconName}" class="w-5 h-5"></i></div>`;
 
         item.innerHTML = `
           <div class="flex items-center gap-3 min-w-0">
@@ -1838,12 +1749,7 @@
       editingAdId = adId;
       document.getElementById('adFormTitle').textContent = `Editando Anúncio: ${ad.name}`;
       document.getElementById('proName').value = ad.name || "";
-      
-      const macro = MACRO_CATEGORIES.find(m => m.professions.includes(ad.category)) || MACRO_CATEGORIES[0];
-      document.getElementById('proMacroCategory').value = macro.id;
-      handleProMacroChange();
-
-      document.getElementById('proCategory').value = ad.category || macro.professions[0];
+      document.getElementById('proCategory').value = ad.category || CATEGORIES[0];
       handleCategorySelectionChange();
 
       document.getElementById('proServices').value = (ad.services || []).join(', ');
@@ -1852,7 +1758,6 @@
       document.getElementById('proPriceType').value = ad.priceType || "quote";
       document.getElementById('proPriceValue').value = ad.priceValue || "";
       
-      // Bairro
       if (NEIGHBORHOODS.includes(ad.neighborhood)) {
         document.getElementById('proNeighborhood').value = ad.neighborhood;
         document.getElementById('proCustomNeighborhoodInput').classList.add('hidden');
@@ -1941,7 +1846,6 @@
         return;
       }
 
-      // Bairro final
       let finalNeighborhood = document.getElementById('proNeighborhood').value;
       if (finalNeighborhood === "Outro Bairro...") {
         finalNeighborhood = document.getElementById('proCustomNeighborhoodInput').value.trim() || "Outro Bairro";
@@ -1954,7 +1858,6 @@
       const payload = {
         authorUid: currentUser.uid,
         name: document.getElementById('proName').value.trim(),
-        macroCategory: document.getElementById('proMacroCategory').value,
         category: document.getElementById('proCategory').value,
         services,
         videoUrl: document.getElementById('proVideoUrl').value.trim(),
@@ -2100,23 +2003,21 @@
       }, 3500);
     }
 
-    // CARD GETNINJAS COM MINIATURA DOS TRABALHOS (VITRINE REAL)
+    // CARD GETNINJAS COM MINI-GALERIA
     function createFeaturedProCard(p, isCarousel = false) {
       const card = document.createElement('div');
-      
       const widthClass = isCarousel ? 'w-[290px] sm:w-[320px] shrink-0 snap-start' : 'w-full';
       card.className = `${widthClass} bg-white dark:bg-zebu-darkCard text-neutral-900 dark:text-white rounded-3xl p-4 shadow-sm hover:shadow-md transition-all flex flex-col justify-between border ${p.isSponsored ? 'border-2 border-amber-400' : 'border-zebu-grayBorder dark:border-neutral-800'}`;
       
       const iconName = getProfessionIcon(p.category);
       const imageHTML = p.avatar 
         ? `<img src="${p.avatar}" class="w-14 h-14 rounded-2xl object-cover shrink-0 border border-neutral-200 dark:border-neutral-700 shadow-sm">`
-        : `<div class="w-14 h-14 rounded-2xl bg-zebu-dark text-zebu-lime flex items-center justify-center shrink-0 shadow-sm"><i data-lucide="${iconName}" class="w-7 h-7"></i></div>`;
+        : `<div class="w-14 h-14 rounded-2xl bg-[#070B06] text-zebu-lime flex items-center justify-center shrink-0 shadow-sm"><i data-lucide="${iconName}" class="w-7 h-7"></i></div>`;
 
       const servicesPills = (p.services || []).slice(0, 3).map(s => 
         `<span class="text-[10px] bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 px-2 py-0.5 rounded-lg border border-neutral-200 dark:border-neutral-700 font-medium">${s}</span>`
       ).join('');
 
-      // Miniaturas das fotos de trabalhos anteriores
       let portfolioThumbnailsHTML = '';
       if (p.portfolio && p.portfolio.length > 0) {
         portfolioThumbnailsHTML = `
@@ -2185,7 +2086,7 @@
       return card;
     }
 
-    // FILTRO BLINDADO NA VITRINE
+    // FILTRO DINÂMICO
     window.applyFilters = function() {
       const s = (document.getElementById('searchInput').value || '').toLowerCase();
       let n = document.getElementById('filterNeighborhood').value;
@@ -2195,27 +2096,14 @@
       const att = document.getElementById('filterAttendance').value;
       const price = document.getElementById('filterPrice').value;
 
-      const currentMacro = MACRO_CATEGORIES.find(m => m.id === currentShowcaseMacro);
-
       const filtered = allProfessionals.filter(p => {
         const matchSearch = !s || (p.name && p.name.toLowerCase().includes(s)) || (p.category && p.category.toLowerCase().includes(s)) || (p.services && p.services.some(svc => svc.toLowerCase().includes(s))) || (p.bio && p.bio.toLowerCase().includes(s));
-        
-        // Pertence à macrocategoria da vitrine
-        const matchMacro = !currentMacro || p.macroCategory === currentMacro.id || currentMacro.professions.some(prof => prof.toLowerCase() === (p.category || '').toLowerCase());
-
-        // Sub-profissão da pílula
-        const matchPill = !selectedSubProfession || p.category.toLowerCase() === selectedSubProfession.toLowerCase();
-
-        // Bairro
+        const matchProf = !selectedProfession || p.category.toLowerCase() === selectedProfession.toLowerCase();
         const matchNeigh = !n || (p.neighborhood && p.neighborhood.toLowerCase().includes(n.toLowerCase()));
-
-        // Atendimento
         const matchAtt = !att || p.attendanceType === att || p.attendanceType === 'ambos';
-
-        // Preço
         const matchPrice = !price || p.priceType === price;
 
-        return matchSearch && matchMacro && matchPill && matchNeigh && matchAtt && matchPrice;
+        return matchSearch && matchProf && matchNeigh && matchAtt && matchPrice;
       });
 
       const grid = document.getElementById('resultsGrid');
@@ -2227,7 +2115,7 @@
         grid.innerHTML = `
           <div class="col-span-full py-10 text-center text-xs text-neutral-400 border border-dashed border-neutral-300 dark:border-neutral-700 rounded-3xl p-6 space-y-2">
             <i data-lucide="user-x" class="w-8 h-8 mx-auto text-neutral-300"></i>
-            <p class="font-bold text-neutral-600 dark:text-neutral-300">Nenhum profissional encontrado com os filtros atuais.</p>
+            <p class="font-bold text-neutral-600 dark:text-neutral-300">Nenhum profissional encontrado nesta busca.</p>
             <p class="text-[11px]">Você trabalha com isso em Uberaba? Seja o primeiro a cadastrar!</p>
           </div>
         `;
@@ -2615,7 +2503,7 @@
     window.handleQuickSearch = () => {
       const term = document.getElementById('homeSearchInput').value.trim();
       document.getElementById('searchInput').value = term;
-      openCategoryShowcase('reformas');
+      openProfessionExplore('');
     };
 
     window.handleAdvertiseClick = () => { currentUser ? showSection('dashboard') : openModal('authModal', 'register'); };
@@ -2638,4 +2526,3 @@
   </script>
 </body>
 </html>
- 
