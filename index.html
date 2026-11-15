@@ -521,13 +521,14 @@
             <div id="chatHeaderAvatar" class="w-10 h-10 rounded-2xl bg-[#070B06] text-zebu-lime flex items-center justify-center font-bold text-base shrink-0 overflow-hidden shadow border border-neutral-200 dark:border-neutral-700">
               P
             </div>
+            <span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-500 border-2 border-white dark:border-black"></span>
           </div>
 
           <div>
             <h4 id="chatTargetName" class="font-black text-xs md:text-sm leading-tight text-neutral-900 dark:text-white truncate max-w-[200px]">Profissional</h4>
             <div class="flex items-center gap-1 text-[10px] text-emerald-600 dark:text-emerald-400 font-medium">
-              
-              <span id="chatTargetSubtitle"></span>
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+              <span id="chatTargetSubtitle">online agora</span>
             </div>
           </div>
         </div>
@@ -639,7 +640,8 @@
       <div class="space-y-2.5 leading-relaxed text-neutral-700 dark:text-neutral-300">
         <p><strong>1. Coleta de Dados:</strong> O Zebu Freela coleta informações cadastrais apenas para aproximar clientes e autônomos em Uberaba - MG, nos termos da Lei Geral de Proteção de Dados (Lei nº 13.709/2018 - LGPD).</p>
         <p><strong>2. Visibilidade Pública dos Anúncios:</strong> Ao cadastrar um anúncio profissional, seu número de WhatsApp, fotos de perfil e portfólio, nome de exibição, bairro, serviços e demais dados do anúncio ficam públicos e visíveis para qualquer visitante da plataforma.</p>
-        <p><strong>3. Links de Afiliados:</strong> A seção Equipamentos pode conter links comissionados para varejistas autorizados (Shopee, Mercado Livre, Amazon).</p>
+        <p><strong>3. Google AdSense & Cookies:</strong> Terceiros, incluindo o Google, utilizam cookies para veicular anúncios com base no histórico de navegação.</p>
+        <p><strong>4. Links de Afiliados:</strong> A seção Equipamentos pode conter links comissionados para varejistas autorizados (Shopee, Mercado Livre, Amazon).</p>
       </div>
       <button onclick="closeModal('privacyModal')" class="w-full py-2.5 bg-zebu-lime text-black font-black rounded-xl">Entendi e Concordo</button>
     </div>
@@ -1328,7 +1330,7 @@
       currentChatRecipient = recipient;
       
       document.getElementById('chatTargetName').textContent = recipient.name;
-      document.getElementById('chatTargetSubtitle').textContent = (recipient.category || recipient.subtitle || "");
+      document.getElementById('chatTargetSubtitle').textContent = recipient.category ? `${recipient.category} • online agora` : (recipient.subtitle || "online agora");
       
       const avatarBox = document.getElementById('chatHeaderAvatar');
       const avatarUrl = safeUrl(recipient.avatar);
@@ -1748,14 +1750,4 @@
         const avatarUrl = safeUrl(ad.avatar);
         const avatarHTML = avatarUrl 
           ? `<img src="${esc(avatarUrl)}" class="w-12 h-12 rounded-full object-cover shrink-0 border border-neutral-300">`
-          : `<div class="w-12 h-12 rounded-full bg-[#070B06] text-zebu-lime flex items-center justify-center shrink-0"><i data-lucide="${esc(iconName)}" class="w-5 h-5"></i></div>`;
-
-        const safeAdId = esc(ad.id);
-
-        item.innerHTML = `
-          <div class="flex items-center gap-3 min-w-0">
-            ${avatarHTML}
-            <div class="min-w-0">
-              <h4 class="font-black text-xs md:text-sm truncate">${esc(ad.name)}</h4>
-              <span class="text-[10px] font-bold text-neutral-500 block truncate">${esc(ad.category)}</span>
-              <span class="text-[10px] font-black t
+          : `<div class="w-12 h-12 rounded-full bg-[#070B06] text-zebu-lime flex items-center justify-center shrink-0"><i data-lucide="${esc(iconName)}" class="w-5
