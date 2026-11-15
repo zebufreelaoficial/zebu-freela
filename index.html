@@ -2,7 +2,7 @@
 <html lang="pt-BR" class="h-full">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Zebu Freela | Conectando pessoas e oportunidades em Uberaba</title>
   <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#070B06">
@@ -46,7 +46,7 @@
 
   <!-- ================= TOPBAR (COM DEGRADÊ) ================= -->
   <header class="sticky top-0 z-40 bg-gradient-to-r from-[#070B06] via-[#121B0F] to-[#070B06] text-white shadow-md border-b border-white/10">
-    <div class="max-w-6xl mx-auto px-4 h-15 flex items-center justify-between">
+    <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
       <a href="#home" onclick="showSection('home')" class="flex items-center gap-2">
         <img src="file_00000000ee94820e8030c8d3a817a851.png" alt="Zebu Freela" class="h-9 md:h-11 w-auto object-contain">
       </a>
@@ -246,6 +246,7 @@
             <i data-lucide="wrench" class="w-5 h-5 text-zebu-lime"></i> Equipamentos
           </h2>
           <p class="text-xs text-neutral-400 mt-0.5">Ferramentas e materiais de trabalho separados por profissão.</p>
+          <p class="text-[11px] text-neutral-400 mt-1">Alguns links são de afiliados: podemos receber uma comissão, sem custo extra para você.</p>
         </div>
         <button id="adminPostBtnBlog" onclick="openCreateProductModal()" class="hidden px-4 py-2 bg-zebu-lime text-black font-black text-xs rounded-xl hover:bg-zebu-limeHover shadow">
           + Cadastrar Equipamento
@@ -638,8 +639,9 @@
       <h3 class="text-base font-black text-zebu-lime">Política de Privacidade & LGPD</h3>
       <div class="space-y-2.5 leading-relaxed text-neutral-700 dark:text-neutral-300">
         <p><strong>1. Coleta de Dados:</strong> O Zebu Freela coleta informações cadastrais apenas para aproximar clientes e autônomos em Uberaba - MG, nos termos da Lei Geral de Proteção de Dados (Lei nº 13.709/2018 - LGPD).</p>
-        <p><strong>2. Google AdSense & Cookies:</strong> Terceiros, incluindo o Google, utilizam cookies para veicular anúncios com base no histórico de navegação.</p>
-        <p><strong>3. Links de Afiliados:</strong> A seção Equipamentos pode conter links comissionados para varejistas autorizados (Shopee, Mercado Livre, Amazon).</p>
+        <p><strong>2. Visibilidade Pública dos Anúncios:</strong> Ao cadastrar um anúncio profissional, seu número de WhatsApp, fotos de perfil e portfólio, nome de exibição, bairro, serviços e demais dados do anúncio ficam públicos e visíveis para qualquer visitante da plataforma.</p>
+        <p><strong>3. Google AdSense & Cookies:</strong> Terceiros, incluindo o Google, utilizam cookies para veicular anúncios com base no histórico de navegação.</p>
+        <p><strong>4. Links de Afiliados:</strong> A seção Equipamentos pode conter links comissionados para varejistas autorizados (Shopee, Mercado Livre, Amazon).</p>
       </div>
       <button onclick="closeModal('privacyModal')" class="w-full py-2.5 bg-zebu-lime text-black font-black rounded-xl">Entendi e Concordo</button>
     </div>
@@ -892,6 +894,26 @@
 
     const ADMIN_EMAIL = "gabi.almeidasaude@gmail.com";
 
+    // HELPERS DE SEGURANÇA (XSS & URL)
+    function esc(str) {
+      if (str === null || str === undefined) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    function safeUrl(url) {
+      if (!url || typeof url !== 'string') return '';
+      const trimmed = url.trim();
+      if (/^https?:\/\//i.test(trimmed) || /^data:image\//i.test(trimmed)) {
+        return trimmed;
+      }
+      return '';
+    }
+
     // CATEGORIAS COMPLETAS EM ORDEM ALFABÉTICA
     const CATEGORIES_DATA = [
       { name: "Adestrador de Cães", icon: "bone" },
@@ -1050,9 +1072,9 @@
         div.className = 'cursor-pointer shrink-0 w-24 md:w-auto p-3 rounded-2xl bg-white dark:bg-zebu-darkCard border border-zebu-grayBorder dark:border-neutral-800 hover:border-zebu-lime transition flex flex-col items-center text-center gap-1.5 shadow-sm';
         div.innerHTML = `
           <div class="w-10 h-10 rounded-xl bg-zebu-graySoft dark:bg-neutral-800 flex items-center justify-center shrink-0 text-black dark:text-zebu-lime">
-            <i data-lucide="${cat.icon}" class="w-5 h-5"></i>
+            <i data-lucide="${esc(cat.icon)}" class="w-5 h-5"></i>
           </div>
-          <span class="text-[11px] font-bold leading-tight line-clamp-2">${cat.name}</span>
+          <span class="text-[11px] font-bold leading-tight line-clamp-2">${esc(cat.name)}</span>
         `;
         container.appendChild(div);
       });
@@ -1095,12 +1117,12 @@
 
       if (selectedProfession) {
         title.textContent = `${selectedProfession} em Uberaba`;
-        sub.textContent = `Profissionais avaliados prontos para atender seu chamado no seu bairro.`;
+        sub.textContent = `Profissionais prontos para atender seu chamado no seu bairro.`;
         const icon = getProfessionIcon(selectedProfession);
-        iconBox.innerHTML = `<i data-lucide="${icon}" class="w-4 h-4"></i>`;
+        iconBox.innerHTML = `<i data-lucide="${esc(icon)}" class="w-4 h-4"></i>`;
       } else {
         title.textContent = `Todos os Profissionais em Uberaba`;
-        sub.textContent = `Encontre especialistas avaliados para qualquer serviço na sua região.`;
+        sub.textContent = `Encontre especialistas para qualquer serviço na sua região.`;
         iconBox.innerHTML = `<i data-lucide="users" class="w-4 h-4"></i>`;
       }
       lucide.createIcons();
@@ -1185,10 +1207,13 @@
           if (d.description) document.getElementById('prodDescription').value = d.description;
           document.getElementById('prodAffiliateLink').value = url;
           if (d.image && d.image.url) {
-            tempProductImage = d.image.url;
-            document.getElementById('prodImageUrlDirect').value = tempProductImage;
-            document.getElementById('prodImagePreview').src = tempProductImage;
-            document.getElementById('prodImagePreviewContainer').classList.remove('hidden');
+            const validImg = safeUrl(d.image.url);
+            if (validImg) {
+              tempProductImage = validImg;
+              document.getElementById('prodImageUrlDirect').value = tempProductImage;
+              document.getElementById('prodImagePreview').src = tempProductImage;
+              document.getElementById('prodImagePreviewContainer').classList.remove('hidden');
+            }
           }
           showToast("🪄 Título e dados puxados com sucesso!");
         } else {
@@ -1207,7 +1232,9 @@
 
     window.previewDirectImageUrl = function(url) {
       if (!url) return;
-      tempProductImage = url.trim();
+      const valid = safeUrl(url);
+      if (!valid) return;
+      tempProductImage = valid;
       document.getElementById('prodImagePreview').src = tempProductImage;
       document.getElementById('prodImagePreviewContainer').classList.remove('hidden');
     };
@@ -1259,10 +1286,10 @@
           div.innerHTML = `
             <div>
               <div class="flex items-center gap-1.5">
-                <h4 class="font-black text-xs">${c.userName || 'Usuário'}</h4>
+                <h4 class="font-black text-xs">${esc(c.userName || 'Usuário')}</h4>
                 <span class="text-[9px] bg-amber-400 text-black px-1.5 py-0.5 rounded font-bold">Atendimento</span>
               </div>
-              <p class="text-[11px] text-neutral-500 mt-1 line-clamp-1">${c.lastMessage || 'Conversa iniciada'}</p>
+              <p class="text-[11px] text-neutral-500 mt-1 line-clamp-1">${esc(c.lastMessage || 'Conversa iniciada')}</p>
             </div>
             <i data-lucide="chevron-right" class="w-4 h-4 text-neutral-400"></i>
           `;
@@ -1306,16 +1333,27 @@
       document.getElementById('chatTargetSubtitle').textContent = recipient.category ? `${recipient.category} • online agora` : (recipient.subtitle || "online agora");
       
       const avatarBox = document.getElementById('chatHeaderAvatar');
+      const avatarUrl = safeUrl(recipient.avatar);
       if (recipient.isSupport) {
         avatarBox.innerHTML = `🐮`;
-      } else if (recipient.avatar) {
-        avatarBox.innerHTML = `<img src="${recipient.avatar}" class="w-full h-full object-cover">`;
+      } else if (avatarUrl) {
+        avatarBox.innerHTML = `<img src="${esc(avatarUrl)}" class="w-full h-full object-cover">`;
       } else {
-        avatarBox.innerHTML = `${recipient.name.charAt(0).toUpperCase()}`;
+        avatarBox.textContent = (recipient.name || 'P').charAt(0).toUpperCase();
       }
 
       openModal('inAppChatModal');
       listenToChatMessages();
+    };
+
+    window.openJobAuthorChat = function(jobId) {
+      const job = allJobs.find(j => j.id === jobId);
+      if (!job) return;
+      openInAppChat({
+        uid: job.authorUid,
+        name: job.authorName || 'Cliente',
+        subtitle: 'Contratante da Vaga'
+      });
     };
 
     function listenToChatMessages() {
@@ -1342,7 +1380,7 @@
         if (snapshot.empty) {
           messagesBox.innerHTML = `
             <div class="text-center py-6 space-y-1">
-              <p class="text-xs font-bold text-neutral-700 dark:text-neutral-200">Inicie a conversa com ${currentChatRecipient.name}!</p>
+              <p class="text-xs font-bold text-neutral-700 dark:text-neutral-200">Inicie a conversa com ${esc(currentChatRecipient.name)}!</p>
               <p class="text-[10px] text-neutral-500">Tire dúvidas sobre o serviço, combine prazos e orçamentos.</p>
             </div>
           `;
@@ -1365,9 +1403,9 @@
           bubble.className = `flex flex-col ${isMe ? 'items-end' : 'items-start'}`;
           bubble.innerHTML = `
             <div class="max-w-[85%] px-3.5 py-2.5 rounded-2xl text-xs leading-relaxed shadow-sm relative ${isMe ? 'bg-white text-black border border-neutral-200 font-medium' : 'bg-white text-black border border-neutral-200'}">
-              <p class="pr-10 text-neutral-900">${m.text}</p>
+              <p class="pr-10 text-neutral-900">${esc(m.text)}</p>
               <div class="flex items-center justify-end gap-1 text-[9px] text-neutral-400 font-medium mt-1">
-                <span>${timeStr}</span>
+                <span>${esc(timeStr)}</span>
                 ${isMe ? '<span class="text-emerald-600 font-black">✓✓</span>' : ''}
               </div>
             </div>
@@ -1450,18 +1488,23 @@
       document.getElementById('prodDescription').value = prod.description || "";
       document.getElementById('prodFeaturedOnHome').checked = !!prod.isFeaturedOnHome;
       
-      tempProductImage = prod.image || "";
+      tempProductImage = safeUrl(prod.image) || "";
       if (tempProductImage) {
         document.getElementById('prodImageUrlDirect').value = tempProductImage;
         document.getElementById('prodImagePreview').src = tempProductImage;
         document.getElementById('prodImagePreviewContainer').classList.remove('hidden');
+      } else {
+        document.getElementById('prodImageUrlDirect').value = '';
+        document.getElementById('prodImagePreviewContainer').classList.add('hidden');
       }
 
       openModal('adminProductModal');
       lucide.createIcons();
     };
 
-    window.deleteProduct = async function(productId, title) {
+    window.deleteProduct = async function(productId) {
+      const prod = allProducts.find(p => p.id === productId);
+      const title = prod ? prod.title : '';
       if (!confirm(`Deseja realmente apagar o equipamento "${title}"?`)) return;
       try {
         await deleteDoc(doc(db, "products", productId));
@@ -1480,8 +1523,8 @@
       btn.disabled = true;
       btn.textContent = "Salvando...";
 
-      const directUrl = document.getElementById('prodImageUrlDirect').value.trim();
-      const finalImage = directUrl || tempProductImage || "https://images.unsplash.com/photo-1581783342308-f792dbdd27c5?w=400";
+      const directUrl = safeUrl(document.getElementById('prodImageUrlDirect').value.trim());
+      const finalImage = directUrl || safeUrl(tempProductImage) || "https://images.unsplash.com/photo-1581783342308-f792dbdd27c5?w=400";
 
       const payload = {
         title: document.getElementById('prodTitle').value.trim(),
@@ -1575,23 +1618,24 @@
         return;
       }
 
-      categoriesToShow.forEach(catName => {
+      categoriesToShow.forEach((catName, idx) => {
         const section = document.createElement('div');
         section.className = "space-y-3 bg-white dark:bg-zebu-darkCard p-4 rounded-3xl border border-zebu-grayBorder dark:border-neutral-800 shadow-sm";
 
         const iconName = getProfessionIcon(catName);
+        const gridId = `cat_grid_${idx}`;
         section.innerHTML = `
           <div class="flex items-center gap-2 border-b border-neutral-100 dark:border-neutral-800 pb-2">
             <div class="w-8 h-8 rounded-xl bg-zebu-limeSoft text-black flex items-center justify-center font-bold">
-              <i data-lucide="${iconName}" class="w-4 h-4"></i>
+              <i data-lucide="${esc(iconName)}" class="w-4 h-4"></i>
             </div>
-            <h3 class="font-black text-sm md:text-base">${catName}</h3>
+            <h3 class="font-black text-sm md:text-base">${esc(catName)}</h3>
           </div>
-          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2.5 pt-1" id="cat_grid_${catName.replace(/[^a-zA-Z0-9]/g, '_')}"></div>
+          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2.5 pt-1" id="${gridId}"></div>
         `;
         container.appendChild(section);
 
-        const grid = section.querySelector(`#cat_grid_${catName.replace(/[^a-zA-Z0-9]/g, '_')}`);
+        const grid = section.querySelector(`#${gridId}`);
         grouped[catName].forEach(prod => grid.appendChild(createProductCard(prod)));
       });
 
@@ -1640,34 +1684,38 @@
       const isAdmin = currentUser && currentUser.email === ADMIN_EMAIL;
       const widthClass = isCarousel ? 'w-[160px] sm:w-[190px] shrink-0 snap-start' : 'w-full';
       card.className = `${widthClass} bg-[#F8FAF6] dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl overflow-hidden shadow-sm flex flex-col justify-between hover:shadow-md transition relative group`;
+
+      const safeProdLink = esc(safeUrl(prod.link)) || '#';
+      const safeProdImg = esc(safeUrl(prod.image));
+      const safeProdId = esc(prod.id);
       
       card.innerHTML = `
         <div>
-          <a href="${prod.link}" target="_blank" rel="noopener noreferrer" class="block relative w-full aspect-square bg-white dark:bg-neutral-800 overflow-hidden flex items-center justify-center p-2 cursor-pointer">
-            <img src="${prod.image}" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-200">
+          <a href="${safeProdLink}" target="_blank" rel="noopener noreferrer" class="block relative w-full aspect-square bg-white dark:bg-neutral-800 overflow-hidden flex items-center justify-center p-2 cursor-pointer">
+            <img src="${safeProdImg}" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-200">
           </a>
 
           ${isAdmin ? `
             <div class="absolute top-1.5 right-1.5 flex gap-1 z-10">
-              <button onclick="editProduct('${prod.id}')" class="bg-black/80 hover:bg-black text-zebu-lime p-1.5 rounded-lg shadow" title="Editar">
+              <button onclick="editProduct('${safeProdId}')" class="bg-black/80 hover:bg-black text-zebu-lime p-1.5 rounded-lg shadow" title="Editar">
                 <i data-lucide="edit-3" class="w-3.5 h-3.5"></i>
               </button>
-              <button onclick="deleteProduct('${prod.id}', '${prod.title}')" class="bg-rose-600/90 hover:bg-rose-600 text-white p-1.5 rounded-lg shadow" title="Excluir">
+              <button onclick="deleteProduct('${safeProdId}')" class="bg-rose-600/90 hover:bg-rose-600 text-white p-1.5 rounded-lg shadow" title="Excluir">
                 <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
               </button>
             </div>
           ` : ''}
 
           <div class="p-2.5 space-y-1">
-            <a href="${prod.link}" target="_blank" rel="noopener noreferrer" class="block font-bold text-[11px] leading-snug line-clamp-2 hover:underline">
-              ${prod.title}
+            <a href="${safeProdLink}" target="_blank" rel="noopener noreferrer" class="block font-bold text-[11px] leading-snug line-clamp-2 hover:underline">
+              ${esc(prod.title)}
             </a>
-            <span class="text-xs md:text-sm font-black text-black dark:text-white block pt-1">${prod.price}</span>
+            <span class="text-xs md:text-sm font-black text-black dark:text-white block pt-1">${esc(prod.price)}</span>
           </div>
         </div>
 
         <div class="p-2 pt-0 flex justify-end">
-          <a href="${prod.link}" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full bg-zebu-lime hover:bg-zebu-limeHover text-black flex items-center justify-center shadow transition" title="Ver Oferta">
+          <a href="${safeProdLink}" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full bg-zebu-lime hover:bg-zebu-limeHover text-black flex items-center justify-center shadow transition" title="Ver Oferta">
             <i data-lucide="shopping-cart" class="w-4 h-4"></i>
           </a>
         </div>
@@ -1699,25 +1747,28 @@
         const item = document.createElement('div');
         item.className = "p-3.5 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-2xl flex items-center justify-between gap-3 shadow-sm";
         const iconName = getProfessionIcon(ad.category);
-        const avatarHTML = ad.avatar 
-          ? `<img src="${ad.avatar}" class="w-12 h-12 rounded-full object-cover shrink-0 border border-neutral-300">`
-          : `<div class="w-12 h-12 rounded-full bg-[#070B06] text-zebu-lime flex items-center justify-center shrink-0"><i data-lucide="${iconName}" class="w-5 h-5"></i></div>`;
+        const avatarUrl = safeUrl(ad.avatar);
+        const avatarHTML = avatarUrl 
+          ? `<img src="${esc(avatarUrl)}" class="w-12 h-12 rounded-full object-cover shrink-0 border border-neutral-300">`
+          : `<div class="w-12 h-12 rounded-full bg-[#070B06] text-zebu-lime flex items-center justify-center shrink-0"><i data-lucide="${esc(iconName)}" class="w-5 h-5"></i></div>`;
+
+        const safeAdId = esc(ad.id);
 
         item.innerHTML = `
           <div class="flex items-center gap-3 min-w-0">
             ${avatarHTML}
             <div class="min-w-0">
-              <h4 class="font-black text-xs md:text-sm truncate">${ad.name}</h4>
-              <span class="text-[10px] font-bold text-neutral-500 block truncate">${ad.category}</span>
-              <span class="text-[10px] font-black text-black dark:text-white block mt-0.5">${formatPriceDisplay(ad)}</span>
+              <h4 class="font-black text-xs md:text-sm truncate">${esc(ad.name)}</h4>
+              <span class="text-[10px] font-bold text-neutral-500 block truncate">${esc(ad.category)}</span>
+              <span class="text-[10px] font-black text-black dark:text-white block mt-0.5">${esc(formatPriceDisplay(ad))}</span>
             </div>
           </div>
 
           <div class="flex items-center gap-1.5 shrink-0">
-            <button onclick="editSpecificAd('${ad.id}')" class="px-2.5 py-1.5 rounded-xl bg-zebu-lime hover:bg-zebu-limeHover text-black text-xs font-black flex items-center gap-1 shadow">
+            <button onclick="editSpecificAd('${safeAdId}')" class="px-2.5 py-1.5 rounded-xl bg-zebu-lime hover:bg-zebu-limeHover text-black text-xs font-black flex items-center gap-1 shadow">
               <i data-lucide="edit-3" class="w-3.5 h-3.5"></i> Editar
             </button>
-            <button onclick="deleteSpecificAd('${ad.id}', '${ad.name}')" class="p-2 rounded-xl bg-rose-100 text-rose-600 hover:bg-rose-200 text-xs font-bold" title="Excluir">
+            <button onclick="deleteSpecificAd('${safeAdId}')" class="p-2 rounded-xl bg-rose-100 text-rose-600 hover:bg-rose-200 text-xs font-bold" title="Excluir">
               <i data-lucide="trash-2" class="w-4 h-4"></i>
             </button>
           </div>
@@ -1771,11 +1822,14 @@
       document.getElementById('proRegions').value = ad.regions || "";
       document.getElementById('proWhatsappNumber').value = ad.whatsappNumber || "";
 
-      tempAvatarImage = ad.avatar || "";
+      tempAvatarImage = safeUrl(ad.avatar) || "";
       if (tempAvatarImage) {
         document.getElementById('proAvatarPreview').src = tempAvatarImage;
         document.getElementById('proAvatarPreview').classList.remove('hidden');
         document.getElementById('proAvatarDefaultIcon').classList.add('hidden');
+      } else {
+        document.getElementById('proAvatarPreview').classList.add('hidden');
+        document.getElementById('proAvatarDefaultIcon').classList.remove('hidden');
       }
 
       tempPortfolioImages = ad.portfolio || [];
@@ -1791,7 +1845,9 @@
       document.getElementById('adFormContainer').classList.add('hidden');
     };
 
-    window.deleteSpecificAd = async function(adId, adName) {
+    window.deleteSpecificAd = async function(adId) {
+      const ad = myAds.find(a => a.id === adId);
+      const adName = ad ? ad.name : '';
       if (!confirm(`Deseja realmente apagar o anúncio "${adName}"?`)) return;
       try {
         await deleteDoc(doc(db, "profiles", adId));
@@ -1822,12 +1878,14 @@
 
       try {
         const snap = await getDocs(collection(db, "profiles"));
-        snap.forEach(async (d) => {
+        const deletePromises = [];
+        snap.forEach((d) => {
           if (d.data().authorUid === currentUser.uid || d.id === currentUser.uid) {
-            await deleteDoc(doc(db, "profiles", d.id));
+            deletePromises.push(deleteDoc(doc(db, "profiles", d.id)));
           }
         });
-        await deleteDoc(doc(db, "users", currentUser.uid));
+        deletePromises.push(deleteDoc(doc(db, "users", currentUser.uid)));
+        await Promise.all(deletePromises);
         await deleteUser(auth.currentUser);
         showToast("Sua conta foi excluída.");
         showSection('home');
@@ -2010,27 +2068,31 @@
       card.className = `${widthClass} bg-white dark:bg-zebu-darkCard text-neutral-900 dark:text-white rounded-3xl p-4 shadow-sm hover:shadow-md transition-all flex flex-col justify-between border ${p.isSponsored ? 'border-2 border-amber-400' : 'border-zebu-grayBorder dark:border-neutral-800'}`;
       
       const iconName = getProfessionIcon(p.category);
-      const imageHTML = p.avatar 
-        ? `<img src="${p.avatar}" class="w-14 h-14 rounded-2xl object-cover shrink-0 border border-neutral-200 dark:border-neutral-700 shadow-sm">`
-        : `<div class="w-14 h-14 rounded-2xl bg-[#070B06] text-zebu-lime flex items-center justify-center shrink-0 shadow-sm"><i data-lucide="${iconName}" class="w-7 h-7"></i></div>`;
+      const avatarUrl = safeUrl(p.avatar);
+      const imageHTML = avatarUrl 
+        ? `<img src="${esc(avatarUrl)}" class="w-14 h-14 rounded-2xl object-cover shrink-0 border border-neutral-200 dark:border-neutral-700 shadow-sm">`
+        : `<div class="w-14 h-14 rounded-2xl bg-[#070B06] text-zebu-lime flex items-center justify-center shrink-0 shadow-sm"><i data-lucide="${esc(iconName)}" class="w-7 h-7"></i></div>`;
 
       const servicesPills = (p.services || []).slice(0, 3).map(s => 
-        `<span class="text-[10px] bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 px-2 py-0.5 rounded-lg border border-neutral-200 dark:border-neutral-700 font-medium">${s}</span>`
+        `<span class="text-[10px] bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 px-2 py-0.5 rounded-lg border border-neutral-200 dark:border-neutral-700 font-medium">${esc(s)}</span>`
       ).join('');
 
+      const safePortfolio = (p.portfolio || []).map(url => safeUrl(url)).filter(Boolean);
       let portfolioThumbnailsHTML = '';
-      if (p.portfolio && p.portfolio.length > 0) {
+      if (safePortfolio.length > 0) {
         portfolioThumbnailsHTML = `
           <div class="flex gap-1.5 pt-1 overflow-hidden">
-            ${p.portfolio.slice(0, 3).map(url => `
+            ${safePortfolio.slice(0, 3).map(url => `
               <div class="w-12 h-12 rounded-xl overflow-hidden bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 shrink-0">
-                <img src="${url}" class="w-full h-full object-cover">
+                <img src="${esc(url)}" class="w-full h-full object-cover">
               </div>
             `).join('')}
-            ${p.portfolio.length > 3 ? `<span class="text-[10px] text-neutral-400 self-center font-bold pl-1">+${p.portfolio.length - 3}</span>` : ''}
+            ${safePortfolio.length > 3 ? `<span class="text-[10px] text-neutral-400 self-center font-bold pl-1">+${safePortfolio.length - 3}</span>` : ''}
           </div>
         `;
       }
+
+      const safeProId = esc(p.id);
 
       card.innerHTML = `
         <div class="space-y-3">
@@ -2038,14 +2100,10 @@
             <div class="flex items-center gap-3">
               ${imageHTML}
               <div>
-                <div class="flex items-center gap-1.5">
-                  <h3 class="font-black text-sm leading-tight">${p.name}</h3>
-                  <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-zebu-lime fill-black dark:fill-zebu-lime" title="Verificado"></i>
-                </div>
-                <p class="text-[11px] font-bold text-neutral-500 mt-0.5">${p.category}</p>
-                <div class="flex items-center gap-1 text-[10px] font-bold text-amber-500 mt-0.5">
-                  <span>★ 5.0</span>
-                  <span class="text-neutral-400 font-normal">(${p.neighborhood || 'Uberaba'})</span>
+                <h3 class="font-black text-sm leading-tight">${esc(p.name)}</h3>
+                <p class="text-[11px] font-bold text-neutral-500 mt-0.5">${esc(p.category)}</p>
+                <div class="flex items-center gap-1 text-[10px] text-neutral-400 mt-0.5">
+                  <span>${esc(p.neighborhood || 'Uberaba')}</span>
                 </div>
               </div>
             </div>
@@ -2057,11 +2115,10 @@
             ` : ''}
           </div>
 
-          <p class="text-[11px] text-neutral-600 dark:text-neutral-400 line-clamp-2 leading-relaxed">${p.bio || 'Profissional autônomo disponível em Uberaba.'}</p>
+          <p class="text-[11px] text-neutral-600 dark:text-neutral-400 line-clamp-2 leading-relaxed">${esc(p.bio || 'Profissional autônomo disponível em Uberaba.')}</p>
 
           <div class="flex flex-wrap gap-1 text-[9px] font-bold text-neutral-500">
-            <span class="px-2 py-0.5 bg-neutral-100 dark:bg-neutral-800 rounded-md">📍 ${formatAttendanceDisplay(p.attendanceType)}</span>
-            <span class="px-2 py-0.5 bg-neutral-100 dark:bg-neutral-800 rounded-md">💳 Pix & Cartão</span>
+            <span class="px-2 py-0.5 bg-neutral-100 dark:bg-neutral-800 rounded-md">📍 ${esc(formatAttendanceDisplay(p.attendanceType))}</span>
             ${p.videoUrl ? `<span class="px-2 py-0.5 bg-zebu-limeSoft text-black rounded-md flex items-center gap-0.5"><i data-lucide="play" class="w-2.5 h-2.5"></i> Vídeo</span>` : ''}
           </div>
 
@@ -2075,10 +2132,10 @@
         <div class="mt-4 pt-3 border-t border-neutral-100 dark:border-neutral-800 flex items-center justify-between">
           <div>
             <span class="text-[9px] uppercase font-bold text-neutral-400 block">Preço</span>
-            <span class="text-xs font-black text-black dark:text-white">${formatPriceDisplay(p)}</span>
+            <span class="text-xs font-black text-black dark:text-white">${esc(formatPriceDisplay(p))}</span>
           </div>
 
-          <button onclick="openProfileModal('${p.id}')" class="px-4 py-2 bg-zebu-lime hover:bg-zebu-limeHover text-black font-black text-xs rounded-xl shadow transition flex items-center gap-1">
+          <button onclick="openProfileModal('${safeProId}')" class="px-4 py-2 bg-zebu-lime hover:bg-zebu-limeHover text-black font-black text-xs rounded-xl shadow transition flex items-center gap-1">
             Pedir Orçamento <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
           </button>
         </div>
@@ -2143,11 +2200,17 @@
       if (p.videoUrl) {
         const embedUrl = getYoutubeEmbedUrl(p.videoUrl);
         if (embedUrl) {
-          videoWrapper.innerHTML = `<iframe src="${embedUrl}" class="w-full h-full" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+          videoWrapper.innerHTML = `<iframe src="${esc(safeUrl(embedUrl))}" class="w-full h-full" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
           videoCont.classList.remove('hidden');
         } else {
-          videoWrapper.innerHTML = `<a href="${p.videoUrl}" target="_blank" class="w-full h-full flex items-center justify-center bg-neutral-900 text-zebu-lime font-bold text-xs gap-2"><i data-lucide="play-circle" class="w-6 h-6"></i> Assistir Vídeo Externo</a>`;
-          videoCont.classList.remove('hidden');
+          const validExtVideo = safeUrl(p.videoUrl);
+          if (validExtVideo) {
+            videoWrapper.innerHTML = `<a href="${esc(validExtVideo)}" target="_blank" rel="noopener noreferrer" class="w-full h-full flex items-center justify-center bg-neutral-900 text-zebu-lime font-bold text-xs gap-2"><i data-lucide="play-circle" class="w-6 h-6"></i> Assistir Vídeo Externo</a>`;
+            videoCont.classList.remove('hidden');
+          } else {
+            videoWrapper.innerHTML = '';
+            videoCont.classList.add('hidden');
+          }
         }
       } else {
         videoWrapper.innerHTML = '';
@@ -2156,10 +2219,11 @@
 
       const aCont = document.getElementById('modalProAvatarContainer');
       const iconName = getProfessionIcon(p.category);
-      if (p.avatar) {
-        aCont.innerHTML = `<img src="${p.avatar}" class="w-full h-full object-cover">`;
+      const avatarUrl = safeUrl(p.avatar);
+      if (avatarUrl) {
+        aCont.innerHTML = `<img src="${esc(avatarUrl)}" class="w-full h-full object-cover">`;
       } else {
-        aCont.innerHTML = `<i data-lucide="${iconName}" class="w-6 h-6"></i>`;
+        aCont.innerHTML = `<i data-lucide="${esc(iconName)}" class="w-6 h-6"></i>`;
       }
 
       const badge = document.getElementById('modalProBadge');
@@ -2196,8 +2260,10 @@
       const g = document.getElementById('modalProGallery');
       g.innerHTML = '';
       (p.portfolio || []).forEach(url => {
+        const validImg = safeUrl(url);
+        if (!validImg) return;
         const img = document.createElement('img');
-        img.src = url;
+        img.src = validImg;
         img.className = 'w-full aspect-square object-cover rounded-xl border border-neutral-300 dark:border-neutral-700';
         g.appendChild(img);
       });
@@ -2317,29 +2383,30 @@
       }
 
       const isMyJob = currentUser && (currentUser.uid === j.authorUid || currentUser.email === ADMIN_EMAIL);
+      const safeJobId = esc(j.id);
 
       card.innerHTML = `
         <div class="space-y-2">
           <div class="flex items-center justify-between gap-1">
             <span class="text-[9px] font-black uppercase px-2 py-0.5 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300">
-              ${j.category}
+              ${esc(j.category)}
             </span>
             ${countdownHTML}
           </div>
-          <h3 class="font-black text-xs md:text-sm leading-snug line-clamp-2">${j.title}</h3>
-          <p class="text-[11px] text-neutral-600 dark:text-neutral-400 line-clamp-2">${j.description}</p>
+          <h3 class="font-black text-xs md:text-sm leading-snug line-clamp-2">${esc(j.title)}</h3>
+          <p class="text-[11px] text-neutral-600 dark:text-neutral-400 line-clamp-2">${esc(j.description)}</p>
           <div class="pt-1 flex gap-2 text-[10px] text-neutral-500 font-bold">
-            <span>📍 ${j.neighborhood}</span>
-            <span>💰 ${j.budget}</span>
+            <span>📍 ${esc(j.neighborhood)}</span>
+            <span>💰 ${esc(j.budget)}</span>
           </div>
         </div>
         <div class="mt-3 pt-2.5 border-t border-neutral-100 dark:border-neutral-800 flex items-center justify-between gap-2">
           ${isMyJob ? `
-            <button onclick="closeJobOpportunity('${j.id}')" class="px-2.5 py-1 bg-neutral-200 dark:bg-neutral-800 hover:bg-neutral-300 text-neutral-800 dark:text-neutral-200 text-[10px] font-bold rounded-lg" title="Encerrar vaga">
+            <button onclick="closeJobOpportunity('${safeJobId}')" class="px-2.5 py-1 bg-neutral-200 dark:bg-neutral-800 hover:bg-neutral-300 text-neutral-800 dark:text-neutral-200 text-[10px] font-bold rounded-lg" title="Encerrar vaga">
               ✅ Preenchida
             </button>
           ` : '<span></span>'}
-          <button onclick="openInAppChat({ uid: '${j.authorUid}', name: '${j.authorName}', subtitle: 'Contratante da Vaga' })" class="px-3.5 py-1.5 bg-black dark:bg-white text-white dark:text-black font-black text-xs rounded-xl shadow flex items-center gap-1.5 hover:opacity-85">
+          <button onclick="openJobAuthorChat('${safeJobId}')" class="px-3.5 py-1.5 bg-black dark:bg-white text-white dark:text-black font-black text-xs rounded-xl shadow flex items-center gap-1.5 hover:opacity-85">
             <i data-lucide="message-square" class="w-3.5 h-3.5 text-zebu-lime"></i> Quero Fazer
           </button>
         </div>
@@ -2353,7 +2420,7 @@
     window.handleAvatarUpload = async function(e) {
       const file = e.target.files[0];
       if (!file) return;
-      tempAvatarImage = await compressImage(file, 400);
+      tempAvatarImage = safeUrl(await compressImage(file, 400));
       document.getElementById('proAvatarPreview').src = tempAvatarImage;
       document.getElementById('proAvatarPreview').classList.remove('hidden');
       document.getElementById('proAvatarDefaultIcon').classList.add('hidden');
@@ -2362,7 +2429,7 @@
     window.handleProductPhotoUpload = async function(e) {
       const file = e.target.files[0];
       if (!file) return;
-      tempProductImage = await compressImage(file, 800);
+      tempProductImage = safeUrl(await compressImage(file, 800));
       document.getElementById('prodImagePreview').src = tempProductImage;
       document.getElementById('prodImagePreviewContainer').classList.remove('hidden');
     };
@@ -2374,8 +2441,8 @@
         return;
       }
       for (const file of files) {
-        const b64 = await compressImage(file, 800);
-        tempPortfolioImages.push(b64);
+        const b64 = safeUrl(await compressImage(file, 800));
+        if (b64) tempPortfolioImages.push(b64);
       }
       renderPortfolioPreviews();
     };
@@ -2401,17 +2468,24 @@
       });
     }
 
+    window.removePortfolioImage = function(idx) {
+      tempPortfolioImages.splice(idx, 1);
+      renderPortfolioPreviews();
+    };
+
     function renderPortfolioPreviews() {
       const grid = document.getElementById('portfolioPreviewGrid');
       if (!grid) return;
       grid.innerHTML = '';
       document.getElementById('photoCount').textContent = `${tempPortfolioImages.length} / 10 fotos`;
       tempPortfolioImages.forEach((imgUrl, idx) => {
+        const validImg = safeUrl(imgUrl);
+        if (!validImg) return;
         const div = document.createElement('div');
         div.className = 'relative aspect-square rounded-xl overflow-hidden border border-neutral-300 dark:border-neutral-700';
         div.innerHTML = `
-          <img src="${imgUrl}" class="w-full h-full object-cover">
-          <button type="button" onclick="tempPortfolioImages.splice(${idx}, 1); renderPortfolioPreviews();" class="absolute top-1 right-1 bg-black text-white rounded-full p-0.5 text-[10px]">✕</button>
+          <img src="${esc(validImg)}" class="w-full h-full object-cover">
+          <button type="button" onclick="removePortfolioImage(${idx})" class="absolute top-1 right-1 bg-black text-white rounded-full p-0.5 text-[10px]">✕</button>
         `;
         grid.appendChild(div);
       });
@@ -2526,3 +2600,90 @@
   </script>
 </body>
 </html>
+```
+
+---
+
+### Regras de Segurança do Firestore (`firestore.rules`)
+
+> **Importante:** Antes de publicar no Console do Firebase, substitua `COLOQUE_AQUI_O_UID_DO_ADMIN` pelo UID real do usuário administrador (`gabi.almeidasaude@gmail.com`), obtido em **Authentication → Users** no Firebase Console.
+
+```javascript
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isSignedIn() && request.auth.uid == "COLOQUE_AQUI_O_UID_DO_ADMIN";
+    }
+
+    function isChatParticipant(chatId) {
+      return isSignedIn() && (
+        isAdmin() ||
+        chatId == "support_" + request.auth.uid ||
+        chatId.matches("^" + request.auth.uid + "_[^_]+$") ||
+        chatId.matches("^[^_]+_" + request.auth.uid + "$")
+      );
+    }
+
+    // Usuários: leitura e escrita apenas pelo próprio dono (admin pode ler)
+    match /users/{userId} {
+      allow read: if isSignedIn() && (request.auth.uid == userId || isAdmin());
+      allow create, update, delete: if isSignedIn() && request.auth.uid == userId;
+    }
+
+    // Perfis / Anúncios: leitura pública; criação/edição/exclusão só do dono (admin também pode gerenciar/destacar)
+    match /profiles/{profileId} {
+      allow read: if true;
+      allow create: if isSignedIn()
+        && request.resource.data.authorUid == request.auth.uid
+        && request.resource.data.isSponsored == false;
+      allow update: if isSignedIn() && (
+        isAdmin() ||
+        (
+          resource.data.authorUid == request.auth.uid
+          && request.resource.data.authorUid == resource.data.authorUid
+          && request.resource.data.isSponsored == resource.data.isSponsored
+        )
+      );
+      allow delete: if isSignedIn() && (
+        resource.data.authorUid == request.auth.uid
+        || resource.id == request.auth.uid
+        || isAdmin()
+      );
+    }
+
+    // Vagas: leitura pública; criação/edição/exclusão só do dono (ou admin)
+    match /jobs/{jobId} {
+      allow read: if true;
+      allow create: if isSignedIn() && request.resource.data.authorUid == request.auth.uid;
+      allow update: if isSignedIn() && (
+        (resource.data.authorUid == request.auth.uid && request.resource.data.authorUid == resource.data.authorUid)
+        || isAdmin()
+      );
+      allow delete: if isSignedIn() && (resource.data.authorUid == request.auth.uid || isAdmin());
+    }
+
+    // Equipamentos / Produtos: leitura pública; escrita exclusiva do admin (por UID)
+    match /products/{productId} {
+      allow read: if true;
+      allow create, update, delete: if isAdmin();
+    }
+
+    // Chats e mensagens: acesso restrito aos participantes (e admin no suporte)
+    match /support_chats/{chatId} {
+      allow read, write: if isChatParticipant(chatId);
+
+      match /messages/{messageId} {
+        allow read: if isChatParticipant(chatId);
+        allow create: if isChatParticipant(chatId)
+          && request.resource.data.senderUid == request.auth.uid;
+        allow update, delete: if false;
+      }
+    }
+  }
+}
