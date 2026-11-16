@@ -2,7 +2,7 @@
 <html lang="pt-BR" class="h-full">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>Zebu Freela | Conectando pessoas e oportunidades em Uberaba</title>
   <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#070B06">
@@ -46,7 +46,7 @@
 
   <!-- ================= TOPBAR (COM DEGRADÊ) ================= -->
   <header class="sticky top-0 z-40 bg-gradient-to-r from-[#070B06] via-[#121B0F] to-[#070B06] text-white shadow-md border-b border-white/10">
-    <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+    <div class="max-w-6xl mx-auto px-4 h-15 flex items-center justify-between">
       <a href="#home" onclick="showSection('home')" class="flex items-center gap-2">
         <img src="file_00000000ee94820e8030c8d3a817a851.png" alt="Zebu Freela" class="h-9 md:h-11 w-auto object-contain">
       </a>
@@ -246,7 +246,6 @@
             <i data-lucide="wrench" class="w-5 h-5 text-zebu-lime"></i> Equipamentos
           </h2>
           <p class="text-xs text-neutral-400 mt-0.5">Ferramentas e materiais de trabalho separados por profissão.</p>
-          <p class="text-[11px] text-neutral-400 mt-1">Alguns links são de afiliados: podemos receber uma comissão, sem custo extra para você.</p>
         </div>
         <button id="adminPostBtnBlog" onclick="openCreateProductModal()" class="hidden px-4 py-2 bg-zebu-lime text-black font-black text-xs rounded-xl hover:bg-zebu-limeHover shadow">
           + Cadastrar Equipamento
@@ -639,9 +638,8 @@
       <h3 class="text-base font-black text-zebu-lime">Política de Privacidade & LGPD</h3>
       <div class="space-y-2.5 leading-relaxed text-neutral-700 dark:text-neutral-300">
         <p><strong>1. Coleta de Dados:</strong> O Zebu Freela coleta informações cadastrais apenas para aproximar clientes e autônomos em Uberaba - MG, nos termos da Lei Geral de Proteção de Dados (Lei nº 13.709/2018 - LGPD).</p>
-        <p><strong>2. Visibilidade Pública dos Anúncios:</strong> Ao cadastrar um anúncio profissional, seu número de WhatsApp, fotos de perfil e portfólio, nome de exibição, bairro, serviços e demais dados do anúncio ficam públicos e visíveis para qualquer visitante da plataforma.</p>
-        <p><strong>3. Google AdSense & Cookies:</strong> Terceiros, incluindo o Google, utilizam cookies para veicular anúncios com base no histórico de navegação.</p>
-        <p><strong>4. Links de Afiliados:</strong> A seção Equipamentos pode conter links comissionados para varejistas autorizados (Shopee, Mercado Livre, Amazon).</p>
+        <p><strong>2. Google AdSense & Cookies:</strong> Terceiros, incluindo o Google, utilizam cookies para veicular anúncios com base no histórico de navegação.</p>
+        <p><strong>3. Links de Afiliados:</strong> A seção Equipamentos pode conter links comissionados para varejistas autorizados (Shopee, Mercado Livre, Amazon).</p>
       </div>
       <button onclick="closeModal('privacyModal')" class="w-full py-2.5 bg-zebu-lime text-black font-black rounded-xl">Entendi e Concordo</button>
     </div>
@@ -894,26 +892,6 @@
 
     const ADMIN_EMAIL = "gabi.almeidasaude@gmail.com";
 
-    // HELPERS DE SEGURANÇA (XSS & URL)
-    function esc(str) {
-      if (str === null || str === undefined) return '';
-      return String(str)
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#39;');
-    }
-
-    function safeUrl(url) {
-      if (!url || typeof url !== 'string') return '';
-      const trimmed = url.trim();
-      if (/^https?:\/\//i.test(trimmed) || /^data:image\//i.test(trimmed)) {
-        return trimmed;
-      }
-      return '';
-    }
-
     // CATEGORIAS COMPLETAS EM ORDEM ALFABÉTICA
     const CATEGORIES_DATA = [
       { name: "Adestrador de Cães", icon: "bone" },
@@ -1072,9 +1050,9 @@
         div.className = 'cursor-pointer shrink-0 w-24 md:w-auto p-3 rounded-2xl bg-white dark:bg-zebu-darkCard border border-zebu-grayBorder dark:border-neutral-800 hover:border-zebu-lime transition flex flex-col items-center text-center gap-1.5 shadow-sm';
         div.innerHTML = `
           <div class="w-10 h-10 rounded-xl bg-zebu-graySoft dark:bg-neutral-800 flex items-center justify-center shrink-0 text-black dark:text-zebu-lime">
-            <i data-lucide="${esc(cat.icon)}" class="w-5 h-5"></i>
+            <i data-lucide="${cat.icon}" class="w-5 h-5"></i>
           </div>
-          <span class="text-[11px] font-bold leading-tight line-clamp-2">${esc(cat.name)}</span>
+          <span class="text-[11px] font-bold leading-tight line-clamp-2">${cat.name}</span>
         `;
         container.appendChild(div);
       });
@@ -1117,12 +1095,12 @@
 
       if (selectedProfession) {
         title.textContent = `${selectedProfession} em Uberaba`;
-        sub.textContent = `Profissionais prontos para atender seu chamado no seu bairro.`;
+        sub.textContent = `Profissionais avaliados prontos para atender seu chamado no seu bairro.`;
         const icon = getProfessionIcon(selectedProfession);
-        iconBox.innerHTML = `<i data-lucide="${esc(icon)}" class="w-4 h-4"></i>`;
+        iconBox.innerHTML = `<i data-lucide="${icon}" class="w-4 h-4"></i>`;
       } else {
         title.textContent = `Todos os Profissionais em Uberaba`;
-        sub.textContent = `Encontre especialistas para qualquer serviço na sua região.`;
+        sub.textContent = `Encontre especialistas avaliados para qualquer serviço na sua região.`;
         iconBox.innerHTML = `<i data-lucide="users" class="w-4 h-4"></i>`;
       }
       lucide.createIcons();
@@ -1207,13 +1185,10 @@
           if (d.description) document.getElementById('prodDescription').value = d.description;
           document.getElementById('prodAffiliateLink').value = url;
           if (d.image && d.image.url) {
-            const validImg = safeUrl(d.image.url);
-            if (validImg) {
-              tempProductImage = validImg;
-              document.getElementById('prodImageUrlDirect').value = tempProductImage;
-              document.getElementById('prodImagePreview').src = tempProductImage;
-              document.getElementById('prodImagePreviewContainer').classList.remove('hidden');
-            }
+            tempProductImage = d.image.url;
+            document.getElementById('prodImageUrlDirect').value = tempProductImage;
+            document.getElementById('prodImagePreview').src = tempProductImage;
+            document.getElementById('prodImagePreviewContainer').classList.remove('hidden');
           }
           showToast("🪄 Título e dados puxados com sucesso!");
         } else {
@@ -1232,9 +1207,7 @@
 
     window.previewDirectImageUrl = function(url) {
       if (!url) return;
-      const valid = safeUrl(url);
-      if (!valid) return;
-      tempProductImage = valid;
+      tempProductImage = url.trim();
       document.getElementById('prodImagePreview').src = tempProductImage;
       document.getElementById('prodImagePreviewContainer').classList.remove('hidden');
     };
@@ -1286,10 +1259,10 @@
           div.innerHTML = `
             <div>
               <div class="flex items-center gap-1.5">
-                <h4 class="font-black text-xs">${esc(c.userName || 'Usuário')}</h4>
+                <h4 class="font-black text-xs">${c.userName || 'Usuário'}</h4>
                 <span class="text-[9px] bg-amber-400 text-black px-1.5 py-0.5 rounded font-bold">Atendimento</span>
               </div>
-              <p class="text-[11px] text-neutral-500 mt-1 line-clamp-1">${esc(c.lastMessage || 'Conversa iniciada')}</p>
+              <p class="text-[11px] text-neutral-500 mt-1 line-clamp-1">${c.lastMessage || 'Conversa iniciada'}</p>
             </div>
             <i data-lucide="chevron-right" class="w-4 h-4 text-neutral-400"></i>
           `;
@@ -1333,27 +1306,16 @@
       document.getElementById('chatTargetSubtitle').textContent = recipient.category ? `${recipient.category} • online agora` : (recipient.subtitle || "online agora");
       
       const avatarBox = document.getElementById('chatHeaderAvatar');
-      const avatarUrl = safeUrl(recipient.avatar);
       if (recipient.isSupport) {
         avatarBox.innerHTML = `🐮`;
-      } else if (avatarUrl) {
-        avatarBox.innerHTML = `<img src="${esc(avatarUrl)}" class="w-full h-full object-cover">`;
+      } else if (recipient.avatar) {
+        avatarBox.innerHTML = `<img src="${recipient.avatar}" class="w-full h-full object-cover">`;
       } else {
-        avatarBox.textContent = (recipient.name || 'P').charAt(0).toUpperCase();
+        avatarBox.innerHTML = `${recipient.name.charAt(0).toUpperCase()}`;
       }
 
       openModal('inAppChatModal');
       listenToChatMessages();
-    };
-
-    window.openJobAuthorChat = function(jobId) {
-      const job = allJobs.find(j => j.id === jobId);
-      if (!job) return;
-      openInAppChat({
-        uid: job.authorUid,
-        name: job.authorName || 'Cliente',
-        subtitle: 'Contratante da Vaga'
-      });
     };
 
     function listenToChatMessages() {
@@ -1380,7 +1342,7 @@
         if (snapshot.empty) {
           messagesBox.innerHTML = `
             <div class="text-center py-6 space-y-1">
-              <p class="text-xs font-bold text-neutral-700 dark:text-neutral-200">Inicie a conversa com ${esc(currentChatRecipient.name)}!</p>
+              <p class="text-xs font-bold text-neutral-700 dark:text-neutral-200">Inicie a conversa com ${currentChatRecipient.name}!</p>
               <p class="text-[10px] text-neutral-500">Tire dúvidas sobre o serviço, combine prazos e orçamentos.</p>
             </div>
           `;
@@ -1403,9 +1365,9 @@
           bubble.className = `flex flex-col ${isMe ? 'items-end' : 'items-start'}`;
           bubble.innerHTML = `
             <div class="max-w-[85%] px-3.5 py-2.5 rounded-2xl text-xs leading-relaxed shadow-sm relative ${isMe ? 'bg-white text-black border border-neutral-200 font-medium' : 'bg-white text-black border border-neutral-200'}">
-              <p class="pr-10 text-neutral-900">${esc(m.text)}</p>
+              <p class="pr-10 text-neutral-900">${m.text}</p>
               <div class="flex items-center justify-end gap-1 text-[9px] text-neutral-400 font-medium mt-1">
-                <span>${esc(timeStr)}</span>
+                <span>${timeStr}</span>
                 ${isMe ? '<span class="text-emerald-600 font-black">✓✓</span>' : ''}
               </div>
             </div>
@@ -1488,23 +1450,18 @@
       document.getElementById('prodDescription').value = prod.description || "";
       document.getElementById('prodFeaturedOnHome').checked = !!prod.isFeaturedOnHome;
       
-      tempProductImage = safeUrl(prod.image) || "";
+      tempProductImage = prod.image || "";
       if (tempProductImage) {
         document.getElementById('prodImageUrlDirect').value = tempProductImage;
         document.getElementById('prodImagePreview').src = tempProductImage;
         document.getElementById('prodImagePreviewContainer').classList.remove('hidden');
-      } else {
-        document.getElementById('prodImageUrlDirect').value = '';
-        document.getElementById('prodImagePreviewContainer').classList.add('hidden');
       }
 
       openModal('adminProductModal');
       lucide.createIcons();
     };
 
-    window.deleteProduct = async function(productId) {
-      const prod = allProducts.find(p => p.id === productId);
-      const title = prod ? prod.title : '';
+    window.deleteProduct = async function(productId, title) {
       if (!confirm(`Deseja realmente apagar o equipamento "${title}"?`)) return;
       try {
         await deleteDoc(doc(db, "products", productId));
@@ -1523,8 +1480,8 @@
       btn.disabled = true;
       btn.textContent = "Salvando...";
 
-      const directUrl = safeUrl(document.getElementById('prodImageUrlDirect').value.trim());
-      const finalImage = directUrl || safeUrl(tempProductImage) || "https://images.unsplash.com/photo-1581783342308-f792dbdd27c5?w=400";
+      const directUrl = document.getElementById('prodImageUrlDirect').value.trim();
+      const finalImage = directUrl || tempProductImage || "https://images.unsplash.com/photo-1581783342308-f792dbdd27c5?w=400";
 
       const payload = {
         title: document.getElementById('prodTitle').value.trim(),
@@ -1618,24 +1575,23 @@
         return;
       }
 
-      categoriesToShow.forEach((catName, idx) => {
+      categoriesToShow.forEach(catName => {
         const section = document.createElement('div');
         section.className = "space-y-3 bg-white dark:bg-zebu-darkCard p-4 rounded-3xl border border-zebu-grayBorder dark:border-neutral-800 shadow-sm";
 
         const iconName = getProfessionIcon(catName);
-        const gridId = `cat_grid_${idx}`;
         section.innerHTML = `
           <div class="flex items-center gap-2 border-b border-neutral-100 dark:border-neutral-800 pb-2">
             <div class="w-8 h-8 rounded-xl bg-zebu-limeSoft text-black flex items-center justify-center font-bold">
-              <i data-lucide="${esc(iconName)}" class="w-4 h-4"></i>
+              <i data-lucide="${iconName}" class="w-4 h-4"></i>
             </div>
-            <h3 class="font-black text-sm md:text-base">${esc(catName)}</h3>
+            <h3 class="font-black text-sm md:text-base">${catName}</h3>
           </div>
-          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2.5 pt-1" id="${gridId}"></div>
+          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2.5 pt-1" id="cat_grid_${catName.replace(/[^a-zA-Z0-9]/g, '_')}"></div>
         `;
         container.appendChild(section);
 
-        const grid = section.querySelector(`#${gridId}`);
+        const grid = section.querySelector(`#cat_grid_${catName.replace(/[^a-zA-Z0-9]/g, '_')}`);
         grouped[catName].forEach(prod => grid.appendChild(createProductCard(prod)));
       });
 
@@ -1684,38 +1640,34 @@
       const isAdmin = currentUser && currentUser.email === ADMIN_EMAIL;
       const widthClass = isCarousel ? 'w-[160px] sm:w-[190px] shrink-0 snap-start' : 'w-full';
       card.className = `${widthClass} bg-[#F8FAF6] dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl overflow-hidden shadow-sm flex flex-col justify-between hover:shadow-md transition relative group`;
-
-      const safeProdLink = esc(safeUrl(prod.link)) || '#';
-      const safeProdImg = esc(safeUrl(prod.image));
-      const safeProdId = esc(prod.id);
       
       card.innerHTML = `
         <div>
-          <a href="${safeProdLink}" target="_blank" rel="noopener noreferrer" class="block relative w-full aspect-square bg-white dark:bg-neutral-800 overflow-hidden flex items-center justify-center p-2 cursor-pointer">
-            <img src="${safeProdImg}" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-200">
+          <a href="${prod.link}" target="_blank" rel="noopener noreferrer" class="block relative w-full aspect-square bg-white dark:bg-neutral-800 overflow-hidden flex items-center justify-center p-2 cursor-pointer">
+            <img src="${prod.image}" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-200">
           </a>
 
           ${isAdmin ? `
             <div class="absolute top-1.5 right-1.5 flex gap-1 z-10">
-              <button onclick="editProduct('${safeProdId}')" class="bg-black/80 hover:bg-black text-zebu-lime p-1.5 rounded-lg shadow" title="Editar">
+              <button onclick="editProduct('${prod.id}')" class="bg-black/80 hover:bg-black text-zebu-lime p-1.5 rounded-lg shadow" title="Editar">
                 <i data-lucide="edit-3" class="w-3.5 h-3.5"></i>
               </button>
-              <button onclick="deleteProduct('${safeProdId}')" class="bg-rose-600/90 hover:bg-rose-600 text-white p-1.5 rounded-lg shadow" title="Excluir">
+              <button onclick="deleteProduct('${prod.id}', '${prod.title}')" class="bg-rose-600/90 hover:bg-rose-600 text-white p-1.5 rounded-lg shadow" title="Excluir">
                 <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
               </button>
             </div>
           ` : ''}
 
           <div class="p-2.5 space-y-1">
-            <a href="${safeProdLink}" target="_blank" rel="noopener noreferrer" class="block font-bold text-[11px] leading-snug line-clamp-2 hover:underline">
-              ${esc(prod.title)}
+            <a href="${prod.link}" target="_blank" rel="noopener noreferrer" class="block font-bold text-[11px] leading-snug line-clamp-2 hover:underline">
+              ${prod.title}
             </a>
-            <span class="text-xs md:text-sm font-black text-black dark:text-white block pt-1">${esc(prod.price)}</span>
+            <span class="text-xs md:text-sm font-black text-black dark:text-white block pt-1">${prod.price}</span>
           </div>
         </div>
 
         <div class="p-2 pt-0 flex justify-end">
-          <a href="${safeProdLink}" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full bg-zebu-lime hover:bg-zebu-limeHover text-black flex items-center justify-center shadow transition" title="Ver Oferta">
+          <a href="${prod.link}" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full bg-zebu-lime hover:bg-zebu-limeHover text-black flex items-center justify-center shadow transition" title="Ver Oferta">
             <i data-lucide="shopping-cart" class="w-4 h-4"></i>
           </a>
         </div>
@@ -1747,7 +1699,44 @@
         const item = document.createElement('div');
         item.className = "p-3.5 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-2xl flex items-center justify-between gap-3 shadow-sm";
         const iconName = getProfessionIcon(ad.category);
-        const avatarUrl = safeUrl(ad.avatar);
-        const avatarHTML = avatarUrl 
-          ? `<img src="${esc(avatarUrl)}" class="w-12 h-12 rounded-full object-cover shrink-0 border border-neutral-300">`
-          : `<div class="w-12 h-12 rounded-full bg-[#070B06] text-zebu-lime flex items-center justify-center shrink-0"><i data-lucide="${esc(iconName)}" class="w-5
+        const avatarHTML = ad.avatar 
+          ? `<img src="${ad.avatar}" class="w-12 h-12 rounded-full object-cover shrink-0 border border-neutral-300">`
+          : `<div class="w-12 h-12 rounded-full bg-[#070B06] text-zebu-lime flex items-center justify-center shrink-0"><i data-lucide="${iconName}" class="w-5 h-5"></i></div>`;
+
+        item.innerHTML = `
+          <div class="flex items-center gap-3 min-w-0">
+            ${avatarHTML}
+            <div class="min-w-0">
+              <h4 class="font-black text-xs md:text-sm truncate">${ad.name}</h4>
+              <span class="text-[10px] font-bold text-neutral-500 block truncate">${ad.category}</span>
+              <span class="text-[10px] font-black text-black dark:text-white block mt-0.5">${formatPriceDisplay(ad)}</span>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-1.5 shrink-0">
+            <button onclick="editSpecificAd('${ad.id}')" class="px-2.5 py-1.5 rounded-xl bg-zebu-lime hover:bg-zebu-limeHover text-black text-xs font-black flex items-center gap-1 shadow">
+              <i data-lucide="edit-3" class="w-3.5 h-3.5"></i> Editar
+            </button>
+            <button onclick="deleteSpecificAd('${ad.id}', '${ad.name}')" class="p-2 rounded-xl bg-rose-100 text-rose-600 hover:bg-rose-200 text-xs font-bold" title="Excluir">
+              <i data-lucide="trash-2" class="w-4 h-4"></i>
+            </button>
+          </div>
+        `;
+        container.appendChild(item);
+      });
+      lucide.createIcons();
+    }
+
+    window.startNewAdForm = function() {
+      editingAdId = null;
+      document.getElementById('adFormTitle').textContent = "Criar Novo Anúncio";
+      document.getElementById('proProfileForm').reset();
+      tempAvatarImage = "";
+      tempPortfolioImages = [];
+      document.getElementById('proAvatarPreview').classList.add('hidden');
+      document.getElementById('proAvatarDefaultIcon').classList.remove('hidden');
+      document.getElementById('relatedFunctionsContainer').classList.add('hidden');
+      document.getElementById('proCustomNeighborhoodInput').classList.add('hidden');
+      renderPortfolioPreviews();
+      document.getElementById('adFormContainer').classList.remove('hidden');
+      document.getElementBy
