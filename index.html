@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="scroll-smooth">
+<html lang="pt-BR" class="scroll-smooth overflow-x-hidden">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -61,23 +61,14 @@
 
   <!-- ==================== A. NAVBAR (TOPO FIXO) ==================== -->
   <header class="fixed top-0 inset-x-0 z-40 bg-[#0A0A0A]/85 backdrop-blur-xl border-b border-zebu-border/80">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between gap-4">
+    <div class="max-w-6xl mx-auto px-3 sm:px-6 h-16 sm:h-20 flex items-center justify-between gap-2">
       
-      <!-- Logo Estilizado -->
-      <a href="#topo" class="flex flex-col items-center justify-center group shrink-0" aria-label="ZebuFreela Uberaba - Ir para o topo">
-        <div class="flex items-center gap-2">
-          <svg class="w-8 h-8 text-white shrink-0 group-hover:scale-105 transition-transform" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M9 11C7 16 9.5 21 15 22L17 31C17.8 35.5 20.5 39 24 39C27.5 39 30.2 35.5 31 31L33 22C38.5 21 41 16 39 11C37.5 15 34.5 16.5 31 16C29 13 26.5 12 24 12C21.5 12 19 13 17 16C13.5 16.5 10.5 15 9 11Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
-            <path d="M18 16C20 13.5 22 10 24 10C26 10 28 13.5 30 16" stroke="#84CC16" stroke-width="2.3" stroke-linecap="round"/>
-            <circle cx="19.5" cy="24" r="1.5" fill="currentColor"/>
-            <circle cx="28.5" cy="24" r="1.5" fill="currentColor"/>
-            <path d="M21 33.5H27" stroke="#84CC16" stroke-width="2.2" stroke-linecap="round"/>
-          </svg>
-          <span class="text-xl sm:text-2xl font-extrabold tracking-tight leading-none">
-            <span class="text-zebu-lime">ZEBU</span><span class="text-white">FREELA</span>
-          </span>
-        </div>
-        <span class="text-[9px] font-bold tracking-[0.38em] text-white/90 uppercase mt-1 pl-8">UBERABA</span>
+      <!-- Logo Estilizado (sem ícone de vaca) -->
+      <a href="#topo" class="flex flex-col items-center justify-center shrink-0" aria-label="ZebuFreela Uberaba - Ir para o topo">
+        <span class="text-base sm:text-2xl font-extrabold tracking-tight leading-none">
+          <span class="text-zebu-lime">ZEBU</span><span class="text-white">FREELA</span>
+        </span>
+        <span class="text-[8px] sm:text-[9px] font-bold tracking-[0.36em] text-white/90 uppercase mt-1">UBERABA</span>
       </a>
 
       <!-- Links no Centro (Desktop) -->
@@ -88,28 +79,33 @@
         <a href="#duvidas" class="hover:text-zebu-lime transition-colors">Dúvidas</a>
       </nav>
 
-      <!-- Botões à Direita (deslogado) -->
-      <div id="navGuestButtons" class="hidden sm:flex items-center gap-4 shrink-0">
-        <button type="button" onclick="openAuthModal('login')" class="text-sm font-semibold text-white/90 hover:text-zebu-lime transition-colors px-2 py-1">
-          Entrar
-        </button>
-        <button type="button" onclick="openAuthModal('register', 'freelancer')" class="px-4 py-2.5 rounded-xl border-2 border-zebu-lime text-zebu-lime hover:bg-zebu-lime hover:text-black font-extrabold text-xs tracking-wide transition-all">
-          CRIAR CONTA GRÁTIS
+      <!-- Ações à Direita -->
+      <div class="flex items-center gap-1.5 sm:gap-3 shrink-0">
+        <!-- Botões (deslogado) -->
+        <div id="navGuestButtons" class="flex items-center gap-1.5 sm:gap-3">
+          <button type="button" onclick="openAuthModal('login')" class="text-xs sm:text-sm font-semibold text-white/90 hover:text-zebu-lime transition-colors px-1.5 sm:px-2 py-1 whitespace-nowrap">
+            Entrar
+          </button>
+          <button type="button" onclick="openAuthModal('register', 'freelancer')" class="px-2.5 sm:px-4 py-2 sm:py-2.5 rounded-xl border-2 border-zebu-lime text-zebu-lime hover:bg-zebu-lime hover:text-black font-extrabold text-[11px] sm:text-xs tracking-wide transition-all whitespace-nowrap">
+            <span class="sm:hidden">CRIAR CONTA</span>
+            <span class="hidden sm:inline">CRIAR CONTA GRÁTIS</span>
+          </button>
+        </div>
+
+        <!-- Botão (quando já estiver logado) -->
+        <div id="navLoggedButton" class="hidden items-center">
+          <a href="/app.html#home" class="px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl bg-zebu-lime hover:bg-zebu-limeHover text-black font-extrabold text-[11px] sm:text-xs tracking-wide transition-all flex items-center gap-1 cta-glow whitespace-nowrap">
+            <span class="sm:hidden">IR PARA O APP</span>
+            <span class="hidden sm:inline">ENTRAR NA PLATAFORMA</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5 sm:w-4 sm:h-4"></i>
+          </a>
+        </div>
+
+        <!-- Botão Menu Mobile -->
+        <button type="button" id="mobileMenuBtn" onclick="toggleMobileMenu()" class="md:hidden p-1.5 sm:p-2 rounded-xl border border-zebu-border text-white hover:border-zebu-lime shrink-0" aria-label="Abrir menu" aria-expanded="false">
+          <i data-lucide="menu" class="w-4 h-4 sm:w-5 sm:h-5"></i>
         </button>
       </div>
-
-      <!-- Botão à Direita (quando já estiver logado) -->
-      <div id="navLoggedButton" class="hidden items-center gap-3 shrink-0">
-        <a href="/app.html#home" class="px-4 py-2.5 rounded-xl bg-zebu-lime hover:bg-zebu-limeHover text-black font-extrabold text-xs tracking-wide transition-all flex items-center gap-1.5 cta-glow">
-          <span>ENTRAR NA PLATAFORMA</span>
-          <i data-lucide="arrow-right" class="w-4 h-4"></i>
-        </a>
-      </div>
-
-      <!-- Botão Menu Mobile -->
-      <button type="button" id="mobileMenuBtn" onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-xl border border-zebu-border text-white hover:border-zebu-lime" aria-label="Abrir menu" aria-expanded="false">
-        <i data-lucide="menu" class="w-5 h-5"></i>
-      </button>
     </div>
 
     <!-- Menu Mobile Dropdown -->
@@ -136,18 +132,20 @@
     </div>
   </header>
 
-  <main id="topo" class="pt-20">
+  <main id="topo" class="pt-16 sm:pt-20">
 
     <!-- ==================== B. HERO SECTION ==================== -->
-    <section class="relative overflow-hidden py-14 sm:py-20 lg:py-24 px-4 sm:px-6">
+    <section class="relative overflow-hidden py-12 sm:py-20 lg:py-24 px-4 sm:px-6">
       <div aria-hidden="true" class="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 w-[560px] h-[360px] rounded-full bg-zebu-lime/15 blur-[120px]"></div>
 
-      <div class="relative z-10 max-w-4xl mx-auto text-center space-y-7">
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-zebu-lime/70 bg-zebu-lime/10 text-zebu-lime text-[11px] sm:text-xs font-extrabold tracking-wider uppercase">
-          <span>🐂 A 1ª PLATAFORMA DE FREELANCERS DE UBERABA E REGIÃO</span>
+      <div class="relative z-10 max-w-4xl mx-auto text-center space-y-6 sm:space-y-7">
+        <!-- Badge/Selo sem emoji de vaca -->
+        <div class="inline-flex items-center justify-center gap-2 px-4 py-1.5 rounded-full border border-zebu-lime/70 bg-zebu-lime/10 text-zebu-lime text-[10px] sm:text-xs font-extrabold tracking-wider uppercase max-w-full">
+          <i data-lucide="map-pin" class="w-3.5 h-3.5 shrink-0"></i>
+          <span>A 1ª PLATAFORMA DE FREELANCERS DE UBERABA E REGIÃO</span>
         </div>
 
-        <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.05] uppercase">
+        <h1 class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.06] uppercase">
           <span class="text-white block sm:inline">QUAL SERVIÇO </span>
           <span class="text-zebu-lime block sm:inline">VOCÊ PRECISA HOJE?</span>
         </h1>
@@ -159,14 +157,14 @@
         <!-- CTAs Lado a Lado -->
         <div class="pt-2 flex flex-col sm:flex-row items-stretch sm:items-start justify-center gap-4 max-w-2xl mx-auto">
           <div class="flex-1 flex flex-col items-center">
-            <button type="button" onclick="handleSmartCta('contratante')" class="w-full py-4 px-6 rounded-2xl bg-zebu-lime hover:bg-zebu-limeHover text-black font-extrabold text-sm sm:text-base tracking-wide uppercase transition-all cta-glow flex flex-col items-center justify-center">
+            <button type="button" onclick="handleSmartCta('contratante')" class="w-full py-4 px-5 rounded-2xl bg-zebu-lime hover:bg-zebu-limeHover text-black font-extrabold text-sm sm:text-base tracking-wide uppercase transition-all cta-glow flex flex-col items-center justify-center">
               <span>QUERO CONTRATAR AGORA</span>
               <span class="text-[11px] font-bold text-[#1A2E05] normal-case mt-0.5">Publique sua demanda grátis em 2 min</span>
             </button>
           </div>
 
           <div class="flex-1 flex flex-col items-center">
-            <button type="button" onclick="handleSmartCta('freelancer')" class="w-full py-4 px-6 rounded-2xl bg-[#0B0F17] hover:bg-zebu-card text-white border-2 border-white/80 hover:border-zebu-lime font-extrabold text-sm sm:text-base tracking-wide uppercase transition-all flex flex-col items-center justify-center">
+            <button type="button" onclick="handleSmartCta('freelancer')" class="w-full py-4 px-5 rounded-2xl bg-[#0B0F17] hover:bg-zebu-card text-white border-2 border-white/80 hover:border-zebu-lime font-extrabold text-sm sm:text-base tracking-wide uppercase transition-all flex flex-col items-center justify-center">
               <span>QUERO TRABALHAR COMO FREELA</span>
               <span class="text-[11px] font-semibold text-zebu-limeSoft normal-case mt-0.5">Cadastre-se em 10 segundos</span>
             </button>
@@ -513,10 +511,8 @@
         <p id="authModalSubtitle" class="text-xs text-zebu-muted">Leva apenas 10 segundos. Sem burocracia.</p>
       </div>
 
-      <!-- Erro amigável dentro do modal -->
       <div id="authErrorBox" class="hidden mb-4 p-3 rounded-xl bg-rose-950/80 border border-rose-500/60 text-rose-200 text-xs font-semibold"></div>
 
-      <!-- Botão Google -->
       <button type="button" onclick="handleGoogleAuth()" class="w-full py-2.5 bg-white hover:bg-neutral-100 text-black font-bold text-xs rounded-xl shadow flex items-center justify-center gap-2 mb-4 transition">
         <svg class="w-4 h-4" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.8-2.4 3.65v3.03h3.9c2.28-2.1 3.6-5.2 3.6-9.12z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.9-3.03c-1.08.72-2.45 1.16-4.03 1.16-3.1 0-5.74-2.1-6.68-4.92H1.22v3.13C3.25 21.43 7.34 24 12 24z"/><path fill="#FBBC05" d="M5.32 14.3c-.24-.72-.37-1.49-.37-2.3s.13-1.58.37-2.3V6.57H1.22C.44 8.12 0 9.99 0 12s.44 3.88 1.22 5.43l4.1-3.13z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.34 0 3.25 2.57 1.22 6.57l4.1 3.13c.94-2.82 3.58-4.95 6.68-4.95z"/></svg>
         Continuar com o Google
@@ -535,7 +531,6 @@
         </button>
       </div>
 
-      <!-- FORMULÁRIO CADASTRO -->
       <form id="fastRegisterForm" onsubmit="handleFastRegister(event)" class="space-y-4">
         <div>
           <span class="block text-[11px] font-bold uppercase tracking-wider text-zebu-muted mb-2">Como deseja usar a plataforma? (opcional)</span>
@@ -582,7 +577,6 @@
         </button>
       </form>
 
-      <!-- FORMULÁRIO LOGIN -->
       <form id="fastLoginForm" onsubmit="handleFastLogin(event)" class="hidden space-y-4">
         <div>
           <label for="loginEmail" class="block text-xs font-bold text-white mb-1.5">Seu e-mail</label>
@@ -675,19 +669,17 @@
       lucide.createIcons();
     });
 
-    // Atualiza o topo se o usuário já estiver logado
     onAuthStateChanged(auth, (user) => {
       loggedInUser = user;
       const isLogged = Boolean(user);
       document.getElementById('navGuestButtons').classList.toggle('hidden', isLogged);
-      document.getElementById('navGuestButtons').classList.toggle('sm:flex', !isLogged);
+      document.getElementById('navGuestButtons').classList.toggle('flex', !isLogged);
       document.getElementById('navLoggedButton').classList.toggle('hidden', !isLogged);
       document.getElementById('navLoggedButton').classList.toggle('flex', isLogged);
       document.getElementById('mobileGuestActions').classList.toggle('hidden', isLogged);
       document.getElementById('mobileLoggedActions').classList.toggle('hidden', !isLogged);
     });
 
-    // Finaliza redirect do Google no celular caso tenha ocorrido
     getRedirectResult(auth).then(async (res) => {
       if (res && res.user) {
         await ensureUserDocument(res.user, 'client');
@@ -738,7 +730,6 @@
       box.classList.remove('hidden');
     }
 
-    // Se já estiver logado, vai direto para a plataforma; senão abre o modal
     window.handleSmartCta = (role) => {
       if (loggedInUser) {
         window.location.href = role === 'freelancer' ? '/app.html#dashboard' : '/app.html#orders';
