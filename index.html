@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZebuFreela | A 1ª Plataforma de Freelancers de Uberaba e Região</title>
+  <meta name="description" content="Conectando empresas e clientes aos melhores prestadores de serviços presenciais e digitais em Uberaba e Triângulo Mineiro. Cadastre-se grátis em 10 segundos.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.zebufreela.com.br">
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', '-apple-system', 'sans-serif']
+          },
+          colors: {
+            zebu: {
+              bg: '#0A0A0A',
+              surface: '#0B0F17',
+              card: '#121823',
+              border: '#1F2937',
+              lime: '#84CC16',
+              limeHover: '#65A30D',
+              limeDark: '#4D7C0F',
+              limeSoft: '#A3E635',
+              muted: '#9CA3AF'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons (versão fixada) -->
+  <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+
+  <style>
+    .tools-pattern-bg {
+      background-color: #0A0A0A;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cg fill='none' stroke='%231F2937' stroke-width='1.1' stroke-linecap='round' stroke-linejoin='round' opacity='0.55'%3E%3Cpath d='M22 18l6 6m-1 5l-9-9a4 4 0 0 1 5.5-5.5l9 9a4 4 0 0 1-5.5 5.5z'/%3E%3Cpath d='M86 16v14m-7-7h14'/%3E%3Crect x='74' y='72' width='22' height='15' rx='2'/%3E%3Cpath d='M70 91h30'/%3E%3Cpath d='M22 76l5-10h6l-4 7h6l-8 11 2-8z'/%3E%3Ccircle cx='56' cy='48' r='5'/%3E%3Cpath d='M56 39v3m0 12v3m9-9h-3m-12 0h-3'/%3E%3C/g%3E%3C/svg%3E");
+      background-size: 120px 120px;
+    }
+    .cta-glow { box-shadow: 0 0 28px -4px rgba(132, 204, 22, 0.45); }
+    .cta-glow:hover { box-shadow: 0 0 36px -2px rgba(132, 204, 22, 0.65); }
+    :focus-visible { outline: 2px solid #84CC16; outline-offset: 2px; }
+    @media (prefers-reduced-motion: reduce) {
+      * { scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+<body class="tools-pattern-bg text-white font-sans antialiased selection:bg-zebu-lime selection:text-black overflow-x-hidden">
+
+  <!-- ==================== A. NAVBAR (TOPO FIXO) ==================== -->
+  <header class="fixed top-0 inset-x-0 z-40 bg-[#0A0A0A]/85 backdrop-blur-xl border-b border-zebu-border/80">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between gap-4">
+      
+      <!-- Logo Estilizado -->
+      <a href="#topo" class="flex flex-col items-center justify-center group shrink-0" aria-label="ZebuFreela Uberaba - Ir para o topo">
+        <div class="flex items-center gap-2">
+          <svg class="w-8 h-8 text-white shrink-0 group-hover:scale-105 transition-transform" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M9 11C7 16 9.5 21 15 22L17 31C17.8 35.5 20.5 39 24 39C27.5 39 30.2 35.5 31 31L33 22C38.5 21 41 16 39 11C37.5 15 34.5 16.5 31 16C29 13 26.5 12 24 12C21.5 12 19 13 17 16C13.5 16.5 10.5 15 9 11Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+            <path d="M18 16C20 13.5 22 10 24 10C26 10 28 13.5 30 16" stroke="#84CC16" stroke-width="2.3" stroke-linecap="round"/>
+            <circle cx="19.5" cy="24" r="1.5" fill="currentColor"/>
+            <circle cx="28.5" cy="24" r="1.5" fill="currentColor"/>
+            <path d="M21 33.5H27" stroke="#84CC16" stroke-width="2.2" stroke-linecap="round"/>
+          </svg>
+          <span class="text-xl sm:text-2xl font-extrabold tracking-tight leading-none">
+            <span class="text-zebu-lime">ZEBU</span><span class="text-white">FREELA</span>
+          </span>
+        </div>
+        <span class="text-[9px] font-bold tracking-[0.38em] text-white/90 uppercase mt-1 pl-8">UBERABA</span>
+      </a>
+
+      <!-- Links no Centro (Desktop) -->
+      <nav aria-label="Menu principal" class="hidden md:flex items-center gap-7 text-sm font-semibold text-zebu-muted">
+        <a href="#como-funciona" class="hover:text-zebu-lime transition-colors">Como Funciona</a>
+        <a href="#categorias" class="hover:text-zebu-lime transition-colors">Categorias</a>
+        <a href="#vantagens" class="hover:text-zebu-lime transition-colors">Vantagens</a>
+        <a href="#duvidas" class="hover:text-zebu-lime transition-colors">Dúvidas</a>
+      </nav>
+
+      <!-- Botões à Direita (deslogado) -->
+      <div id="navGuestButtons" class="hidden sm:flex items-center gap-4 shrink-0">
+        <button type="button" onclick="openAuthModal('login')" class="text-sm font-semibold text-white/90 hover:text-zebu-lime transition-colors px-2 py-1">
+          Entrar
+        </button>
+        <button type="button" onclick="openAuthModal('register', 'freelancer')" class="px-4 py-2.5 rounded-xl border-2 border-zebu-lime text-zebu-lime hover:bg-zebu-lime hover:text-black font-extrabold text-xs tracking-wide transition-all">
+          CRIAR CONTA GRÁTIS
+        </button>
+      </div>
+
+      <!-- Botão à Direita (quando já estiver logado) -->
+      <div id="navLoggedButton" class="hidden items-center gap-3 shrink-0">
+        <a href="/app.html#home" class="px-4 py-2.5 rounded-xl bg-zebu-lime hover:bg-zebu-limeHover text-black font-extrabold text-xs tracking-wide transition-all flex items-center gap-1.5 cta-glow">
+          <span>ENTRAR NA PLATAFORMA</span>
+          <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </a>
+      </div>
+
+      <!-- Botão Menu Mobile -->
+      <button type="button" id="mobileMenuBtn" onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-xl border border-zebu-border text-white hover:border-zebu-lime" aria-label="Abrir menu" aria-expanded="false">
+        <i data-lucide="menu" class="w-5 h-5"></i>
+      </button>
+    </div>
+
+    <!-- Menu Mobile Dropdown -->
+    <div id="mobileMenu" class="hidden md:hidden bg-[#0B0F17]/95 backdrop-blur-xl border-t border-zebu-border px-4 py-5 space-y-4">
+      <nav class="flex flex-col gap-3 text-sm font-bold text-zebu-muted">
+        <a href="#como-funciona" onclick="toggleMobileMenu(false)" class="py-1.5 hover:text-zebu-lime">Como Funciona</a>
+        <a href="#categorias" onclick="toggleMobileMenu(false)" class="py-1.5 hover:text-zebu-lime">Categorias</a>
+        <a href="#vantagens" onclick="toggleMobileMenu(false)" class="py-1.5 hover:text-zebu-lime">Vantagens</a>
+        <a href="#duvidas" onclick="toggleMobileMenu(false)" class="py-1.5 hover:text-zebu-lime">Dúvidas</a>
+      </nav>
+      <div id="mobileGuestActions" class="pt-3 border-t border-zebu-border flex flex-col gap-2.5">
+        <button type="button" onclick="toggleMobileMenu(false); openAuthModal('register', 'freelancer')" class="w-full py-3 rounded-xl border-2 border-zebu-lime text-zebu-lime font-extrabold text-xs">
+          CRIAR CONTA GRÁTIS
+        </button>
+        <button type="button" onclick="toggleMobileMenu(false); openAuthModal('login')" class="w-full py-2.5 text-sm font-semibold text-white/90">
+          Entrar na minha conta
+        </button>
+      </div>
+      <div id="mobileLoggedActions" class="hidden pt-3 border-t border-zebu-border">
+        <a href="/app.html#home" class="w-full py-3 rounded-xl bg-zebu-lime text-black font-extrabold text-xs flex items-center justify-center gap-1.5">
+          ENTRAR NA PLATAFORMA <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="topo" class="pt-20">
+
+    <!-- ==================== B. HERO SECTION ==================== -->
+    <section class="relative overflow-hidden py-14 sm:py-20 lg:py-24 px-4 sm:px-6">
+      <div aria-hidden="true" class="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 w-[560px] h-[360px] rounded-full bg-zebu-lime/15 blur-[120px]"></div>
+
+      <div class="relative z-10 max-w-4xl mx-auto text-center space-y-7">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-zebu-lime/70 bg-zebu-lime/10 text-zebu-lime text-[11px] sm:text-xs font-extrabold tracking-wider uppercase">
+          <span>🐂 A 1ª PLATAFORMA DE FREELANCERS DE UBERABA E REGIÃO</span>
+        </div>
+
+        <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.05] uppercase">
+          <span class="text-white block sm:inline">QUAL SERVIÇO </span>
+          <span class="text-zebu-lime block sm:inline">VOCÊ PRECISA HOJE?</span>
+        </h1>
+
+        <p class="text-zebu-muted text-sm sm:text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
+          Esqueça os grupos de WhatsApp bagunçados e a demora para achar gente de confiança. A <strong class="text-white">ZebuFreela</strong> conecta empresas que precisam de agilidade aos melhores profissionais locais — do digital ao presencial.
+        </p>
+
+        <!-- CTAs Lado a Lado -->
+        <div class="pt-2 flex flex-col sm:flex-row items-stretch sm:items-start justify-center gap-4 max-w-2xl mx-auto">
+          <div class="flex-1 flex flex-col items-center">
+            <button type="button" onclick="handleSmartCta('contratante')" class="w-full py-4 px-6 rounded-2xl bg-zebu-lime hover:bg-zebu-limeHover text-black font-extrabold text-sm sm:text-base tracking-wide uppercase transition-all cta-glow flex flex-col items-center justify-center">
+              <span>QUERO CONTRATAR AGORA</span>
+              <span class="text-[11px] font-bold text-[#1A2E05] normal-case mt-0.5">Publique sua demanda grátis em 2 min</span>
+            </button>
+          </div>
+
+          <div class="flex-1 flex flex-col items-center">
+            <button type="button" onclick="handleSmartCta('freelancer')" class="w-full py-4 px-6 rounded-2xl bg-[#0B0F17] hover:bg-zebu-card text-white border-2 border-white/80 hover:border-zebu-lime font-extrabold text-sm sm:text-base tracking-wide uppercase transition-all flex flex-col items-center justify-center">
+              <span>QUERO TRABALHAR COMO FREELA</span>
+              <span class="text-[11px] font-semibold text-zebu-limeSoft normal-case mt-0.5">Cadastre-se em 10 segundos</span>
+            </button>
+          </div>
+        </div>
+
+        <p class="pt-2 text-xs sm:text-sm font-semibold text-zebu-limeSoft flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
+          <span>✓ Cadastro gratuito</span>
+          <span class="text-white/40 hidden sm:inline">•</span>
+          <span>✓ Apenas e-mail e senha</span>
+          <span class="text-white/40 hidden sm:inline">•</span>
+          <span class="text-white">✓ Sem burocracia</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- ==================== C. PROBLEMA VS. SOLUÇÃO ==================== -->
+    <section id="vantagens" class="py-14 sm:py-20 px-4 sm:px-6 border-t border-zebu-border/60 bg-zebu-surface/70">
+      <div class="max-w-6xl mx-auto space-y-10">
+        <div class="text-center max-w-3xl mx-auto space-y-3">
+          <span class="text-xs font-extrabold uppercase tracking-widest text-zebu-lime">Chega de improviso</span>
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-white">
+            Cansado de perder tempo na hora de contratar ou buscar serviço?
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="rounded-3xl bg-[#0A0A0A]/90 border-2 border-zebu-lime p-6 sm:p-8 space-y-4 shadow-xl">
+            <div class="flex items-center gap-3">
+              <div class="w-12 h-12 rounded-2xl bg-zebu-lime/15 text-zebu-lime flex items-center justify-center shrink-0">
+                <i data-lucide="building-2" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <span class="text-[11px] font-extrabold uppercase tracking-wider text-zebu-lime">Para Empresas e Clientes</span>
+                <h3 class="text-xl font-extrabold text-white">Agilidade quando você mais precisa</h3>
+              </div>
+            </div>
+            <p class="text-sm sm:text-base text-zebu-muted leading-relaxed">
+              Funcionário faltou? O movimento do fim de semana explodiu? Precisa de um designer ou técnico para ontem? Pare de implorar por indicações. Encontre profissionais avaliados, prontos para começar e perto de você.
+            </p>
+            <button type="button" onclick="handleSmartCta('contratante')" class="inline-flex items-center gap-2 text-xs font-extrabold uppercase text-zebu-lime hover:text-zebu-limeSoft pt-2">
+              Publicar minha demanda <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </button>
+          </div>
+
+          <div class="rounded-3xl bg-zebu-card/90 border border-zebu-border hover:border-zebu-lime/70 transition-colors p-6 sm:p-8 space-y-4 shadow-xl">
+            <div class="flex items-center gap-3">
+              <div class="w-12 h-12 rounded-2xl bg-white/10 text-zebu-lime flex items-center justify-center shrink-0">
+                <i data-lucide="wallet" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <span class="text-[11px] font-extrabold uppercase tracking-wider text-zebu-limeSoft">Para Freelancers</span>
+                <h3 class="text-xl font-extrabold text-white">Oportunidades reais na sua região</h3>
+              </div>
+            </div>
+            <p class="text-sm sm:text-base text-zebu-muted leading-relaxed">
+              Chega de mandar currículo no escuro ou esperar a sorte bater na porta. Transforme suas habilidades e seu tempo livre em dinheiro no bolso com oportunidades reais na sua cidade.
+            </p>
+            <button type="button" onclick="handleSmartCta('freelancer')" class="inline-flex items-center gap-2 text-xs font-extrabold uppercase text-white hover:text-zebu-lime pt-2">
+              Começar a receber pedidos <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== D. COMO FUNCIONA ==================== -->
+    <section id="como-funciona" class="py-14 sm:py-20 px-4 sm:px-6 border-t border-zebu-border/60">
+      <div class="max-w-5xl mx-auto space-y-10">
+        <div class="text-center space-y-4">
+          <span class="text-xs font-extrabold uppercase tracking-widest text-zebu-lime">Simples e direto</span>
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight">Como funciona a ZebuFreela</h2>
+
+          <div role="tablist" aria-label="Escolha o perfil" class="inline-flex p-1.5 rounded-2xl bg-zebu-surface border border-zebu-border">
+            <button type="button" role="tab" id="tabEmpresas" aria-selected="true" onclick="switchHowTab('empresas')" class="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition-all bg-zebu-lime text-black">
+              Para Empresas
+            </button>
+            <button type="button" role="tab" id="tabFreelancers" aria-selected="false" onclick="switchHowTab('freelancers')" class="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all text-zebu-muted hover:text-white">
+              Para Freelancers
+            </button>
+          </div>
+        </div>
+
+        <div id="panelEmpresas" role="tabpanel" class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <div class="rounded-3xl bg-zebu-surface border border-zebu-border p-6 space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="w-10 h-10 rounded-xl bg-zebu-lime text-black font-extrabold flex items-center justify-center">1</span>
+              <i data-lucide="file-plus-2" class="w-5 h-5 text-zebu-lime"></i>
+            </div>
+            <h3 class="text-lg font-extrabold text-white">Publique sua vaga grátis</h3>
+            <p class="text-sm text-zebu-muted leading-relaxed">Descreva o serviço que você precisa, o bairro e o prazo. Leva menos de 2 minutos e não custa nada.</p>
+          </div>
+          <div class="rounded-3xl bg-zebu-surface border border-zebu-border p-6 space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="w-10 h-10 rounded-xl bg-zebu-lime text-black font-extrabold flex items-center justify-center">2</span>
+              <i data-lucide="message-square-check" class="w-5 h-5 text-zebu-lime"></i>
+            </div>
+            <h3 class="text-lg font-extrabold text-white">Receba propostas e veja avaliações locais</h3>
+            <p class="text-sm text-zebu-muted leading-relaxed">Compare orçamentos, disponibilidade e portfólios de profissionais disponíveis em Uberaba e região.</p>
+          </div>
+          <div class="rounded-3xl bg-zebu-surface border border-zebu-border p-6 space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="w-10 h-10 rounded-xl bg-zebu-lime text-black font-extrabold flex items-center justify-center">3</span>
+              <i data-lucide="check-circle-2" class="w-5 h-5 text-zebu-lime"></i>
+            </div>
+            <h3 class="text-lg font-extrabold text-white">Feche o serviço e resolva sua demanda</h3>
+            <p class="text-sm text-zebu-muted leading-relaxed">Escolha o melhor profissional, combine os detalhes e tenha seu problema resolvido com rapidez.</p>
+          </div>
+        </div>
+
+        <div id="panelFreelancers" role="tabpanel" class="hidden grid grid-cols-1 md:grid-cols-3 gap-5">
+          <div class="rounded-3xl bg-zebu-surface border border-zebu-border p-6 space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="w-10 h-10 rounded-xl bg-zebu-lime text-black font-extrabold flex items-center justify-center">1</span>
+              <i data-lucide="user-plus" class="w-5 h-5 text-zebu-lime"></i>
+            </div>
+            <h3 class="text-lg font-extrabold text-white">Crie sua conta em 10 segundos</h3>
+            <p class="text-sm text-zebu-muted leading-relaxed">Sem formulários infinitos. Basta colocar seu e-mail e uma senha para liberar seu acesso imediato.</p>
+          </div>
+          <div class="rounded-3xl bg-zebu-surface border border-zebu-border p-6 space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="w-10 h-10 rounded-xl bg-zebu-lime text-black font-extrabold flex items-center justify-center">2</span>
+              <i data-lucide="search-check" class="w-5 h-5 text-zebu-lime"></i>
+            </div>
+            <h3 class="text-lg font-extrabold text-white">Encontre demandas presenciais ou digitais na região</h3>
+            <p class="text-sm text-zebu-muted leading-relaxed">Veja pedidos de clientes e empresas de Uberaba e Triângulo Mineiro e envie sua proposta direto.</p>
+          </div>
+          <div class="rounded-3xl bg-zebu-surface border border-zebu-border p-6 space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="w-10 h-10 rounded-xl bg-zebu-lime text-black font-extrabold flex items-center justify-center">3</span>
+              <i data-lucide="banknote" class="w-5 h-5 text-zebu-lime"></i>
+            </div>
+            <h3 class="text-lg font-extrabold text-white">Execute o trabalho e receba direto pelo seu serviço</h3>
+            <p class="text-sm text-zebu-muted leading-relaxed">Conquiste clientes fixos na sua cidade, construa sua reputação local e aumente sua renda.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== E. GRID DE CATEGORIAS ==================== -->
+    <section id="categorias" class="py-14 sm:py-20 px-4 sm:px-6 border-t border-zebu-border/60 bg-zebu-surface/70">
+      <div class="max-w-6xl mx-auto space-y-10">
+        <div class="text-center max-w-3xl mx-auto space-y-3">
+          <span class="text-xs font-extrabold uppercase tracking-widest text-zebu-lime">Serviços Presenciais e Digitais</span>
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight">
+            Do balcão ao computador: tem talento local para tudo.
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div class="rounded-3xl bg-[#0A0A0A] border border-zebu-border hover:border-zebu-lime transition-all p-6 flex flex-col justify-between gap-5 group">
+            <div class="space-y-4">
+              <div class="w-14 h-14 rounded-2xl bg-zebu-lime/15 text-zebu-lime flex items-center justify-center group-hover:bg-zebu-lime group-hover:text-black transition-colors">
+                <i data-lucide="sparkles" class="w-7 h-7"></i>
+              </div>
+              <div>
+                <h3 class="text-lg font-extrabold text-white tracking-wide uppercase">FAXINA</h3>
+                <p class="text-sm text-zebu-muted mt-1.5 leading-relaxed">Bares, Eventos, Gastronomia, e apoio em geral.</p>
+              </div>
+            </div>
+            <button type="button" onclick="handleSmartCta('contratante')" class="text-xs font-extrabold text-zebu-lime flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+              Solicitar serviço <i data-lucide="chevron-right" class="w-4 h-4"></i>
+            </button>
+          </div>
+
+          <div class="rounded-3xl bg-[#0A0A0A] border border-zebu-border hover:border-zebu-lime transition-all p-6 flex flex-col justify-between gap-5 group">
+            <div class="space-y-4">
+              <div class="w-14 h-14 rounded-2xl bg-zebu-lime/15 text-zebu-lime flex items-center justify-center group-hover:bg-zebu-lime group-hover:text-black transition-colors">
+                <i data-lucide="wrench" class="w-7 h-7"></i>
+              </div>
+              <div>
+                <h3 class="text-lg font-extrabold text-white tracking-wide uppercase">REPAROS</h3>
+                <p class="text-sm text-zebu-muted mt-1.5 leading-relaxed">Pequenas reformas, manutenção comercial e residencial.</p>
+              </div>
+            </div>
+            <button type="button" onclick="handleSmartCta('contratante')" class="text-xs font-extrabold text-zebu-lime flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+              Solicitar serviço <i data-lucide="chevron-right" class="w-4 h-4"></i>
+            </button>
+          </div>
+
+          <div class="rounded-3xl bg-[#0A0A0A] border border-zebu-border hover:border-zebu-lime transition-all p-6 flex flex-col justify-between gap-5 group">
+            <div class="space-y-4">
+              <div class="w-14 h-14 rounded-2xl bg-zebu-lime/15 text-zebu-lime flex items-center justify-center group-hover:bg-zebu-lime group-hover:text-black transition-colors">
+                <i data-lucide="paint-roller" class="w-7 h-7"></i>
+              </div>
+              <div>
+                <h3 class="text-lg font-extrabold text-white tracking-wide uppercase">PINTURA</h3>
+                <p class="text-sm text-zebu-muted mt-1.5 leading-relaxed">Serviços estéticos, pinturas rápidas, acabamento.</p>
+              </div>
+            </div>
+            <button type="button" onclick="handleSmartCta('contratante')" class="text-xs font-extrabold text-zebu-lime flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+              Solicitar serviço <i data-lucide="chevron-right" class="w-4 h-4"></i>
+            </button>
+          </div>
+
+          <div class="rounded-3xl bg-[#0A0A0A] border border-zebu-border hover:border-zebu-lime transition-all p-6 flex flex-col justify-between gap-5 group">
+            <div class="space-y-4">
+              <div class="w-14 h-14 rounded-2xl bg-zebu-lime/15 text-zebu-lime flex items-center justify-center group-hover:bg-zebu-lime group-hover:text-black transition-colors">
+                <i data-lucide="zap" class="w-7 h-7"></i>
+              </div>
+              <div>
+                <h3 class="text-lg font-extrabold text-white tracking-wide uppercase">ELÉTRICA</h3>
+                <p class="text-sm text-zebu-muted mt-1.5 leading-relaxed">Instalações rápidas, manutenção de TI e elétrica geral.</p>
+              </div>
+            </div>
+            <button type="button" onclick="handleSmartCta('contratante')" class="text-xs font-extrabold text-zebu-lime flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+              Solicitar serviço <i data-lucide="chevron-right" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== F. BANNER DE ESCASSEZ / LANÇAMENTO ==================== -->
+    <section class="py-14 sm:py-20 px-4 sm:px-6 border-t border-zebu-border/60">
+      <div class="max-w-5xl mx-auto rounded-3xl bg-gradient-to-br from-[#0B0F17] via-[#121D0B] to-[#0A0A0A] border-2 border-zebu-lime/70 p-6 sm:p-10 md:p-12 shadow-2xl relative overflow-hidden">
+        <div aria-hidden="true" class="pointer-events-none absolute -right-16 -bottom-16 w-64 h-64 rounded-full bg-zebu-lime/20 blur-3xl"></div>
+        <div class="relative z-10 space-y-6">
+          <span class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-zebu-lime text-black text-[11px] font-extrabold uppercase tracking-wider">
+            🚀 OPORTUNIDADE DE LANÇAMENTO EM UBERABA
+          </span>
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-white">
+            Seja um dos primeiros e saia na frente!
+          </h2>
+          <ul class="space-y-4 text-sm sm:text-base text-white/90">
+            <li class="flex items-start gap-3">
+              <span class="w-6 h-6 rounded-full bg-zebu-lime/20 text-zebu-lime flex items-center justify-center shrink-0 mt-0.5"><i data-lucide="check" class="w-4 h-4"></i></span>
+              <span><strong class="text-zebu-lime">Freelancers:</strong> Os primeiros 200 cadastrados ganham o <strong>Selo de Pioneiro</strong> e aparecem no topo das buscas gratuitamente.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-6 h-6 rounded-full bg-zebu-lime/20 text-zebu-lime flex items-center justify-center shrink-0 mt-0.5"><i data-lucide="check" class="w-4 h-4"></i></span>
+              <span><strong class="text-zebu-lime">Empresas:</strong> Publique suas primeiras demandas sem pagar nenhuma taxa de anúncio.</span>
+            </li>
+          </ul>
+          <div class="pt-2">
+            <button type="button" onclick="handleSmartCta('freelancer')" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-zebu-lime hover:bg-zebu-limeHover text-black font-extrabold text-sm sm:text-base uppercase tracking-wide transition-all cta-glow">
+              GARANTIR MINHA CONTA GRATUITA AGORA
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== G. FAQ ==================== -->
+    <section id="duvidas" class="py-14 sm:py-20 px-4 sm:px-6 border-t border-zebu-border/60 bg-zebu-surface/70">
+      <div class="max-w-3xl mx-auto space-y-8">
+        <div class="text-center space-y-2">
+          <span class="text-xs font-extrabold uppercase tracking-widest text-zebu-lime">Tire suas dúvidas</span>
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight">Perguntas Frequentes</h2>
+        </div>
+
+        <div class="space-y-3" id="faqAccordion">
+          <div class="rounded-2xl bg-[#0A0A0A] border border-zebu-border overflow-hidden">
+            <button type="button" aria-expanded="true" onclick="toggleFaq(this)" class="w-full px-5 py-4 text-left flex items-center justify-between gap-4 font-extrabold text-sm sm:text-base text-white hover:text-zebu-lime transition-colors">
+              <span>É grátis para se cadastrar e publicar?</span>
+              <i data-lucide="chevron-down" class="w-5 h-5 text-zebu-lime shrink-0 transition-transform rotate-180"></i>
+            </button>
+            <div class="px-5 pb-4 text-sm text-zebu-muted leading-relaxed">
+              Sim! O cadastro é 100% gratuito tanto para empresas e clientes quanto para freelancers. Nesta fase de lançamento em Uberaba, você pode publicar demandas e criar seu perfil sem pagar taxa.
+            </div>
+          </div>
+          <div class="rounded-2xl bg-[#0A0A0A] border border-zebu-border overflow-hidden">
+            <button type="button" aria-expanded="false" onclick="toggleFaq(this)" class="w-full px-5 py-4 text-left flex items-center justify-between gap-4 font-extrabold text-sm sm:text-base text-white hover:text-zebu-lime transition-colors">
+              <span>Serve para serviços presenciais e também digitais?</span>
+              <i data-lucide="chevron-down" class="w-5 h-5 text-zebu-lime shrink-0 transition-transform"></i>
+            </button>
+            <div class="hidden px-5 pb-4 text-sm text-zebu-muted leading-relaxed">
+              Com certeza. Você encontra profissionais para serviços presenciais (faxina, elétrica, reparos, pintura, eventos, garçom) e também talentos digitais (design, social media, manutenção de TI, edição de vídeo e mais).
+            </div>
+          </div>
+          <div class="rounded-2xl bg-[#0A0A0A] border border-zebu-border overflow-hidden">
+            <button type="button" aria-expanded="false" onclick="toggleFaq(this)" class="w-full px-5 py-4 text-left flex items-center justify-between gap-4 font-extrabold text-sm sm:text-base text-white hover:text-zebu-lime transition-colors">
+              <span>Preciso enviar currículo ou documentos complicados?</span>
+              <i data-lucide="chevron-down" class="w-5 h-5 text-zebu-lime shrink-0 transition-transform"></i>
+            </button>
+            <div class="hidden px-5 pb-4 text-sm text-zebu-muted leading-relaxed">
+              Não! Para criar sua conta na ZebuFreela você precisa apenas do seu melhor e-mail e uma senha (ou entrar com 1 clique pelo Google).
+            </div>
+          </div>
+          <div class="rounded-2xl bg-[#0A0A0A] border border-zebu-border overflow-hidden">
+            <button type="button" aria-expanded="false" onclick="toggleFaq(this)" class="w-full px-5 py-4 text-left flex items-center justify-between gap-4 font-extrabold text-sm sm:text-base text-white hover:text-zebu-lime transition-colors">
+              <span>Como funciona o pagamento pelos serviços?</span>
+              <i data-lucide="chevron-down" class="w-5 h-5 text-zebu-lime shrink-0 transition-transform"></i>
+            </button>
+            <div class="hidden px-5 pb-4 text-sm text-zebu-muted leading-relaxed">
+              A negociação de valor, prazo e forma de pagamento (Pix, dinheiro ou combinado entre as partes) é feita diretamente entre o contratante e o freelancer, sem burocracia.
+            </div>
+          </div>
+          <div class="rounded-2xl bg-[#0A0A0A] border border-zebu-border overflow-hidden">
+            <button type="button" aria-expanded="false" onclick="toggleFaq(this)" class="w-full px-5 py-4 text-left flex items-center justify-between gap-4 font-extrabold text-sm sm:text-base text-white hover:text-zebu-lime transition-colors">
+              <span>Funciona apenas em Uberaba ou também na região?</span>
+              <i data-lucide="chevron-down" class="w-5 h-5 text-zebu-lime shrink-0 transition-transform"></i>
+            </button>
+            <div class="hidden px-5 pb-4 text-sm text-zebu-muted leading-relaxed">
+              Nosso foco principal é Uberaba e todo o Triângulo Mineiro (incluindo Uberlândia, Araxá, Frutal, Sacramento e cidades vizinhas para demandas presenciais ou remotas).
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== H. CTA FINAL & RODAPÉ ==================== -->
+    <section class="py-16 sm:py-24 px-4 sm:px-6 border-t border-zebu-border/60 text-center">
+      <div class="max-w-4xl mx-auto space-y-6">
+        <p class="text-xs sm:text-sm font-extrabold uppercase tracking-[0.25em] text-zebu-muted">Pronto para começar?</p>
+        <h2 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tighter uppercase leading-none">
+          <span class="text-zebu-lime">ANUNCIE</span> <span class="text-white">GRÁTIS</span>
+        </h2>
+        <p class="text-sm sm:text-base text-zebu-muted max-w-xl mx-auto">
+          Junte-se aos profissionais e empresas que estão transformando a forma de contratar em Uberaba e região.
+        </p>
+        <div class="pt-2">
+          <button type="button" onclick="handleSmartCta('freelancer')" class="px-9 py-4 rounded-2xl bg-zebu-lime hover:bg-zebu-limeHover text-black font-extrabold text-sm sm:text-base uppercase tracking-wide transition-all cta-glow">
+            CRIAR MINHA CONTA GRÁTIS
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-[#06080D] border-t border-zebu-border py-8 px-4 sm:px-6 text-xs text-zebu-muted">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
+      <div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
+        <span class="font-extrabold text-white tracking-tight"><span class="text-zebu-lime">ZEBU</span>FREELA • Uberaba - MG</span>
+        <span>Contato oficial: <a href="mailto:contato@zebufreela.com.br" class="text-white hover:text-zebu-lime underline">contato@zebufreela.com.br</a></span>
+      </div>
+      <div class="flex items-center gap-5">
+        <button type="button" onclick="openInfoModal('termsModal')" class="hover:text-zebu-lime transition-colors underline">Termos de Uso</button>
+        <button type="button" onclick="openInfoModal('privacyModal')" class="hover:text-zebu-lime transition-colors underline">Política de Privacidade</button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== MODAL DE CADASTRO / LOGIN CONECTADO AO FIREBASE ==================== -->
+  <div id="authModal" role="dialog" aria-modal="true" aria-labelledby="authModalTitle" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+    <div class="w-full max-w-md rounded-3xl bg-[#0B0F17] border border-zebu-lime/50 shadow-2xl p-6 sm:p-7 relative max-h-[92vh] overflow-y-auto">
+      <button type="button" onclick="closeModal('authModal')" class="absolute top-4 right-4 text-zebu-muted hover:text-white p-1" aria-label="Fechar modal">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div class="space-y-1.5 mb-4">
+        <span class="inline-block text-[10px] font-extrabold uppercase tracking-widest text-zebu-lime">ZebuFreela Uberaba</span>
+        <h3 id="authModalTitle" class="text-xl sm:text-2xl font-extrabold text-white">Crie sua conta grátis</h3>
+        <p id="authModalSubtitle" class="text-xs text-zebu-muted">Leva apenas 10 segundos. Sem burocracia.</p>
+      </div>
+
+      <!-- Erro amigável dentro do modal -->
+      <div id="authErrorBox" class="hidden mb-4 p-3 rounded-xl bg-rose-950/80 border border-rose-500/60 text-rose-200 text-xs font-semibold"></div>
+
+      <!-- Botão Google -->
+      <button type="button" onclick="handleGoogleAuth()" class="w-full py-2.5 bg-white hover:bg-neutral-100 text-black font-bold text-xs rounded-xl shadow flex items-center justify-center gap-2 mb-4 transition">
+        <svg class="w-4 h-4" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.8-2.4 3.65v3.03h3.9c2.28-2.1 3.6-5.2 3.6-9.12z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.9-3.03c-1.08.72-2.45 1.16-4.03 1.16-3.1 0-5.74-2.1-6.68-4.92H1.22v3.13C3.25 21.43 7.34 24 12 24z"/><path fill="#FBBC05" d="M5.32 14.3c-.24-.72-.37-1.49-.37-2.3s.13-1.58.37-2.3V6.57H1.22C.44 8.12 0 9.99 0 12s.44 3.88 1.22 5.43l4.1-3.13z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.34 0 3.25 2.57 1.22 6.57l4.1 3.13c.94-2.82 3.58-4.95 6.68-4.95z"/></svg>
+        Continuar com o Google
+      </button>
+
+      <div class="flex items-center my-3 text-[10px] text-zebu-muted uppercase font-bold text-center before:content-[''] before:flex-1 before:border-b before:border-zebu-border after:content-[''] after:flex-1 after:border-b after:border-zebu-border">
+        <span class="px-2">Ou com e-mail</span>
+      </div>
+
+      <div class="flex border-b border-zebu-border mb-4 text-xs">
+        <button type="button" id="modalTabRegister" onclick="switchAuthMode('register')" class="flex-1 pb-2.5 font-extrabold border-b-2 border-zebu-lime text-zebu-lime">
+          Criar Conta Grátis
+        </button>
+        <button type="button" id="modalTabLogin" onclick="switchAuthMode('login')" class="flex-1 pb-2.5 font-bold border-b-2 border-transparent text-zebu-muted hover:text-white">
+          Já tenho conta
+        </button>
+      </div>
+
+      <!-- FORMULÁRIO CADASTRO -->
+      <form id="fastRegisterForm" onsubmit="handleFastRegister(event)" class="space-y-4">
+        <div>
+          <span class="block text-[11px] font-bold uppercase tracking-wider text-zebu-muted mb-2">Como deseja usar a plataforma? (opcional)</span>
+          <div class="grid grid-cols-2 gap-2.5">
+            <label class="cursor-pointer">
+              <input type="radio" name="userRole" value="freelancer" class="peer sr-only" checked>
+              <div class="p-3 rounded-xl border border-zebu-border bg-[#0A0A0A] text-center text-xs font-bold text-zebu-muted peer-checked:border-zebu-lime peer-checked:bg-zebu-lime/15 peer-checked:text-zebu-lime transition-all">
+                Sou Freelancer
+              </div>
+            </label>
+            <label class="cursor-pointer">
+              <input type="radio" name="userRole" value="contratante" class="peer sr-only">
+              <div class="p-3 rounded-xl border border-zebu-border bg-[#0A0A0A] text-center text-xs font-bold text-zebu-muted peer-checked:border-zebu-lime peer-checked:bg-zebu-lime/15 peer-checked:text-zebu-lime transition-all">
+                Quero Contratar
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <div>
+          <label for="regEmail" class="block text-xs font-bold text-white mb-1.5">Seu melhor e-mail</label>
+          <input type="email" id="regEmail" required autocomplete="email" placeholder="voce@exemplo.com" class="w-full px-4 py-3 rounded-xl bg-[#0A0A0A] border border-zebu-border text-sm text-white placeholder-zebu-muted/60 focus:border-zebu-lime focus:outline-none">
+        </div>
+
+        <div>
+          <label for="regPassword" class="block text-xs font-bold text-white mb-1.5">Crie uma senha</label>
+          <div class="relative">
+            <input type="password" id="regPassword" required minlength="8" autocomplete="new-password" placeholder="Mínimo de 8 caracteres" class="w-full px-4 py-3 pr-11 rounded-xl bg-[#0A0A0A] border border-zebu-border text-sm text-white placeholder-zebu-muted/60 focus:border-zebu-lime focus:outline-none">
+            <button type="button" onclick="togglePassword('regPassword', this)" class="absolute right-3 top-1/2 -translate-y-1/2 text-zebu-muted hover:text-white" aria-label="Mostrar ou ocultar senha">
+              <i data-lucide="eye" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-2.5 pt-1">
+          <input type="checkbox" id="regAcceptTerms" required class="mt-0.5 w-4 h-4 rounded accent-[#84CC16] cursor-pointer">
+          <label for="regAcceptTerms" class="text-[11px] text-zebu-muted leading-snug">
+            Li e aceito os <button type="button" onclick="openInfoModal('termsModal')" class="text-zebu-lime underline font-semibold">Termos de Uso</button> e a <button type="button" onclick="openInfoModal('privacyModal')" class="text-zebu-lime underline font-semibold">Política de Privacidade</button>.
+          </label>
+        </div>
+
+        <button type="submit" id="btnRegisterSubmit" class="w-full py-3.5 rounded-xl bg-zebu-lime hover:bg-zebu-limeHover text-black font-extrabold text-sm uppercase tracking-wide transition-all cta-glow">
+          GARANTIR MINHA CONTA GRÁTIS
+        </button>
+      </form>
+
+      <!-- FORMULÁRIO LOGIN -->
+      <form id="fastLoginForm" onsubmit="handleFastLogin(event)" class="hidden space-y-4">
+        <div>
+          <label for="loginEmail" class="block text-xs font-bold text-white mb-1.5">Seu e-mail</label>
+          <input type="email" id="loginEmail" required autocomplete="email" placeholder="voce@exemplo.com" class="w-full px-4 py-3 rounded-xl bg-[#0A0A0A] border border-zebu-border text-sm text-white placeholder-zebu-muted/60 focus:border-zebu-lime focus:outline-none">
+        </div>
+        <div>
+          <label for="loginPassword" class="block text-xs font-bold text-white mb-1.5">Sua senha</label>
+          <div class="relative">
+            <input type="password" id="loginPassword" required minlength="6" autocomplete="current-password" placeholder="Digite sua senha" class="w-full px-4 py-3 pr-11 rounded-xl bg-[#0A0A0A] border border-zebu-border text-sm text-white placeholder-zebu-muted/60 focus:border-zebu-lime focus:outline-none">
+            <button type="button" onclick="togglePassword('loginPassword', this)" class="absolute right-3 top-1/2 -translate-y-1/2 text-zebu-muted hover:text-white" aria-label="Mostrar ou ocultar senha">
+              <i data-lucide="eye" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+        <button type="submit" id="btnLoginSubmit" class="w-full py-3.5 rounded-xl bg-zebu-lime hover:bg-zebu-limeHover text-black font-extrabold text-sm uppercase tracking-wide transition-all cta-glow">
+          ENTRAR NA ZEBUFREELA
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL TERMOS DE USO -->
+  <div id="termsModal" role="dialog" aria-modal="true" aria-labelledby="termsTitle" class="fixed inset-0 z-[60] hidden items-center justify-center p-4 bg-black/85 backdrop-blur-md">
+    <div class="w-full max-w-lg rounded-3xl bg-[#0B0F17] border border-zebu-border p-6 relative max-h-[85vh] overflow-y-auto space-y-4 text-xs">
+      <button type="button" onclick="closeModal('termsModal')" class="absolute top-4 right-4 text-zebu-muted hover:text-white" aria-label="Fechar termos"><i data-lucide="x" class="w-5 h-5"></i></button>
+      <h3 id="termsTitle" class="text-lg font-extrabold text-zebu-lime">Termos de Uso — ZebuFreela</h3>
+      <div class="space-y-3 text-zebu-muted leading-relaxed">
+        <p><strong>1. Objeto:</strong> A ZebuFreela conecta empresas e clientes a prestadores de serviços autônomos (presenciais e digitais) em Uberaba e Triângulo Mineiro.</p>
+        <p><strong>2. Responsabilidades:</strong> As negociações de valores, prazos, execução e pagamento pelos serviços ocorrem diretamente entre contratante e freelancer.</p>
+        <p><strong>3. Conduta:</strong> É proibido publicar demandas falsas, spam, golpes ou conteúdos ilegais, sujeitos à exclusão imediata da conta.</p>
+      </div>
+      <button type="button" onclick="closeModal('termsModal')" class="w-full py-2.5 rounded-xl bg-zebu-lime text-black font-extrabold">Entendi</button>
+    </div>
+  </div>
+
+  <!-- MODAL POLÍTICA DE PRIVACIDADE -->
+  <div id="privacyModal" role="dialog" aria-modal="true" aria-labelledby="privacyTitle" class="fixed inset-0 z-[60] hidden items-center justify-center p-4 bg-black/85 backdrop-blur-md">
+    <div class="w-full max-w-lg rounded-3xl bg-[#0B0F17] border border-zebu-border p-6 relative max-h-[85vh] overflow-y-auto space-y-4 text-xs">
+      <button type="button" onclick="closeModal('privacyModal')" class="absolute top-4 right-4 text-zebu-muted hover:text-white" aria-label="Fechar política de privacidade"><i data-lucide="x" class="w-5 h-5"></i></button>
+      <h3 id="privacyTitle" class="text-lg font-extrabold text-zebu-lime">Política de Privacidade & LGPD</h3>
+      <div class="space-y-3 text-zebu-muted leading-relaxed">
+        <p><strong>1. Dados Coletados:</strong> Coletamos apenas seu e-mail, senha criptografada e perfil de uso escolhido para possibilitar o acesso à plataforma, conforme a LGPD (Lei nº 13.709/2018).</p>
+        <p><strong>2. Dados Públicos nos Anúncios:</strong> Caso publique um anúncio profissional na plataforma, WhatsApp informado, fotos e descrição do serviço ficarão visíveis publicamente.</p>
+        <p><strong>3. Seus Direitos:</strong> Você pode excluir sua conta e seus dados a qualquer momento dentro do Painel da plataforma ou pelo e-mail contato@zebufreela.com.br.</p>
+      </div>
+      <button type="button" onclick="closeModal('privacyModal')" class="w-full py-2.5 rounded-xl bg-zebu-lime text-black font-extrabold">Entendi</button>
+    </div>
+  </div>
+
+  <!-- ==================== FIREBASE + INTERATIVIDADE ==================== -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+    import {
+      getAuth,
+      createUserWithEmailAndPassword,
+      signInWithEmailAndPassword,
+      onAuthStateChanged,
+      updateProfile,
+      GoogleAuthProvider,
+      signInWithPopup,
+      signInWithRedirect,
+      getRedirectResult
+    } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
+    import {
+      getFirestore,
+      doc,
+      setDoc,
+      getDoc,
+      serverTimestamp
+    } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDQtTR_wIjlbAXffj8t9ddJvRIwAuyvG7o",
+      authDomain: "zebu-freela-uberaba.firebaseapp.com",
+      projectId: "zebu-freela-uberaba",
+      storageBucket: "zebu-freela-uberaba.firebasestorage.app",
+      messagingSenderId: "907149441505",
+      appId: "1:907149441505:web:28047c8404930976267aa0",
+      measurementId: "G-KKCF8KDCW7"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+    const googleProvider = new GoogleAuthProvider();
+
+    let loggedInUser = null;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+    });
+
+    // Atualiza o topo se o usuário já estiver logado
+    onAuthStateChanged(auth, (user) => {
+      loggedInUser = user;
+      const isLogged = Boolean(user);
+      document.getElementById('navGuestButtons').classList.toggle('hidden', isLogged);
+      document.getElementById('navGuestButtons').classList.toggle('sm:flex', !isLogged);
+      document.getElementById('navLoggedButton').classList.toggle('hidden', !isLogged);
+      document.getElementById('navLoggedButton').classList.toggle('flex', isLogged);
+      document.getElementById('mobileGuestActions').classList.toggle('hidden', isLogged);
+      document.getElementById('mobileLoggedActions').classList.toggle('hidden', !isLogged);
+    });
+
+    // Finaliza redirect do Google no celular caso tenha ocorrido
+    getRedirectResult(auth).then(async (res) => {
+      if (res && res.user) {
+        await ensureUserDocument(res.user, 'client');
+        window.location.href = '/app.html#home';
+      }
+    }).catch((err) => {
+      showAuthError(translateAuthError(err));
+    });
+
+    async function ensureUserDocument(user, roleValue) {
+      if (!user) return;
+      try {
+        const userRef = doc(db, "users", user.uid);
+        const snap = await getDoc(userRef);
+        if (!snap.exists()) {
+          await setDoc(userRef, {
+            uid: user.uid,
+            name: user.displayName || (user.email ? user.email.split('@')[0] : 'Usuário'),
+            email: user.email || '',
+            role: roleValue === 'pro' ? 'pro' : 'client',
+            createdAt: serverTimestamp()
+          });
+        }
+      } catch (e) {
+        console.warn("Aviso ao salvar usuário:", e);
+      }
+    }
+
+    function translateAuthError(err) {
+      const code = err && err.code ? err.code : '';
+      const map = {
+        'auth/email-already-in-use': 'Este e-mail já tem conta cadastrada. Clique em "Já tenho conta" para entrar.',
+        'auth/invalid-email': 'Digite um e-mail válido.',
+        'auth/weak-password': 'A senha precisa ter pelo menos 8 caracteres.',
+        'auth/invalid-credential': 'E-mail ou senha incorretos.',
+        'auth/wrong-password': 'Senha incorreta.',
+        'auth/user-not-found': 'Nenhuma conta encontrada com este e-mail.',
+        'auth/popup-closed-by-user': 'A janela do Google foi fechada antes de concluir.',
+        'auth/unauthorized-domain': 'Este domínio precisa estar autorizado no Firebase Authentication.'
+      };
+      return map[code] || ('Não foi possível concluir: ' + (err.message || code));
+    }
+
+    function showAuthError(msg) {
+      const box = document.getElementById('authErrorBox');
+      if (!msg) { box.classList.add('hidden'); box.textContent = ''; return; }
+      box.textContent = msg;
+      box.classList.remove('hidden');
+    }
+
+    // Se já estiver logado, vai direto para a plataforma; senão abre o modal
+    window.handleSmartCta = (role) => {
+      if (loggedInUser) {
+        window.location.href = role === 'freelancer' ? '/app.html#dashboard' : '/app.html#orders';
+        return;
+      }
+      openAuthModal('register', role);
+    };
+
+    window.toggleMobileMenu = (forceState) => {
+      const menu = document.getElementById('mobileMenu');
+      const btn = document.getElementById('mobileMenuBtn');
+      const open = typeof forceState === 'boolean' ? forceState : menu.classList.contains('hidden');
+      menu.classList.toggle('hidden', !open);
+      btn.setAttribute('aria-expanded', String(open));
+    };
+
+    window.switchHowTab = (tab) => {
+      const isEmp = tab === 'empresas';
+      document.getElementById('tabEmpresas').setAttribute('aria-selected', String(isEmp));
+      document.getElementById('tabFreelancers').setAttribute('aria-selected', String(!isEmp));
+      document.getElementById('tabEmpresas').className = isEmp ? 'px-5 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition-all bg-zebu-lime text-black' : 'px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all text-zebu-muted hover:text-white';
+      document.getElementById('tabFreelancers').className = !isEmp ? 'px-5 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition-all bg-zebu-lime text-black' : 'px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all text-zebu-muted hover:text-white';
+      document.getElementById('panelEmpresas').classList.toggle('hidden', !isEmp);
+      document.getElementById('panelFreelancers').classList.toggle('hidden', isEmp);
+    };
+
+    window.toggleFaq = (btn) => {
+      const content = btn.nextElementSibling;
+      const icon = btn.querySelector('svg, i');
+      const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+      document.querySelectorAll('#faqAccordion button').forEach((other) => {
+        if (other !== btn) {
+          other.setAttribute('aria-expanded', 'false');
+          other.nextElementSibling.classList.add('hidden');
+          const oi = other.querySelector('svg, i');
+          if (oi) oi.classList.remove('rotate-180');
+        }
+      });
+      btn.setAttribute('aria-expanded', String(!isExpanded));
+      content.classList.toggle('hidden', isExpanded);
+      if (icon) icon.classList.toggle('rotate-180', !isExpanded);
+    };
+
+    window.openAuthModal = (mode = 'register', preselectedRole = 'freelancer') => {
+      showAuthError('');
+      switchAuthMode(mode);
+      if (preselectedRole) {
+        const radio = document.querySelector(`input[name="userRole"][value="${preselectedRole}"]`);
+        if (radio) radio.checked = true;
+      }
+      const modal = document.getElementById('authModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      setTimeout(() => {
+        const input = document.getElementById(mode === 'register' ? 'regEmail' : 'loginEmail');
+        if (input) input.focus();
+      }, 60);
+    };
+
+    window.switchAuthMode = (mode) => {
+      showAuthError('');
+      const isReg = mode === 'register';
+      document.getElementById('fastRegisterForm').classList.toggle('hidden', !isReg);
+      document.getElementById('fastLoginForm').classList.toggle('hidden', isReg);
+      document.getElementById('authModalTitle').textContent = isReg ? 'Crie sua conta grátis' : 'Entrar na sua conta';
+      document.getElementById('authModalSubtitle').textContent = isReg ? 'Leva apenas 10 segundos. Sem burocracia.' : 'Acesse suas vagas, propostas e mensagens.';
+      document.getElementById('modalTabRegister').className = isReg ? 'flex-1 pb-2.5 font-extrabold border-b-2 border-zebu-lime text-zebu-lime' : 'flex-1 pb-2.5 font-bold border-b-2 border-transparent text-zebu-muted hover:text-white';
+      document.getElementById('modalTabLogin').className = !isReg ? 'flex-1 pb-2.5 font-extrabold border-b-2 border-zebu-lime text-zebu-lime' : 'flex-1 pb-2.5 font-bold border-b-2 border-transparent text-zebu-muted hover:text-white';
+    };
+
+    window.openInfoModal = (id) => {
+      const el = document.getElementById(id);
+      if (el) { el.classList.remove('hidden'); el.classList.add('flex'); }
+    };
+
+    window.closeModal = (id) => {
+      const el = document.getElementById(id);
+      if (el) { el.classList.add('hidden'); el.classList.remove('flex'); }
+    };
+
+    window.togglePassword = (inputId, btn) => {
+      const input = document.getElementById(inputId);
+      const isPwd = input.type === 'password';
+      input.type = isPwd ? 'text' : 'password';
+      btn.innerHTML = isPwd ? '<i data-lucide="eye-off" class="w-4 h-4"></i>' : '<i data-lucide="eye" class="w-4 h-4"></i>';
+      lucide.createIcons();
+    };
+
+    window.handleGoogleAuth = async () => {
+      showAuthError('');
+      const roleEl = document.querySelector('input[name="userRole"]:checked');
+      const chosenRole = roleEl && roleEl.value === 'freelancer' ? 'pro' : 'client';
+      try {
+        const res = await signInWithPopup(auth, googleProvider);
+        await ensureUserDocument(res.user, chosenRole);
+        window.location.href = chosenRole === 'pro' ? '/app.html#dashboard' : '/app.html#home';
+      } catch (err) {
+        if (err.code === 'auth/popup-blocked') {
+          await signInWithRedirect(auth, googleProvider);
+          return;
+        }
+        showAuthError(translateAuthError(err));
+      }
+    };
+
+    window.handleFastRegister = async (e) => {
+      e.preventDefault();
+      showAuthError('');
+      const email = document.getElementById('regEmail').value.trim();
+      const password = document.getElementById('regPassword').value;
+      const roleEl = document.querySelector('input[name="userRole"]:checked');
+      const isPro = !roleEl || roleEl.value === 'freelancer';
+      const roleValue = isPro ? 'pro' : 'client';
+
+      const btn = document.getElementById('btnRegisterSubmit');
+      btn.disabled = true;
+      btn.textContent = 'CRIANDO CONTA...';
+
+      try {
+        const cred = await createUserWithEmailAndPassword(auth, email, password);
+        const defaultName = email.split('@')[0] || 'Usuário';
+        await updateProfile(cred.user, { displayName: defaultName });
+        await ensureUserDocument(cred.user, roleValue);
+        window.location.href = isPro ? '/app.html#dashboard' : '/app.html#orders';
+      } catch (err) {
+        showAuthError(translateAuthError(err));
+        btn.disabled = false;
+        btn.textContent = 'GARANTIR MINHA CONTA GRÁTIS';
+      }
+    };
+
+    window.handleFastLogin = async (e) => {
+      e.preventDefault();
+      showAuthError('');
+      const email = document.getElementById('loginEmail').value.trim();
+      const password = document.getElementById('loginPassword').value;
+      const btn = document.getElementById('btnLoginSubmit');
+      btn.disabled = true;
+      btn.textContent = 'ENTRANDO...';
+
+      try {
+        await signInWithEmailAndPassword(auth, email, password);
+        window.location.href = '/app.html#home';
+      } catch (err) {
+        showAuthError(translateAuthError(err));
+        btn.disabled = false;
+        btn.textContent = 'ENTRAR NA ZEBUFREELA';
+      }
+    };
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') ['privacyModal', 'termsModal', 'authModal'].forEach(closeModal);
+    });
+    ['authModal', 'termsModal', 'privacyModal'].forEach((id) => {
+      document.getElementById(id).addEventListener('click', (e) => {
+        if (e.target.id === id) closeModal(id);
+      });
+    });
+  </script>
+</body>
+</html>
