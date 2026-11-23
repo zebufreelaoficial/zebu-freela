@@ -117,7 +117,7 @@
           <div class="pt-2 grid grid-cols-1 sm:grid-cols-3 gap-2.5">
             <button type="button" onclick="openPostOrderModal()" class="text-left bg-[#84CC16]/15 border border-[#84CC16]/50 p-3.5 rounded-2xl flex items-center justify-between hover:border-[#84CC16] transition shadow-sm"><div class="flex items-center gap-2.5"><div class="w-10 h-10 rounded-xl bg-[#84CC16] text-black flex items-center justify-center shrink-0"><i data-lucide="clipboard-list" class="w-5 h-5"></i></div><div><h2 class="font-extrabold text-xs leading-none">Pedir Orçamento</h2><span class="text-[10px] text-neutral-700 dark:text-neutral-300 block mt-1">Receba propostas grátis</span></div></div><i data-lucide="chevron-right" class="w-4 h-4 text-neutral-500"></i></button>
             <button type="button" onclick="openProfessionExplore('')" class="text-left bg-white/80 dark:bg-[#0A0A0A]/80 border border-neutral-200 dark:border-[#1F2937] p-3.5 rounded-2xl flex items-center justify-between hover:border-[#84CC16] transition shadow-sm"><div class="flex items-center gap-2.5"><div class="w-10 h-10 rounded-xl bg-[#84CC16]/15 text-[#65A30D] dark:text-[#84CC16] flex items-center justify-center shrink-0"><i data-lucide="users" class="w-5 h-5"></i></div><div><h2 class="font-extrabold text-xs leading-none">Profissionais</h2><span class="text-[10px] text-neutral-600 dark:text-[#9CA3AF] block mt-1">Encontre e contrate</span></div></div><i data-lucide="chevron-right" class="w-4 h-4 text-neutral-400"></i></button>
-            <button type="button" onclick="showSection('blog')" class="text-left bg-white/80 dark:bg-[#0A0A0A]/80 border border-neutral-200 dark:border-[#1F2937] p-3.5 rounded-2xl flex items-center justify-between hover:border-[#84CC16] transition shadow-sm"><div class="flex items-center gap-2.5"><div class="w-10 h-10 rounded-xl bg-[#84CC16]/15 text-[#65A30D] dark:text-[#84CC16] flex items-center justify-center shrink-0"><i data-lucide="wrench" class="w-5 h-5"></i></div><div><h2 class="font-extrabold text-xs leading-none">Equipamentos</h2><span class="text-[10px] text-neutral-600 dark:text-[#9CA3AF] block mt-1">Ferramentas de trabalho</span></div></div><i data-lucide="chevron-right" class="w-4 h-4 text-neutral-400"></i></button>
+            <button type="button" onclick="showSection('jobs')" class="text-left bg-white/80 dark:bg-[#0A0A0A]/80 border border-neutral-200 dark:border-[#1F2937] p-3.5 rounded-2xl flex items-center justify-between hover:border-[#84CC16] transition shadow-sm"><div class="flex items-center gap-2.5"><div class="w-10 h-10 rounded-xl bg-[#84CC16]/15 text-[#65A30D] dark:text-[#84CC16] flex items-center justify-center shrink-0"><i data-lucide="briefcase" class="w-5 h-5"></i></div><div><h2 class="font-extrabold text-xs leading-none">Vagas em Uberaba</h2><span class="text-[10px] text-neutral-600 dark:text-[#9CA3AF] block mt-1">Empregos e bicos</span></div></div><i data-lucide="chevron-right" class="w-4 h-4 text-neutral-400"></i></button>
           </div>
           <button onclick="handleAdvertiseClick()" class="w-full py-3.5 btn-lime-glow font-extrabold text-xs md:text-sm rounded-2xl flex items-center justify-center gap-2 uppercase tracking-wide"><i data-lucide="megaphone" class="w-4 h-4"></i>Anunciar meus serviços grátis<i data-lucide="chevron-right" class="w-4 h-4"></i></button>
         </div>
@@ -130,7 +130,7 @@
       <div class="space-y-3 glass-card p-4 md:p-5 rounded-3xl"><div class="flex items-center justify-between"><div><h2 class="text-base font-extrabold flex items-center gap-2"><span class="w-4 h-1.5 bg-[#84CC16] rounded-full"></span>Equipamentos de Trabalho</h2><p class="text-[11px] md:text-xs text-neutral-600 dark:text-[#9CA3AF]">Ferramentas recomendadas (deslize para o lado)</p></div><button onclick="showSection('blog')" class="text-xs font-bold hover:underline flex items-center gap-1">Ver todos <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></button></div><div id="homeProductsRow" class="flex gap-3 overflow-x-auto no-scrollbar scroll-smooth py-1 snap-x snap-mandatory"></div></div>
     </section>
 
-    <!-- ABA MEUS FAVORITOS -->
+    <!-- FAVORITOS -->
     <section id="favoritesSection" class="hidden space-y-5">
       <div class="bg-gradient-to-r from-[#0B0F17] via-[#121D0B] to-[#0A0A0A] text-white p-5 md:p-6 rounded-3xl border border-[#84CC16]/40 shadow-xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
         <div><span class="text-[10px] font-extrabold uppercase text-[#84CC16] tracking-widest block">Área do Cliente</span><h2 class="text-xl md:text-2xl font-extrabold flex items-center gap-2"><i data-lucide="heart" class="w-5 h-5 text-[#84CC16]"></i>Meus Favoritos <span id="favSectionCounter" class="text-xs px-2.5 py-0.5 rounded-full bg-[#84CC16] text-black font-extrabold">0</span></h2><p class="text-xs text-[#9CA3AF] mt-0.5">Seus profissionais de confiança salvos em Uberaba e região.</p></div>
@@ -143,7 +143,7 @@
     <section id="ordersSection" class="hidden space-y-5">
       <div class="bg-gradient-to-r from-[#0B0F17] via-[#121D0B] to-[#0A0A0A] text-white p-5 md:p-6 rounded-3xl border border-[#1F2937] shadow-xl flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div><span class="text-[10px] font-extrabold uppercase text-[#84CC16] tracking-widest block">Marketplace de Serviços</span><h2 class="text-xl md:text-2xl font-extrabold flex items-center gap-2"><i data-lucide="clipboard-list" class="w-5 h-5 text-[#84CC16]"></i>Mural de Pedidos</h2><p class="text-xs text-[#9CA3AF] mt-1">Clientes publicam o que precisam e profissionais cadastrados enviam propostas.</p></div>
-        <div class="flex flex-wrap gap-2"><button onclick="openPostOrderModal()" class="px-4 py-2.5 btn-lime-glow font-extrabold text-xs rounded-xl flex items-center gap-1.5"><i data-lucide="plus-circle" class="w-4 h-4"></i>Publicar Pedido</button><button onclick="showSection('jobs')" class="px-3.5 py-2.5 bg-white/10 hover:bg-white/20 text-white font-bold text-xs rounded-xl border border-white/15">Vagas Relâmpago</button></div>
+        <div class="flex flex-wrap gap-2"><button onclick="openPostOrderModal()" class="px-4 py-2.5 btn-lime-glow font-extrabold text-xs rounded-xl flex items-center gap-1.5"><i data-lucide="plus-circle" class="w-4 h-4"></i>Publicar Pedido</button><button onclick="showSection('jobs')" class="px-3.5 py-2.5 bg-white/10 hover:bg-white/20 text-white font-bold text-xs rounded-xl border border-white/15">Vagas em Uberaba</button></div>
       </div>
       <div class="flex gap-2 overflow-x-auto no-scrollbar py-1">
         <button onclick="switchOrdersSubTab('browse')" id="tabOrderBrowse" class="px-4 py-2 rounded-full text-xs font-extrabold bg-[#84CC16] text-black shadow shrink-0">Todos os Pedidos</button>
@@ -168,10 +168,8 @@
       <div id="ordersProposalsPane" class="hidden space-y-3"><h3 class="text-sm md:text-base font-extrabold">Minhas Propostas Enviadas</h3><div id="myProposalsGrid" class="grid grid-cols-1 md:grid-cols-2 gap-3.5"></div></div>
     </section>
 
-    <!-- PÁGINA INDIVIDUAL DO PEDIDO -->
     <section id="orderDetailSection" class="hidden space-y-5"><button onclick="showSection('orders')" class="inline-flex items-center gap-1.5 text-xs font-extrabold px-3.5 py-2 glass-card rounded-xl hover:border-[#84CC16] transition"><i data-lucide="arrow-left" class="w-4 h-4"></i>Voltar ao Mural de Pedidos</button><div id="orderDetailContainer" class="space-y-5"></div></section>
 
-    <!-- ABA CONVERSAS -->
     <section id="chatsSection" class="hidden space-y-4">
       <div class="bg-gradient-to-r from-[#0B0F17] via-[#121D0B] to-[#0A0A0A] text-white p-5 md:p-6 rounded-3xl border border-[#1F2937] shadow-xl flex items-center justify-between gap-3">
         <div><span class="text-[10px] font-extrabold uppercase text-[#84CC16] tracking-widest block">Mensagens</span><h2 class="text-xl md:text-2xl font-extrabold flex items-center gap-2"><i data-lucide="message-circle" class="w-5 h-5 text-[#84CC16]"></i>Minhas Conversas</h2><p class="text-xs text-[#9CA3AF] mt-0.5">Seus atendimentos recentes com profissionais, clientes e suporte.</p></div>
@@ -180,16 +178,32 @@
       <div id="chatsListContainer" class="space-y-2.5"></div>
     </section>
 
-    <!-- VAGAS -->
-    <section id="jobsSection" class="hidden space-y-4">
-      <div class="bg-gradient-to-r from-[#0B0F17] via-[#121D0B] to-[#0A0A0A] text-white p-5 md:p-6 rounded-3xl border border-[#1F2937] flex flex-col md:flex-row justify-between items-start md:items-center gap-3 shadow-xl">
-        <div><span class="text-[10px] font-extrabold uppercase text-[#84CC16] tracking-widest block">Mural de Oportunidades</span><h2 class="text-xl md:text-2xl font-extrabold flex items-center gap-2"><i data-lucide="briefcase" class="w-5 h-5 text-[#84CC16]"></i>Vagas & Bicos em Uberaba</h2><p class="text-xs text-[#9CA3AF] mt-0.5">Vagas com temporizador de expiração automática.</p></div>
-        <div class="flex flex-wrap gap-2"><button onclick="openPostJobModal()" class="px-4 py-2 btn-lime-glow font-extrabold text-xs rounded-xl">+ Publicar Nova Vaga</button><button onclick="showSection('orders')" class="px-3.5 py-2 bg-white/10 hover:bg-white/20 text-white font-bold text-xs rounded-xl border border-white/15">Ir para Pedidos</button></div>
+    <!-- VAGAS EM UBERABA (JOOBLE + VAGAS RELÂMPAGO) -->
+    <section id="jobsSection" class="hidden space-y-6">
+      <div class="bg-gradient-to-r from-[#0B0F17] via-[#121D0B] to-[#0A0A0A] text-white p-5 md:p-6 rounded-3xl border border-[#84CC16]/35 flex flex-col md:flex-row justify-between items-start md:items-center gap-3 shadow-xl">
+        <div>
+          <span class="text-[10px] font-extrabold uppercase text-[#84CC16] tracking-widest block">Empregos e Oportunidades</span>
+          <h2 class="text-xl md:text-2xl font-extrabold flex items-center gap-2"><i data-lucide="briefcase" class="w-5 h-5 text-[#84CC16]"></i>Vagas em Uberaba</h2>
+          <p class="text-xs text-[#9CA3AF] mt-0.5">Vagas encontradas via Jooble e bicos locais com expiração automática.</p>
+        </div>
+        <div class="flex flex-wrap gap-2"><button onclick="openPostJobModal()" class="px-4 py-2 btn-lime-glow font-extrabold text-xs rounded-xl">+ Publicar Bico/Vaga</button><button onclick="showSection('orders')" class="px-3.5 py-2 bg-white/10 hover:bg-white/20 text-white font-bold text-xs rounded-xl border border-white/15">Ir para Pedidos</button></div>
       </div>
-      <div id="allJobsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3"></div>
+
+      <div class="space-y-4">
+        <div class="glass-card p-4 rounded-2xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+          <div><h3 class="text-sm md:text-base font-extrabold text-[#84CC16]">Vagas de Emprego em Uberaba-MG</h3><p class="text-[11px] text-[#9CA3AF]">Vagas encontradas via Jooble</p></div>
+          <div class="w-full sm:w-72 relative"><i data-lucide="search" class="w-4 h-4 absolute left-3.5 top-3 text-neutral-400"></i><input type="text" id="filterExternalJobsInput" placeholder="Filtrar por cargo ou empresa..." oninput="filterExternalJobs()" class="inp pl-10"></div>
+        </div>
+        <div id="externalJobsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3"></div>
+        <div id="externalJobsLoadMoreWrap" class="hidden text-center pt-1"><button type="button" onclick="loadMoreExternalJobs()" class="px-6 py-2.5 btn-lime-glow font-extrabold text-xs rounded-xl">Carregar mais vagas</button></div>
+      </div>
+
+      <div class="pt-4 border-t border-neutral-200 dark:border-[#1F2937] space-y-3">
+        <h3 class="text-sm md:text-base font-extrabold flex items-center gap-2"><span class="w-3 h-1.5 bg-[#84CC16] rounded-full"></span>Vagas & Bicos Relâmpago da Comunidade</h3>
+        <div id="allJobsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3"></div>
+      </div>
     </section>
 
-    <!-- EQUIPAMENTOS -->
     <section id="blogSection" class="hidden space-y-5">
       <div class="bg-gradient-to-r from-[#0B0F17] via-[#121D0B] to-[#0A0A0A] text-white p-5 md:p-6 rounded-3xl border border-[#1F2937] flex flex-col md:flex-row justify-between items-start md:items-center gap-3 shadow-xl">
         <div><span class="text-[10px] font-extrabold uppercase text-[#84CC16] tracking-widest block">Catálogo Oficial</span><h2 class="text-xl md:text-2xl font-extrabold flex items-center gap-2"><i data-lucide="wrench" class="w-5 h-5 text-[#84CC16]"></i>Equipamentos</h2><p class="text-xs text-[#9CA3AF] mt-0.5">Ferramentas e materiais de trabalho separados por profissão.</p></div>
@@ -200,7 +214,6 @@
       <div id="productsByProfessionContainer" class="space-y-6"></div>
     </section>
 
-    <!-- EXPLORAR PROFISSIONAIS -->
     <section id="exploreSection" class="hidden space-y-5">
       <div id="showcaseHero" class="bg-gradient-to-r from-[#0B0F17] via-[#121D0B] to-[#0A0A0A] text-white p-5 md:p-6 rounded-3xl border border-[#1F2937] shadow-xl">
         <div class="flex items-center justify-between gap-3">
@@ -220,7 +233,6 @@
       <div class="space-y-3"><span id="resultsCount" class="text-xs text-neutral-600 dark:text-[#9CA3AF] font-bold block px-1">Carregando profissionais...</span><div id="resultsGrid" class="grid grid-cols-1 md:grid-cols-2 gap-3.5"></div></div>
     </section>
 
-    <!-- PAINEL -->
     <section id="dashboardSection" class="hidden space-y-4">
       <div class="glass-card p-4 md:p-6 rounded-3xl">
         <div class="flex flex-wrap items-center justify-between border-b border-neutral-200 dark:border-[#1F2937] pb-3 mb-4 gap-2">
@@ -257,7 +269,6 @@
       </div>
     </section>
 
-    <!-- MODERAÇÃO ADMIN -->
     <section id="adminSection" class="hidden space-y-5">
       <div class="bg-gradient-to-r from-[#0B0F17] via-[#121D0B] to-[#0A0A0A] text-white p-5 md:p-6 rounded-3xl border border-[#1F2937] shadow-xl flex flex-wrap items-center justify-between gap-3">
         <div><span class="text-[10px] font-extrabold uppercase text-rose-400 tracking-widest block">Área Restrita</span><h2 class="text-xl md:text-2xl font-extrabold flex items-center gap-2"><i data-lucide="shield-check" class="w-5 h-5 text-[#84CC16]"></i>Moderação & Administração</h2><p class="text-xs text-[#9CA3AF] mt-0.5">Gerencie pedidos, analise denúncias e modere usuários.</p></div>
@@ -271,7 +282,6 @@
       <div id="adminReportsPane" class="space-y-3"></div><div id="adminOrdersPane" class="hidden space-y-3"></div><div id="adminUsersPane" class="hidden space-y-3"></div>
     </section>
   </main>
-
   <aside aria-label="Suporte" class="fixed bottom-24 md:bottom-6 right-3.5 md:right-6 z-30">
     <button onclick="openSupportChat()" class="flex items-center gap-2 btn-lime-glow px-3.5 sm:px-4 py-2.5 rounded-full border-2 border-[#0A0A0A] font-extrabold text-xs"><i data-lucide="headphones" class="w-4 h-4"></i><span class="hidden sm:inline">Precisa de ajuda?</span><span class="sm:hidden">Ajuda</span></button>
   </aside>
@@ -280,12 +290,11 @@
     <button onclick="showSection('home')" id="mobile-nav-home" class="flex-1 flex flex-col items-center justify-center gap-0.5 py-1 text-[#84CC16] rounded-xl"><i data-lucide="home" class="w-4 h-4"></i><span class="text-[10px] font-bold leading-none">Início</span></button>
     <button onclick="openProfessionExplore('')" id="mobile-nav-explore" class="flex-1 flex flex-col items-center justify-center gap-0.5 py-1 text-neutral-300 rounded-xl"><i data-lucide="layout-grid" class="w-4 h-4"></i><span class="text-[10px] font-bold leading-none">Profiss.</span></button>
     <button onclick="showSection('orders')" id="mobile-nav-orders" class="flex-1 flex flex-col items-center justify-center gap-0.5 py-1 text-neutral-300 rounded-xl"><i data-lucide="clipboard-list" class="w-4 h-4"></i><span class="text-[10px] font-bold leading-none">Pedidos</span></button>
-    <button onclick="showSection('blog')" id="mobile-nav-blog" class="flex-1 flex flex-col items-center justify-center gap-0.5 py-1 text-neutral-300 rounded-xl"><i data-lucide="wrench" class="w-4 h-4"></i><span class="text-[10px] font-bold leading-none">Equip.</span></button>
+    <button onclick="showSection('jobs')" id="mobile-nav-jobs" class="flex-1 flex flex-col items-center justify-center gap-0.5 py-1 text-neutral-300 rounded-xl"><i data-lucide="briefcase" class="w-4 h-4"></i><span class="text-[10px] font-bold leading-none">Vagas</span></button>
     <button onclick="openChatsTab()" id="mobile-nav-chats" class="flex-1 flex flex-col items-center justify-center gap-0.5 py-1 text-neutral-300 rounded-xl"><i data-lucide="message-circle" class="w-4 h-4"></i><span class="text-[10px] font-bold leading-none">Conversas</span></button>
     <button onclick="handleAdvertiseClick()" id="mobile-nav-dashboard" class="flex-1 flex flex-col items-center justify-center gap-0.5 py-1 text-neutral-300 rounded-xl"><i data-lucide="user" class="w-4 h-4"></i><span class="text-[10px] font-bold leading-none">Painel</span></button>
   </nav>
 
-  <!-- FOOTER COM LOGO IGUAL AO INDEX -->
   <footer class="bg-[#06080D] text-white border-t border-[#1F2937] py-8 px-4 mt-auto">
     <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
       <div class="flex flex-col sm:flex-row items-center gap-3">
@@ -330,10 +339,7 @@
         </form>
       </div>
       <div id="forgotPasswordView" class="hidden space-y-4">
-        <div id="forgotFormBox" class="space-y-3">
-          <div class="space-y-1"><span class="text-[10px] font-extrabold uppercase tracking-widest text-[#84CC16]">ZebuFreela</span><h3 class="text-lg font-extrabold text-white">Recuperar acesso</h3><p class="text-[11px] text-neutral-300 leading-relaxed">Digite o e-mail cadastrado e enviaremos um link para você criar uma nova senha.</p></div>
-          <form onsubmit="handleForgotPasswordSubmit(event)" class="space-y-3"><div><label for="forgotEmail" class="block text-[11px] font-bold uppercase text-neutral-300 mb-1">E-mail cadastrado</label><input type="email" id="forgotEmail" required placeholder="voce@exemplo.com" class="w-full p-2.5 rounded-xl border border-[#1F2937] bg-[#0A0A0A] text-white text-xs focus:border-[#84CC16] outline-none"></div><button type="submit" id="btnSendReset" class="w-full py-3 bg-[#84CC16] hover:bg-[#65A30D] text-black font-extrabold text-xs rounded-xl transition">Enviar link de recuperação</button></form>
-        </div>
+        <div id="forgotFormBox" class="space-y-3"><div class="space-y-1"><span class="text-[10px] font-extrabold uppercase tracking-widest text-[#84CC16]">ZebuFreela</span><h3 class="text-lg font-extrabold text-white">Recuperar acesso</h3><p class="text-[11px] text-neutral-300 leading-relaxed">Digite o e-mail cadastrado e enviaremos um link para você criar uma nova senha.</p></div><form onsubmit="handleForgotPasswordSubmit(event)" class="space-y-3"><div><label for="forgotEmail" class="block text-[11px] font-bold uppercase text-neutral-300 mb-1">E-mail cadastrado</label><input type="email" id="forgotEmail" required placeholder="voce@exemplo.com" class="w-full p-2.5 rounded-xl border border-[#1F2937] bg-[#0A0A0A] text-white text-xs focus:border-[#84CC16] outline-none"></div><button type="submit" id="btnSendReset" class="w-full py-3 bg-[#84CC16] hover:bg-[#65A30D] text-black font-extrabold text-xs rounded-xl transition">Enviar link de recuperação</button></form></div>
         <div id="forgotSuccessCard" class="hidden p-4 rounded-2xl bg-[#0A0A0A] border border-[#84CC16]/60 text-center space-y-2.5"><div class="w-11 h-11 mx-auto rounded-full bg-[#84CC16]/20 text-[#84CC16] flex items-center justify-center"><i data-lucide="check-circle-2" class="w-6 h-6"></i></div><p class="text-xs font-bold text-white leading-relaxed">Pronto! Se este e-mail estiver cadastrado na ZebuFreela, você receberá as instruções em instantes.</p></div>
         <div class="text-center pt-1"><button type="button" onclick="backToLoginView()" class="text-xs font-bold text-[#84CC16] hover:underline">Voltar para o Login</button></div>
       </div>
@@ -401,8 +407,8 @@
     const ORDER_STATUS_META = { aberto:{label:"Aberto",cls:"bg-[#84CC16]/20 text-[#3F6212] dark:text-[#A3E635] border border-[#84CC16]/50"}, em_negociacao:{label:"Em Negociação",cls:"bg-amber-100 text-amber-900 border border-amber-300 dark:bg-amber-950 dark:text-amber-200 dark:border-amber-800"}, contratado:{label:"Contratado",cls:"bg-emerald-100 text-emerald-900 border border-emerald-300 dark:bg-emerald-950 dark:text-emerald-200 dark:border-emerald-800"}, encerrado:{label:"Encerrado",cls:"bg-neutral-200 text-neutral-700 border border-neutral-300 dark:bg-neutral-800 dark:text-neutral-300 dark:border-neutral-700"} };
 
     let currentUser = null, currentUserDoc = null, currentUserIsAdminClaim = false;
-    let allProfessionals = [], allProducts = [], allJobs = [], allOrders = [], myAds = [], myProposals = [], userNotifications = [];
-    let favoritePros = loadFavoritesFromStorage();
+    let allProfessionals = [], allProducts = [], allJobs = [], allExternalJobs = [], filteredExternalJobs = [], allOrders = [], myAds = [], myProposals = [], userNotifications = [];
+    let favoritePros = loadFavoritesFromStorage(), externalJobsVisibleCount = 9;
     let selectedProfession = "", editingAdId = null, editingProductId = null, selectedProductProfession = "Todas";
     let tempPortfolioImages = [], tempAvatarImage = "", tempProductImage = "", tempOrderImages = [];
     let currentViewingPro = null, currentViewingOrder = null, currentReportTarget = null, currentChatRecipient = null;
@@ -420,85 +426,46 @@
       const mob = document.getElementById('favCountMobile');
       if (mob) { mob.textContent = c > 9 ? '9+' : String(c); mob.classList.toggle('hidden', c === 0); }
     }
-
     function syncFavoritesWithLivePros() {
       if (!allProfessionals.length || !favoritePros.length) return;
-      favoritePros = favoritePros.map(fav => {
-        const live = allProfessionals.find(p => p.id === fav.id);
-        return live ? { id: live.id, authorUid: live.authorUid || live.id, name: live.name, category: live.category, neighborhood: live.neighborhood, bio: live.bio, avatar: live.avatar || '', priceType: live.priceType, priceValue: live.priceValue, attendanceType: live.attendanceType, services: live.services || [], portfolio: live.portfolio || [] } : fav;
-      });
+      favoritePros = favoritePros.map(fav => { const live = allProfessionals.find(p => p.id === fav.id); return live ? { id: live.id, authorUid: live.authorUid || live.id, name: live.name, category: live.category, neighborhood: live.neighborhood, bio: live.bio, avatar: live.avatar || '', priceType: live.priceType, priceValue: live.priceValue, attendanceType: live.attendanceType, services: live.services || [], portfolio: live.portfolio || [] } : fav; });
       saveFavoritesToStorage();
     }
-
     function toggleFavoritePro(pro, btnEl = null) {
       const idx = favoritePros.findIndex(f => f.id === pro.id);
-      if (idx >= 0) {
-        favoritePros.splice(idx, 1); saveFavoritesToStorage(); updateFavoritesCounters(); showToast("Profissional removido dos favoritos.");
-      } else {
-        favoritePros.unshift({ id: pro.id, authorUid: pro.authorUid || pro.id, name: pro.name, category: pro.category, neighborhood: pro.neighborhood, bio: pro.bio, avatar: pro.avatar || '', priceType: pro.priceType, priceValue: pro.priceValue, attendanceType: pro.attendanceType, services: pro.services || [], portfolio: pro.portfolio || [] });
-        saveFavoritesToStorage(); updateFavoritesCounters();
-        if (btnEl) { btnEl.classList.remove('heart-pulse'); void btnEl.offsetWidth; btnEl.classList.add('heart-pulse'); }
-        showToast("Profissional salvo nos seus favoritos!");
-      }
+      if (idx >= 0) { favoritePros.splice(idx, 1); saveFavoritesToStorage(); updateFavoritesCounters(); showToast("Profissional removido dos favoritos."); }
+      else { favoritePros.unshift({ id: pro.id, authorUid: pro.authorUid || pro.id, name: pro.name, category: pro.category, neighborhood: pro.neighborhood, bio: pro.bio, avatar: pro.avatar || '', priceType: pro.priceType, priceValue: pro.priceValue, attendanceType: pro.attendanceType, services: pro.services || [], portfolio: pro.portfolio || [] }); saveFavoritesToStorage(); updateFavoritesCounters(); if (btnEl) { btnEl.classList.remove('heart-pulse'); void btnEl.offsetWidth; btnEl.classList.add('heart-pulse'); } showToast("Profissional salvo nos seus favoritos!"); }
       const fav = isFavorited(pro.id);
-      document.querySelectorAll(`[data-fav-btn="${pro.id}"]`).forEach(btn => {
-        btn.innerHTML = getHeartSvg(fav); btn.classList.toggle('text-[#84CC16]', fav); btn.classList.toggle('text-neutral-400', !fav);
-        if (fav) { btn.classList.remove('heart-pulse'); void btn.offsetWidth; btn.classList.add('heart-pulse'); }
-      });
-      renderFavoritesSection();
-      if (currentViewingPro && currentViewingPro.id === pro.id) updateProfileModalFavButton(pro);
+      document.querySelectorAll(`[data-fav-btn="${pro.id}"]`).forEach(btn => { btn.innerHTML = getHeartSvg(fav); btn.classList.toggle('text-[#84CC16]', fav); btn.classList.toggle('text-neutral-400', !fav); if (fav) { btn.classList.remove('heart-pulse'); void btn.offsetWidth; btn.classList.add('heart-pulse'); } });
+      renderFavoritesSection(); if (currentViewingPro && currentViewingPro.id === pro.id) updateProfileModalFavButton(pro);
     }
-
-    function updateProfileModalFavButton(pro) {
-      const btn = document.getElementById('modalProFavBtn'); if (!btn) return;
-      const fav = isFavorited(pro.id);
-      btn.innerHTML = getHeartSvg(fav);
-      btn.className = `p-1.5 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition ${fav ? 'text-[#84CC16]' : 'text-neutral-400 hover:text-[#84CC16]'}`;
-      btn.onclick = () => toggleFavoritePro(pro, btn);
-    }
-
+    function updateProfileModalFavButton(pro) { const btn = document.getElementById('modalProFavBtn'); if (!btn) return; const fav = isFavorited(pro.id); btn.innerHTML = getHeartSvg(fav); btn.className = `p-1.5 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition ${fav ? 'text-[#84CC16]' : 'text-neutral-400 hover:text-[#84CC16]'}`; btn.onclick = () => toggleFavoritePro(pro, btn); }
     window.openFavoritesTab = () => { showSection('favorites'); renderFavoritesSection(); };
-
     function renderFavoritesSection() {
-      const grid = document.getElementById('favoritesGrid'); if (!grid) return;
-      updateFavoritesCounters(); grid.innerHTML = '';
+      const grid = document.getElementById('favoritesGrid'); if (!grid) return; updateFavoritesCounters(); grid.innerHTML = '';
       if (!favoritePros.length) {
         grid.innerHTML = `<div class="col-span-full bg-[#0B0F17] text-white border border-[#1F2937] rounded-3xl p-8 text-center space-y-4 shadow-xl"><div class="w-14 h-14 mx-auto rounded-2xl bg-[#84CC16]/15 text-[#84CC16] flex items-center justify-center"><i data-lucide="heart" class="w-7 h-7"></i></div><p class="text-xs sm:text-sm text-neutral-200 max-w-md mx-auto leading-relaxed">Você ainda não favoritou nenhum profissional. Clique no coração nos perfis para salvar seus contatos de confiança de Uberaba aqui.</p><button type="button" id="btnEmptyExploreFav" class="px-6 py-3 bg-[#84CC16] hover:bg-[#65A30D] text-black font-extrabold text-xs rounded-xl transition shadow-lg">Explorar Profissionais</button></div>`;
-        grid.querySelector('#btnEmptyExploreFav').addEventListener('click', () => openProfessionExplore(''));
-        lucide.createIcons(); return;
+        grid.querySelector('#btnEmptyExploreFav').addEventListener('click', () => openProfessionExplore('')); lucide.createIcons(); return;
       }
       favoritePros.forEach(fav => {
-        const livePro = allProfessionals.find(x => x.id === fav.id) || fav, card = document.createElement('div');
-        card.className = "glass-card rounded-3xl p-4 flex flex-col justify-between gap-3 relative";
+        const livePro = allProfessionals.find(x => x.id === fav.id) || fav, card = document.createElement('div'); card.className = "glass-card rounded-3xl p-4 flex flex-col justify-between gap-3 relative";
         const av = safeUrl(livePro.avatar), avHTML = av ? `<img src="${esc(av)}" alt="${esc(livePro.name)}" class="w-14 h-14 rounded-2xl object-cover shrink-0 border border-[#1F2937]">` : `<div class="w-14 h-14 rounded-2xl bg-[#0A0A0A] text-[#84CC16] flex items-center justify-center shrink-0"><i data-lucide="${esc(getProfessionIcon(livePro.category))}" class="w-7 h-7"></i></div>`;
-        card.innerHTML = `<div class="space-y-2.5"><div class="flex items-start justify-between gap-2"><div class="flex items-center gap-3 min-w-0">${avHTML}<div class="min-w-0"><h3 class="font-extrabold text-sm leading-tight truncate">${esc(livePro.name)}</h3><p class="text-[11px] font-bold text-neutral-600 dark:text-[#9CA3AF] truncate">${esc(livePro.category)}</p><p class="text-[11px] text-neutral-500 truncate">📍 ${esc(livePro.neighborhood||'Uberaba')}</p></div></div><button type="button" class="btn-fav-card p-1.5 rounded-full hover:bg-black/5 dark:hover:bg-white/10 text-[#84CC16] transition shrink-0" aria-label="Remover dos favoritos">${getHeartSvg(true)}</button></div><p class="text-[11px] text-neutral-700 dark:text-neutral-300 line-clamp-2">${esc(livePro.bio||'Profissional autônomo em Uberaba.')}</p><div class="text-xs font-extrabold">${esc(formatPriceDisplay(livePro))}</div></div><div class="pt-3 border-t border-neutral-200/70 dark:border-[#1F2937] flex flex-wrap items-center gap-2"><button type="button" class="btn-call-pro flex-1 py-2.5 px-3 bg-[#84CC16] hover:bg-[#65A30D] text-black font-extrabold text-xs rounded-xl transition flex items-center justify-center gap-1"><i data-lucide="message-square" class="w-3.5 h-3.5"></i>Chamar / Contratar</button><button type="button" class="btn-view-fav px-3 py-2.5 bg-neutral-900 text-white dark:bg-white/10 text-xs font-bold rounded-xl">Perfil</button><button type="button" class="btn-remove-fav px-2.5 py-2.5 bg-rose-100 dark:bg-rose-950 text-rose-700 dark:text-rose-300 text-xs font-bold rounded-xl">Remover</button></div>`;
+        card.innerHTML = `<div class="space-y-2.5"><div class="flex items-start justify-between gap-2"><div class="flex items-center gap-3 min-w-0">${avHTML}<div class="min-w-0"><h3 class="font-extrabold text-sm leading-tight truncate">${esc(livePro.name)}</h3><p class="text-[11px] font-bold text-neutral-600 dark:text-[#9CA3AF] truncate">${esc(livePro.category)}</p><p class="text-[11px] text-neutral-500 truncate">📍 ${esc(livePro.neighborhood||'Uberaba')}</p></div></div><button type="button" class="btn-fav-card p-1.5 rounded-full hover:bg-black/5 dark:hover:bg-white/10 text-[#84CC16] transition shrink-0" aria-label="Remover">${getHeartSvg(true)}</button></div><p class="text-[11px] text-neutral-700 dark:text-neutral-300 line-clamp-2">${esc(livePro.bio||'Profissional autônomo em Uberaba.')}</p><div class="text-xs font-extrabold">${esc(formatPriceDisplay(livePro))}</div></div><div class="pt-3 border-t border-neutral-200/70 dark:border-[#1F2937] flex flex-wrap items-center gap-2"><button type="button" class="btn-call-pro flex-1 py-2.5 px-3 bg-[#84CC16] hover:bg-[#65A30D] text-black font-extrabold text-xs rounded-xl transition flex items-center justify-center gap-1"><i data-lucide="message-square" class="w-3.5 h-3.5"></i>Chamar / Contratar</button><button type="button" class="btn-view-fav px-3 py-2.5 bg-neutral-900 text-white dark:bg-white/10 text-xs font-bold rounded-xl">Perfil</button><button type="button" class="btn-remove-fav px-2.5 py-2.5 bg-rose-100 dark:bg-rose-950 text-rose-700 dark:text-rose-300 text-xs font-bold rounded-xl">Remover</button></div>`;
         card.querySelector('.btn-fav-card').addEventListener('click', () => toggleFavoritePro(livePro));
         card.querySelector('.btn-remove-fav').addEventListener('click', () => toggleFavoritePro(livePro));
         card.querySelector('.btn-call-pro').addEventListener('click', () => openInAppChat({ uid: livePro.authorUid || livePro.id, name: livePro.name, category: livePro.category, avatar: livePro.avatar || '', isSupport: false }));
         card.querySelector('.btn-view-fav').addEventListener('click', () => { if (!allProfessionals.some(p => p.id === livePro.id)) allProfessionals.push(livePro); openProfileModal(livePro.id); });
         grid.appendChild(card);
-      });
-      lucide.createIcons();
+      }); lucide.createIcons();
     }
 
-    window.openForgotPasswordView = () => {
-      document.getElementById('authMainView').classList.add('hidden'); document.getElementById('forgotPasswordView').classList.remove('hidden');
-      document.getElementById('forgotFormBox').classList.remove('hidden'); document.getElementById('forgotSuccessCard').classList.add('hidden');
-      const typed = document.getElementById('loginEmail').value.trim(); if (typed) document.getElementById('forgotEmail').value = typed;
-      setTimeout(() => document.getElementById('forgotEmail').focus(), 50); lucide.createIcons();
-    };
+    window.openForgotPasswordView = () => { document.getElementById('authMainView').classList.add('hidden'); document.getElementById('forgotPasswordView').classList.remove('hidden'); document.getElementById('forgotFormBox').classList.remove('hidden'); document.getElementById('forgotSuccessCard').classList.add('hidden'); const typed = document.getElementById('loginEmail').value.trim(); if (typed) document.getElementById('forgotEmail').value = typed; setTimeout(() => document.getElementById('forgotEmail').focus(), 50); lucide.createIcons(); };
     window.backToLoginView = () => { document.getElementById('forgotPasswordView').classList.add('hidden'); document.getElementById('authMainView').classList.remove('hidden'); switchAuthTab('login'); };
-    window.handleForgotPasswordSubmit = async (e) => {
-      e.preventDefault(); const email = document.getElementById('forgotEmail').value.trim(), btn = document.getElementById('btnSendReset');
-      btn.disabled = true; btn.textContent = 'Enviando...';
-      try { await sendPasswordResetEmail(auth, email); document.getElementById('forgotFormBox').classList.add('hidden'); document.getElementById('forgotSuccessCard').classList.remove('hidden'); }
-      catch (err) { if (err.code === 'auth/invalid-email') showToast('Digite um e-mail válido.'); else { document.getElementById('forgotFormBox').classList.add('hidden'); document.getElementById('forgotSuccessCard').classList.remove('hidden'); } }
-      finally { btn.disabled = false; btn.textContent = 'Enviar link de recuperação'; lucide.createIcons(); }
-    };
+    window.handleForgotPasswordSubmit = async (e) => { e.preventDefault(); const email = document.getElementById('forgotEmail').value.trim(), btn = document.getElementById('btnSendReset'); btn.disabled = true; btn.textContent = 'Enviando...'; try { await sendPasswordResetEmail(auth, email); document.getElementById('forgotFormBox').classList.add('hidden'); document.getElementById('forgotSuccessCard').classList.remove('hidden'); } catch (err) { if (err.code === 'auth/invalid-email') showToast('Digite um e-mail válido.'); else { document.getElementById('forgotFormBox').classList.add('hidden'); document.getElementById('forgotSuccessCard').classList.remove('hidden'); } } finally { btn.disabled = false; btn.textContent = 'Enviar link de recuperação'; lucide.createIcons(); } };
 
     window.addEventListener('DOMContentLoaded', () => {
       lucide.createIcons(); initTheme(); populateDropdowns(); renderHomeCategories(); updateFavoritesCounters();
-      setupAuthListener(); fetchProducts(); fetchJobs(); fetchOrders(); handleRoutingFromHash();
+      setupAuthListener(); fetchProducts(); fetchJobs(); fetchExternalJobs(); fetchOrders(); handleRoutingFromHash();
       window.addEventListener('hashchange', handleRoutingFromHash);
     });
 
@@ -523,16 +490,12 @@
       fill('orderCategory', CATEGORIES); fill('orderNeighborhood', NEIGHBORHOODS); fill('filterOrderCategory', CATEGORIES, 'Todas as Categorias'); fill('filterOrderNeighborhood', NEIGHBORHOODS, 'Todos os Bairros');
     }
 
-    function getProfessionIcon(n) { const f = CATEGORIES_DATA.find(c => c.name.toLowerCase() === (n || '').toLowerCase()); return f ? f.icon : 'wrench'; }
+    const getProfessionIcon = (n) => (CATEGORIES_DATA.find(c => c.name.toLowerCase() === (n || '').toLowerCase()) || { icon: 'wrench' }).icon;
 
     function renderHomeCategories() {
       const c = document.getElementById('homeCategoriesGrid'); c.innerHTML = '';
-      CATEGORIES_DATA.slice(0, 12).forEach(cat => {
-        const btn = document.createElement('button'); btn.type = 'button'; btn.addEventListener('click', () => openProfessionExplore(cat.name));
-        btn.className = 'cursor-pointer shrink-0 w-24 md:w-auto p-3 rounded-2xl glass-card hover:border-[#84CC16] transition flex flex-col items-center text-center gap-1.5';
-        btn.innerHTML = `<div class="w-10 h-10 rounded-xl bg-[#84CC16]/15 flex items-center justify-center shrink-0 text-[#4D7C0F] dark:text-[#84CC16]"><i data-lucide="${esc(cat.icon)}" class="w-5 h-5"></i></div><span class="text-[11px] font-bold leading-tight line-clamp-2">${esc(cat.name)}</span>`;
-        c.appendChild(btn);
-      }); lucide.createIcons();
+      CATEGORIES_DATA.slice(0, 12).forEach(cat => { const btn = document.createElement('button'); btn.type = 'button'; btn.addEventListener('click', () => openProfessionExplore(cat.name)); btn.className = 'cursor-pointer shrink-0 w-24 md:w-auto p-3 rounded-2xl glass-card hover:border-[#84CC16] transition flex flex-col items-center text-center gap-1.5'; btn.innerHTML = `<div class="w-10 h-10 rounded-xl bg-[#84CC16]/15 flex items-center justify-center shrink-0 text-[#4D7C0F] dark:text-[#84CC16]"><i data-lucide="${esc(cat.icon)}" class="w-5 h-5"></i></div><span class="text-[11px] font-bold leading-tight line-clamp-2">${esc(cat.name)}</span>`; c.appendChild(btn); });
+      lucide.createIcons();
     }
 
     window.openProfessionExplore = (profName) => { selectedProfession = profName || ""; renderExplorePills(); updateExploreBanner(); showSection('explore'); applyFilters(); };
@@ -543,7 +506,7 @@
     }
     function updateExploreBanner() {
       const t = document.getElementById('showcaseName'), s = document.getElementById('showcaseSubtitle'), ib = document.getElementById('showcaseIconBox');
-      if (selectedProfession) { t.textContent = `${selectedProfession} em Uberaba`; s.textContent = `Profissionais prontos para atender seu chamado no seu bairro.`; ib.innerHTML = `<i data-lucide="${esc(getProfessionIcon(selectedProfession))}" class="w-4 h-4"></i>`; }
+      if (selectedProfession) { t.textContent = `${selectedProfession} em Uberaba`; s.textContent = `Profissionais prontos para atender no seu bairro.`; ib.innerHTML = `<i data-lucide="${esc(getProfessionIcon(selectedProfession))}" class="w-4 h-4"></i>`; }
       else { t.textContent = `Todos os Profissionais em Uberaba`; s.textContent = `Encontre profissionais para qualquer serviço na sua região.`; ib.innerHTML = `<i data-lucide="users" class="w-4 h-4"></i>`; }
       lucide.createIcons();
     }
@@ -553,10 +516,7 @@
     window.handleOrderNeighborhoodChange = () => { const v = document.getElementById('orderNeighborhood').value, inp = document.getElementById('orderCustomNeighborhoodInput'); inp.classList.toggle('hidden', v !== "Outro Bairro..."); if (v === "Outro Bairro...") inp.focus(); else inp.value = ''; };
     window.handleCategorySelectionChange = () => {
       const cat = document.getElementById('proCategory').value, cont = document.getElementById('relatedFunctionsContainer'), pills = document.getElementById('relatedFunctionsPills'), funcs = RELATED_FUNCTIONS[cat];
-      if (funcs && funcs.length) {
-        cont.classList.remove('hidden'); pills.innerHTML = '';
-        funcs.forEach(func => { const btn = document.createElement('button'); btn.type = 'button'; btn.className = 'px-2.5 py-1 bg-white dark:bg-[#0A0A0A] border border-neutral-300 dark:border-[#1F2937] hover:border-[#84CC16] text-[10px] font-bold rounded-lg'; btn.textContent = `+ ${func}`; btn.addEventListener('click', () => { const inp = document.getElementById('proServices'), cur = inp.value.split(',').map(s => s.trim()).filter(Boolean); if (!cur.includes(func)) { cur.push(func); inp.value = cur.join(', '); showToast(`"${func}" adicionada!`); } }); pills.appendChild(btn); });
-      } else cont.classList.add('hidden');
+      if (funcs && funcs.length) { cont.classList.remove('hidden'); pills.innerHTML = ''; funcs.forEach(func => { const btn = document.createElement('button'); btn.type = 'button'; btn.className = 'px-2.5 py-1 bg-white dark:bg-[#0A0A0A] border border-neutral-300 dark:border-[#1F2937] hover:border-[#84CC16] text-[10px] font-bold rounded-lg'; btn.textContent = `+ ${func}`; btn.addEventListener('click', () => { const inp = document.getElementById('proServices'), cur = inp.value.split(',').map(s => s.trim()).filter(Boolean); if (!cur.includes(func)) { cur.push(func); inp.value = cur.join(', '); showToast(`"${func}" adicionada!`); } }); pills.appendChild(btn); }); } else cont.classList.add('hidden');
       lucide.createIcons();
     };
 
@@ -595,10 +555,7 @@
     }
     function renderChatsList(chats) {
       const cont = document.getElementById('chatsListContainer'); if (!cont) return; cont.innerHTML = '';
-      if (!chats.length) {
-        cont.innerHTML = `<div class="glass-card rounded-3xl p-8 text-center space-y-3"><div class="w-14 h-14 mx-auto rounded-2xl bg-[#84CC16]/15 text-[#84CC16] flex items-center justify-center"><i data-lucide="message-circle" class="w-7 h-7"></i></div><h3 class="font-extrabold text-sm md:text-base">Nenhuma conversa ainda</h3><p class="text-xs text-neutral-600 dark:text-[#9CA3AF] max-w-sm mx-auto">Converse com profissionais, responda propostas ou fale com nosso suporte.</p><div class="flex flex-wrap justify-center gap-2 pt-1"><button type="button" id="btnEmptyExplore" class="px-4 py-2 btn-lime-glow text-xs font-extrabold rounded-xl">Explorar Profissionais</button><button type="button" id="btnEmptySupport" class="px-4 py-2 bg-[#0A0A0A] text-white border border-[#1F2937] text-xs font-bold rounded-xl">Falar com Suporte</button></div></div>`;
-        cont.querySelector('#btnEmptyExplore').addEventListener('click', () => openProfessionExplore('')); cont.querySelector('#btnEmptySupport').addEventListener('click', () => openSupportChat()); lucide.createIcons(); return;
-      }
+      if (!chats.length) { cont.innerHTML = `<div class="glass-card rounded-3xl p-8 text-center space-y-3"><div class="w-14 h-14 mx-auto rounded-2xl bg-[#84CC16]/15 text-[#84CC16] flex items-center justify-center"><i data-lucide="message-circle" class="w-7 h-7"></i></div><h3 class="font-extrabold text-sm md:text-base">Nenhuma conversa ainda</h3><p class="text-xs text-neutral-600 dark:text-[#9CA3AF] max-w-sm mx-auto">Converse com profissionais, responda propostas ou fale com nosso suporte.</p><div class="flex flex-wrap justify-center gap-2 pt-1"><button type="button" id="btnEmptyExplore" class="px-4 py-2 btn-lime-glow text-xs font-extrabold rounded-xl">Explorar Profissionais</button><button type="button" id="btnEmptySupport" class="px-4 py-2 bg-[#0A0A0A] text-white border border-[#1F2937] text-xs font-bold rounded-xl">Falar com Suporte</button></div></div>`; cont.querySelector('#btnEmptyExplore').addEventListener('click', () => openProfessionExplore('')); cont.querySelector('#btnEmptySupport').addEventListener('click', () => openSupportChat()); lucide.createIcons(); return; }
       chats.forEach(chat => {
         const names = chat.names || {}, avatars = chat.avatars || {}, isSupport = Boolean(chat.isSupport), otherUid = (chat.participants || []).find(uid => uid !== currentUser.uid && uid !== 'ADMIN_SUPPORT');
         let displayName = "Conversa", targetUid = otherUid || "ADMIN_SUPPORT";
@@ -614,11 +571,7 @@
     }
 
     window.openSupportChat = () => { if (!currentUser) { document.getElementById('authPromptMessage').classList.remove('hidden'); document.getElementById('authPromptMessage').textContent = "Entre ou cadastre-se grátis para falar com o suporte!"; openModal('authModal', 'login'); return; } openInAppChat({ uid: "ADMIN_SUPPORT", name: "Suporte ZebuFreela", subtitle: "Atendimento da Plataforma", isSupport: true }); };
-    window.openAdminSupportInbox = async () => {
-      if (!isAdminUser()) return; openModal('adminSupportModal');
-      const list = document.getElementById('adminSupportList'); list.innerHTML = '<p class="text-center text-xs text-neutral-500 py-3">Carregando...</p>';
-      try { const snap = await getDocs(collection(db, "support_chats")); list.innerHTML = ''; if (snap.empty) { list.innerHTML = '<p class="text-center text-xs text-neutral-500 py-4">Nenhuma mensagem.</p>'; return; } snap.forEach(d => { const c = d.data(), btn = document.createElement('button'); btn.type = 'button'; btn.className = "w-full text-left p-3 bg-neutral-50 dark:bg-[#0A0A0A] rounded-2xl border border-neutral-200 dark:border-[#1F2937] flex items-center justify-between hover:border-[#84CC16]"; btn.addEventListener('click', () => { closeModal('adminSupportModal'); openInAppChat({ uid: c.userUid, name: c.userName || "Usuário", subtitle: "Atendimento", isSupport: true, chatIdOverride: d.id }); }); btn.innerHTML = `<div class="min-w-0 pr-2"><div class="flex items-center gap-1.5"><h4 class="font-extrabold text-xs truncate">${esc(c.userName||'Usuário')}</h4><span class="text-[9px] bg-amber-400 text-black px-1.5 py-0.5 rounded font-bold">Suporte</span></div><p class="text-[11px] text-[#9CA3AF] mt-1 line-clamp-1">${esc(c.lastMessage||'Conversa iniciada')}</p></div><i data-lucide="chevron-right" class="w-4 h-4 text-neutral-400 shrink-0"></i>`; list.appendChild(btn); }); lucide.createIcons(); } catch { list.innerHTML = '<p class="text-center text-xs text-neutral-500 py-2">Erro ao carregar.</p>'; }
-    };
+    window.openAdminSupportInbox = async () => { if (!isAdminUser()) return; openModal('adminSupportModal'); const list = document.getElementById('adminSupportList'); list.innerHTML = '<p class="text-center text-xs text-neutral-500 py-3">Carregando...</p>'; try { const snap = await getDocs(collection(db, "support_chats")); list.innerHTML = ''; if (snap.empty) { list.innerHTML = '<p class="text-center text-xs text-neutral-500 py-4">Nenhuma mensagem.</p>'; return; } snap.forEach(d => { const c = d.data(), btn = document.createElement('button'); btn.type = 'button'; btn.className = "w-full text-left p-3 bg-neutral-50 dark:bg-[#0A0A0A] rounded-2xl border border-neutral-200 dark:border-[#1F2937] flex items-center justify-between hover:border-[#84CC16]"; btn.addEventListener('click', () => { closeModal('adminSupportModal'); openInAppChat({ uid: c.userUid, name: c.userName || "Usuário", subtitle: "Atendimento", isSupport: true, chatIdOverride: d.id }); }); btn.innerHTML = `<div class="min-w-0 pr-2"><div class="flex items-center gap-1.5"><h4 class="font-extrabold text-xs truncate">${esc(c.userName||'Usuário')}</h4><span class="text-[9px] bg-amber-400 text-black px-1.5 py-0.5 rounded font-bold">Suporte</span></div><p class="text-[11px] text-[#9CA3AF] mt-1 line-clamp-1">${esc(c.lastMessage||'Conversa iniciada')}</p></div><i data-lucide="chevron-right" class="w-4 h-4 text-neutral-400 shrink-0"></i>`; list.appendChild(btn); }); lucide.createIcons(); } catch { list.innerHTML = '<p class="text-center text-xs text-neutral-500 py-2">Erro ao carregar.</p>'; } };
     window.handleOpenChatClick = () => { if (!currentUser) { closeModal('profileModal'); document.getElementById('authPromptMessage').classList.remove('hidden'); document.getElementById('authPromptMessage').textContent = "Entre ou cadastre-se grátis para conversar no chat!"; openModal('authModal', 'login'); return; } if (!currentViewingPro) return; const targetUid = currentViewingPro.authorUid || currentViewingPro.id; if (targetUid === currentUser.uid) { showToast("Esse anúncio é seu!"); return; } closeModal('profileModal'); openInAppChat({ uid: targetUid, name: currentViewingPro.name, category: currentViewingPro.category, avatar: currentViewingPro.avatar || '', isSupport: false }); };
     const resolveChatId = (r) => r.chatIdOverride ? r.chatIdOverride : r.isSupport ? (isAdminUser() && r.uid !== "ADMIN_SUPPORT" ? `support_${r.uid}` : `support_${currentUser.uid}`) : [currentUser.uid, r.uid].sort().join('_');
 
@@ -626,8 +579,7 @@
       if (!currentUser) { document.getElementById('authPromptMessage').classList.remove('hidden'); document.getElementById('authPromptMessage').textContent = "Entre ou cadastre-se grátis para conversar!"; openModal('authModal', 'login'); return; }
       currentChatRecipient = recipient; document.getElementById('chatTargetName').textContent = recipient.name || "Conversa"; document.getElementById('chatTargetSubtitle').textContent = recipient.category ? `${recipient.category} • chat ativo` : (recipient.subtitle || "chat ativo");
       const av = document.getElementById('chatHeaderAvatar'); av.innerHTML = ''; const clean = safeUrl(recipient.avatar);
-      if (recipient.isSupport && !isAdminUser()) { av.innerHTML = '<i data-lucide="headphones" class="w-5 h-5"></i>'; lucide.createIcons(); }
-      else if (clean) { const img = document.createElement('img'); img.src = clean; img.alt = recipient.name || 'Avatar'; img.className = 'w-full h-full object-cover'; av.appendChild(img); } else av.textContent = (recipient.name || 'P').charAt(0).toUpperCase();
+      if (recipient.isSupport && !isAdminUser()) { av.innerHTML = '<i data-lucide="headphones" class="w-5 h-5"></i>'; lucide.createIcons(); } else if (clean) { const img = document.createElement('img'); img.src = clean; img.alt = recipient.name || 'Avatar'; img.className = 'w-full h-full object-cover'; av.appendChild(img); } else av.textContent = (recipient.name || 'P').charAt(0).toUpperCase();
       openModal('inAppChatModal'); listenToChatMessages();
     };
     function listenToChatMessages() {
@@ -655,7 +607,7 @@
 
     window.openPostOrderModal = () => { if (!currentUser) { document.getElementById('authPromptMessage').classList.remove('hidden'); document.getElementById('authPromptMessage').textContent = "Entre para publicar seu pedido!"; openModal('authModal', 'login'); return; } if (isCurrentUserSuspended()) { showToast("Sua conta está suspensa."); return; } document.getElementById('orderPostForm').reset(); document.getElementById('orderCity').value = "Uberaba - MG"; document.getElementById('orderCustomNeighborhoodInput').classList.add('hidden'); tempOrderImages = []; renderOrderPhotosPreviews(); openModal('postOrderModal'); lucide.createIcons(); };
     window.saveNewOrder = async (e) => {
-      e.preventDefault(); if (!currentUser || isCurrentUserSuspended()) return; if (Date.now() - lastOrderSubmitAt < 30000) { showToast("Aguarde alguns segundos antes de publicar outro pedido."); return; }
+      e.preventDefault(); if (!currentUser || isCurrentUserSuspended()) return; if (Date.now() - lastOrderSubmitAt < 30000) { showToast("Aguarde alguns segundos."); return; }
       const title = document.getElementById('orderTitle').value.trim(), description = document.getElementById('orderDescription').value.trim(), city = document.getElementById('orderCity').value.trim() || "Uberaba - MG", deadline = document.getElementById('orderDeadline').value.trim(), budgetVal = parseFloat(document.getElementById('orderBudget').value), category = document.getElementById('orderCategory').value;
       let neighborhood = document.getElementById('orderNeighborhood').value; if (neighborhood === "Outro Bairro...") neighborhood = document.getElementById('orderCustomNeighborhoodInput').value.trim() || "Outro Bairro";
       if (containsExposedContactOrSpam(title + " " + description)) { showToast("Remova telefone ou links externos da descrição."); return; }
@@ -667,13 +619,7 @@
     const getOrderTimestampMs = (o) => o.createdAt?.toMillis ? o.createdAt.toMillis() : (o.createdAtMs || 0);
     const formatOrderDate = (o) => { const m = getOrderTimestampMs(o); return m ? new Date(m).toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit',year:'2-digit'}) : "Recente"; };
     function renderHomeOrders() { const c = document.getElementById('homeOrdersList'); if (!c) return; c.innerHTML = ''; const open = allOrders.filter(o => !o.hiddenByAdmin && (o.status === 'aberto' || o.status === 'em_negociacao')).slice(0, 6); if (!open.length) { c.innerHTML = '<p class="col-span-full py-4 text-center text-xs text-[#9CA3AF]">Nenhum pedido aberto no momento.</p>'; return; } open.forEach(o => c.appendChild(createOrderCard(o))); lucide.createIcons(); }
-    window.switchOrdersSubTab = (tab) => {
-      if ((tab === 'myOrders' || tab === 'myProposals') && !currentUser) { document.getElementById('authPromptMessage').classList.remove('hidden'); document.getElementById('authPromptMessage').textContent = "Entre para acompanhar seus pedidos!"; openModal('authModal', 'login'); return; }
-      const a = "px-4 py-2 rounded-full text-xs font-extrabold bg-[#84CC16] text-black shadow shrink-0", i = "px-4 py-2 rounded-full text-xs font-bold glass-card shrink-0";
-      document.getElementById('tabOrderBrowse').className = tab === 'browse' ? a : i; document.getElementById('tabOrderMine').className = tab === 'myOrders' ? a : i; document.getElementById('tabOrderProposals').className = tab === 'myProposals' ? a : i;
-      document.getElementById('ordersBrowsePane').classList.toggle('hidden', tab !== 'browse'); document.getElementById('ordersMinePane').classList.toggle('hidden', tab !== 'myOrders'); document.getElementById('ordersProposalsPane').classList.toggle('hidden', tab !== 'myProposals');
-      if (tab === 'myOrders') renderMyOrders(); if (tab === 'myProposals') fetchAndRenderMyProposals();
-    };
+    window.switchOrdersSubTab = (tab) => { if ((tab === 'myOrders' || tab === 'myProposals') && !currentUser) { document.getElementById('authPromptMessage').classList.remove('hidden'); document.getElementById('authPromptMessage').textContent = "Entre para acompanhar seus pedidos!"; openModal('authModal', 'login'); return; } const a = "px-4 py-2 rounded-full text-xs font-extrabold bg-[#84CC16] text-black shadow shrink-0", i = "px-4 py-2 rounded-full text-xs font-bold glass-card shrink-0"; document.getElementById('tabOrderBrowse').className = tab === 'browse' ? a : i; document.getElementById('tabOrderMine').className = tab === 'myOrders' ? a : i; document.getElementById('tabOrderProposals').className = tab === 'myProposals' ? a : i; document.getElementById('ordersBrowsePane').classList.toggle('hidden', tab !== 'browse'); document.getElementById('ordersMinePane').classList.toggle('hidden', tab !== 'myOrders'); document.getElementById('ordersProposalsPane').classList.toggle('hidden', tab !== 'myProposals'); if (tab === 'myOrders') renderMyOrders(); if (tab === 'myProposals') fetchAndRenderMyProposals(); };
     window.renderOrdersList = () => {
       const grid = document.getElementById('ordersGrid'), lbl = document.getElementById('ordersCountLabel'); if (!grid) return;
       const s = (document.getElementById('filterOrderSearch').value || '').toLowerCase(), cat = document.getElementById('filterOrderCategory').value, city = (document.getElementById('filterOrderCity').value || '').toLowerCase(), neigh = document.getElementById('filterOrderNeighborhood').value, df = document.getElementById('filterOrderDate').value, sf = document.getElementById('filterOrderStatus').value, now = Date.now();
@@ -689,15 +635,7 @@
       card.querySelector('button').addEventListener('click', () => openOrderDetail(order.id)); return card;
     }
     function renderMyOrders() { const grid = document.getElementById('myOrdersGrid'); if (!grid || !currentUser) return; const mine = allOrders.filter(o => o.authorUid === currentUser.uid); grid.innerHTML = ''; if (!mine.length) { grid.innerHTML = `<div class="col-span-full glass-card rounded-3xl p-6 text-center space-y-2"><p class="text-xs font-bold">Você ainda não publicou nenhum pedido.</p><button onclick="openPostOrderModal()" class="px-4 py-2 btn-lime-glow text-xs font-extrabold rounded-xl">Publicar Pedido</button></div>`; return; } mine.forEach(o => { const card = createOrderCard(o), info = document.createElement('div'); info.className = "text-[11px] font-bold text-[#84CC16]"; info.textContent = `${o.proposalCount || 0} proposta(s) recebida(s)`; card.querySelector('.space-y-2\\.5').appendChild(info); grid.appendChild(card); }); lucide.createIcons(); }
-    async function fetchAndRenderMyProposals() {
-      const grid = document.getElementById('myProposalsGrid'); if (!grid || !currentUser) return; grid.innerHTML = '<div class="col-span-full glass-card p-6 rounded-2xl text-center text-xs text-[#9CA3AF]">Carregando...</div>';
-      try {
-        const snap = await getDocs(query(collection(db, "proposals"), where("proUid", "==", currentUser.uid))); myProposals = []; snap.forEach(d => myProposals.push({ id: d.id, ...d.data() })); myProposals.sort((a, b) => (b.createdAtMs || 0) - (a.createdAtMs || 0)); grid.innerHTML = '';
-        if (!myProposals.length) { grid.innerHTML = `<div class="col-span-full glass-card rounded-3xl p-6 text-center space-y-2"><p class="text-xs font-bold">Você ainda não enviou propostas.</p><button onclick="switchOrdersSubTab('browse')" class="px-4 py-2 btn-lime-glow text-xs font-extrabold rounded-xl">Ver Pedidos Abertos</button></div>`; return; }
-        const badgeMap = { pendente:"bg-amber-100 text-amber-900 border-amber-300", aceita:"bg-emerald-100 text-emerald-900 border-emerald-300", recusada:"bg-neutral-200 text-neutral-700 border-neutral-300" };
-        myProposals.forEach(p => { const d = document.createElement('div'); d.className = "glass-card p-4 rounded-3xl space-y-2.5 flex flex-col justify-between"; d.innerHTML = `<div class="space-y-2"><div class="flex items-center justify-between gap-2"><span class="text-[10px] font-extrabold px-2.5 py-0.5 rounded-full border ${badgeMap[p.status]||badgeMap.pendente}">Proposta ${esc((p.status||'pendente').toUpperCase())}</span><span class="text-xs font-extrabold">R$ ${esc(Number(p.price||0).toFixed(2).replace('.',','))}</span></div><h4 class="font-extrabold text-sm">${esc(p.orderTitle||'Pedido')}</h4><p class="text-[11px] text-neutral-600 dark:text-neutral-300"><strong>Disponibilidade:</strong> ${esc(p.availability)}</p><p class="text-[11px] text-neutral-600 dark:text-[#9CA3AF] line-clamp-2">${esc(p.message)}</p></div><div class="pt-2 border-t border-neutral-200/70 dark:border-[#1F2937] flex items-center justify-between gap-2"><button type="button" class="btn-view-order px-3 py-1.5 bg-neutral-900 text-white dark:bg-white/10 text-xs font-bold rounded-xl">Ver Pedido</button>${p.status==='aceita'?`<button type="button" class="btn-chat-client px-3 py-1.5 btn-lime-glow text-xs font-extrabold rounded-xl">Abrir Chat</button>`:''}</div>`; d.querySelector('.btn-view-order').addEventListener('click', () => openOrderDetail(p.orderId)); const cb = d.querySelector('.btn-chat-client'); if (cb) cb.addEventListener('click', () => openInAppChat({ uid: p.orderAuthorUid, name: p.orderAuthorName || "Cliente", subtitle: `Pedido: ${p.orderTitle}` })); grid.appendChild(d); });
-      } catch { grid.innerHTML = '<div class="col-span-full glass-card p-6 rounded-2xl text-center text-xs text-rose-500">Erro ao carregar.</div>'; }
-    }
+    async function fetchAndRenderMyProposals() { const grid = document.getElementById('myProposalsGrid'); if (!grid || !currentUser) return; grid.innerHTML = '<div class="col-span-full glass-card p-6 rounded-2xl text-center text-xs text-[#9CA3AF]">Carregando...</div>'; try { const snap = await getDocs(query(collection(db, "proposals"), where("proUid", "==", currentUser.uid))); myProposals = []; snap.forEach(d => myProposals.push({ id: d.id, ...d.data() })); myProposals.sort((a, b) => (b.createdAtMs || 0) - (a.createdAtMs || 0)); grid.innerHTML = ''; if (!myProposals.length) { grid.innerHTML = `<div class="col-span-full glass-card rounded-3xl p-6 text-center space-y-2"><p class="text-xs font-bold">Você ainda não enviou propostas.</p><button onclick="switchOrdersSubTab('browse')" class="px-4 py-2 btn-lime-glow text-xs font-extrabold rounded-xl">Ver Pedidos Abertos</button></div>`; return; } const badgeMap = { pendente:"bg-amber-100 text-amber-900 border-amber-300", aceita:"bg-emerald-100 text-emerald-900 border-emerald-300", recusada:"bg-neutral-200 text-neutral-700 border-neutral-300" }; myProposals.forEach(p => { const d = document.createElement('div'); d.className = "glass-card p-4 rounded-3xl space-y-2.5 flex flex-col justify-between"; d.innerHTML = `<div class="space-y-2"><div class="flex items-center justify-between gap-2"><span class="text-[10px] font-extrabold px-2.5 py-0.5 rounded-full border ${badgeMap[p.status]||badgeMap.pendente}">Proposta ${esc((p.status||'pendente').toUpperCase())}</span><span class="text-xs font-extrabold">R$ ${esc(Number(p.price||0).toFixed(2).replace('.',','))}</span></div><h4 class="font-extrabold text-sm">${esc(p.orderTitle||'Pedido')}</h4><p class="text-[11px] text-neutral-600 dark:text-neutral-300"><strong>Disponibilidade:</strong> ${esc(p.availability)}</p><p class="text-[11px] text-neutral-600 dark:text-[#9CA3AF] line-clamp-2">${esc(p.message)}</p></div><div class="pt-2 border-t border-neutral-200/70 dark:border-[#1F2937] flex items-center justify-between gap-2"><button type="button" class="btn-view-order px-3 py-1.5 bg-neutral-900 text-white dark:bg-white/10 text-xs font-bold rounded-xl">Ver Pedido</button>${p.status==='aceita'?`<button type="button" class="btn-chat-client px-3 py-1.5 btn-lime-glow text-xs font-extrabold rounded-xl">Abrir Chat</button>`:''}</div>`; d.querySelector('.btn-view-order').addEventListener('click', () => openOrderDetail(p.orderId)); const cb = d.querySelector('.btn-chat-client'); if (cb) cb.addEventListener('click', () => openInAppChat({ uid: p.orderAuthorUid, name: p.orderAuthorName || "Cliente", subtitle: `Pedido: ${p.orderTitle}` })); grid.appendChild(d); }); } catch { grid.innerHTML = '<div class="col-span-full glass-card p-6 rounded-2xl text-center text-xs text-rose-500">Erro ao carregar.</div>'; } }
 
     window.openOrderDetail = async (orderId, updateHash = true) => {
       if (updateHash) window.location.hash = `order/${orderId}`; showSection('orderDetail', false);
@@ -706,14 +644,10 @@
         let order = allOrders.find(o => o.id === orderId);
         if (!order) { const snap = await getDoc(doc(db, "orders", orderId)); if (!snap.exists()) { cont.innerHTML = '<div class="glass-card p-8 rounded-3xl text-center text-xs text-rose-500">Pedido não encontrado.</div>'; return; } order = { id: snap.id, ...snap.data() }; }
         currentViewingOrder = order; let proposals = [];
-        if (currentUser) {
-          if (order.authorUid === currentUser.uid || isAdminUser()) { const ps = await getDocs(query(collection(db, "proposals"), where("orderId", "==", orderId))); ps.forEach(d => proposals.push({ id: d.id, ...d.data() })); }
-          else { const mp = await getDoc(doc(db, "proposals", `${orderId}_${currentUser.uid}`)); if (mp.exists()) proposals.push({ id: mp.id, ...mp.data() }); }
-        }
+        if (currentUser) { if (order.authorUid === currentUser.uid || isAdminUser()) { const ps = await getDocs(query(collection(db, "proposals"), where("orderId", "==", orderId))); ps.forEach(d => proposals.push({ id: d.id, ...d.data() })); } else { const mp = await getDoc(doc(db, "proposals", `${orderId}_${currentUser.uid}`)); if (mp.exists()) proposals.push({ id: mp.id, ...mp.data() }); } }
         proposals.sort((a, b) => Number(a.price || 0) - Number(b.price || 0)); renderOrderDetailView(order, proposals);
       } catch { cont.innerHTML = '<div class="glass-card p-8 rounded-3xl text-center text-xs text-rose-500">Erro ao abrir pedido.</div>'; }
     };
-
     function renderOrderDetailView(order, proposals) {
       const cont = document.getElementById('orderDetailContainer'), meta = ORDER_STATUS_META[order.status] || ORDER_STATUS_META.aberto, isAuthor = currentUser && order.authorUid === currentUser.uid, canManage = isAuthor || isAdminUser(), budgetStr = order.budget ? `R$ ${Number(order.budget).toFixed(2).replace('.', ',')}` : 'A combinar / Aberto';
       const photosHTML = (order.photos || []).map(u => { const clean = safeUrl(u); return clean ? `<button type="button" data-img="${esc(clean)}" class="order-photo-thumb aspect-square rounded-2xl overflow-hidden border border-[#1F2937]"><img src="${esc(clean)}" alt="Foto" class="w-full h-full object-cover"></button>` : ''; }).join('');
@@ -723,7 +657,6 @@
       const closeBtn = document.getElementById('btnCloseOrder'); if (closeBtn) closeBtn.addEventListener('click', () => closeOrderByOwner(order.id));
       const area = document.getElementById('orderInteractionArea'); if (isAuthor || isAdminUser()) renderOrderProposalsForClient(area, order, proposals); else renderProposalFormForPro(area, order, proposals[0] || null); lucide.createIcons();
     }
-
     function renderOrderProposalsForClient(area, order, proposals) {
       if (!proposals.length) { area.innerHTML = `<div class="glass-card rounded-3xl p-6 text-center space-y-1.5"><h3 class="font-extrabold text-sm">Aguardando propostas</h3><p class="text-xs text-[#9CA3AF]">Quando profissionais enviarem propostas, você poderá comparar e aceitar aqui.</p></div>`; return; }
       area.innerHTML = `<div class="glass-card rounded-3xl p-5 space-y-4"><div><h2 class="text-base font-extrabold">Comparar Propostas (${proposals.length})</h2><p class="text-[11px] text-[#9CA3AF]">Ordenadas do menor valor para o maior.</p></div><div id="proposalsComparisonList" class="grid grid-cols-1 md:grid-cols-2 gap-3"></div></div>`;
@@ -737,7 +670,6 @@
         list.appendChild(c);
       });
     }
-
     function renderProposalFormForPro(area, order, existing) {
       if (existing) { area.innerHTML = `<div class="glass-card rounded-3xl p-5 space-y-2.5 border-l-4 border-l-[#84CC16]"><div class="flex items-center justify-between"><h3 class="font-extrabold text-sm">Sua Proposta Enviada</h3><span class="text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full bg-[#84CC16] text-black">${esc(existing.status||'pendente')}</span></div><p class="text-xs"><strong>Valor:</strong> R$ ${esc(Number(existing.price||0).toFixed(2).replace('.',','))} • <strong>Disponibilidade:</strong> ${esc(existing.availability)}</p><p class="text-xs text-neutral-600 dark:text-neutral-300">${esc(existing.message)}</p>${existing.status==='aceita'?`<button type="button" id="btnChatAcceptedClient" class="mt-2 px-4 py-2 btn-lime-glow text-xs font-extrabold rounded-xl">🎉 Proposta Aceita! Abrir Chat</button>`:''}</div>`; const cb = document.getElementById('btnChatAcceptedClient'); if (cb) cb.addEventListener('click', () => openInAppChat({ uid: order.authorUid, name: order.authorName || 'Cliente', subtitle: `Pedido: ${order.title}` })); return; }
       if (order.status === 'contratado' || order.status === 'encerrado') { area.innerHTML = `<div class="glass-card rounded-3xl p-5 text-center text-xs text-[#9CA3AF]">Este pedido já foi <strong>${esc(order.status)}</strong>.</div>`; return; }
@@ -747,31 +679,14 @@
       area.innerHTML = `<div class="glass-card rounded-3xl p-5 space-y-3"><h3 class="text-base font-extrabold flex items-center gap-2"><i data-lucide="send" class="w-4 h-4 text-[#84CC16]"></i>Enviar Proposta Profissional</h3><form id="proposalForm" class="space-y-3 text-xs"><div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5"><div><label for="propPrice" class="lbl">Valor (R$) *</label><input type="number" step="0.5" min="1" id="propPrice" required placeholder="180" class="inp"></div><div><label for="propAvailability" class="lbl">Disponibilidade *</label><input type="text" id="propAvailability" required maxlength="80" placeholder="Amanhã às 14h" class="inp"></div></div><div><label for="propMessage" class="lbl">Mensagem *</label><textarea id="propMessage" rows="3" required minlength="10" maxlength="800" class="inp"></textarea></div><button type="submit" id="btnSendProposal" class="w-full py-3 btn-lime-glow font-extrabold text-xs md:text-sm rounded-xl">Enviar Proposta como ${esc(pro.name)}</button></form></div>`;
       document.getElementById('proposalForm').addEventListener('submit', (e) => submitOrderProposal(e, order, pro));
     }
-
     async function submitOrderProposal(e, order, pro) {
       e.preventDefault(); if (!currentUser || isCurrentUserSuspended()) return; if (Date.now() - lastProposalSubmitAt < 15000) { showToast("Aguarde alguns segundos."); return; }
       const price = parseFloat(document.getElementById('propPrice').value), availability = document.getElementById('propAvailability').value.trim(), message = document.getElementById('propMessage').value.trim();
       if (containsExposedContactOrSpam(message)) { showToast("Não envie telefone ou links externos."); return; }
       const proposalId = `${order.id}_${currentUser.uid}`, btn = document.getElementById('btnSendProposal'); btn.disabled = true; btn.textContent = "Enviando...";
-      try {
-        const ex = await getDoc(doc(db, "proposals", proposalId)); if (ex.exists()) { showToast("Você já enviou proposta."); openOrderDetail(order.id, false); return; }
-        await setDoc(doc(db, "proposals", proposalId), { orderId: order.id, orderTitle: order.title, orderAuthorUid: order.authorUid, orderAuthorName: order.authorName || "Cliente", proUid: currentUser.uid, proProfileId: pro.id, proName: pro.name, proCategory: pro.category, price, availability, message, status: 'pendente', createdAt: serverTimestamp(), createdAtMs: Date.now() });
-        await updateDoc(doc(db, "orders", order.id), { status: order.status === 'aberto' ? 'em_negociacao' : order.status, proposalCount: increment(1), updatedAt: serverTimestamp() });
-        await createNotification(order.authorUid, "Nova proposta recebida!", `${pro.name} enviou proposta de R$ ${price.toFixed(2).replace('.',',')} em "${order.title}".`, "nova_proposta", order.id);
-        lastProposalSubmitAt = Date.now(); showToast("Proposta enviada!"); await fetchOrders(); openOrderDetail(order.id, false);
-      } catch (err) { showToast("Erro: " + err.message); } finally { btn.disabled = false; }
+      try { const ex = await getDoc(doc(db, "proposals", proposalId)); if (ex.exists()) { showToast("Você já enviou proposta."); openOrderDetail(order.id, false); return; } await setDoc(doc(db, "proposals", proposalId), { orderId: order.id, orderTitle: order.title, orderAuthorUid: order.authorUid, orderAuthorName: order.authorName || "Cliente", proUid: currentUser.uid, proProfileId: pro.id, proName: pro.name, proCategory: pro.category, price, availability, message, status: 'pendente', createdAt: serverTimestamp(), createdAtMs: Date.now() }); await updateDoc(doc(db, "orders", order.id), { status: order.status === 'aberto' ? 'em_negociacao' : order.status, proposalCount: increment(1), updatedAt: serverTimestamp() }); await createNotification(order.authorUid, "Nova proposta recebida!", `${pro.name} enviou proposta de R$ ${price.toFixed(2).replace('.',',')} em "${order.title}".`, "nova_proposta", order.id); lastProposalSubmitAt = Date.now(); showToast("Proposta enviada!"); await fetchOrders(); openOrderDetail(order.id, false); } catch (err) { showToast("Erro: " + err.message); } finally { btn.disabled = false; }
     }
-
-    async function acceptOrderProposal(order, accepted, allProps) {
-      if (!confirm(`Aceitar proposta de ${accepted.proName}?`)) return;
-      try {
-        await updateDoc(doc(db, "proposals", accepted.id), { status: 'aceita', updatedAt: serverTimestamp() });
-        await Promise.all(allProps.filter(p => p.id !== accepted.id && p.status === 'pendente').map(p => updateDoc(doc(db, "proposals", p.id), { status: 'recusada', updatedAt: serverTimestamp() })));
-        await updateDoc(doc(db, "orders", order.id), { status: 'contratado', acceptedProposalId: accepted.id, acceptedProUid: accepted.proUid, acceptedProName: accepted.proName, updatedAt: serverTimestamp() });
-        await createNotification(accepted.proUid, "🎉 Proposta aceita!", `Sua proposta em "${order.title}" foi aceita!`, "proposta_aceita", order.id);
-        showToast("Proposta aceita!"); await fetchOrders(); openOrderDetail(order.id, false);
-      } catch { showToast("Erro ao aceitar proposta."); }
-    }
+    async function acceptOrderProposal(order, accepted, allProps) { if (!confirm(`Aceitar proposta de ${accepted.proName}?`)) return; try { await updateDoc(doc(db, "proposals", accepted.id), { status: 'aceita', updatedAt: serverTimestamp() }); await Promise.all(allProps.filter(p => p.id !== accepted.id && p.status === 'pendente').map(p => updateDoc(doc(db, "proposals", p.id), { status: 'recusada', updatedAt: serverTimestamp() }))); await updateDoc(doc(db, "orders", order.id), { status: 'contratado', acceptedProposalId: accepted.id, acceptedProUid: accepted.proUid, acceptedProName: accepted.proName, updatedAt: serverTimestamp() }); await createNotification(accepted.proUid, "🎉 Proposta aceita!", `Sua proposta em "${order.title}" foi aceita!`, "proposta_aceita", order.id); showToast("Proposta aceita!"); await fetchOrders(); openOrderDetail(order.id, false); } catch { showToast("Erro."); } }
     async function closeOrderByOwner(orderId) { if (!confirm("Deseja encerrar este pedido?")) return; try { await updateDoc(doc(db, "orders", orderId), { status: 'encerrado', updatedAt: serverTimestamp() }); showToast("Pedido encerrado!"); await fetchOrders(); openOrderDetail(orderId, false); } catch { showToast("Erro."); } }
     async function createNotification(recipientUid, title, message, type, orderId = '') { if (!recipientUid) return; try { await addDoc(collection(db, "notifications"), { recipientUid, title, message, type, orderId, read: false, createdAt: serverTimestamp(), createdAtMs: Date.now() }); } catch {} }
     function listenToNotifications() { if (!currentUser) return; if (notifUnsubscribe) notifUnsubscribe(); notifUnsubscribe = onSnapshot(query(collection(db, "notifications"), where("recipientUid", "==", currentUser.uid), limit(30)), (snap) => { userNotifications = []; snap.forEach(d => userNotifications.push({ id: d.id, ...d.data() })); userNotifications.sort((a, b) => (b.createdAtMs || 0) - (a.createdAtMs || 0)); const unread = userNotifications.filter(n => !n.read).length, b = document.getElementById('notifBadge'); if (unread > 0) { b.textContent = unread > 9 ? '9+' : String(unread); b.classList.remove('hidden'); } else b.classList.add('hidden'); }); }
@@ -843,44 +758,18 @@
     }
 
     function loadUserAds() { if (!currentUser) return; myAds = allProfessionals.filter(p => p.authorUid === currentUser.uid || p.id === currentUser.uid); renderMyAdsList(); }
-
-    async function fetchProfessionals() {
-      try {
-        const snap = await getDocs(collection(db, "profiles")); allProfessionals = []; snap.forEach(d => allProfessionals.push({ id: d.id, ...d.data() }));
-        syncFavoritesWithLivePros(); updateFavoritesCounters(); renderCards(); renderFavoritesSection(); if (currentUser) loadUserAds();
-      } catch (err) { console.error(err); }
-    }
-
-    function renderCards() {
-      const spon = document.getElementById('sponsoredList'); if (!spon) return; spon.innerHTML = '';
-      const sponsored = allProfessionals.filter(p => p.isSponsored === true);
-      if (!sponsored.length) spon.innerHTML = `<div class="w-full py-5 text-center text-xs text-[#9CA3AF] border border-dashed border-[#1F2937] rounded-2xl p-4"><i data-lucide="crown" class="w-6 h-6 mx-auto mb-1 text-amber-400/60"></i><p class="font-bold text-neutral-300">Nenhum profissional em destaque no momento.</p></div>`;
-      else { sponsored.forEach(p => spon.appendChild(createFeaturedProCard(p, true))); startSponsoredAutoScroll(); }
-      applyFilters(); lucide.createIcons();
-    }
-
+    async function fetchProfessionals() { try { const snap = await getDocs(collection(db, "profiles")); allProfessionals = []; snap.forEach(d => allProfessionals.push({ id: d.id, ...d.data() })); syncFavoritesWithLivePros(); updateFavoritesCounters(); renderCards(); renderFavoritesSection(); if (currentUser) loadUserAds(); } catch (err) { console.error(err); } }
+    function renderCards() { const spon = document.getElementById('sponsoredList'); if (!spon) return; spon.innerHTML = ''; const sponsored = allProfessionals.filter(p => p.isSponsored === true); if (!sponsored.length) spon.innerHTML = `<div class="w-full py-5 text-center text-xs text-[#9CA3AF] border border-dashed border-[#1F2937] rounded-2xl p-4"><i data-lucide="crown" class="w-6 h-6 mx-auto mb-1 text-amber-400/60"></i><p class="font-bold text-neutral-300">Nenhum profissional em destaque no momento.</p></div>`; else { sponsored.forEach(p => spon.appendChild(createFeaturedProCard(p, true))); startSponsoredAutoScroll(); } applyFilters(); lucide.createIcons(); }
     function startSponsoredAutoScroll() { const c = document.getElementById('sponsoredList'); if (!c) return; if (sponsoredAutoScrollTimer) clearInterval(sponsoredAutoScrollTimer); sponsoredAutoScrollTimer = setInterval(() => { if (c.matches(':hover')) return; const card = c.querySelector('.snap-start'), w = card ? card.offsetWidth + 14 : 310; if (c.scrollLeft + c.clientWidth >= c.scrollWidth - 15) c.scrollTo({ left: 0, behavior: 'smooth' }); else c.scrollBy({ left: w, behavior: 'smooth' }); }, 3600); }
 
     function createFeaturedProCard(p, isCarousel = false) {
-      const card = document.createElement('div');
-      card.className = `${isCarousel ? 'w-[290px] sm:w-[320px] shrink-0 snap-start' : 'w-full'} glass-card text-neutral-900 dark:text-white rounded-3xl p-4 flex flex-col justify-between relative ${p.isSponsored ? 'border-2 border-amber-400' : ''}`;
+      const card = document.createElement('div'); card.className = `${isCarousel ? 'w-[290px] sm:w-[320px] shrink-0 snap-start' : 'w-full'} glass-card text-neutral-900 dark:text-white rounded-3xl p-4 flex flex-col justify-between relative ${p.isSponsored ? 'border-2 border-amber-400' : ''}`;
       const av = safeUrl(p.avatar), fav = isFavorited(p.id);
       const imageHTML = av ? `<img src="${esc(av)}" alt="${esc(p.name)}" class="w-14 h-14 rounded-2xl object-cover shrink-0 border border-[#1F2937] shadow-sm">` : `<div class="w-14 h-14 rounded-2xl bg-[#0A0A0A] border border-[#1F2937] text-[#84CC16] flex items-center justify-center shrink-0"><i data-lucide="${esc(getProfessionIcon(p.category))}" class="w-7 h-7"></i></div>`;
       const servicesPills = (p.services || []).slice(0, 3).map(s => `<span class="text-[10px] bg-black/5 dark:bg-white/10 text-neutral-800 dark:text-neutral-200 px-2 py-0.5 rounded-lg font-medium">${esc(s)}</span>`).join('');
       const validThumbs = (p.portfolio || []).filter(u => safeUrl(u));
       let thumbsHTML = validThumbs.length ? `<div class="flex gap-1.5 pt-1 overflow-hidden">${validThumbs.slice(0,3).map(u=>`<div class="w-12 h-12 rounded-xl overflow-hidden bg-neutral-100 dark:bg-[#0A0A0A] border border-neutral-200 dark:border-[#1F2937] shrink-0"><img src="${esc(safeUrl(u))}" alt="Trabalho" class="w-full h-full object-cover"></div>`).join('')}${validThumbs.length>3?`<span class="text-[10px] text-[#9CA3AF] self-center font-bold pl-1">+${validThumbs.length-3}</span>`:''}</div>` : '';
-
-      card.innerHTML = `
-        <div class="space-y-3">
-          <div class="flex items-start justify-between gap-2">
-            <div class="flex items-center gap-3 min-w-0">${imageHTML}<div class="min-w-0"><h3 class="font-extrabold text-sm leading-tight truncate">${esc(p.name)}</h3><p class="text-[11px] font-bold text-neutral-600 dark:text-[#9CA3AF] mt-0.5 truncate">${esc(p.category)}</p><p class="text-[11px] text-neutral-500 mt-0.5 truncate">📍 ${esc(p.neighborhood || 'Uberaba')}</p></div></div>
-            <div class="flex items-center gap-1 shrink-0">${p.isSponsored?`<span class="px-2 py-0.5 rounded-full bg-amber-400 text-black font-extrabold text-[9px] flex items-center gap-0.5"><i data-lucide="crown" class="w-2.5 h-2.5 fill-black"></i>TOP</span>`:''}<button type="button" data-fav-btn="${esc(p.id)}" aria-pressed="${fav}" aria-label="Favoritar profissional" class="p-1.5 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition ${fav?'text-[#84CC16]':'text-neutral-400 hover:text-[#84CC16]'}">${getHeartSvg(fav)}</button></div>
-          </div>
-          <p class="text-[11px] text-neutral-700 dark:text-neutral-300 line-clamp-2 leading-relaxed">${esc(p.bio || 'Profissional autônomo disponível em Uberaba.')}</p>
-          <div class="flex flex-wrap gap-1 text-[10px] font-bold text-neutral-600 dark:text-neutral-300"><span class="px-2 py-0.5 bg-black/5 dark:bg-white/10 rounded-md">${esc(formatAttendanceDisplay(p.attendanceType))}</span>${safeUrl(p.videoUrl)?`<span class="px-2 py-0.5 bg-[#84CC16]/20 text-[#3F6212] dark:text-[#84CC16] rounded-md flex items-center gap-0.5"><i data-lucide="play" class="w-2.5 h-2.5"></i>Vídeo</span>`:''}</div>
-          <div class="flex flex-wrap gap-1 pt-0.5">${servicesPills}</div>${thumbsHTML}
-        </div>
-        <div class="mt-4 pt-3 border-t border-neutral-200/70 dark:border-[#1F2937] flex items-center justify-between gap-2"><div><span class="text-[9px] uppercase font-bold text-[#9CA3AF] block">Preço</span><span class="text-xs font-extrabold">${esc(formatPriceDisplay(p))}</span></div><button type="button" class="btn-open-pro px-4 py-2 btn-lime-glow font-extrabold text-xs rounded-xl flex items-center gap-1 shrink-0">Pedir Orçamento<i data-lucide="chevron-right" class="w-3.5 h-3.5"></i></button></div>`;
+      card.innerHTML = `<div class="space-y-3"><div class="flex items-start justify-between gap-2"><div class="flex items-center gap-3 min-w-0">${imageHTML}<div class="min-w-0"><h3 class="font-extrabold text-sm leading-tight truncate">${esc(p.name)}</h3><p class="text-[11px] font-bold text-neutral-600 dark:text-[#9CA3AF] mt-0.5 truncate">${esc(p.category)}</p><p class="text-[11px] text-neutral-500 mt-0.5 truncate">📍 ${esc(p.neighborhood || 'Uberaba')}</p></div></div><div class="flex items-center gap-1 shrink-0">${p.isSponsored?`<span class="px-2 py-0.5 rounded-full bg-amber-400 text-black font-extrabold text-[9px] flex items-center gap-0.5"><i data-lucide="crown" class="w-2.5 h-2.5 fill-black"></i>TOP</span>`:''}<button type="button" data-fav-btn="${esc(p.id)}" aria-pressed="${fav}" aria-label="Favoritar profissional" class="p-1.5 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition ${fav?'text-[#84CC16]':'text-neutral-400 hover:text-[#84CC16]'}">${getHeartSvg(fav)}</button></div></div><p class="text-[11px] text-neutral-700 dark:text-neutral-300 line-clamp-2 leading-relaxed">${esc(p.bio || 'Profissional autônomo disponível em Uberaba.')}</p><div class="flex flex-wrap gap-1 text-[10px] font-bold text-neutral-600 dark:text-neutral-300"><span class="px-2 py-0.5 bg-black/5 dark:bg-white/10 rounded-md">${esc(formatAttendanceDisplay(p.attendanceType))}</span>${safeUrl(p.videoUrl)?`<span class="px-2 py-0.5 bg-[#84CC16]/20 text-[#3F6212] dark:text-[#84CC16] rounded-md flex items-center gap-0.5"><i data-lucide="play" class="w-2.5 h-2.5"></i>Vídeo</span>`:''}</div><div class="flex flex-wrap gap-1 pt-0.5">${servicesPills}</div>${thumbsHTML}</div><div class="mt-4 pt-3 border-t border-neutral-200/70 dark:border-[#1F2937] flex items-center justify-between gap-2"><div><span class="text-[9px] uppercase font-bold text-[#9CA3AF] block">Preço</span><span class="text-xs font-extrabold">${esc(formatPriceDisplay(p))}</span></div><button type="button" class="btn-open-pro px-4 py-2 btn-lime-glow font-extrabold text-xs rounded-xl flex items-center gap-1 shrink-0">Pedir Orçamento<i data-lucide="chevron-right" class="w-3.5 h-3.5"></i></button></div>`;
       const favBtn = card.querySelector('[data-fav-btn]'); favBtn.addEventListener('click', (e) => { e.stopPropagation(); toggleFavoritePro(p, favBtn); });
       card.querySelector('.btn-open-pro').addEventListener('click', () => openProfileModal(p.id)); return card;
     }
@@ -917,6 +806,42 @@
     };
 
     window.toggleProfessionalSponsorship = async () => { if (!currentViewingPro || !isAdminUser()) return; const s = !currentViewingPro.isSponsored; try { await updateDoc(doc(db, "profiles", currentViewingPro.id), { isSponsored: s }); currentViewingPro.isSponsored = s; showToast(s ? "Profissional em destaque!" : "Destaque removido."); openProfileModal(currentViewingPro.id); fetchProfessionals(); } catch { showToast("Erro."); } };
+
+    // VAGAS JOOBLE (vagas_externas no Firestore)
+    async function fetchExternalJobs() {
+      const grid = document.getElementById('externalJobsGrid'); if (!grid) return;
+      grid.innerHTML = '<p class="col-span-full py-4 text-center text-xs text-[#9CA3AF]">Carregando vagas em Uberaba...</p>';
+      try {
+        const snap = await getDocs(query(collection(db, "vagas_externas"), orderBy("importadaEm", "desc"), limit(120)));
+        allExternalJobs = []; snap.forEach(d => allExternalJobs.push({ id: d.id, ...d.data() }));
+        filterExternalJobs();
+      } catch (err) { console.error("Erro vagas_externas:", err); grid.innerHTML = '<p class="col-span-full py-4 text-center text-xs text-[#9CA3AF]">Nenhuma vaga externa disponível no momento.</p>'; }
+    }
+    window.filterExternalJobs = () => {
+      const t = (document.getElementById('filterExternalJobsInput')?.value || '').toLowerCase().trim();
+      filteredExternalJobs = allExternalJobs.filter(v => !t || (v.titulo||'').toLowerCase().includes(t) || (v.empresa||'').toLowerCase().includes(t) || (v.cidade||'').toLowerCase().includes(t));
+      externalJobsVisibleCount = 9; renderExternalJobs();
+    };
+    window.loadMoreExternalJobs = () => { externalJobsVisibleCount += 9; renderExternalJobs(); };
+    function formatExternalJobDate(v) {
+      if (v.dataPublicacao) { const d = new Date(v.dataPublicacao); if (!isNaN(d.getTime())) return d.toLocaleDateString('pt-BR', { day:'2-digit', month:'2-digit', year:'2-digit' }); }
+      if (v.importadaEm?.toDate) return v.importadaEm.toDate().toLocaleDateString('pt-BR', { day:'2-digit', month:'2-digit', year:'2-digit' });
+      return 'Recente';
+    }
+    function renderExternalJobs() {
+      const grid = document.getElementById('externalJobsGrid'), wrap = document.getElementById('externalJobsLoadMoreWrap'); if (!grid) return; grid.innerHTML = '';
+      if (!filteredExternalJobs.length) { grid.innerHTML = '<p class="col-span-full py-4 text-center text-xs text-[#9CA3AF]">Nenhuma vaga encontrada com esse filtro.</p>'; if (wrap) wrap.classList.add('hidden'); return; }
+      filteredExternalJobs.slice(0, externalJobsVisibleCount).forEach(v => {
+        const link = safeUrl(v.linkOriginal); if (!link) return;
+        const card = document.createElement('div'); card.className = "p-4 rounded-2xl glass-card flex flex-col justify-between gap-3";
+        card.innerHTML = `<div class="space-y-2"><div class="flex items-center justify-between gap-2"><span class="text-[9px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-[#84CC16]/15 text-[#4D7C0F] dark:text-[#84CC16]">${esc(v.fonte||'Jooble')}</span><span class="text-[10px] text-[#9CA3AF]">${esc(formatExternalJobDate(v))}</span></div><h4 class="font-extrabold text-xs md:text-sm leading-snug line-clamp-2">${esc(v.titulo)}</h4><p class="text-[11px] font-semibold text-neutral-700 dark:text-neutral-300 truncate">🏢 ${esc(v.empresa||'Empresa não informada')}</p><p class="text-[11px] text-[#9CA3AF] truncate">📍 ${esc(v.cidade||'Uberaba - MG')}</p></div><div class="pt-2.5 border-t border-neutral-200/70 dark:border-[#1F2937] flex justify-end"><a href="${esc(link)}" target="_blank" rel="noopener noreferrer" class="px-4 py-2 btn-lime-glow font-extrabold text-xs rounded-xl inline-flex items-center gap-1.5">Ver vaga <i data-lucide="external-link" class="w-3.5 h-3.5"></i></a></div>`;
+        grid.appendChild(card);
+      });
+      if (wrap) wrap.classList.toggle('hidden', externalJobsVisibleCount >= filteredExternalJobs.length);
+      lucide.createIcons();
+    }
+
+    // VAGAS RELÂMPAGO DA COMUNIDADE
     window.openPostJobModal = () => { if (!currentUser) { document.getElementById('authPromptMessage').classList.remove('hidden'); document.getElementById('authPromptMessage').textContent = "Entre para publicar vaga!"; openModal('authModal', 'login'); return; } if (isCurrentUserSuspended()) { showToast("Conta suspensa."); return; } openModal('postJobModal'); };
     window.saveJobOpportunity = async (e) => { e.preventDefault(); if (!currentUser || isCurrentUserSuspended()) return; const hrs = parseInt(document.getElementById('jobDuration').value) || 168; try { await addDoc(collection(db, "jobs"), { title: document.getElementById('jobTitle').value.trim(), category: document.getElementById('jobCategory').value, neighborhood: document.getElementById('jobNeighborhood').value, deadline: document.getElementById('jobDeadline').value.trim() || "A combinar", budget: document.getElementById('jobBudget').value.trim() || "A combinar", description: document.getElementById('jobDescription').value.trim(), authorUid: currentUser.uid, authorName: (currentUser.displayName || "Cliente").split(' ')[0], durationHours: hrs, expiresAt: Date.now() + (hrs * 3600000), status: 'open', createdAt: serverTimestamp() }); showToast("Vaga publicada!"); closeModal('postJobModal'); fetchJobs(); } catch { showToast("Erro."); } };
     window.closeJobOpportunity = async (id) => { if (!confirm("Marcar vaga como preenchida?")) return; try { await updateDoc(doc(db, "jobs", id), { status: 'closed' }); showToast("Vaga encerrada!"); fetchJobs(); } catch { showToast("Erro."); } };
@@ -924,6 +849,7 @@
     function renderJobs() { const hl = document.getElementById('homeJobsList'), ag = document.getElementById('allJobsGrid'); if (hl) hl.innerHTML = ''; if (ag) ag.innerHTML = ''; if (!allJobs.length) { const msg = '<p class="col-span-full py-4 text-center text-xs text-[#9CA3AF]">Nenhuma vaga em aberto.</p>'; if (hl) hl.innerHTML = msg; if (ag) ag.innerHTML = msg; return; } allJobs.slice(0, 6).forEach(j => { if (hl) hl.appendChild(createJobCard(j)); }); allJobs.forEach(j => { if (ag) ag.appendChild(createJobCard(j)); }); lucide.createIcons(); }
     function createJobCard(j) { const card = document.createElement('div'); card.className = "p-4 rounded-2xl glass-card flex flex-col justify-between"; let cd = ''; if (j.expiresAt) { const ms = j.expiresAt - Date.now(), h = Math.floor(ms / 3600000), m = Math.floor((ms % 3600000) / 60000); if (h < 24 && ms > 0) cd = `<span class="text-[9px] font-extrabold text-rose-700 bg-rose-100 dark:bg-rose-950 dark:text-rose-200 px-2 py-0.5 rounded-full">⏳ ${h}h ${m}m</span>`; } const isMine = currentUser && (currentUser.uid === j.authorUid || isAdminUser()); card.innerHTML = `<div class="space-y-2"><div class="flex items-center justify-between gap-1"><span class="text-[9px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-black/5 dark:bg-white/10">${esc(j.category)}</span>${cd}</div><h3 class="font-extrabold text-xs md:text-sm leading-snug line-clamp-2">${esc(j.title)}</h3><p class="text-[11px] text-neutral-600 dark:text-[#9CA3AF] line-clamp-2">${esc(j.description)}</p><div class="pt-1 flex flex-wrap gap-2 text-[10px] text-neutral-500 font-bold"><span>📍 ${esc(j.neighborhood)}</span><span>💰 ${esc(j.budget)}</span></div></div><div class="mt-3 pt-2.5 border-t border-neutral-200/70 dark:border-[#1F2937] flex items-center justify-between gap-2">${isMine?`<button type="button" class="btn-close-job px-2.5 py-1 bg-neutral-200 dark:bg-white/10 text-[10px] font-bold rounded-lg">✅ Preenchida</button>`:'<span></span>'}<button type="button" class="btn-apply-job px-3.5 py-1.5 btn-lime-glow font-extrabold text-xs rounded-xl flex items-center gap-1.5"><i data-lucide="message-square" class="w-3.5 h-3.5"></i>Quero Fazer</button></div>`; const cb = card.querySelector('.btn-close-job'); if (cb) cb.addEventListener('click', () => closeJobOpportunity(j.id)); card.querySelector('.btn-apply-job').addEventListener('click', () => openInAppChat({ uid: j.authorUid, name: j.authorName || "Cliente", subtitle: `Vaga: ${j.title}` })); return card; }
 
+    // AUTH & NAVEGAÇÃO
     window.handleGoogleLogin = async () => { try { const res = await signInWithPopup(auth, googleProvider), u = res.user; try { const ur = doc(db, "users", u.uid); if (!(await getDoc(ur)).exists()) await setDoc(ur, { uid: u.uid, name: u.displayName || "Usuário", email: u.email, role: 'client', createdAt: serverTimestamp() }); } catch {} closeModal('authModal'); showToast("Conectado com o Google!"); } catch (err) { showToast("Erro no login Google: " + (err.code || err.message)); } };
     window.handleRegister = async (e) => { e.preventDefault(); const name = document.getElementById('regName').value.trim(), email = document.getElementById('regEmail').value.trim(), password = document.getElementById('regPassword').value, role = document.querySelector('input[name="regRole"]:checked').value; try { const cred = await createUserWithEmailAndPassword(auth, email, password); await updateProfile(cred.user, { displayName: name }); await setDoc(doc(db, "users", cred.user.uid), { uid: cred.user.uid, name, email, role, createdAt: serverTimestamp() }); closeModal('authModal'); showToast("Conta criada!"); if (role === 'pro') showSection('dashboard'); } catch (err) { showToast("Erro: " + err.message); } };
     window.handleLogin = async (e) => { e.preventDefault(); try { await signInWithEmailAndPassword(auth, document.getElementById('loginEmail').value.trim(), document.getElementById('loginPassword').value); closeModal('authModal'); showToast("Conectado!"); } catch { showToast("E-mail ou senha incorretos."); } };
