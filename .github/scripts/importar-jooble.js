@@ -1,4 +1,5 @@
-const admin = require("firebase-admin");
+const { initializeApp, cert } = require("firebase-admin/app");
+const { getFirestore, Timestamp } = require("firebase-admin/firestore");
 const crypto = require("crypto");
 
 const serviceAccountRaw = process.env.FIREBASE_SERVICE_ACCOUNT;
@@ -7,11 +8,11 @@ const apiKey = (process.env.JOOBLE_API_KEY || "").trim();
 if (!serviceAccountRaw) throw new Error("Segredo FIREBASE_SERVICE_ACCOUNT não configurado.");
 if (!apiKey) throw new Error("Segredo JOOBLE_API_KEY não configurado.");
 
-admin.initializeApp({
-  credential: admin.credential.cert(JSON.parse(serviceAccountRaw))
+initializeApp({
+  credential: cert(JSON.parse(serviceAccountRaw))
 });
 
-const db = admin.firestore();
+const db = getFirestore();
 
 const TERMOS_BUSCA = [
   "motorista",
@@ -24,7 +25,7 @@ const TERMOS_BUSCA = [
 
 async function run() {
   const endpoint = `https://br.jooble.org/api/${apiKey}`;
-  const agora = admin.firestore.Timestamp.now();
+  const agora = Timestamp.now();
   const candidatas = new Map();
 
   for (const palavra of TERMOS_BUSCA) {
@@ -91,7 +92,7 @@ async function run() {
     if (temGravacao) await batch.commit();
   }
 
-  const trintaDiasAtras = admin.firestore.Timestamp.fromMillis(Date.now() - 30 * 24 * 60 * 60 * 1000);
+  const trintaDiasAtras = Timestamp.fromMillis(Date.now() - 30 * 24 * 60 * 60 * 1000);
   const antigasSnap = await db
     .collection("vagas_externas")
     .where("importadaEm", "<", trintaDiasAtras)
